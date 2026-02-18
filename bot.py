@@ -21,9 +21,34 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def get_system_prompt():
     try:
-        result = supabase.table("settings").select("value").eq("key", "system_prompt").execute()
-        if result.data:
-            return result.data[0]["value"]
+        result = supabase.table("settings").select("key,value").execute()
+        data = {row["key"]: row["value"] for row in result.data}
+        niche = data.get("niche", "")
+        prompt = data.get("system_prompt", "Ты вежливый помощник-консультант.")
+
+        # Загружаем файлы знаний
+        files_result = supabase.table("knowledge_files").select("filename,content").execute()
+        knowledge = ""
+        if files_result.data:
+            for f in files_result.data:
+                knowledge += f"\n\n--- {f['filename']} ---\n{f['content']}"
+
+        # Загружаем вопросы воронки
+        questions_result = supabase.table("funnel_questions").select("question,is_required").eq("is_required", True).order("order_index").execute()
+        funnel = ""
+        if questions_result.data:
+            questions_list = "\n".join([f"- {q['question']}" for q in questions_result.data])
+            funnel = f"\n\nОбязательные вопросы которые нужно задать пользователю по очереди:\n{questions_list}"
+
+        full_prompt = prompt
+        if niche:
+            full_prompt = f"Ниша: {niche}\n\n{full_prompt}"
+        if funnel:
+            full_prompt += funnel
+        if knowledge:
+            full_prompt += f"\n\nФайлы знаний:{knowledge}"
+
+        return full_prompt
     except Exception as e:
         logger.error(f"Error getting system prompt: {e}")
     return "Ты вежливый помощник-консультант."
