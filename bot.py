@@ -95,9 +95,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         response = groq_client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=messages,
-            max_tokens=1000
+            max_tokens=300
         )
-        reply = response.choices[0].message.content
+        reply = response.choices[0].message.content.strip()
+        if not reply:
+            reply = "Уточните, пожалуйста, ваш вопрос."
     except Exception as e:
         logger.error(f"Groq error: {e}")
         reply = "Произошла ошибка, попробуйте позже."
