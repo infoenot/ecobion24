@@ -1,8 +1,8 @@
 import os
 import logging
+import google.generativeai as genai
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
-from openai import OpenAI
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -11,30 +11,22 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
-DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
-client = OpenAI(
-    api_key=DEEPSEEK_API_KEY,
-    base_url="https://api.deepseek.com"
-)
+genai.configure(api_key=GEMINI_API_KEY)
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
     logger.info(f"Message from {update.message.chat_id}: {user_message}")
-    
+
     await update.message.chat.send_action("typing")
 
     try:
-        response = client.chat.completions.create(
-            model="deepseek-chat",
-            messages=[
-                {"role": "user", "content": user_message}
-            ],
-            max_tokens=1000
-        )
-        reply = response.choices[0].message.content
+        response = model.generate_content(user_message)
+        reply = response.text
     except Exception as e:
-        logger.error(f"DeepSeek error: {e}")
+        logger.error(f"Gemini error: {e}")
         reply = "Произошла ошибка, попробуйте позже."
 
     await update.message.reply_text(reply)
