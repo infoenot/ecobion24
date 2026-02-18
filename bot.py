@@ -22,7 +22,15 @@ client = OpenAI(
 )
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-def get_system_prompt():
+def get_funnel_questions():
+    try:
+        result = supabase.table("funnel_questions").select("id,question,agent_task,is_required").eq("is_required", True).order("order_index").execute()
+        return result.data if result.data else []
+    except Exception as e:
+        logger.error(f"Error getting funnel questions: {e}")
+        return []
+
+def get_system_prompt(funnel_questions):
     try:
         result = supabase.table("settings").select("key,value").execute()
         data = {row["key"]: row["value"] for row in result.data}
@@ -35,11 +43,14 @@ def get_system_prompt():
             for f in files_result.data:
                 knowledge += f"\n\n--- {f['filename']} ---\n{f['content']}"
 
-        questions_result = supabase.table("funnel_questions").select("question,is_required").eq("is_required", True).order("order_index").execute()
         funnel = ""
-        if questions_result.data:
-            questions_list = "\n".join([f"- {q['question']}" for q in questions_result.data])
-            funnel = f"\n\nОбязательные вопросы которые нужно задать пользователю по одному:\n{questions_list}"
+        if funnel_questions:
+            stages = []
+            for q in funnel_questions:
+                task = q.get("agent_task") or q.get("question", "")
+                name = q.get("question", "")
+                stages.append(f"- Этап '{name}': {task}")
+            funnel = "\n\nЭтапы воронки — задавай по одному, жди ответа перед следующим:\n" + "\n".join(stages)
 
         full_prompt = prompt
         if niche:
@@ -76,6 +87,39 @@ def save_message(chat_id, username, role, content):
     except Exception as e:
         logger.error(f"Error saving message: {e}")
 
+def update_lead_stage(chat_id, username, funnel_questions, all_messages):
+    """Определяет текущий этап лида и обновляет в таблице leads"""
+    try:
+        if not funnel_questions:
+            return
+
+        # Считаем сколько этапов пройдено
+        # Логика: смотрим на количество сообщений пользователя
+        # Каждое сообщение пользователя после первого = прогресс по воронке
+        user_messages = [m for m in all_messages if m["role"] == "user"]
+        user_msg_count = len(user_messages)
+
+        total_stages = len(funnel_questions)
+
+        if user_msg_count == 0:
+            stage = "new_lead"
+        elif user_msg_count >= total_stages:
+            stage = "deal_won"
+        else:
+            # Текущий этап — вопрос который сейчас задаётся
+            current_question = funnel_questions[min(user_msg_count - 1, total_stages - 1)]
+            stage = f"question_{current_question['id']}"
+
+        supabase.table("leads").upsert({
+            "chat_id": chat_id,
+            "username": username,
+            "stage": stage
+        }, on_conflict="chat_id").execute()
+
+        logger.info(f"Lead {chat_id} stage updated to: {stage}")
+    except Exception as e:
+        logger.error(f"Error updating lead stage: {e}")
+
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
     username = update.message.from_user.username or update.message.from_user.first_name
@@ -86,8 +130,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     save_message(chat_id, username, "user", user_message)
 
-    system_prompt = get_system_prompt()
+    funnel_questions = get_funnel_questions()
+    system_prompt = get_system_prompt(funnel_questions)
     history = get_chat_history(chat_id, exclude_last=1)
+    all_messages_for_stage = get_chat_history(chat_id, exclude_last=0)
+
     messages = [{"role": "system", "content": system_prompt}] + history + [{"role": "user", "content": user_message}]
 
     try:
@@ -104,6 +151,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply = "Произошла ошибка, попробуйте позже."
 
     save_message(chat_id, username, "assistant", reply)
+
+    # Обновляем этап лида после ответа
+    update_lead_stage(chat_id, username, funnel_questions, all_messages_for_stage + [{"role": "user", "content": user_message}])
+
     await update.message.reply_text(reply)
 
 def main():
