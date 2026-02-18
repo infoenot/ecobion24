@@ -3,7 +3,7 @@ import logging
 from openai import OpenAI
 from supabase import create_client
 from telegram import Update
-from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
+from telegram.ext import ApplicationBuilder, MessageHandler, CommandHandler, filters, ContextTypes
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -120,6 +120,20 @@ def update_lead_stage(chat_id, username, funnel_questions, all_messages):
     except Exception as e:
         logger.error(f"Error updating lead stage: {e}")
 
+async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    chat_id = update.message.chat_id
+    username = update.message.from_user.username or update.message.from_user.first_name
+
+    try:
+        result = supabase.table("settings").select("value").eq("key", "welcome_message").execute()
+        welcome = result.data[0]["value"] if result.data else "Добрый день! Чем могу помочь?"
+    except Exception as e:
+        logger.error(f"Error getting welcome message: {e}")
+        welcome = "Добрый день! Чем могу помочь?"
+
+    save_message(chat_id, username, "assistant", welcome)
+    await update.message.reply_text(welcome)
+
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
     username = update.message.from_user.username or update.message.from_user.first_name
@@ -160,6 +174,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     logger.info("Starting bot...")
     app = ApplicationBuilder().token(BOT_TOKEN).build()
+    app.add_handler(CommandHandler("start", start_command))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     logger.info("Bot is running!")
     app.run_polling(drop_pending_updates=True)
