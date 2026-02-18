@@ -53,10 +53,14 @@ def get_system_prompt():
         logger.error(f"Error getting system prompt: {e}")
     return "Ты вежливый помощник-консультант."
 
-def get_chat_history(chat_id):
+def get_chat_history(chat_id, exclude_last=1):
     try:
         result = supabase.table("messages").select("role,content").eq("chat_id", chat_id).order("created_at").limit(20).execute()
-        return result.data if result.data else []
+        data = result.data if result.data else []
+        # Исключаем последнее сообщение пользователя (оно уже добавлено отдельно)
+        if exclude_last and data:
+            data = data[:-exclude_last]
+        return data
     except Exception as e:
         logger.error(f"Error getting history: {e}")
         return []
@@ -83,7 +87,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     save_message(chat_id, username, "user", user_message)
 
     system_prompt = get_system_prompt()
-    history = get_chat_history(chat_id)
+    history = get_chat_history(chat_id, exclude_last=1)
 
     messages = [{"role": "system", "content": system_prompt}] + history
 
