@@ -1,6 +1,6 @@
 import os
 import logging
-from groq import Groq
+from openai import OpenAI
 from supabase import create_client
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
@@ -12,11 +12,14 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 
-groq_client = Groq(api_key=GROQ_API_KEY)
+client = OpenAI(
+    api_key=OPENROUTER_API_KEY,
+    base_url="https://openrouter.ai/api/v1"
+)
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def get_system_prompt():
@@ -26,19 +29,17 @@ def get_system_prompt():
         niche = data.get("niche", "")
         prompt = data.get("system_prompt", "Ты вежливый помощник-консультант.")
 
-        # Загружаем файлы знаний
         files_result = supabase.table("knowledge_files").select("filename,content").execute()
         knowledge = ""
         if files_result.data:
             for f in files_result.data:
                 knowledge += f"\n\n--- {f['filename']} ---\n{f['content']}"
 
-        # Загружаем вопросы воронки
         questions_result = supabase.table("funnel_questions").select("question,is_required").eq("is_required", True).order("order_index").execute()
         funnel = ""
         if questions_result.data:
             questions_list = "\n".join([f"- {q['question']}" for q in questions_result.data])
-            funnel = f"\n\nОбязательные вопросы которые нужно задать пользователю по очереди:\n{questions_list}"
+            funnel = f"\n\nОбязательные вопросы которые нужно задать пользователю по одному:\n{questions_list}"
 
         full_prompt = prompt
         if niche:
@@ -57,7 +58,6 @@ def get_chat_history(chat_id, exclude_last=1):
     try:
         result = supabase.table("messages").select("role,content").eq("chat_id", chat_id).order("created_at").limit(20).execute()
         data = result.data if result.data else []
-        # Исключаем последнее сообщение пользователя (оно уже добавлено отдельно)
         if exclude_last and data:
             data = data[:-exclude_last]
         return data
@@ -88,12 +88,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     system_prompt = get_system_prompt()
     history = get_chat_history(chat_id, exclude_last=1)
-
-    messages = [{"role": "system", "content": system_prompt}] + history
+    messages = [{"role": "system", "content": system_prompt}] + history + [{"role": "user", "content": user_message}]
 
     try:
-        response = groq_client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+        response = client.chat.completions.create(
+            model="anthropic/claude-haiku-4-5",
             messages=messages,
             max_tokens=300
         )
@@ -101,7 +100,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not reply:
             reply = "Уточните, пожалуйста, ваш вопрос."
     except Exception as e:
-        logger.error(f"Groq error: {e}")
+        logger.error(f"OpenRouter error: {e}")
         reply = "Произошла ошибка, попробуйте позже."
 
     save_message(chat_id, username, "assistant", reply)
