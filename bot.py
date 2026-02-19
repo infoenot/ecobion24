@@ -2,7 +2,7 @@ import os
 import logging
 from openai import OpenAI
 from supabase import create_client
-from telegram import Update
+from telegram import Update, KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import ApplicationBuilder, MessageHandler, CommandHandler, filters, ContextTypes
 
 logging.basicConfig(
@@ -122,7 +122,8 @@ def update_lead_stage(chat_id, username, funnel_questions, all_messages):
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
-    username = update.message.from_user.username or update.message.from_user.first_name
+    first_name = update.message.from_user.first_name or ""
+    username = update.message.from_user.username or first_name
 
     try:
         result = supabase.table("settings").select("value").eq("key", "welcome_message").execute()
@@ -131,8 +132,36 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logger.error(f"Error getting welcome message: {e}")
         welcome = "Добрый день! Чем могу помочь?"
 
+    # Персонализируем приветствие если есть имя
+    if first_name:
+        welcome = welcome.replace("Добрый день!", f"Добрый день, {first_name}!")
+
+    # Кнопка запроса номера телефона
+    keyboard = [[KeyboardButton("📱 Поделиться номером", request_contact=True)]]
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=True)
+
     save_message(chat_id, username, "assistant", welcome)
-    await update.message.reply_text(welcome)
+    await update.message.reply_text(welcome, reply_markup=reply_markup)
+
+async def handle_contact(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    chat_id = update.message.chat_id
+    first_name = update.message.from_user.first_name or ""
+    username = update.message.from_user.username or first_name
+    phone = update.message.contact.phone_number
+
+    # Сохраняем номер в settings для этого пользователя
+    try:
+        supabase.table("leads").upsert({
+            "chat_id": chat_id,
+            "username": username,
+            "data": phone
+        }, on_conflict="chat_id").execute()
+    except Exception as e:
+        logger.error(f"Error saving phone: {e}")
+
+    reply = f"Отлично, {first_name}! Номер сохранён — наш специалист свяжется с вами по номеру {phone}. Расскажите подробнее о вашей задаче?"
+    save_message(chat_id, username, "assistant", reply)
+    await update.message.reply_text(reply, reply_markup=ReplyKeyboardRemove())
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
@@ -175,6 +204,7 @@ def main():
     logger.info("Starting bot...")
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start_command))
+    app.add_handler(MessageHandler(filters.CONTACT, handle_contact))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     logger.info("Bot is running!")
     app.run_polling(drop_pending_updates=True)
