@@ -1,4 +1,6 @@
 import os
+import re
+import json
 import logging
 from openai import OpenAI
 from supabase import create_client
@@ -89,7 +91,61 @@ def save_message(chat_id, username, role, content):
     except Exception as e:
         logger.error(f"Error saving message: {e}")
 
-def update_lead_stage(chat_id, username, funnel_questions, all_messages):
+def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
+    """Извлекает данные из диалога и сохраняет в leads.collected_data"""
+    try:
+        if not funnel_questions or not all_messages:
+            return
+
+        # Формируем запрос к модели для извлечения данных
+        fields = "\n".join([f"- {q['question']}" for q in funnel_questions])
+        history_text = "\n".join([f"{m['role']}: {m['content']}" for m in all_messages[-20:]])
+
+        extraction_prompt = f"""Из диалога ниже извлеки следующие данные если они были упомянуты:
+{fields}
+
+Диалог:
+{history_text}
+
+Ответь ТОЛЬКО в формате JSON где ключи это названия полей а значения это найденные данные.
+Если данные не найдены — не включай поле в ответ.
+Пример: {{"Имя": "Михаил", "Телефон": "89219503860"}}"""
+
+        response = client.chat.completions.create(
+            model="anthropic/claude-haiku-4-5",
+            messages=[{"role": "user", "content": extraction_prompt}],
+            max_tokens=300
+        )
+
+        import json
+        raw = response.choices[0].message.content.strip()
+        # Убираем markdown если есть
+        raw = re.sub(r'```json|```', '', raw).strip()
+        extracted = json.loads(raw)
+
+        if extracted:
+            # Сохраняем в leads
+            existing = supabase.table("leads").select("id,collected_data").eq("chat_id", chat_id).execute()
+            current_data = {}
+            if existing.data:
+                current_data = existing.data[0].get("collected_data") or {}
+            current_data.update(extracted)
+
+            if existing.data:
+                supabase.table("leads").update({
+                    "collected_data": current_data,
+                    "username": username
+                }).eq("chat_id", chat_id).execute()
+            else:
+                supabase.table("leads").insert({
+                    "chat_id": chat_id,
+                    "username": username,
+                    "collected_data": current_data
+                }).execute()
+
+            logger.info(f"Extracted data for {chat_id}: {extracted}")
+    except Exception as e:
+        logger.error(f"Error extracting data: {e}")
     """Определяет текущий этап лида и обновляет в таблице leads"""
     try:
         if not funnel_questions:
@@ -172,8 +228,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     save_message(chat_id, username, "assistant", reply)
 
-    # Обновляем этап лида после ответа
-    update_lead_stage(chat_id, username, funnel_questions, all_messages_for_stage + [{"role": "user", "content": user_message}])
+    # Обновляем этап и извлекаем данные
+    all_msgs = all_messages_for_stage + [{"role": "user", "content": user_message}]
+    update_lead_stage(chat_id, username, funnel_questions, all_msgs)
+    extract_and_save_data(chat_id, username, funnel_questions, all_msgs)
 
     await update.message.reply_text(reply)
 
