@@ -24,6 +24,7 @@ client = OpenAI(
 )
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+
 def get_funnel_questions():
     try:
         result = supabase.table("funnel_questions").select("id,question,agent_task,is_required").eq("is_required", True).order("order_index").execute()
@@ -31,6 +32,7 @@ def get_funnel_questions():
     except Exception as e:
         logger.error(f"Error getting funnel questions: {e}")
         return []
+
 
 def get_system_prompt(funnel_questions):
     try:
@@ -69,6 +71,7 @@ def get_system_prompt(funnel_questions):
         logger.error(f"Error getting system prompt: {e}")
     return "Ты вежливый помощник-консультант."
 
+
 def get_chat_history(chat_id, exclude_last=1):
     try:
         result = supabase.table("messages").select("role,content").eq("chat_id", chat_id).order("created_at").limit(20).execute()
@@ -79,6 +82,7 @@ def get_chat_history(chat_id, exclude_last=1):
     except Exception as e:
         logger.error(f"Error getting history: {e}")
         return []
+
 
 def save_message(chat_id, username, role, content):
     try:
@@ -91,13 +95,13 @@ def save_message(chat_id, username, role, content):
     except Exception as e:
         logger.error(f"Error saving message: {e}")
 
+
 def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
-    """Извлекает данные из диалога и сохраняет в leads.collected_data"""
+    """Извлекает данные из диалога, сохраняет в collected_data и обновляет этап"""
     try:
         if not funnel_questions or not all_messages:
             return
 
-        # Формируем запрос к модели для извлечения данных
         fields = "\n".join([f"- {q['question']}" for q in funnel_questions])
         history_text = "\n".join([f"{m['role']}: {m['content']}" for m in all_messages[-20:]])
 
@@ -117,66 +121,52 @@ def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
             max_tokens=300
         )
 
-        import json
         raw = response.choices[0].message.content.strip()
-        # Убираем markdown если есть
         raw = re.sub(r'```json|```', '', raw).strip()
         extracted = json.loads(raw)
 
-        if extracted:
-            # Сохраняем в leads
-            existing = supabase.table("leads").select("id,collected_data").eq("chat_id", chat_id).execute()
-            current_data = {}
-            if existing.data:
-                current_data = existing.data[0].get("collected_data") or {}
-            current_data.update(extracted)
+        # Получаем текущие данные лида
+        existing = supabase.table("leads").select("id,collected_data").eq("chat_id", chat_id).execute()
+        current_data = {}
+        if existing.data:
+            current_data = existing.data[0].get("collected_data") or {}
+        current_data.update(extracted)
 
-            if existing.data:
-                supabase.table("leads").update({
-                    "collected_data": current_data,
-                    "username": username
-                }).eq("chat_id", chat_id).execute()
-            else:
-                supabase.table("leads").insert({
-                    "chat_id": chat_id,
-                    "username": username,
-                    "collected_data": current_data
-                }).execute()
+        # Определяем этап по заполненным полям
+        filled = sum(1 for q in funnel_questions if current_data.get(q['question']))
+        total = len(funnel_questions)
 
-            logger.info(f"Extracted data for {chat_id}: {extracted}")
-    except Exception as e:
-        logger.error(f"Error extracting data: {e}")
-    """Определяет текущий этап лида и обновляет в таблице leads"""
-    try:
-        if not funnel_questions:
-            return
-
-        # Считаем сколько этапов пройдено
-        # Логика: смотрим на количество сообщений пользователя
-        # Каждое сообщение пользователя после первого = прогресс по воронке
-        user_messages = [m for m in all_messages if m["role"] == "user"]
-        user_msg_count = len(user_messages)
-
-        total_stages = len(funnel_questions)
-
-        if user_msg_count == 0:
+        if filled == 0:
             stage = "new_lead"
-        elif user_msg_count >= total_stages:
+        elif filled >= total:
             stage = "deal_won"
         else:
-            # Текущий этап — вопрос который сейчас задаётся
-            current_question = funnel_questions[min(user_msg_count - 1, total_stages - 1)]
-            stage = f"question_{current_question['id']}"
+            stage = "new_lead"
+            for q in funnel_questions:
+                if not current_data.get(q['question']):
+                    stage = f"question_{q['id']}"
+                    break
 
-        supabase.table("leads").upsert({
-            "chat_id": chat_id,
-            "username": username,
-            "stage": stage
-        }, on_conflict="chat_id").execute()
+        # Сохраняем данные и этап
+        if existing.data:
+            supabase.table("leads").update({
+                "collected_data": current_data,
+                "stage": stage,
+                "username": username
+            }).eq("chat_id", chat_id).execute()
+        else:
+            supabase.table("leads").insert({
+                "chat_id": chat_id,
+                "username": username,
+                "collected_data": current_data,
+                "stage": stage
+            }).execute()
 
-        logger.info(f"Lead {chat_id} stage updated to: {stage}")
+        logger.info(f"Lead {chat_id}: stage={stage}, filled={filled}/{total}, data={extracted}")
+
     except Exception as e:
-        logger.error(f"Error updating lead stage: {e}")
+        logger.error(f"Error extracting data: {e}")
+
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
@@ -196,6 +186,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     save_message(chat_id, username, "assistant", welcome)
     await update.message.reply_text(welcome)
 
+
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
     username = update.message.from_user.username or update.message.from_user.first_name
@@ -209,7 +200,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     funnel_questions = get_funnel_questions()
     system_prompt = get_system_prompt(funnel_questions)
     history = get_chat_history(chat_id, exclude_last=1)
-    all_messages_for_stage = get_chat_history(chat_id, exclude_last=0)
+    all_messages = get_chat_history(chat_id, exclude_last=0)
 
     messages = [{"role": "system", "content": system_prompt}] + history + [{"role": "user", "content": user_message}]
 
@@ -228,12 +219,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     save_message(chat_id, username, "assistant", reply)
 
-    # Обновляем этап и извлекаем данные
-    all_msgs = all_messages_for_stage + [{"role": "user", "content": user_message}]
-    update_lead_stage(chat_id, username, funnel_questions, all_msgs)
+    # Извлекаем данные и обновляем этап
+    all_msgs = all_messages + [{"role": "user", "content": user_message}]
     extract_and_save_data(chat_id, username, funnel_questions, all_msgs)
 
     await update.message.reply_text(reply)
+
 
 def main():
     logger.info("Starting bot...")
@@ -242,6 +233,7 @@ def main():
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     logger.info("Bot is running!")
     app.run_polling(drop_pending_updates=True)
+
 
 if __name__ == "__main__":
     main()
