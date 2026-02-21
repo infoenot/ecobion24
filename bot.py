@@ -96,16 +96,67 @@ def save_message(chat_id, username, role, content):
         logger.error(f"Error saving message: {e}")
 
 
+def get_contact_settings():
+    """Читает настройки сбора контактов"""
+    try:
+        result = supabase.table("settings").select("key,value").in_("key", ["collect_name", "collect_phone"]).execute()
+        data = {row["key"]: row["value"] for row in (result.data or [])}
+        collect_name = data.get("collect_name", "true") != "false"
+        collect_phone = data.get("collect_phone", "true") != "false"
+        return collect_name, collect_phone
+    except Exception as e:
+        logger.error(f"Error getting contact settings: {e}")
+        return True, True
+
+
 def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
     """Извлекает данные из диалога, сохраняет в collected_data и обновляет этап"""
     try:
-        if not funnel_questions or not all_messages:
+        if not all_messages:
             return
 
-        fields = "\n".join([f"- {q['question']}" for q in funnel_questions])
+        collect_name, collect_phone = get_contact_settings()
         history_text = "\n".join([f"{m['role']}: {m['content']}" for m in all_messages[-20:]])
 
-        extraction_prompt = f"""Из диалога ниже извлеки следующие данные если они были упомянуты:
+        # --- Извлекаем имя и телефон отдельно ---
+        contact_update = {}
+        if collect_name or collect_phone:
+            contact_fields = []
+            if collect_name:
+                contact_fields.append("- Имя клиента (как представился)")
+            if collect_phone:
+                contact_fields.append("- Номер телефона (в любом формате)")
+
+            contact_prompt = f"""Из диалога ниже извлеки только эти данные если они были упомянуты:
+{chr(10).join(contact_fields)}
+
+Диалог:
+{history_text}
+
+Ответь ТОЛЬКО JSON. Используй ключи: "name" и/или "phone".
+Если не найдено — не включай ключ.
+Пример: {{"name": "Михаил", "phone": "89219503860"}}"""
+
+            resp = client.chat.completions.create(
+                model="anthropic/claude-3-haiku",
+                messages=[{"role": "user", "content": contact_prompt}],
+                max_tokens=100
+            )
+            raw = re.sub(r'```json|```', '', resp.choices[0].message.content.strip()).strip()
+            try:
+                contacts = json.loads(raw)
+                if collect_name and contacts.get("name"):
+                    contact_update["username"] = contacts["name"]
+                if collect_phone and contacts.get("phone"):
+                    contact_update["phone"] = contacts["phone"]
+            except Exception:
+                pass
+
+        # --- Извлекаем данные воронки ---
+        extracted = {}
+        if funnel_questions:
+            fields = "\n".join([f"- {q['question']}" for q in funnel_questions])
+            extraction_prompt = f"""Из диалога ниже извлеки следующие данные если они были упомянуты:
 {fields}
 
 Диалог:
@@ -113,17 +164,18 @@ def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
 
 Ответь ТОЛЬКО в формате JSON где ключи это названия полей а значения это найденные данные.
 Если данные не найдены — не включай поле в ответ.
-Пример: {{"Имя": "Михаил", "Телефон": "89219503860"}}"""
+Пример: {{"Тип объекта": "дача"}}"""
 
-        response = client.chat.completions.create(
-            model="anthropic/claude-3-haiku",
-            messages=[{"role": "user", "content": extraction_prompt}],
-            max_tokens=300
-        )
-
-        raw = response.choices[0].message.content.strip()
-        raw = re.sub(r'```json|```', '', raw).strip()
-        extracted = json.loads(raw)
+            response = client.chat.completions.create(
+                model="anthropic/claude-3-haiku",
+                messages=[{"role": "user", "content": extraction_prompt}],
+                max_tokens=300
+            )
+            raw = re.sub(r'```json|```', '', response.choices[0].message.content.strip()).strip()
+            try:
+                extracted = json.loads(raw)
+            except Exception:
+                pass
 
         # Получаем текущие данные лида
         existing = supabase.table("leads").select("id,collected_data").eq("chat_id", chat_id).execute()
@@ -132,37 +184,37 @@ def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
             current_data = existing.data[0].get("collected_data") or {}
         current_data.update(extracted)
 
-        # Определяем этап по заполненным полям
-        filled = sum(1 for q in funnel_questions if current_data.get(q['question']))
-        total = len(funnel_questions)
-
-        if filled == 0:
-            stage = "new_lead"
-        elif filled >= total:
-            stage = "deal_won"
+        # Определяем этап по заполненным полям воронки
+        if funnel_questions:
+            filled = sum(1 for q in funnel_questions if current_data.get(q['question']))
+            total = len(funnel_questions)
+            if filled >= total:
+                stage = "deal_won"
+            else:
+                stage = "new_lead"
+                for q in funnel_questions:
+                    if not current_data.get(q['question']):
+                        stage = f"question_{q['id']}"
+                        break
         else:
             stage = "new_lead"
-            for q in funnel_questions:
-                if not current_data.get(q['question']):
-                    stage = f"question_{q['id']}"
-                    break
 
-        # Сохраняем данные и этап
+        # Формируем данные для сохранения
+        lead_data = {
+            "collected_data": current_data,
+            "stage": stage,
+            "username": contact_update.get("username", username),
+        }
+        if "phone" in contact_update:
+            lead_data["phone"] = contact_update["phone"]
+
         if existing.data:
-            supabase.table("leads").update({
-                "collected_data": current_data,
-                "stage": stage,
-                "username": username
-            }).eq("chat_id", chat_id).execute()
+            supabase.table("leads").update(lead_data).eq("chat_id", chat_id).execute()
         else:
-            supabase.table("leads").insert({
-                "chat_id": chat_id,
-                "username": username,
-                "collected_data": current_data,
-                "stage": stage
-            }).execute()
+            lead_data["chat_id"] = chat_id
+            supabase.table("leads").insert(lead_data).execute()
 
-        logger.info(f"Lead {chat_id}: stage={stage}, filled={filled}/{total}, data={extracted}")
+        logger.info(f"Lead {chat_id}: stage={stage}, contacts={contact_update}, funnel={extracted}")
 
     except Exception as e:
         logger.error(f"Error extracting data: {e}")
