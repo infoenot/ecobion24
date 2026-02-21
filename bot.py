@@ -124,7 +124,7 @@ def get_contact_settings():
         return True, True
 
 
-def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
+async def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
     """Извлекает данные из диалога, сохраняет в collected_data и обновляет этап"""
     try:
         if not all_messages:
@@ -229,15 +229,66 @@ def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
             lead_data["phone"] = contact_update["phone"]
 
         if existing.data:
+            prev_stage = existing.data[0].get("stage") if existing.data else None
             supabase.table("leads").update(lead_data).eq("chat_id", chat_id).execute()
         else:
+            prev_stage = None
             lead_data["chat_id"] = chat_id
             supabase.table("leads").insert(lead_data).execute()
+
+        # Отправляем заявку менеджеру если только что стало deal_won
+        if stage == "deal_won" and prev_stage != "deal_won":
+            await send_deal_notification(chat_id, lead_data, current_data, funnel_questions)
 
         logger.info(f"Lead {chat_id}: stage={stage}, contacts={contact_update}, funnel={extracted}")
 
     except Exception as e:
         logger.error(f"Error extracting data: {e}")
+
+
+async def send_deal_notification(chat_id, lead_data, collected_data, funnel_questions):
+    """Отправляет заявку менеджеру в Telegram когда лид достигает deal_won"""
+    try:
+        settings = supabase.table("settings").select("key,value").in_("key", ["manager_chat_id", "bot_token"]).execute()
+        s = {row["key"]: row["value"] for row in (settings.data or [])}
+        manager_chat_id = s.get("manager_chat_id", "").strip()
+        bot_token = s.get("bot_token", "").strip()
+
+        if not manager_chat_id or not bot_token:
+            logger.warning("manager_chat_id или bot_token не заданы — заявка не отправлена")
+            return
+
+        # Формируем текст заявки
+        name = lead_data.get("username") or "не указано"
+        phone = lead_data.get("phone") or "не указан"
+
+        lines = ["🎯 Новая заявка!\n"]
+        lines.append(f"👤 Имя: {name}")
+        lines.append(f"📞 Телефон: {phone}")
+
+        if collected_data:
+            lines.append("")
+            for q in funnel_questions:
+                val = collected_data.get(q["question"])
+                if val:
+                    lines.append(f"• {q['question']}: {val}")
+
+        lines.append(f"\n💬 Чат в Telegram: {chat_id}")
+        text = "\n".join(lines)
+
+        import httpx
+        async with httpx.AsyncClient() as client:
+            resp = await client.post(
+                f"https://api.telegram.org/bot{bot_token}/sendMessage",
+                json={"chat_id": manager_chat_id, "text": text}
+            )
+            data = resp.json()
+            if not data.get("ok"):
+                logger.error(f"Ошибка отправки заявки менеджеру: {data}")
+            else:
+                logger.info(f"Заявка отправлена менеджеру в чат {manager_chat_id}")
+    except Exception as e:
+        logger.error(f"send_deal_notification error: {e}")
 
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -293,7 +344,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Извлекаем данные и обновляем этап
     all_msgs = all_messages + [{"role": "user", "content": user_message}]
-    extract_and_save_data(chat_id, username, funnel_questions, all_msgs)
+    await extract_and_save_data(chat_id, username, funnel_questions, all_msgs)
 
     await update.message.reply_text(reply)
 
