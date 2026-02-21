@@ -37,7 +37,7 @@ def get_funnel_questions():
 def get_system_prompt(funnel_questions):
     try:
         result = supabase.table("settings").select("key,value").execute()
-        data = {row["key"]: row["value"] for row in result.data}
+        data = {row["key"]: row["value"] for row in (result.data or [])}
         niche = data.get("niche", "")
         prompt = data.get("system_prompt", "Ты вежливый помощник-консультант.")
         collect_name = data.get("collect_name", "true") != "false"
@@ -83,7 +83,7 @@ def get_system_prompt(funnel_questions):
 
         return full_prompt
     except Exception as e:
-        logger.error(f"Error getting system prompt: {e}")
+        logger.error(f"Error getting system prompt: {e}", exc_info=True)
     return "Ты вежливый помощник-консультант."
 
 
@@ -177,9 +177,14 @@ def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
 Диалог:
 {history_text}
 
-Ответь ТОЛЬКО в формате JSON где ключи это названия полей а значения это найденные данные.
-Если данные не найдены — не включай поле в ответ.
-Пример: {{"Тип объекта": "дача"}}"""
+Правила извлечения:
+- Текстовые числа переводи в цифры: "шесть семь" → "6-7", "около пяти" → "~5", "человек десять" → "10"
+- Сохраняй смысл даже если ответ неточный: "не знаю точно, человек семь наверное" → "~7"
+- Используй точные названия полей как ключи JSON
+- Если данные не найдены — не включай поле в ответ
+
+Ответь ТОЛЬКО в формате JSON.
+Пример: {{"Тип объекта": "дача", "Сколько человек": "6-7"}}"""
 
             response = client.chat.completions.create(
                 model="anthropic/claude-3-haiku",
@@ -281,7 +286,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not reply:
             reply = "Уточните, пожалуйста, ваш вопрос."
     except Exception as e:
-        logger.error(f"OpenRouter error: {e}")
+        logger.error(f"OpenRouter error: {e}", exc_info=True)
         reply = "Произошла ошибка, попробуйте позже."
 
     save_message(chat_id, username, "assistant", reply)
