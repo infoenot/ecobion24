@@ -204,12 +204,20 @@ async def extract_and_save_data(chat_id, username, funnel_questions, all_message
             current_data = existing.data[0].get("collected_data") or {}
         current_data.update(extracted)
 
+        # Получаем актуальные данные лида (телефон/имя могут уже быть)
+        current_phone = contact_update.get("phone") or (existing.data[0].get("phone") if existing.data else None)
+        current_name = contact_update.get("username") or (existing.data[0].get("username") if existing.data else None)
+
         # Определяем этап по заполненным полям воронки
         if funnel_questions:
             filled = sum(1 for q in funnel_questions if current_data.get(q['question']))
             total = len(funnel_questions)
             if filled >= total:
-                stage = "deal_won"
+                # Воронка пройдена — проверяем телефон (обязателен) и имя (желательно)
+                if collect_phone and not current_phone:
+                    stage = "waiting_phone"  # ждём телефон
+                else:
+                    stage = "deal_won"
             else:
                 stage = "new_lead"
                 for q in funnel_questions:
