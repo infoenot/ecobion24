@@ -20,7 +20,7 @@ SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 
 client = OpenAI(
     api_key=OPENROUTER_API_KEY,
-    base_url="https://openrouter.ai/api/v1"
+    base_url="https://api.polza.ai/v1"
 )
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
@@ -116,7 +116,7 @@ def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
 Пример: {{"Имя": "Михаил", "Телефон": "89219503860"}}"""
 
         response = client.chat.completions.create(
-            model="anthropic/claude-haiku-4-5",
+            model="anthropic/claude-3-haiku",
             messages=[{"role": "user", "content": extraction_prompt}],
             max_tokens=300
         )
@@ -206,7 +206,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     try:
         response = client.chat.completions.create(
-            model="anthropic/claude-haiku-4-5",
+            model="anthropic/claude-3-haiku",
             messages=messages,
             max_tokens=300
         )
