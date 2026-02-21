@@ -40,6 +40,8 @@ def get_system_prompt(funnel_questions):
         data = {row["key"]: row["value"] for row in result.data}
         niche = data.get("niche", "")
         prompt = data.get("system_prompt", "Ты вежливый помощник-консультант.")
+        collect_name = data.get("collect_name", "true") != "false"
+        collect_phone = data.get("collect_phone", "true") != "false"
 
         files_result = supabase.table("knowledge_files").select("filename,content").execute()
         knowledge = ""
@@ -47,6 +49,7 @@ def get_system_prompt(funnel_questions):
             for f in files_result.data:
                 knowledge += f"\n\n--- {f['filename']} ---\n{f['content']}"
 
+        # Этапы воронки
         funnel = ""
         if funnel_questions:
             stages = []
@@ -54,17 +57,29 @@ def get_system_prompt(funnel_questions):
                 task = q.get("agent_task") or q.get("question", "")
                 name = q.get("question", "")
                 stages.append(f"- Этап '{name}': {task}")
-            funnel = "\n\nЭтапы воронки — задавай по одному, жди ответа перед следующим:\n" + "\n".join(stages)
+            funnel = "\n\nЭТАПЫ ВОРОНКИ (задавай строго по одному, жди ответа):\n" + "\n".join(stages)
 
-        full_prompt = prompt
+        # Контакты — всегда в самом конце воронки
+        contact_steps = []
+        if collect_name:
+            contact_steps.append("- Узнай имя клиента (как к нему обращаться)")
+        if collect_phone:
+            contact_steps.append("- Узнай номер телефона для связи со специалистом")
+        if contact_steps:
+            funnel += "\n\nПОСЛЕ того как все этапы воронки пройдены — узнай контакты:\n" + "\n".join(contact_steps)
+
+        # Собираем промпт: ниша → файлы знаний → системный промпт → воронка → жёсткие правила формата последними
+        full_prompt = ""
         if niche:
-            full_prompt = f"Ниша: {niche}\n\n{full_prompt}"
+            full_prompt += f"Ниша: {niche}\n\n"
+        if knowledge:
+            full_prompt += f"Файлы знаний:{knowledge}\n\n"
+        full_prompt += prompt
         if funnel:
             full_prompt += funnel
-        if knowledge:
-            full_prompt += f"\n\nФайлы знаний:{knowledge}"
 
-        full_prompt += "\n\nВАЖНО: Никогда не используй markdown форматирование — никаких **, *, #, `, _ и других символов разметки. Пиши обычным текстом."
+        # Правила формата — последними, чтобы модель их не забывала
+        full_prompt += "\n\n---\nФОРМАТ ОТВЕТА (обязательно):\n- Максимум 2-3 предложения. Это жёсткое ограничение.\n- Только обычный текст — никаких **, *, #, ` и других символов разметки.\n- Каждый ответ заканчивается одним вопросом или конкретным шагом."
 
         return full_prompt
     except Exception as e:
