@@ -124,7 +124,7 @@ def get_contact_settings():
         return True, True
 
 
-async def extract_and_save_data(chat_id, username, funnel_questions, all_messages):
+async def extract_and_save_data(chat_id, username, funnel_questions, all_messages, tg_username=""):
     """Извлекает данные из диалога, сохраняет в collected_data и обновляет этап"""
     try:
         if not all_messages:
@@ -232,6 +232,7 @@ async def extract_and_save_data(chat_id, username, funnel_questions, all_message
             "collected_data": current_data,
             "stage": stage,
             "username": contact_update.get("username", username),
+            "tg_username": tg_username,
         }
         if "phone" in contact_update:
             lead_data["phone"] = contact_update["phone"]
@@ -269,9 +270,14 @@ async def send_deal_notification(chat_id, lead_data, collected_data, funnel_ques
         # Формируем текст заявки
         name = lead_data.get("username") or "не указано"
         phone = lead_data.get("phone") or "не указан"
+        tg_username = lead_data.get("tg_username") or ""
 
         lines = ["🎯 Новая заявка!\n"]
         lines.append(f"👤 Имя: {name}")
+        if tg_username:
+            lines.append(f"✈️ Telegram: @{tg_username} (https://t.me/{tg_username})")
+        else:
+            lines.append(f"✈️ Telegram: https://t.me/user?id={chat_id}")
         lines.append(f"📞 Телефон: {phone}")
 
         if collected_data:
@@ -320,7 +326,8 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
-    username = update.message.from_user.username or update.message.from_user.first_name
+    tg_username = update.message.from_user.username or ""
+    username = tg_username or update.message.from_user.first_name
     user_message = update.message.text
 
     logger.info(f"Message from {chat_id} ({username}): {user_message}")
@@ -352,7 +359,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Извлекаем данные и обновляем этап
     all_msgs = all_messages + [{"role": "user", "content": user_message}]
-    await extract_and_save_data(chat_id, username, funnel_questions, all_msgs)
+    await extract_and_save_data(chat_id, username, funnel_questions, all_msgs, tg_username)
 
     await update.message.reply_text(reply)
 
