@@ -336,7 +336,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     save_message(chat_id, username, "user", user_message)
 
     # Проверяем текущий этап лида
-    lead_result = supabase.table("leads").select("stage").eq("chat_id", chat_id).maybeSingle().execute()
+    lead_result = supabase.table("leads").select("stage").eq("chat_id", chat_id).maybe_single().execute()
     current_stage = lead_result.data.get("stage") if lead_result.data else None
 
     funnel_questions = get_funnel_questions()
