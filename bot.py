@@ -340,9 +340,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     current_stage = lead_result.data.get("stage") if lead_result.data else None
 
     funnel_questions = get_funnel_questions()
+    history = get_chat_history(chat_id, exclude_last=1)
+    all_messages = get_chat_history(chat_id, exclude_last=0)
 
     if current_stage == "deal_won":
-        # Режим после отправки заявки — отвечаем на вопросы но не собираем данные заново
         files_result = supabase.table("knowledge_files").select("filename,content").execute()
         knowledge = ""
         if files_result.data:
@@ -356,13 +357,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 2. На вопросы про модели, цены, технические характеристики — отвечай используя файлы знаний.
 3. Не начинай новую воронку, не спрашивай телефон и контакты повторно.
 4. Максимум 2-3 предложения. Только обычный текст без markdown.{knowledge}"""
-        history = get_chat_history(chat_id, exclude_last=1)
-        messages = [{"role": "system", "content": system_prompt}] + history + [{"role": "user", "content": user_message}]
     else:
         system_prompt = get_system_prompt(funnel_questions)
-        history = get_chat_history(chat_id, exclude_last=1)
-        all_messages = get_chat_history(chat_id, exclude_last=0)
-        messages = [{"role": "system", "content": system_prompt}] + history + [{"role": "user", "content": user_message}]
+
+    messages = [{"role": "system", "content": system_prompt}] + history + [{"role": "user", "content": user_message}]
 
     try:
         response = client.chat.completions.create(
