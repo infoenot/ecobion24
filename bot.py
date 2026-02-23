@@ -353,13 +353,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             for f in files_result.data:
                 knowledge += f"\n\n--- {f['filename']} ---\n{f['content']}"
 
-        system_prompt = f"""Заявка клиента уже передана специалисту. Твоя задача — поддержать клиента до звонка специалиста.
+        system_prompt = f"""Заявка клиента уже передана специалисту. Теперь ты работаешь в режиме свободной консультации.
 
 ПРАВИЛА:
-1. Если клиент спрашивает о статусе — скажи что заявка передана и специалист свяжется в ближайшее время.
-2. На вопросы про модели, цены, технические характеристики — отвечай используя файлы знаний.
-3. Не начинай новую воронку, не спрашивай телефон и контакты повторно.
-4. Максимум 2-3 предложения. Только обычный текст без markdown.{knowledge}"""
+1. Отвечай как живой эксперт — 3-5 предложений, без списков и таблиц.
+2. На вопросы про модели, цены, технические моменты — отвечай по делу используя файлы знаний.
+3. Если клиент спрашивает о статусе заявки — скажи что передана и специалист свяжется в ближайшее время.
+4. Не начинай воронку заново, не спрашивай телефон повторно.
+5. В конце ответа не обязательно задавать вопрос — можно просто дать полезную информацию.
+6. Только обычный текст — никаких таблиц, списков с цифрами, markdown разметки.{knowledge}"""
     else:
         system_prompt = get_system_prompt(funnel_questions)
 
@@ -369,7 +371,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         response = client.chat.completions.create(
             model="anthropic/claude-3-haiku",
             messages=messages,
-            max_tokens=300
+            max_tokens=600 if current_stage == "deal_won" else 300
         )
         reply = response.choices[0].message.content.strip()
         if not reply:
