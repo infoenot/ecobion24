@@ -17,6 +17,7 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+LLM_MODEL = os.environ.get("LLM_MODEL", "anthropic/claude-haiku-5.5")
 
 client = OpenAI(
     api_key=OPENROUTER_API_KEY,
@@ -153,7 +154,7 @@ async def extract_and_save_data(chat_id, username, funnel_questions, all_message
 Пример: {{"name": "Михаил", "phone": "89219503860"}}"""
 
             resp = client.chat.completions.create(
-                model="anthropic/claude-3-haiku",
+                model=LLM_MODEL,
                 messages=[{"role": "user", "content": contact_prompt}],
                 max_tokens=100
             )
@@ -187,7 +188,7 @@ async def extract_and_save_data(chat_id, username, funnel_questions, all_message
 Пример: {{"Тип объекта": "дача", "Сколько человек": "6-7"}}"""
 
             response = client.chat.completions.create(
-                model="anthropic/claude-3-haiku",
+                model=LLM_MODEL,
                 messages=[{"role": "user", "content": extraction_prompt}],
                 max_tokens=300
             )
@@ -373,7 +374,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     try:
         response = client.chat.completions.create(
-            model="anthropic/claude-3-haiku",
+            model=LLM_MODEL,
             messages=messages,
             max_tokens=600 if current_stage == "deal_won" else 300
         )
