@@ -18,6 +18,8 @@ OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 LLM_MODEL = os.environ.get("LLM_MODEL", "anthropic/claude-haiku-5.5")
+# Без этого модель тратит max_tokens на рассуждения и возвращает пустой ответ
+LLM_EXTRA = {"reasoning": {"enabled": False}}
 
 client = OpenAI(
     api_key=OPENROUTER_API_KEY,
@@ -36,7 +38,7 @@ def get_funnel_questions():
         return []
 
 
-def get_system_prompt(funnel_questions):
+def get_system_prompt(funnel_questions, lead=None):
     try:
         result = supabase.table("settings").select("key,value").execute()
         data = {row["key"]: row["value"] for row in (result.data or [])}
@@ -70,6 +72,14 @@ def get_system_prompt(funnel_questions):
         if contact_steps:
             funnel += "\n\nПОСЛЕ того как все этапы воронки пройдены — узнай контакты:\n" + "\n".join(contact_steps)
 
+        # Что уже известно о клиенте — чтобы не переспрашивать
+        if lead:
+            known = [f"- {k}: {v}" for k, v in (lead.get("collected_data") or {}).items() if v]
+            if lead.get("phone"):
+                known.append(f"- Телефон: {lead['phone']}")
+            if known:
+                funnel += "\n\nУЖЕ ИЗВЕСТНО О КЛИЕНТЕ (не спрашивай это повторно, переходи к следующему незаполненному этапу):\n" + "\n".join(known)
+
         # Собираем промпт: ниша → файлы знаний → системный промпт → воронка → жёсткие правила формата последними
         full_prompt = ""
         if niche:
@@ -91,8 +101,8 @@ def get_system_prompt(funnel_questions):
 
 def get_chat_history(chat_id, exclude_last=1):
     try:
-        result = supabase.table("messages").select("role,content").eq("chat_id", chat_id).order("created_at").limit(20).execute()
-        data = result.data if result.data else []
+        result = supabase.table("messages").select("role,content").eq("chat_id", chat_id).order("created_at", desc=True).limit(20).execute()
+        data = list(reversed(result.data)) if result.data else []
         if exclude_last and data:
             data = data[:-exclude_last]
         return data
@@ -156,6 +166,7 @@ async def extract_and_save_data(chat_id, username, funnel_questions, all_message
 
             resp = client.chat.completions.create(
                 model=LLM_MODEL,
+                extra_body=LLM_EXTRA,
                 messages=[{"role": "user", "content": contact_prompt}],
                 max_tokens=100
             )
@@ -190,6 +201,7 @@ async def extract_and_save_data(chat_id, username, funnel_questions, all_message
 
             response = client.chat.completions.create(
                 model=LLM_MODEL,
+                extra_body=LLM_EXTRA,
                 messages=[{"role": "user", "content": extraction_prompt}],
                 max_tokens=300
             )
@@ -200,7 +212,7 @@ async def extract_and_save_data(chat_id, username, funnel_questions, all_message
                 pass
 
         # Получаем текущие данные лида
-        existing = supabase.table("leads").select("id,collected_data").eq("chat_id", chat_id).execute()
+        existing = supabase.table("leads").select("id,collected_data,phone,username,stage").eq("chat_id", chat_id).execute()
         current_data = {}
         if existing.data:
             current_data = existing.data[0].get("collected_data") or {}
@@ -233,7 +245,7 @@ async def extract_and_save_data(chat_id, username, funnel_questions, all_message
         lead_data = {
             "collected_data": current_data,
             "stage": stage,
-            "username": contact_update.get("username", username),
+            "username": current_name or username,
             "tg_username": tg_username,
         }
         if "phone" in contact_update:
@@ -339,10 +351,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Проверяем текущий этап лида
     try:
-        lead_result = supabase.table("leads").select("stage").eq("chat_id", chat_id).execute()
-        current_stage = lead_result.data[0].get("stage") if lead_result.data else None
+        lead_result = supabase.table("leads").select("stage,phone,collected_data").eq("chat_id", chat_id).execute()
+        lead = lead_result.data[0] if lead_result.data else None
     except Exception:
-        current_stage = None
+        lead = None
+    current_stage = lead.get("stage") if lead else None
 
     funnel_questions = get_funnel_questions()
     history = get_chat_history(chat_id, exclude_last=1)
@@ -369,13 +382,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     
     else:
-        system_prompt = get_system_prompt(funnel_questions)
+        system_prompt = get_system_prompt(funnel_questions, lead)
 
     messages = [{"role": "system", "content": system_prompt}] + history + [{"role": "user", "content": user_message}]
 
     try:
         response = client.chat.completions.create(
             model=LLM_MODEL,
+            extra_body=LLM_EXTRA,
             messages=messages,
             max_tokens=600 if current_stage == "deal_won" else 300
         )
@@ -390,7 +404,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Извлекаем данные только если воронка ещё не завершена
     if current_stage != "deal_won":
-        all_msgs = all_messages + [{"role": "user", "content": user_message}]
+        all_msgs = all_messages + [{"role": "assistant", "content": reply}]
         await extract_and_save_data(chat_id, username, funnel_questions, all_msgs, tg_username)
 
     await update.message.reply_text(reply)
