@@ -21,7 +21,8 @@ LLM_MODEL = os.environ.get("LLM_MODEL", "anthropic/claude-haiku-5.5")
 
 client = OpenAI(
     api_key=OPENROUTER_API_KEY,
-    base_url="https://api.polza.ai/v1"
+    base_url="https://api.polza.ai/v1",
+    timeout=60,
 )
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
