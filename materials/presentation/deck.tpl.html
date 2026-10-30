@@ -100,6 +100,10 @@ ol.steps>li{margin-top:3.6mm}
 .pay{padding:5mm;display:flex;flex-direction:column}.pay .k{font-size:8.5pt;margin-bottom:3mm}.pay h3{font-size:15pt;margin-bottom:1.5mm}.pay p{font-size:10.5pt;line-height:1.4;color:var(--muted)}
 .ba{display:grid;grid-template-columns:1fr 1fr;gap:2mm}.ba div{position:relative;min-height:0}.ba img{width:100%;height:100%;object-fit:cover;border-radius:3mm;display:block}
 .ba span{position:absolute;left:2mm;bottom:2mm;font-size:8pt;color:#fff;background:rgba(32,37,49,.75);padding:.8mm 2mm;border-radius:2mm}
+.bigsec{width:100%;height:62mm;display:block;background:#FAFAFB;border-radius:2mm;margin:3mm 0 4mm}
+.galgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:66mm;gap:5mm 4mm;margin-top:2mm}
+.gal{margin:0;display:flex;flex-direction:column;min-height:0}.gal img{width:100%;flex:1;min-height:0;object-fit:cover;border-radius:2.5mm;display:block}
+.gal figcaption{font-size:9pt;line-height:1.3;margin-top:2mm;color:var(--ink);height:9mm}
 </style></head><body>
 
 <!-- 1 -->
@@ -118,7 +122,7 @@ ol.steps>li{margin-top:3.6mm}
     <div><span>08</span>Характеристики станка</div>
     <div><span>09</span>Где делать короба и сколько это занимает</div>
     <div><span>10</span>Как монтируют короб на стойку</div>
-    <div><span>11</span>Что ещё делают на станке</div>
+    <div><span>11</span>Что ещё делают на станке, подоконники, галерея</div>
     <div><span>12</span>Обучение и поддержка</div>
     <div><span>13</span>Гарантия и условия договора</div>
     <div><span>14</span>Цены на изделия и пример объекта</div>
@@ -135,7 +139,7 @@ ol.steps>li{margin-top:3.6mm}
     <div class="card col"><div class="fv2">150–500 тыс. ₽</div><p class="small muted">чек за квартиру в Москве</p></div>
     <div class="card col"><div class="fv2">100–200 тыс. ₽</div><p class="small muted">остаток с объекта до налогов</p></div>
     <div class="card col"><div class="fv2">3–7 дней</div><p class="small muted">срок заказа: от белых коробов до покраски</p></div>
-    <div class="card col"><div class="fv2 or">2–3 объекта</div><p class="small muted">окупаемость комплекта при смете 200 тыс. ₽ (стр. 17)</p></div>
+    <div class="card col"><div class="fv2 or">2–3 объекта</div><p class="small muted">окупаемость комплекта при смете 200 тыс. ₽  (стр. 21)</p></div>
   </div>
   <div class="hero"><img src="{{city}}"><span>Иллюстрация</span></div>
   <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>2</span></div>
@@ -147,7 +151,7 @@ ol.steps>li{margin-top:3.6mm}
   <h2>Вы покупаете оборудование, технологию и год поддержки</h2>
   <p class="lead">Это не франшиза: <span class="or">нет роялти и ежемесячных платежей.</span> Комплект после оплаты — ваш.</p>
   <div class="grid g4">
-    <div class="card"><h3>Оборудование</h3><p>Станок «Оконщик 3000», настольная пила, рулонный ламинатор 650 мм, запасные подшипники, струна и лезвия.</p></div>
+    <div class="card"><h3>Оборудование</h3><p>Станок «Оконщик 3000», настольная пила и запасные части.</p></div>
     <div class="card"><h3>Технология</h3><p>Как делать изделия на станке, как утеплять стойку перед установкой короба, как монтировать, красить и ламинировать.</p></div>
     <div class="card"><h3>Обучение</h3><p>В Москве на нашей базе или удалённо: по видео и на консультациях с разработчиком.</p></div>
     <div class="card"><h3>Поддержка год</h3><p>Консультации по производству и продажам 12 месяцев с даты договора. Разбор вопросов по фото и видео с объекта.</p></div>
@@ -218,6 +222,10 @@ ol.steps>li{margin-top:3.6mm}
         <h3>Сколько выходит с листа</h3>
         <p>При развёртке 300 мм — 15 погонных метров откоса. Материал на 1 метр изделия — 150–300 ₽ в зависимости от развёртки.</p>
       </div>
+      <div class="card fill">
+        <h3>Продажная цена изделий</h3>
+        <p>От <b class="or">1 250 ₽</b> за погонный метр без монтажа. С монтажом — от <b class="or">2 000 ₽</b>.</p>
+      </div>
       <div class="card">
         <h3>Что не подходит</h3>
         <p>Сэндвич с пластиком 0,4 мм. Он не держит прямую линию и плохо ведёт себя при нагреве на сгибе.</p>
@@ -231,16 +239,16 @@ ol.steps>li{margin-top:3.6mm}
 <section class="page">
   <div class="top"><b>06 · Как работает станок</b><span>Оконщик 3000</span></div>
   <h2>Станок делает изделие за 4 операции: раскрой, паз, нагрев, сгиб</h2>
-  <p class="lead">Нагревательная струна греет пластик по линии сгиба — как утюг. После нагрева заготовку сгибают под 90°. Получается цельное П- или Г-образное изделие.</p>
+  <p class="lead">Станок нагревает лист по линии сгиба и сгибает его под 90°. Получается цельное П- или Г-образное изделие.</p>
   <div class="flow">
-    <div class="card"><div class="step">Шаг 1</div><h3>Раскрой</h3><p>Из листа нарезают полосу-развёртку нужной ширины. Резак идёт по прижимной линейке-рельсе.</p></div>
-    <div class="card"><div class="step">Шаг 2</div><h3>Выборка паза</h3><p>Модуль «Рубанок на каретке» выбирает паз по линии будущего сгиба.</p></div>
-    <div class="card"><div class="step">Шаг 3</div><h3>Нагрев</h3><p>«Термоструна» с трансформатором прогревает пластик по линии паза.</p></div>
+    <div class="card"><div class="step">Шаг 1</div><h3>Раскрой</h3><p>Нарезка заготовки с точностью до 0,5 мм.</p></div>
+    <div class="card"><div class="step">Шаг 2</div><h3>Выборка паза</h3><p>Выборка паза под будущий сгиб.</p></div>
+    <div class="card"><div class="step">Шаг 3</div><h3>Нагрев</h3><p>Станок прогревает пластик по линии паза.</p></div>
     <div class="card"><div class="step">Шаг 4</div><h3>Сгиб</h3><p>Заготовку сгибают под 90°. Для П-короба — два сгиба, для Г-короба — один.</p></div>
   </div>
   <div class="grid g2" style="margin-top:7mm">
-    <div class="card fill"><h3>Точность</h3><p>Изделие делают по замеру стойки, до миллиметра. Сначала примеряют пробный короб, потом делают чистовой.</p></div>
-    <div class="card fill"><h3>Чего станок не делает</h3><p>Оконные рамы и стекло. Не гнёт алюминиевые стойки. Не заменяет монтаж и утепление узла.</p></div>
+    <div class="card fill"><h3>Точность</h3><p>Изделие делают по замеру, нарезка с точностью до 0,5 мм.</p></div>
+    <div class="card fill"><h3>Чего станок не делает</h3><p>Оконные рамы и стекло, не гнёт алюминиевые стойки. Гнёт листовой пластик и сэндвич толщиной до 10 мм. Сэндвич 24, 32, 40 и 50 мм не гнёт.</p></div>
   </div>
   <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>7</span></div>
 </section>
@@ -251,12 +259,9 @@ ol.steps>li{margin-top:3.6mm}
   <h2>Что входит в комплект — по спецификации договора</h2>
   <table style="margin-top:3mm">
     <tr><th>Позиция</th><th>Что это</th><th class="r">Кол-во</th></tr>
-    <tr><td>Стол станка</td><td>600 × 900 × 3200 мм (ш × в × дл), стальные регулируемые опоры, столешница из ламинированной фанеры 18 мм</td><td class="r">1 шт.</td></tr>
-    <tr><td>Прижимная линейка-рельса</td><td>в комплекте с модулями «Резак на каретке» и «Рубанок для выборки паза на каретке»</td><td class="r">1 шт.</td></tr>
-    <tr><td>Нагревательный элемент</td><td>«Термоструна» с трансформатором</td><td class="r">1 шт.</td></tr>
-    <tr><td>Запасные части</td><td>подшипники — 8 шт., нихромовая струна — 3,5 пог. м, лезвия OLFA (Япония) — 2 комплекта</td><td class="r">1 набор</td></tr>
-    <tr><td>Циркулярная пила</td><td>настольная, «Декстер», 210 мм</td><td class="r">1 шт.</td></tr>
-    <tr><td>Ламинатор</td><td>рулонный ручной, 650 мм — для оклейки изделий плёнкой</td><td class="r">1 шт.</td></tr>
+    <tr><td>Станок «Оконщик 3000»</td><td>стол 600 × 900 × 3200 мм на стальных регулируемых опорах с рабочими модулями: раскрой, паз, нагрев, сгиб</td><td class="r">1 шт.</td></tr>
+    <tr><td>Настольная пила</td><td>«Декстер», 210 мм</td><td class="r">1 шт.</td></tr>
+    <tr><td>Запасные части</td><td>расходные части на первое время</td><td class="r">1 набор</td></tr>
   </table>
   <p class="small muted" style="margin-top:4mm">Состав комплекта, цену и сроки фиксируем в договоре до оплаты.</p>
   <div class="facts"><div><div class="fv">450 000 ₽</div><div class="fl">цена комплекта без НДС</div></div><div><div class="fv">20 рабочих дней</div><div class="fl">изготовление и отгрузка</div></div><div><div class="fv">24 месяца</div><div class="fl">гарантия на оборудование</div></div></div>
@@ -277,9 +282,8 @@ ol.steps>li{margin-top:3.6mm}
     <tr><th>Режим работы</th><th class="r">Погонных метров за смену</th></tr>
     <tr><td>Один мастер, белые изделия</td><td class="r">100–120</td></tr>
     <tr><td>Мастер и помощник</td><td class="r">150 и больше</td></tr>
-    <tr><td>С ламинацией плёнкой</td><td class="r">50–60</td></tr>
   </table>
-  <p class="small muted" style="margin-top:4mm">Станок работает без шума и пыли — можно работать в квартире. Расходные части: подшипники, лезвия, нихромовая струна; меняются по износу.</p>
+  <p class="small muted" style="margin-top:4mm">Станок работает без шума и пыли — можно работать в квартире. Расходные части меняются по износу.</p>
   <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>9</span></div>
 </section>
 
@@ -301,7 +305,7 @@ ol.steps>li{margin-top:3.6mm}
         <p class="small muted" style="margin-top:2mm">Покраска по RAL у партнёра добавляет несколько дней.</p>
       </div>
     </div>
-    <div class="imgcol"><div class="phwrap"><img class="ph" src="{{work}}"></div><div class="cap">Примерка короба на утеплённую стойку</div></div>
+    <div class="imgcol"><div class="phwrap"><img class="ph" src="{{work}}"></div><div class="cap">Установка короба на утеплённую стойку</div></div>
   </div>
   <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>10</span></div>
 </section>
@@ -317,7 +321,7 @@ ol.steps>li{margin-top:3.6mm}
         <li><b>Гидроизоляция.</b> Металл стойки закрывают бутиловой лентой или жидкой резиной. На этом слое конденсат не образуется.</li>
         <li><b>Утепление.</b> На вертикальные и горизонтальные профили клеят пеноплекс.</li>
         <li><b>Заполнение и герметизация.</b> Пустоты заполняют пеной, примыкания проходят герметиком. Между стеклопакетом и коробом прокладывают резину.</li>
-        <li><b>Примерка и замер.</b> Примеряют пробный короб, снимают точный размер.</li>
+        <li><b>Замер.</b> Снимают точный размер стойки.</li>
         <li><b>Установка.</b> Чистовой короб сажают на клей или герметик, который не растворяет пенополистирол. Крепёж в профиль не нужен.</li>
       </ol>
       <div class="note">Для каждой профильной системы — своя последовательность. Ей учим на объектах и разбираем сложные узлы по фото.</div>
@@ -332,8 +336,19 @@ ol.steps>li{margin-top:3.6mm}
   <div class="top"><b>11 · Изделия</b><span>Оконщик 3000</span></div>
   <h2>Кроме утепления, на станке делают профили для окон, дверей и интерьера</h2>
   <p class="lead" style="margin-bottom:5mm">Всё — из того же листа сэндвича 10 мм и теми же 4 операциями: раскрой, паз, нагрев, сгиб. Ниже — схемы сечений.</p>
-  <div class="grid g4" style="gap:4mm"><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="8" width="14" height="30" fill="#C9CED8"/><rect x="4" y="46" width="112" height="30" fill="#E0E4EB"/><path d="M18,40 L106,40 L106,54" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M18,40 L106,40 L106,54" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/><path d="M18,40 L18,50" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M18,40 L18,50" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Подоконник</h3><p class="small">Три сгиба: полка, капинос спереди и упор к раме. Ставят на место снесённого балконного блока как столешницу.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="8" y="8" width="22" height="64" fill="#C9CED8"/><rect x="30" y="40" width="86" height="36" fill="#E0E4EB"/><path d="M30,36 L92,36 L92,70" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M30,36 L92,36 L92,70" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Дверной 3D-откос</h3><p class="small">Откос загнут до стены. Ширина полок любая — закрывает и проём, и край стены. Входные и межкомнатные двери.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="10" y="8" width="20" height="64" fill="#C9CED8"/><rect x="30" y="40" width="86" height="36" fill="#E0E4EB"/><path d="M30,36 L84,36 L84,30 L104,30" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M30,36 L84,36 L84,30 L104,30" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Откос-наличник</h3><p class="small">Откос и наличник одной деталью — вместо ПВХ-уголка на стыке со стеной.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="4" width="22" height="72" fill="#E0E4EB"/><rect x="4" y="66" width="112" height="10" fill="#E0E4EB"/><path d="M26,26 L48,26 L48,64" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M26,26 L48,26 L48,64" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Плинтус</h3><p class="small">Короб у пола: внутри можно спрятать кабель. Цвет — в тон коробам и откосам.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="10" y="30" width="60" height="46" fill="#E0E4EB"/><path d="M10,26 L74,26 L74,76" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M10,26 L74,26 L74,76" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Уголок</h3><p class="small">Закрывает и защищает внешний угол стены, колонны или откоса.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="64" width="112" height="12" fill="#E0E4EB"/><circle cx="46" cy="44" r="12" fill="#C9CED8"/><circle cx="76" cy="50" r="7" fill="#C9CED8"/><path d="M22,62 L22,24 L96,24 L96,62" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M22,62 L22,24 L96,24 L96,62" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Короб на трубы и кабели</h3><p class="small">П-короб вдоль стены. К круглой трубе крепят через каркас из профиля или бруска.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="40" y="18" width="40" height="44" fill="#C9CED8"/><path d="M36,14 L84,14 L84,66 L36,66 Z" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M36,14 L84,14 L84,66 L36,66 Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Колонна и столб</h3><p class="small">Обшивка квадратного столба — четыре сгиба. Круглые колонны закрывают секторами.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="4" width="112" height="12" fill="#E0E4EB"/><rect x="40" y="16" width="40" height="22" fill="#C9CED8"/><path d="M30,18 L30,52 L90,52 L90,18" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M30,18 L30,52 L90,52 L90,18" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Фальшбалка и балка</h3><p class="small">Короб на потолочную балку или декоративная балка из того же сэндвича.</p></div></div>
+  <div class="grid g4" style="gap:4mm"><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="6" width="14" height="32" fill="#C9CED8"/><rect x="4" y="46" width="96" height="30" fill="#E0E4EB"/><rect x="18" y="40" width="82" height="6" fill="#F2C9A8"/><path d="M18,37 L106,37 L106,60 L100,60" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M18,37 L106,37 L106,60 L100,60" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Подоконник</h3><p class="small">На пеноплексе: сэндвич с загибом вниз, свес за стену 50–150 мм. Второй вариант — на плите ЛДСП/МДФ, см. следующую страницу.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="8" y="8" width="22" height="64" fill="#C9CED8"/><rect x="30" y="40" width="62" height="36" fill="#E0E4EB"/><path d="M30,36 L96,36 L96,72" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M30,36 L96,36 L96,72" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Дверной 3D-откос</h3><p class="small">Откос загнут до стены. Ширина полок любая — закрывает и проём, и край стены. Входные и межкомнатные двери.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="10" y="8" width="20" height="64" fill="#C9CED8"/><rect x="30" y="40" width="58" height="36" fill="#E0E4EB"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Откос-наличник</h3><p class="small">Откос, загиб на стену и наличник одной деталью. Торец наличника закрыт загибом — вместо ПВХ-уголка.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="4" width="22" height="72" fill="#E0E4EB"/><rect x="4" y="66" width="112" height="10" fill="#E0E4EB"/><path d="M26,26 L48,26 L48,64" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M26,26 L48,26 L48,64" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Плинтус</h3><p class="small">Короб у пола: внутри можно спрятать кабель. Цвет — в тон коробам и откосам.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="10" y="30" width="60" height="46" fill="#E0E4EB"/><path d="M10,26 L74,26 L74,76" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M10,26 L74,26 L74,76" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Уголок</h3><p class="small">Закрывает и защищает внешний угол стены, колонны или откоса.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="64" width="112" height="12" fill="#E0E4EB"/><circle cx="46" cy="44" r="12" fill="#C9CED8"/><circle cx="76" cy="50" r="7" fill="#C9CED8"/><path d="M22,62 L22,24 L96,24 L96,62" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M22,62 L22,24 L96,24 L96,62" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Короб на трубы и кабели</h3><p class="small">П-короб вдоль стены. К круглой трубе крепят через каркас из профиля или бруска.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="40" y="18" width="40" height="44" fill="#C9CED8"/><path d="M36,14 L84,14 L84,66 L36,66 Z" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M36,14 L84,14 L84,66 L36,66 Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Колонна и столб</h3><p class="small">Обшивка квадратного столба — четыре сгиба. Круглые колонны закрывают секторами.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="4" width="112" height="12" fill="#E0E4EB"/><rect x="40" y="16" width="40" height="22" fill="#C9CED8"/><path d="M30,18 L30,52 L90,52 L90,18" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M30,18 L30,52 L90,52 L90,18" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Фальшбалка и балка</h3><p class="small">Короб на потолочную балку или декоративная балка из того же сэндвича.</p></div></div>
   <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>12</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>11 · Изделия</b><span>Оконщик 3000</span></div>
+  <h2>Подоконник из сэндвича делают двумя способами</h2>
+  <p class="lead" style="margin-bottom:5mm">Сэндвич — финишная поверхность. Жёсткость и форму даёт основа: плита или пеноплекс. Схемы — в разрезе.</p>
+  <div class="grid g2">
+    <div class="card col"><div class="k">Вариант 1</div><h3>На плите ЛДСП или МДФ</h3><svg viewBox="0 0 260 170" class="bigsec"><defs><pattern id="ht" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" stroke="#B9C0CC" stroke-width="1.4"/></pattern></defs><rect x="40" y="10" width="24" height="62" fill="#C9CED8"/><text x="52" y="44" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="middle">окно</text><rect x="40" y="86" width="150" height="78" fill="url(#ht)"/><rect x="64" y="72" width="126" height="14" fill="#E7D3B5"/><text x="127" y="82" font-size="9" font-family="Onest" fill="#202531" text-anchor="middle">ЛДСП / МДФ</text><path d="M64,68 L196,68 L196,90 L64,90" fill="none" stroke="#202531" stroke-width="9" stroke-linejoin="miter"/><path d="M64,68 L196,68 L196,90 L64,90" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="miter"/><text x="206" y="82" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="start">50 мм</text><text x="150" y="150" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="middle">стена</text></svg><p class="small muted">Плиту кладут на стену под окном. Сэндвич П-профилем надевают на плиту: сверху, по торцу и снизу. Толщина по фронту — 50 мм.</p></div>
+    <div class="card col"><div class="k">Вариант 2</div><h3>На пеноплексе</h3><svg viewBox="0 0 260 170" class="bigsec"><defs><pattern id="ht" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" stroke="#B9C0CC" stroke-width="1.4"/></pattern></defs><rect x="40" y="10" width="24" height="62" fill="#C9CED8"/><text x="52" y="44" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="middle">окно</text><rect x="40" y="86" width="150" height="78" fill="url(#ht)"/><rect x="64" y="72" width="126" height="14" fill="#F2C9A8"/><text x="127" y="82" font-size="9" font-family="Onest" fill="#202531" text-anchor="middle">пеноплекс</text><path d="M64,68 L200,68 L200,118 L190,118" fill="none" stroke="#202531" stroke-width="9" stroke-linejoin="miter"/><path d="M64,68 L200,68 L200,118 L190,118" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="miter"/><text x="210" y="96" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="start">50–150 мм</text><text x="120" y="150" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="middle">стена</text></svg><p class="small muted">На стену кладут пеноплекс — он утепляет и держит форму. Сверху сэндвич с загибом вниз: свес за стену 50–150 мм, торец закрыт загибом к стене.</p></div>
+  </div>
+  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>13</span></div>
 </section>
 
 <section class="page">
@@ -355,11 +370,35 @@ ol.steps>li{margin-top:3.6mm}
         <div class="card"><h3>Детские комнаты</h3><p class="small">Плёнки с рисунком: машинки, кораблики, мишки.</p></div>
       </div>
       <div class="card fill"><h3>Варианты отделки</h3>
-        <ul><li>Белый — базовый цвет сэндвича, без отделки</li><li>Покраска в любой цвет по RAL у партнёра</li><li>Ламинация на ламинаторе из комплекта: 200+ плёнок — под дерево, однотонные</li></ul></div>
+        <ul><li>Белый — базовый цвет сэндвича, без отделки</li><li>Покраска в любой цвет по RAL у партнёра</li><li>Ламинация плёнкой: 200+ вариантов — под дерево, однотонные</li></ul></div>
     </div>
   </div>
   <div class="note">Изделия на этих страницах показаны схемами. Фото готовых работ добавим, когда снимем свои объекты.</div>
-  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>13</span></div>
+  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>14</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>11 · Изделия: галерея</b><span>Оконщик 3000</span></div>
+  <h2>Что можно сделать на станке</h2>
+  <div class="galgrid"><figure class="gal"><img src="{{g01}}"><figcaption>Подоконник-столешница вдоль панорамного окна</figcaption></figure><figure class="gal"><img src="{{g02}}"><figcaption>Портал балконного блока и 3D-откосы под светлый дуб</figcaption></figure><figure class="gal"><img src="{{g03}}"><figcaption>Подоконник под дуб на ригеле, белые короба на стойках и парапете</figcaption></figure><figure class="gal"><img src="{{g04}}"><figcaption>Лоджия: белые короба на стойках и ригелях</figcaption></figure><figure class="gal"><img src="{{g05}}"><figcaption>Эркер: белые короба на стойках граней</figcaption></figure><figure class="gal"><img src="{{g06}}"><figcaption>Откосы входной двери под светлый дуб</figcaption></figure><figure class="gal"><img src="{{g07}}"><figcaption>Угол остекления: короб на угловой стойке и парапете</figcaption></figure><figure class="gal"><img src="{{g08}}"><figcaption>Белые короба на стойках и нижнем ригеле у пола</figcaption></figure></div>
+  <p class="small muted" style="margin-top:auto;margin-bottom:6mm">Иллюстрации. Показывают, как выглядят изделия из сэндвича 10 мм в интерьере.</p>
+  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>15</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>11 · Изделия: галерея</b><span>Оконщик 3000</span></div>
+  <h2>Что можно сделать на станке — продолжение</h2>
+  <div class="galgrid"><figure class="gal"><img src="{{g09}}"><figcaption>Лоджия: белые короба на стойках и ригеле</figcaption></figure><figure class="gal"><img src="{{g10}}"><figcaption>Белые 3D-откосы входной двери</figcaption></figure><figure class="gal"><img src="{{g11}}"><figcaption>Подоконник с боковинами вокруг радиатора, под дуб</figcaption></figure><figure class="gal"><img src="{{g12}}"><figcaption>Обрамление ниши под телевизор под орех</figcaption></figure><figure class="gal"><img src="{{g13}}"><figcaption>Откосы, порог и плинтус балконной двери под дуб</figcaption></figure><figure class="gal"><img src="{{g14}}"><figcaption>Графитовые короба на стойках и ригелях</figcaption></figure><figure class="gal"><img src="{{g15}}"><figcaption>Обшивка квадратной колонны, белый</figcaption></figure><figure class="gal"><img src="{{g16}}"><figcaption>Круглая колонна, обшитая гранями, графит</figcaption></figure></div>
+  <p class="small muted" style="margin-top:auto;margin-bottom:6mm">Иллюстрации. Показывают, как выглядят изделия из сэндвича 10 мм в интерьере.</p>
+  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>16</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>11 · Изделия: галерея</b><span>Оконщик 3000</span></div>
+  <h2>Что можно сделать на станке — продолжение</h2>
+  <div class="galgrid"><figure class="gal"><img src="{{g17}}"><figcaption>Портал проёма без двери под светлый дуб</figcaption></figure><figure class="gal"><img src="{{g18}}"><figcaption>Реечная стена из П-профилей под дуб</figcaption></figure><figure class="gal"><img src="{{g19}}"><figcaption>Портал выхода на лоджию под дуб</figcaption></figure><figure class="gal"><img src="{{g20}}"><figcaption>Короб на стояки в санузле с лючком</figcaption></figure><figure class="gal"><img src="{{g21}}"><figcaption>Фитнес-зал: колонны под дерево, белые короба на стойках</figcaption></figure><figure class="gal"><img src="{{g22}}"><figcaption>Рама для карты под светлый дуб</figcaption></figure><figure class="gal"><img src="{{g23}}"><figcaption>Рама для большого зеркала под дуб</figcaption></figure><figure class="gal"><img src="{{g24}}"><figcaption>Фальшбалки под светлый дуб</figcaption></figure></div>
+  <p class="small muted" style="margin-top:auto;margin-bottom:6mm">Иллюстрации. Показывают, как выглядят изделия из сэндвича 10 мм в интерьере.</p>
+  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>17</span></div>
 </section>
 
 <!-- 12 -->
@@ -388,7 +427,7 @@ ol.steps>li{margin-top:3.6mm}
     <div class="ph">12 месяцев</div>
     <p class="muted small">Отдельная тема обучения — как увеличить толщину стеклопакета без альпинистов.</p>
   </div>
-  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>14</span></div>
+  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>18</span></div>
 </section>
 
 <!-- 13 -->
@@ -400,7 +439,8 @@ ol.steps>li{margin-top:3.6mm}
       <div>Исполнитель</div><div>ООО «Меркурий-групп», ИНН 5916035699, Москва</div>
       <div>Покупатель</div><div>физлицо, ИП или ООО</div>
       <div>Цена</div><div>450 000 ₽ без НДС</div>
-      <div>Оплата</div><div>безналичная; оплата частями — по договорённости</div>
+      <div>Способы оплаты</div><div>по счёту, QR-код онлайн-кассы, банковская карта, наличные с кассовым чеком</div>
+      <div>Порядок оплаты</div><div>часть при заказе, остаток до 100% — перед отправкой; рассрочки нет</div>
       <div>Изготовление</div><div>20 рабочих дней</div>
       <div>Доставка</div><div>ТК «Деловые линии» в ваш город, оплачивается отдельно</div>
       <div>Просрочка отгрузки</div><div>пени 0,5% в день</div>
@@ -411,13 +451,13 @@ ol.steps>li{margin-top:3.6mm}
         <ul>
           <li>Срок — с момента получения и запуска оборудования.</li>
           <li>Дефект по вине производителя устраняем за 14 календарных дней своими силами и за свой счёт.</li>
-          <li>Гарантия не распространяется на расходные части: подшипники, лезвия, струну.</li>
+          <li>Гарантия не распространяется на расходные части.</li>
           <li>Механические повреждения и комплектацию проверяйте при получении.</li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>15</span></div>
+  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>19</span></div>
 </section>
 
 <!-- 14 -->
@@ -428,8 +468,8 @@ ol.steps>li{margin-top:3.6mm}
     <div>
       <table>
         <tr><th>Изделие</th><th class="r">Цена за пог. м</th></tr>
-        <tr><td>Опт оконщикам: по их размерам, без замера и монтажа</td><td class="r">950 ₽</td></tr>
-        <tr><td>3D-термооткос с монтажом</td><td class="r">от 1 500 ₽</td></tr>
+        <tr><td>Опт оконщикам: по их размерам, без замера и монтажа</td><td class="r">1 250 ₽</td></tr>
+        <tr><td>3D-термооткос с монтажом</td><td class="r">от 2 000 ₽</td></tr>
         <tr><td>Термокороб под ключ, белый</td><td class="r">2 000–2 500 ₽</td></tr>
         <tr><td>Термокороб с покраской или ламинацией</td><td class="r">до 5 000 ₽</td></tr>
         <tr><td>Материал на 1 пог. м</td><td class="r">150–300 ₽</td></tr>
@@ -449,7 +489,7 @@ ol.steps>li{margin-top:3.6mm}
     </div>
   </div>
   <div class="note">Это крупный объект, не средний заказ. Остаток 464 000 ₽ — до налогов и прочих расходов. Ориентир окупаемости — 4–5 объектов при заработке около 100–115 тыс. ₽ с заказа; число объектов не равно сроку в месяцах. Сколько заказов вы возьмёте, зависит от ваших продаж. Поток заявок и доход не гарантируем.</div>
-  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>16</span></div>
+  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>20</span></div>
 </section>
 
 <!-- 15a payback -->
@@ -488,7 +528,7 @@ ol.steps>li{margin-top:3.6mm}
     </div>
   </div>
   <div class="note">Расчёт — пример на средней смете. Остаток — до налогов и прочих расходов. Ваши сметы, цены материалов и число заказов зависят от города и продаж. Доход не гарантируем.</div>
-  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>17</span></div>
+  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>21</span></div>
 </section>
 
 <!-- 15 -->
@@ -501,7 +541,7 @@ ol.steps>li{margin-top:3.6mm}
     <div class="ph">+7 921 950-38-60</div>
     <p class="muted small">Технические вопросы разбирает Сергей Попов — инженер-технолог, разработчик станка, в оконной отрасли с 1994 года.</p>
   </div>
-  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>18</span></div>
+  <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>22</span></div>
 </section>
 
 </body></html>

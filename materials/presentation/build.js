@@ -1,6 +1,6 @@
 const fs=require('fs'),path=require('path');const {chromium}=require('playwright');
 (async()=>{const d=process.argv[2];let h=fs.readFileSync(path.join(d,'deck.tpl.html'),'utf8');
-for(const n of ['before','after','work','tape','city']){h=h.split(`{{${n}}}`).join('data:image/jpeg;base64,'+fs.readFileSync(path.join(d,'img',n+'.jpg')).toString('base64'));}
+for(const n of ['before','after','work','tape','city',...Array.from({length:24},(_,i)=>'g'+String(i+1).padStart(2,'0'))]){h=h.split(`{{${n}}}`).join('data:image/jpeg;base64,'+fs.readFileSync(path.join(d,n.startsWith('g')&&n.length==3?'gallery':'img',n+'.jpg')).toString('base64'));}
 fs.writeFileSync(path.join(d,'deck.html'),h);
 const b=await chromium.launch();const pg=await b.newPage();await pg.goto('file://'+path.join(d,'deck.html'),{waitUntil:'networkidle'});
 await pg.evaluate(()=>document.fonts.ready);
