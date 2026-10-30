@@ -85,7 +85,7 @@ svg.mir{width:100%;display:block}
 .cta.band{margin-top:auto;margin-bottom:6mm;display:grid;grid-template-columns:1.1fr auto 1fr;gap:10mm;align-items:center;padding:6mm 8mm}
 .cta.band .ph{font-size:20pt;font-weight:700;color:var(--or);white-space:nowrap}
 .stretch{display:flex;flex-direction:column;gap:5mm}.stretch>.card{flex:1}
-.txtcol{display:flex;flex-direction:column}
+.txtcol{display:flex;flex-direction:column;min-height:0}
 .imgcol{display:flex;flex-direction:column}.imgcol .phwrap{flex:1;height:auto!important;min-height:0}
 .facts{margin-top:auto;margin-bottom:6mm;background:var(--dark);color:#fff;border-radius:3mm;padding:6mm 8mm;display:grid;grid-template-columns:repeat(3,1fr);gap:8mm}
 .facts .fv{font-size:19pt;font-weight:700;color:var(--or);line-height:1.1}.facts .fl{color:#B9C0CC;font-size:10pt;margin-top:1.5mm}
@@ -104,6 +104,11 @@ ol.steps>li{margin-top:3.6mm}
 .galgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:66mm;gap:5mm 4mm;margin-top:2mm}
 .gal{margin:0;display:flex;flex-direction:column;min-height:0}.gal img{width:100%;flex:1;min-height:0;object-fit:cover;border-radius:2.5mm;display:block}
 .gal figcaption{font-size:9pt;line-height:1.3;margin-top:2mm;color:var(--ink);height:9mm}
+.sws{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:auto;padding-top:5mm}
+.sw{display:flex;align-items:center;gap:2.5mm;font-size:9.5pt}.sw .chip{width:12mm;height:12mm;border-radius:2mm;flex:none}
+.strows{display:grid;grid-auto-rows:minmax(0,1fr);gap:2.5mm;flex:1;min-height:0}
+.strow{display:grid;grid-template-columns:10mm 1fr;align-items:center;padding:2mm 5mm;min-height:0;overflow:hidden}.strow .k{margin:0;font-size:12pt}.strow h3{font-size:11.5pt;margin-bottom:.5mm}
+.cta.band.slim{display:block;padding:4mm 6mm;margin-top:3mm;margin-bottom:0}
 </style></head><body>
 
 <!-- 1 -->
@@ -313,18 +318,12 @@ ol.steps>li{margin-top:3.6mm}
 <!-- 10 -->
 <section class="page">
   <div class="top"><b>10 · Монтаж</b><span>Оконщик 3000</span></div>
-  <div class="grid g-img" style="flex:1">
+  <div class="grid g-img" style="flex:1;margin-bottom:8mm;min-height:0;grid-template-rows:minmax(0,1fr)">
     <div class="txtcol">
       <h2>Перед установкой короба стойку изолируют и утепляют</h2>
-      <p class="lead" style="margin-bottom:2mm">Короб — финишный слой. Тепло даёт весь узел: изоляция металла, утеплитель и герметичные примыкания.</p>
-      <ol class="steps">
-        <li><b>Гидроизоляция.</b> Металл стойки закрывают бутиловой лентой или жидкой резиной. На этом слое конденсат не образуется.</li>
-        <li><b>Утепление.</b> На вертикальные и горизонтальные профили клеят пеноплекс.</li>
-        <li><b>Заполнение и герметизация.</b> Пустоты заполняют пеной, примыкания проходят герметиком. Между стеклопакетом и коробом прокладывают резину.</li>
-        <li><b>Замер.</b> Снимают точный размер стойки.</li>
-        <li><b>Установка.</b> Чистовой короб сажают на клей или герметик, который не растворяет пенополистирол. Крепёж в профиль не нужен.</li>
-      </ol>
-      <div class="note">Для каждой профильной системы — своя последовательность. Ей учим на объектах и разбираем сложные узлы по фото.</div>
+      <p class="lead" style="margin-bottom:4mm">Короб — финишный слой. Тепло даёт весь узел: изоляция металла, утеплитель и герметичные примыкания.</p>
+      <div class="strows"><div class="card strow"><div class="k">01</div><div><h3>Гидроизоляция</h3><p class="small muted">Металл стойки закрывают бутиловой лентой или жидкой резиной. На этом слое конденсат не образуется.</p></div></div><div class="card strow"><div class="k">02</div><div><h3>Утепление</h3><p class="small muted">На вертикальные и горизонтальные профили клеят пеноплекс.</p></div></div><div class="card strow"><div class="k">03</div><div><h3>Заполнение и герметизация</h3><p class="small muted">Пустоты заполняют пеной, примыкания проходят герметиком. Между стеклопакетом и коробом прокладывают резину.</p></div></div><div class="card strow"><div class="k">04</div><div><h3>Замер</h3><p class="small muted">Снимают точный размер стойки.</p></div></div><div class="card strow"><div class="k">05</div><div><h3>Установка</h3><p class="small muted">Чистовой короб сажают на клей или герметик, который не растворяет пенополистирол. Крепёж в профиль не нужен.</p></div></div></div>
+      <div class="cta band slim"><p class="muted small" style="margin:0">Для каждой профильной системы — своя последовательность. Ей учим на объектах и разбираем сложные узлы по фото.</p></div>
     </div>
     <div class="imgcol"><div class="phwrap"><img class="ph" src="{{tape}}"></div><div class="cap">Стойки и ригели в изоляции перед установкой коробов</div></div>
   </div>
@@ -353,27 +352,21 @@ ol.steps>li{margin-top:3.6mm}
 
 <section class="page">
   <div class="top"><b>11 · Изделия</b><span>Оконщик 3000</span></div>
-  <h2>Плёнка под дерево превращает профиль в декор: рама для зеркала, обрамление ниши, подоконник</h2>
-  <div class="grid" style="grid-template-columns:96mm 1fr;gap:9mm;margin-top:3mm">
-    <div><svg viewBox="0 0 200 150" class="mir"><defs>
-<linearGradient id="wd" x1="0" x2="1" y1="0" y2=".25"><stop offset="0" stop-color="#9A6B43"/><stop offset=".3" stop-color="#B58358"/><stop offset=".55" stop-color="#8F6038"/><stop offset=".8" stop-color="#B07C50"/><stop offset="1" stop-color="#93653D"/></linearGradient>
-<linearGradient id="gl" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#E9EEF3"/><stop offset=".5" stop-color="#CBD5DF"/><stop offset="1" stop-color="#EEF2F6"/></linearGradient>
-<pattern id="gr" width="6" height="150" patternUnits="userSpaceOnUse"><path d="M3 0 Q5 40 2 75 T3 150" stroke="#7A512E" stroke-opacity=".35" fill="none" stroke-width=".8"/></pattern></defs>
-<rect x="20" y="8" width="160" height="134" rx="2" fill="url(#wd)"/><rect x="20" y="8" width="160" height="134" fill="url(#gr)"/>
-<rect x="38" y="26" width="124" height="98" fill="url(#gl)"/></svg><div class="cap">Рама для большого зеркала: П-профиль в плёнке под дерево (схема)</div>
-      <div class="card" style="margin-top:4mm;display:grid;grid-template-columns:34mm 1fr;gap:4mm;align-items:center"><svg viewBox="0 0 120 80" class="sec"><rect x="30" y="34" width="70" height="12" fill="#CBD5DF"/><path d="M100,24 L22,24 L22,56 L100,56" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M100,24 L22,24 L22,56 L100,56" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/><text x="62" y="43" font-size="7" text-anchor="middle" fill="#4E5766" font-family="Onest">зеркало</text></svg><p class="small">Сечение: П-профиль надевается на край зеркала или щита.</p></div></div>
-    <div class="stretch">
-      <div class="grid g2" style="gap:4mm">
-        <div class="card"><h3>Рамы</h3><p class="small">Для зеркал, картин, телевизора в нише. Размер — любой в пределах листа 3 м.</p></div>
-        <div class="card"><h3>Обрамление проёмов</h3><p class="small">Ниши, дверные проёмы без двери, переход между комнатами.</p></div>
-        <div class="card"><h3>Комплект в одной плёнке</h3><p class="small">Короба, откосы, подоконник и плинтус в одном цвете — интерьер выглядит цельно.</p></div>
-        <div class="card"><h3>Детские комнаты</h3><p class="small">Плёнки с рисунком: машинки, кораблики, мишки.</p></div>
-      </div>
-      <div class="card fill"><h3>Варианты отделки</h3>
-        <ul><li>Белый — базовый цвет сэндвича, без отделки</li><li>Покраска в любой цвет по RAL у партнёра</li><li>Ламинация плёнкой: 200+ вариантов — под дерево, однотонные</li></ul></div>
-    </div>
+  <h2>Любое изделие делают в одном из трёх вариантов отделки</h2>
+  <p class="lead" style="margin-bottom:5mm">Цвет подбирают под интерьер: короб, откос и подоконник можно сделать в тон стенам, полу или мебели.</p>
+  <div class="grid g3">
+    <div class="card col"><div class="k">01</div><h3>Белый</h3><p class="small muted">Базовый цвет сэндвича, как у пластикового окна. Без дополнительной отделки, самый быстрый вариант.</p>
+      <div class="sws"><div class="sw"><div class="chip" style="background:#FFFFFF;border:1px solid #E0E4EB;"></div><span>белый матовый</span></div></div></div>
+    <div class="card col"><div class="k">02</div><h3>Покраска по RAL</h3><p class="small muted">Любой цвет шкалы RAL. Красят в покрасочной камере партнёра. Добавляет несколько дней к сроку.</p>
+      <div class="sws"><div class="sw"><div class="chip" style="background:#383E42;"></div><span>графит RAL 7016</span></div><div class="sw"><div class="chip" style="background:#16181B;"></div><span>чёрный матовый</span></div><div class="sw"><div class="chip" style="background:#59473A;"></div><span>коричневый</span></div><div class="sw"><div class="chip" style="background:#9DA3A6;"></div><span>серый</span></div></div></div>
+    <div class="card col"><div class="k">03</div><h3>Ламинация плёнкой</h3><p class="small muted">200+ вариантов плёнки: под дерево, однотонные, детские с рисунком.</p>
+      <div class="sws"><div class="sw"><div class="chip" style="background:repeating-linear-gradient(92deg,#D9C3A0 0 3px,#CDB48D 3px 7px,#D9C3A0 7px 9px,#E3D0B1 9px 14px);"></div><span>светлый дуб</span></div><div class="sw"><div class="chip" style="background:repeating-linear-gradient(92deg,#C08A4E 0 3px,#B37C42 3px 7px,#C08A4E 7px 9px,#CC9960 9px 14px);"></div><span>золотой дуб</span></div><div class="sw"><div class="chip" style="background:repeating-linear-gradient(92deg,#6E4B33 0 3px,#5F402B 3px 7px,#6E4B33 7px 9px,#7B563C 9px 14px);"></div><span>орех</span></div><div class="sw"><div class="chip" style="background:repeating-linear-gradient(92deg,#B9B2A3 0 3px,#ACA493 3px 7px,#B9B2A3 7px 9px,#C6C0B3 9px 14px);"></div><span>ясень</span></div></div></div>
   </div>
-  <div class="note">Изделия на этих страницах показаны схемами. Фото готовых работ добавим, когда снимем свои объекты.</div>
+  <div class="cta band">
+    <div><h3 style="font-size:14pt">Комплект в одной плёнке</h3><p class="muted">короба, откосы, подоконник и плинтус в одном цвете</p></div>
+    <div class="ph">200+ плёнок</div>
+    <p class="muted small">Примеры готовых изделий в разной отделке — в галерее на следующих страницах.</p>
+  </div>
   <div class="foot"><span>Оконщик 3000 · оборудование и технология</span><span>14</span></div>
 </section>
 
