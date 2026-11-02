@@ -1,0 +1,6 @@
+const path=require('path');const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch();const pg=await b.newPage();await pg.goto('file://'+path.join(process.argv[2],'booklet.html'),{waitUntil:'networkidle'});await pg.evaluate(()=>document.fonts.ready);
+const r=await pg.evaluate(()=>{const out=[];document.querySelectorAll('p,h1,h2,h3,li,figcaption,.ch div,.t,.big,.sub,.facts span,.fin div,.lg div').forEach(el=>{if(el.querySelector('p,div,li'))return;const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const words=[];let n;while(n=tw.nextNode()){const re=/\S+/g;let m;while(m=re.exec(n.data)){const rg=document.createRange();rg.setStart(n,m.index);rg.setEnd(n,m.index+m[0].length);const rc=rg.getClientRects();if(rc.length)words.push([Math.round(rc[rc.length-1].top),m[0]]);}}
+if(!words.length)return;const tops=[...new Set(words.map(w=>w[0]))];if(tops.length<2)return;const last=words.filter(w=>w[0]===tops[tops.length-1]);
+const lastTxt=last.map(w=>w[1]).join(' ');const nb=lastTxt.split(/[\s ]+/).length;if(last.length<2||lastTxt.replace(/[ \s]/g,'').length<12)out.push(el.textContent.trim().slice(0,70)+' → «'+lastTxt+'»');});return out;});
+console.log(r.join('\n')||'OK');await b.close();})();
