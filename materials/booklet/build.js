@@ -1,7 +1,7 @@
 const fs=require('fs'),path=require('path');const {chromium}=require('playwright');
 (async()=>{const d=process.argv[2],P=path.join(d,'../presentation');let h=fs.readFileSync(path.join(d,'booklet.tpl.html'),'utf8');
 const img=(f)=>'data:image/jpeg;base64,'+fs.readFileSync(f).toString('base64');
-for(const g of ['g02','g04','g05','g06','g09','g19'])h=h.split(`{{${g}}}`).join(img(P+'/gallery/'+g+'.jpg'));h=h.replace('{{cover}}',img(P+'/gallery/g04.jpg'));h=h.replace('{{g03}}',img(P+'/gallery/g03.jpg')).replace('{{g04}}',img(P+'/gallery/g04.jpg')).replace('{{g14}}',img(P+'/gallery/g14.jpg')).replace('{{g11}}',img(P+'/gallery/g11.jpg')).replace('{{before}}',img(P+'/img/before.jpg')).replace('{{after}}',img(P+'/img/after.jpg'));
+for(const g of ['g04','g05','g06','g09','g17','g19'])h=h.split(`{{${g}}}`).join(img(P+'/gallery/'+g+'.jpg'));h=h.replace('{{cover}}',img(P+'/gallery/g08.jpg'));h=h.replace('{{g03}}',img(P+'/gallery/g03.jpg')).replace('{{g04}}',img(P+'/gallery/g04.jpg')).replace('{{g14}}',img(P+'/gallery/g14.jpg')).replace('{{g11}}',img(P+'/gallery/g11.jpg')).replace('{{before}}',img(P+'/img/before.jpg')).replace('{{after}}',img(P+'/img/after.jpg'));
 const S='fill="none" stroke="#D2622B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
 const I={i_t:`<svg viewBox="0 0 24 24" ${S}><path d="M12 3v11"/><circle cx="12" cy="17" r="3.5"/><path d="M15 6h3M15 9h3"/></svg>`,
 i_q:`<svg viewBox="0 0 24 24" ${S}><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l4 6M21 9l-4 6"/></svg>`,
