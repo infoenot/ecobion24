@@ -1,0 +1,127 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:303mm 216mm;margin:0}
+:root{--dark:#202531;--or:#F26B1D;--mut:#5B6270;--line:#E3E6EC;--soft:#F4F5F7}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{font-family:Onest,sans-serif;color:var(--dark);font-size:7.6pt;line-height:1.38;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3,p,li,.cap,.t{text-wrap:balance}
+.sheet{position:relative;width:303mm;height:216mm;overflow:hidden;display:grid;grid-template-columns:103mm 100mm 100mm}
+.p{position:relative;padding:9mm 7mm 8mm;display:flex;flex-direction:column;min-height:0}
+.p1{padding-left:10mm}.p3{padding-right:10mm}
+.fold{position:absolute;top:0;width:0;height:3mm;border-left:.25pt solid #888}
+.fold.b{top:auto;bottom:0}
+.k{font-size:6.6pt;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--or);margin-bottom:2mm}
+h1{font-size:16pt;line-height:1.12;font-weight:700;margin-bottom:3mm}
+h2{font-size:13pt;line-height:1.15;font-weight:700;margin-bottom:3mm}
+h3{font-size:8.8pt;font-weight:600;margin-bottom:.6mm}
+.or{color:var(--or)}
+.mut{color:var(--mut)}
+.hero{margin:-9mm -7mm 4mm -10mm;height:72mm;position:relative}
+.hero img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;right:2mm;bottom:1.5mm;font-size:5pt;color:#fff;opacity:.85}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:2mm;flex:1;min-height:0}
+.ba div{position:relative;height:100%;border-radius:2mm;overflow:hidden}
+.ba img{width:100%;height:118%;object-fit:cover;object-position:50% 0}
+.ba span{position:absolute;left:1.5mm;top:1.5mm;background:var(--dark);color:#fff;font-size:6pt;font-weight:600;padding:.5mm 1.8mm;border-radius:1mm}
+.ba span.a{background:var(--or)}
+.pr{list-style:none;margin:0 0 3mm}
+.pr li{position:relative;padding-left:3.2mm;margin-bottom:.8mm}
+.pr li:before{content:"";position:absolute;left:0;top:1.5mm;width:1.4mm;height:1.4mm;border-radius:50%;background:var(--or)}
+.tasks{display:flex;flex-direction:column;gap:2.4mm;margin-bottom:3.5mm}
+.ph2{flex:1;min-height:0;border-radius:2mm;overflow:hidden;position:relative}.ph2 img{width:100%;height:100%;object-fit:cover}
+.task{display:grid;grid-template-columns:8mm 1fr;gap:3mm;align-items:start;padding-bottom:2.4mm;border-bottom:.4pt solid var(--line)}
+.task:last-child{border-bottom:0}
+.ic{width:8mm;height:8mm;border-radius:1.6mm;background:var(--dark);display:flex;align-items:center;justify-content:center}
+.ic svg{width:4.4mm;height:4.4mm}
+.task p{color:var(--mut)}
+.band{background:var(--dark);color:#fff;border-radius:2.5mm;padding:4mm 4.5mm}
+.band .big{font-size:15pt;font-weight:700;color:var(--or);line-height:1.1}
+.band p{color:#C9CED8}
+.scheme{background:var(--soft);border-radius:2.5mm;padding:3mm;margin-bottom:3mm;display:grid;grid-template-columns:30mm 1fr;gap:3mm;align-items:center}
+.scheme svg{width:30mm;height:30mm}
+.lg div{display:flex;gap:1.6mm;align-items:center;margin-bottom:1.1mm;font-size:6.8pt}
+.lg i{width:3mm;height:3mm;border-radius:.6mm;flex:none}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:2mm;margin-bottom:3mm}
+.st{display:grid;grid-template-columns:5.5mm 1fr;gap:2mm}
+.st b.n{width:5.5mm;height:5.5mm;border-radius:50%;border:.6pt solid var(--or);color:var(--or);display:flex;align-items:center;justify-content:center;font-size:7pt}
+.st p{color:var(--mut)}
+.facts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5mm;margin-bottom:3mm}
+.facts div{background:var(--soft);border-radius:2mm;padding:2mm}
+.facts b{display:block;font-size:10pt;color:var(--dark)}
+.facts span{font-size:6pt;color:var(--mut);line-height:1.25;display:block}
+.note{font-size:6pt;color:var(--mut);margin-top:2mm}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm;margin-bottom:3mm;flex:1;min-height:18mm}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:3mm 1.5mm 1mm;font-size:5.4pt;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.55))}
+.task p{font-size:7.9pt}
+.gal div{height:100%;border-radius:1.6mm;overflow:hidden;position:relative}
+.gal img{width:100%;height:100%;object-fit:cover}
+</style></head><body>
+<div class="sheet">
+  <span class="fold" style="left:103mm"></span><span class="fold" style="left:203mm"></span>
+  <span class="fold b" style="left:103mm"></span><span class="fold b" style="left:203mm"></span>
+
+  <!-- 1 -->
+  <div class="p p1">
+    <div class="hero"><img src="{{g03}}"><span class="tag">иллюстрация</span></div>
+    <div class="k">Лоджии, балконы, окна в пол</div>
+    <h1>У окна в пол будет <span class="or">тепло, тихо, сухо и&nbsp;красиво</span></h1>
+    <p style="margin-bottom:2mm">Застройщик ставит холодные алюминиевые системы. Отсюда проблемы, которые ремонт не&nbsp;решает:</p>
+    <ul class="pr">
+      <li>зимой стойки остывают до&nbsp;+10…+16&nbsp;°C, у&nbsp;окна некомфортно;</li>
+      <li>на металле собирается конденсат;</li>
+      <li>через полые стойки слышно соседей;</li>
+      <li>тёмный профиль выбивается из интерьера.</li>
+    </ul>
+    <p><b>Решение:</b> утепляем стойки изнутри квартиры и&nbsp;закрываем их бесшовными коробами по&nbsp;размеру. Остекление не&nbsp;меняем.</p>
+    <div class="ba" style="margin-top:3.5mm"><div><img src="{{before}}"><span>До</span></div><div><img src="{{after}}"><span class="a">После</span></div></div>
+  </div>
+
+  <!-- 2 -->
+  <div class="p p2">
+    <div class="k">Что меняется</div>
+    <h2>Один заказ решает семь задач</h2>
+    <div class="tasks">
+      <div class="task"><div class="ic">{{i_t}}</div><div><h3>Тепло</h3><p>Утеплитель и короб закрывают холодный металл. У&nbsp;окна можно поставить стол или кресло.</p></div></div>
+      <div class="task"><div class="ic">{{i_q}}</div><div><h3>Тишина</h3><p>Полые стойки проходят через этажи и&nbsp;передают звук. Пустоты заполняем, стойку закрываем.</p></div></div>
+      <div class="task"><div class="ic">{{i_d}}</div><div><h3>Сухо</h3><p>Металл закрываем бутиловой лентой или жидкой резиной. На&nbsp;этом слое конденсат не&nbsp;образуется.</p></div></div>
+      <div class="task"><div class="ic">{{i_c}}</div><div><h3>Красиво</h3><p>Короба белые, в&nbsp;цвет по&nbsp;RAL или под дерево. Царапины и&nbsp;следы стройки скрыты.</p></div></div>
+      <div class="task"><div class="ic">{{i_h}}</div><div><h3>Уют</h3><p>Ровные поверхности без щелей и&nbsp;самодельных стыков. Лоджия становится частью квартиры.</p></div></div>
+      <div class="task"><div class="ic">{{i_s}}</div><div><h3>Полезная площадь</h3><p>Вместе с&nbsp;утеплением пола и&nbsp;потолка лоджия становится кабинетом или детским уголком.</p></div></div>
+      <div class="task"><div class="ic">{{i_r}}</div><div><h3>Дороже аренда</h3><p>Аккуратные окна хорошо смотрятся на&nbsp;фото в&nbsp;объявлении.</p></div></div>
+    </div>
+    <div class="ph2"><img src="{{g04}}"><span class="tag">иллюстрация</span></div>
+  </div>
+
+  <!-- 3 -->
+  <div class="p p3">
+    <div class="k">Как мы работаем</div>
+    <h2>Короб делаем по&nbsp;замеру каждой стойки</h2>
+    <div class="scheme">{{scheme}}
+      <div class="lg">
+        <div><i style="background:#8A919E"></i>алюминиевая стойка</div>
+        <div><i style="background:#1A1A1A"></i>гидроизоляция</div>
+        <div><i style="background:#F2A65A"></i>утеплитель</div>
+        <div><i style="background:#fff;border:.5pt solid #9AA1AD"></i>короб из&nbsp;ПВХ‑сэндвича 10&nbsp;мм</div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="st"><b class="n">1</b><div><h3>Бесплатный замер</h3><p>Приезжаем, меряем каждую стойку, называем стоимость и&nbsp;срок.</p></div></div>
+      <div class="st"><b class="n">2</b><div><h3>Изготовление</h3><p>Гнём короба из&nbsp;цельной полосы: без стыка на&nbsp;внешнем ребре.</p></div></div>
+      <div class="st"><b class="n">3</b><div><h3>Монтаж за&nbsp;день</h3><p>Утепляем стойку и&nbsp;сажаем короб на&nbsp;клей. Без сверления, световой проём не&nbsp;уменьшается.</p></div></div>
+    </div>
+    <div class="facts">
+      <div><b>3–7 дней</b><span>от&nbsp;замера до&nbsp;монтажа</span></div>
+      <div><b>800+</b><span>цветов RAL</span></div>
+      <div><b>200+</b><span>плёнок под дерево</span></div>
+    </div>
+    <div class="gal"><div><img src="{{g14}}"><figcaption>графит RAL 7016 · иллюстрация</figcaption></div><div><img src="{{g11}}"><figcaption>под дуб · иллюстрация</figcaption></div></div>
+    <div class="band">
+      <div class="big">Выезд замерщика — бесплатно</div>
+      <p style="margin-top:1.2mm">Посмотрим окна, ответим на&nbsp;вопросы и&nbsp;рассчитаем стоимость. Контакты — на&nbsp;обороте.</p>
+    </div>
+    <p class="note">Нужна ли замена стеклопакетов, специалист скажет на&nbsp;замере.</p>
+  </div>
+</div>
+</body></html>
