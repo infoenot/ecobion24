@@ -8,7 +8,7 @@ BR='Тёплые окна в пол'
 CSS='''<style>
 .cvr{display:grid;grid-template-columns:1.05fr 1fr;gap:0;padding:0!important}
 .cvr .l{padding:16mm 14mm 14mm 18mm;display:flex;flex-direction:column}
-.cvr .r{position:relative;overflow:hidden}.cvr .r img{width:100%;height:100%;object-fit:cover;object-position:50% 70%}
+.cvr{grid-template-rows:210mm}.cvr .r{position:relative;overflow:hidden;height:210mm}.cvr .r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .cvr h1{font-size:30pt;margin-top:22mm;line-height:1.1}
 .cvr .sub{color:#BDBDBD;font-size:13pt;margin-top:4mm}
 .cvr .chips{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:3mm}
@@ -134,7 +134,7 @@ def ty(t):
     t=re.sub(r'(\d)–(\d)',lambda m:m.group(1)+'–⁠'+m.group(2),t)
     t=re.sub(r'\b(П|Г|W|3D|Z|U|L)-',lambda m:m.group(1)+'‑',t)
     return t
-st=html.index('</style>')
+st=html.rindex('</style>')
 full=html[:st]+re.sub(r'>([^<]+)<',lambda m:'>'+ty(m.group(1))+'<',html[st:])
 PAL={'#F26B1D':'#1A9BFC','#202531':'#262626','#0A0E15':'#111111','#4E5766':'#555555','#E0E4EB':'#E3E3E3','#F0F1F5':'#F2F2F2','#C9CED8':'#CCCCCC','#B9C0CC':'#BDBDBD','#C3C9D3':'#C8C8C8','#5B6576':'#5E5E5E','#8A93A3':'#8F8F8F','rgba(32,37,49':'rgba(38,38,38'}
 for a,b in PAL.items(): full=full.replace(a,b).replace(a.lower(),b)
