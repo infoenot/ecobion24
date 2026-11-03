@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Бесшовные термокороба</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:297mm 210mm;margin:0}
+:root{--or:#F26B1D;--ink:#0A0E15;--muted:#4E5766;--line:#E0E4EB;--soft:#F0F1F5;--accent:#202531;--dark:#202531}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Onest,Arial,sans-serif;color:var(--ink);background:#fff;font-size:11.5pt;line-height:1.45}
+.page{width:297mm;height:210mm;padding:16mm 18mm 14mm;position:relative;page-break-after:always;overflow:hidden;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+.top{display:flex;justify-content:space-between;font-size:8.5pt;color:var(--muted);margin-bottom:9mm;letter-spacing:.02em}
+.top b{color:var(--or);font-weight:600}
+h1{font-size:30pt;line-height:1.1;font-weight:700;letter-spacing:-.01em;max-width:200mm}
+h2{font-size:21pt;line-height:1.15;font-weight:700;letter-spacing:-.01em;margin-bottom:3mm;max-width:230mm}
+.lead{font-size:12.5pt;color:var(--muted);max-width:205mm;margin-bottom:7mm}
+h3{font-size:12pt;font-weight:600;margin-bottom:2mm}
+p+p{margin-top:2mm}
+.muted{color:var(--muted)}
+.small{font-size:9.5pt}
+.grid{display:grid;gap:6mm}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.g-img{grid-template-columns:1fr 62mm}.g-img2{grid-template-columns:1fr 46mm 46mm}
+.card{border:1px solid var(--line);border-radius:3mm;padding:5mm}
+.card.fill{background:var(--dark);border-color:var(--dark);color:#fff}
+.card.fill .muted,.card.fill p.muted{color:#C3C9D3}
+.card.fill td,.card.fill th{border-bottom-color:rgba(255,255,255,.14);color:#fff}
+.card.fill th{color:#C3C9D3}
+.num{font-size:24pt;font-weight:700;line-height:1;margin-bottom:2mm}
+.num small{font-size:11pt;font-weight:600}
+ul{list-style:none}
+li{padding-left:5mm;position:relative;margin-top:1.6mm}
+li:before{content:"";position:absolute;left:0;top:2.3mm;width:2mm;height:2mm;border-radius:50%;background:var(--accent)}
+ol{list-style:none;counter-reset:s}
+ol>li{counter-increment:s;padding-left:10mm;margin-top:3mm}
+ol>li:before{content:counter(s);background:var(--dark);color:#fff;width:6.5mm;height:6.5mm;top:-.3mm;font-size:9pt;font-weight:600;display:flex;align-items:center;justify-content:center}
+table{width:100%;border-collapse:collapse;font-size:10.5pt}
+td,th{text-align:left;padding:2.3mm 3mm;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:9pt}
+td.r,th.r{text-align:right;white-space:nowrap}
+img.ph{width:100%;height:100%;object-fit:cover;border-radius:3mm;display:block}
+.phwrap{height:118mm}
+.cap{font-size:8.5pt;color:var(--muted);margin-top:1.5mm}
+.note{border-left:1.2mm solid var(--accent);padding:2mm 0 2mm 4mm;font-size:10pt;color:var(--muted);margin-top:auto}
+.foot{position:absolute;bottom:7mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-size:8pt;color:var(--muted)}
+.cover{background:var(--dark);color:#fff}
+.cover .lead,.cover .top,.cover .toc span{color:#B9C0CC}
+.cover .top b{color:var(--or)}
+.cover .toc div{border-bottom-color:rgba(255,255,255,.14)}
+.cover h1{font-size:38pt;margin-top:18mm;max-width:220mm}
+.cover .lead{font-size:14pt;margin-top:6mm}
+.toc{columns:2;column-gap:12mm;margin-top:auto;font-size:10.5pt}
+.toc div{break-inside:avoid;padding:1.6mm 0;border-bottom:1px solid var(--line);display:flex;gap:4mm}
+.toc span{color:var(--muted);width:7mm}
+.kv{display:grid;grid-template-columns:52mm 1fr;row-gap:0}
+.kv div{padding:2.2mm 0;border-bottom:1px solid var(--line)}
+.kv div:nth-child(odd){color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm}
+.flow .card{position:relative}
+.flow .step{font-size:9pt;color:var(--muted);margin-bottom:2mm}
+.cta{background:var(--dark);color:#fff;border-radius:3mm;padding:7mm}
+.cta .muted{color:#B9C0CC}
+.pb{position:relative;padding-top:7mm}
+.pb-axis{display:flex;justify-content:space-between;margin-left:48mm;font-size:8pt;color:var(--muted);position:absolute;top:0;left:0;right:0}
+.pb-row{display:grid;grid-template-columns:48mm 1fr;align-items:center;margin-top:2.5mm}
+.pb-lbl{font-size:10pt;font-weight:600;line-height:1.25}.pb-lbl span{font-weight:400;color:var(--muted);font-size:9pt}
+.pb-track{display:flex;height:10mm;background:var(--soft);border-radius:2mm;overflow:hidden}
+.pb-bar{height:100%;display:flex;align-items:center;padding-left:3mm;font-size:10pt;font-weight:600}
+.pb-bar.dark{background:var(--dark);color:#fff}
+.pb-seg{height:100%;background:#5B6576;color:#fff;border-right:1.2mm solid #fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11pt}
+.pb-seg.part{background:repeating-linear-gradient(45deg,#5B6576 0 3mm,#8A93A3 3mm 6mm)}
+.pb-line{position:absolute;top:5mm;bottom:-3mm;border-left:.6mm dashed var(--ink)}
+.pb-line span{position:absolute;bottom:-4.5mm;left:-9mm;font-size:8pt;font-weight:600;white-space:nowrap}
+table.cmp td,table.cmp th{font-size:9.5pt;padding:1.6mm 2mm}
+.pp td,.pp th{padding:1.8mm 3mm}
+table.cmp td:first-child{color:var(--muted)}
+.prod{padding:4mm}.prod h3{font-size:10.5pt;margin:2mm 0 1mm}.prod p{line-height:1.35}
+svg.sec{width:100%;height:24mm;display:block;background:#FAFAFB;border-radius:2mm}
+svg.mir{width:100%;display:block}
+.or{color:var(--or)}
+.eq{}.eq .card,.eq2 .card{display:flex;flex-direction:column}
+.k{font-size:10pt;font-weight:700;color:var(--or);margin-bottom:3mm}
+.col h3{font-size:13pt;margin-bottom:2mm}.col li{margin-top:2.6mm}.eq .card{padding-bottom:7mm}
+.eq2{grid-auto-rows:44mm}.eq2 p{color:var(--muted)}
+.cta.band{margin-top:auto;margin-bottom:6mm;display:grid;grid-template-columns:1.1fr auto 1fr;gap:10mm;align-items:center;padding:6mm 8mm}
+.cta.band .ph{font-size:20pt;font-weight:700;color:var(--or);white-space:nowrap}
+.stretch{display:flex;flex-direction:column;gap:5mm}.stretch>.card{flex:1}
+.txtcol{display:flex;flex-direction:column;min-height:0}
+.imgcol{display:flex;flex-direction:column}.imgcol .phwrap{flex:1;height:auto!important;min-height:0}
+.facts{margin-top:auto;margin-bottom:6mm;background:var(--dark);color:#fff;border-radius:3mm;padding:6mm 8mm;display:grid;grid-template-columns:repeat(3,1fr);gap:8mm}
+.facts .fv{font-size:19pt;font-weight:700;color:var(--or);line-height:1.1}.facts .fl{color:#B9C0CC;font-size:10pt;margin-top:1.5mm}
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin-top:2mm}
+.days div{background:var(--dark);color:#fff;border-radius:3mm;padding:4mm 5mm}.days b{display:block;color:var(--or);font-size:12pt}.days span{color:#B9C0CC;font-size:10pt}
+ol.steps>li{margin-top:3.6mm}
+.g-img2 .note,.g-img .note{margin-bottom:0}
+.fv2{font-size:17pt;font-weight:700;line-height:1.1;margin-bottom:1.5mm}
+.hero{position:relative;margin-top:5mm;margin-bottom:6mm;flex:1;min-height:0}.hero img{width:100%;height:100%;object-fit:cover;border-radius:3mm;display:block}
+.hero span{position:absolute;left:4mm;bottom:3mm;font-size:8pt;color:#fff;background:rgba(32,37,49,.7);padding:1mm 2.5mm;border-radius:2mm}
+.paygrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:51mm;gap:4mm;margin-bottom:5mm}
+.pay{padding:5mm;display:flex;flex-direction:column}.pay .k{font-size:8.5pt;margin-bottom:3mm}.pay h3{font-size:15pt;margin-bottom:1.5mm}.pay p{font-size:10.5pt;line-height:1.4;color:var(--muted)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:2mm}.ba div{position:relative;min-height:0}.ba img{width:100%;height:100%;object-fit:cover;border-radius:3mm;display:block}
+.ba span{position:absolute;left:2mm;bottom:2mm;font-size:8pt;color:#fff;background:rgba(32,37,49,.75);padding:.8mm 2mm;border-radius:2mm}
+.bigsec{width:100%;height:62mm;display:block;background:#FAFAFB;border-radius:2mm;margin:3mm 0 4mm}
+.galgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:66mm;gap:5mm 4mm;margin-top:2mm}
+.gal{margin:0;display:flex;flex-direction:column;min-height:0}.gal img{width:100%;flex:1;min-height:0;object-fit:cover;border-radius:2.5mm;display:block}
+.gal figcaption{font-size:9pt;line-height:1.3;margin-top:2mm;color:var(--ink);height:9mm}
+.sws{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:auto;padding-top:5mm}
+.sw{display:flex;align-items:center;gap:2.5mm;font-size:9.5pt}.sw .chip{width:12mm;height:12mm;border-radius:2mm;flex:none}
+.strows{display:grid;grid-auto-rows:minmax(0,1fr);gap:2.5mm;flex:1;min-height:0}
+.strow{display:grid;grid-template-columns:10mm 1fr;align-items:center;padding:2mm 5mm;min-height:0;overflow:hidden}.strow .k{margin:0;font-size:12pt}.strow h3{font-size:11.5pt;margin-bottom:.5mm}
+.cta.band.slim{display:block;padding:4mm 6mm;margin-top:3mm;margin-bottom:0}
+.mk{grid-template-columns:125mm 1fr;gap:6mm;grid-template-rows:minmax(0,1fr);margin-bottom:5mm}
+.mkcol{display:grid;grid-auto-rows:minmax(0,1fr);gap:4mm;min-height:0}.mkcol .card{display:flex;flex-direction:column;padding:4mm 5mm}.mkcol .k{margin-bottom:1.5mm}.mkcol h3{font-size:12pt;margin-bottom:1mm}
+.facts.f4{grid-template-columns:repeat(4,1fr);margin-top:0;padding:4mm 7mm}.facts.f4 .fv{font-size:15pt}
+ul.tight li{margin-top:1.2mm;font-size:10pt;line-height:1.35}ul.tight li:before{top:1.5mm;width:1.7mm;height:1.7mm}
+h1,h2,h3,.fv,.fv2,.lead,p,li,.cap,.fl,figcaption,td,.kv div,.k{text-wrap:balance}
+</style></head><body>
+
+<!-- 1 -->
+<section class="page cover">
+  <div class="top"><b>Бесшовные термокороба</b><span>Технология и изделия · для дизайнеров и прорабов</span></div>
+  <h1>Тёплые окна в пол: как утеплить холодное остекление изнутри квартиры</h1>
+  <p class="lead">Что предложить заказчику, у которого холодные алюминиевые стойки: как устроено решение, какие изделия и отделки есть, как это выглядит в интерьере и как проходит заказ.</p>
+  <div class="toc">
+    <div><span>01</span>Проблема заказчика</div>
+    <div><span>02</span>Семь задач, которые решает один заказ</div>
+    <div><span>03</span>Что такое термокороб и 3D‑термооткос</div>
+    <div><span>04</span>Как устроен узел на стойке</div>
+    <div><span>05</span>Профили для окон, дверей и интерьера</div>
+    <div><span>06</span>Подоконники</div>
+    <div><span>07</span>Отделка: белый, RAL, плёнка</div>
+    <div><span>08</span>Галерея</div>
+    <div><span>09</span>Как проходит заказ</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="top"><b>01 · Проблема заказчика</b><span>Бесшовные термокороба</span></div>
+  <h2>Владелец квартиры с панорамными окнами хочет, чтобы у окна было <span class="or">тепло, тихо, сухо и красиво</span></h2>
+  <div class="grid mk" style="flex:1;min-height:0">
+    <div class="mkcol">
+      <div class="card col"><div class="k">Что не так</div>
+        <ul class="tight"><li>Стойки остывают до +10…+16 °C, у окна некомфортно</li><li>На металле собирается конденсат</li><li>По полым профилям передаётся шум</li><li>Металл застройщика выбивается из интерьера</li></ul></div>
+      <div class="card col"><div class="k">Почему обычный ремонт не помогает</div>
+        <ul class="tight"><li>Заменить фасад — дорого, часто нельзя без согласования</li><li>Второй ряд окон съедает площадь и вид</li><li>Подручные материалы — громоздко, видны стыки</li></ul>
+        <p class="small" style="margin-top:2mm"><b>Решение:</b> утеплить стойки и закрыть бесшовными коробами по размеру, не меняя фасад.</p></div>
+    </div>
+    <div class="hero" style="margin:0"><img src="{{city}}"><span>Иллюстрация</span></div>
+  </div>
+  <div class="facts f4"><div><div class="fv">+10…+16 °C</div><div class="fl">температура стойки зимой</div></div><div><div class="fv">0 мм</div><div class="fl">световой проём не уменьшается</div></div><div><div class="fv">1–⁠3 дня</div><div class="fl">установка на объекте</div></div><div><div class="fv">без сверления</div><div class="fl">профиль окна не повреждают</div></div></div>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>02 · Что получает заказчик</b><span>Бесшовные термокороба</span></div>
+  <h2>Один заказ решает для заказчика семь задач</h2>
+  <p class="lead" style="margin-bottom:4mm">Холодная, шумная и некрасивая лоджия становится тёплой, тихой и красивой частью квартиры. Стойки несущие — их не меняют, а утепляют и закрывают коробом.</p>
+  <div class="paygrid"><div class="card col pay"><div class="k">Проблема: холодные стойки</div><div><h3>Тепло</h3><p>Зимой стойки остывают до +10…+16 °C. Утеплитель и короб закрывают холодный металл.</p></div></div><div class="card col pay"><div class="k">Проблема: лоджия как склад</div><div><h3>Уют</h3><p>Ровные бесшовные поверхности без щелей и самодельных стыков. Лоджия становится частью квартиры.</p></div></div><div class="card col pay"><div class="k">Проблема: слышно соседей</div><div><h3>Тишина</h3><p>Пустотелые стойки проходят через этажи и передают звук. Пустоты заполняют, стойку закрывают коробом.</p></div></div><div class="card col pay"><div class="k">Проблема: конденсат</div><div><h3>Сухость</h3><p>Металл закрывают бутиловой лентой или жидкой резиной. На этом слое конденсат не образуется.</p></div></div><div class="card col pay"><div class="k">Проблема: профиль застройщика</div><div><h3>Дизайн</h3><p>Короба красят по RAL или клеят плёнку. Царапины и следы стройки скрыты.</p></div></div><div class="card col pay"><div class="k">Проблема: метры пустуют</div><div><h3>Площадь</h3><p>С утеплением пола и потолка лоджия становится кабинетом или детским уголком. Без второго ряда остекления.</p></div></div><div class="card col pay"><div class="k">Проблема: квартира под сдачу</div><div><h3>Аренда</h3><p>Аккуратные окна видны на фото объявления. Аргумент для владельцев квартир под сдачу.</p></div></div>
+    <div class="ba"><div><img src="{{before}}"><span>До</span></div><div><img src="{{after}}"><span>После</span></div></div>
+  </div>
+  <div class="cta band">
+    <div><h3 style="font-size:14pt">Все семь задач закрывает один заказ</h3><p class="muted">утепление узла и бесшовный короб по замеру</p></div>
+    <div class="ph">1–⁠3 дня</div>
+    <p class="muted small">установка на объекте после бесплатного замера</p>
+  </div>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>03 · Решение</b><span>Бесшовные термокороба</span></div>
+  <h2>Термокороб — цельногнутый короб из ПВХ-сэндвича с утеплителем внутри</h2>
+  <p class="lead">Короб делают по замеру конкретной стойки и клеят поверх утеплённого профиля. Стыка на внешнем ребре нет: изделие согнуто из одной полосы.</p>
+  <div class="grid g2">
+    <div class="card col"><div class="k">01</div><h3>Термокороб на стойки и ригели</h3><ul>
+        <li>П‑образный — на вертикальную стойку, Г‑образный — на ригель и примыкания.</li>
+        <li>От пола до потолка одной деталью, без набора планок.</li>
+        <li>Монтаж на клей, без сверления профиля.</li>
+        <li>Световой проём не уменьшается: короб закрывает только стойку.</li></ul></div>
+    <div class="card col"><div class="k">02</div><h3>3D‑термооткос на окна и двери</h3><ul>
+        <li>Откос загнут до стены. Ширина полок любая, например 90 мм спереди и 30 мм сбоку.</li>
+        <li>Обычный F-профиль даёт фиксированные 50–⁠60 мм.</li>
+        <li>Детали режут под 90°, без стыков на 45°.</li>
+        <li>Подходит для ПВХ, алюминиевых и деревянных окон, входных и межкомнатных дверей.</li></ul></div>
+  </div>
+  <p class="small muted" style="margin-top:5mm">Утепление стоек не превращает любое холодное остекление в тёплое. Нужна ли замена стёкол или стеклопакетов, решает инженер на объекте.</p>
+  <div class="facts"><div><div class="fv">10 мм</div><div class="fl">сэндвич-панель с утеплителем внутри</div></div><div><div class="fv">без сверления</div><div class="fl">короб сажают на клей поверх утеплённой стойки</div></div><div><div class="fv">0 мм</div><div class="fl">световой проём не уменьшается</div></div></div>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>04 · Как устроен узел</b><span>Бесшовные термокороба</span></div>
+  <div class="grid g-img" style="flex:1;margin-bottom:8mm;min-height:0;grid-template-rows:minmax(0,1fr)">
+    <div class="txtcol">
+      <h2>Перед установкой короба стойку изолируют и утепляют</h2>
+      <p class="lead" style="margin-bottom:4mm">Короб — финишный слой. Тепло даёт весь узел: изоляция металла, утеплитель и герметичные примыкания.</p>
+      <div class="strows"><div class="card strow"><div class="k">01</div><div><h3>Гидроизоляция</h3><p class="small muted">Металл стойки закрывают бутиловой лентой или жидкой резиной. На этом слое конденсат не образуется.</p></div></div><div class="card strow"><div class="k">02</div><div><h3>Утепление</h3><p class="small muted">На вертикальные и горизонтальные профили клеят пеноплекс.</p></div></div><div class="card strow"><div class="k">03</div><div><h3>Заполнение и герметизация</h3><p class="small muted">Пустоты заполняют пеной, примыкания проходят герметиком. Между стеклопакетом и коробом прокладывают резину.</p></div></div><div class="card strow"><div class="k">04</div><div><h3>Замер</h3><p class="small muted">Снимают точный размер стойки.</p></div></div><div class="card strow"><div class="k">05</div><div><h3>Установка</h3><p class="small muted">Чистовой короб сажают на клей или герметик, который не растворяет пенополистирол. Крепёж в профиль не нужен.</p></div></div></div>
+      <div class="cta band slim"><p class="muted small" style="margin:0">Для каждой профильной системы — своя последовательность. Её подбирают на замере, после осмотра стоек и примыканий.</p></div>
+    </div>
+    <div class="imgcol"><div class="phwrap"><img class="ph" src="{{tape}}"></div><div class="cap">Стойки и ригели в изоляции перед установкой коробов</div></div>
+  </div>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>5</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>05 · Изделия</b><span>Бесшовные термокороба</span></div>
+  <h2>Кроме утепления — профили для окон, дверей и интерьера в одном стиле</h2>
+  <p class="lead" style="margin-bottom:5mm">Всё — из одного материала, ПВХ-сэндвича 10 мм, и в одной отделке с коробами. Ниже — схемы сечений.</p>
+  <div class="grid g4" style="gap:4mm"><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="6" width="14" height="32" fill="#C9CED8"/><rect x="4" y="46" width="96" height="30" fill="#E0E4EB"/><rect x="18" y="40" width="82" height="6" fill="#F2C9A8"/><path d="M18,37 L106,37 L106,60 L100,60" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M18,37 L106,37 L106,60 L100,60" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Подоконник</h3><p class="small">На пеноплексе: сэндвич с загибом вниз, свес за стену 50–⁠150 мм. Второй вариант — на плите ЛДСП/МДФ, см. следующую страницу.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="8" y="8" width="22" height="64" fill="#C9CED8"/><rect x="30" y="40" width="58" height="36" fill="#E0E4EB"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Дверной 3D‑откос</h3><p class="small">Откос и наличник одной деталью: загиб на стену, торец закрыт загибом. Входные и межкомнатные двери.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="8" y="8" width="22" height="64" fill="#C9CED8"/><rect x="30" y="40" width="58" height="36" fill="#E0E4EB"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Оконный 3D‑откос</h3><p class="small">Откос загнут до стены. Ширина полок любая. Для ПВХ, алюминиевых и деревянных окон.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="4" width="22" height="72" fill="#E0E4EB"/><rect x="4" y="66" width="112" height="10" fill="#E0E4EB"/><path d="M26,26 L48,26 L48,64" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M26,26 L48,26 L48,64" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Плинтус</h3><p class="small">Короб у пола: внутри можно спрятать кабель. Цвет — в тон коробам и откосам.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="10" y="30" width="60" height="46" fill="#E0E4EB"/><path d="M10,26 L74,26 L74,76" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M10,26 L74,26 L74,76" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Уголок</h3><p class="small">Закрывает и защищает внешний угол стены, колонны или откоса.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="64" width="112" height="12" fill="#E0E4EB"/><circle cx="46" cy="44" r="12" fill="#C9CED8"/><circle cx="76" cy="50" r="7" fill="#C9CED8"/><path d="M22,62 L22,24 L96,24 L96,62" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M22,62 L22,24 L96,24 L96,62" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Короб на трубы и кабели</h3><p class="small">П‑короб вдоль стены. К круглой трубе крепят через каркас из профиля или бруска.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="40" y="18" width="40" height="44" fill="#C9CED8"/><path d="M36,14 L84,14 L84,66 L36,66 Z" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M36,14 L84,14 L84,66 L36,66 Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Колонна и столб</h3><p class="small">Обшивка квадратного столба — четыре сгиба. Круглые колонны закрывают секторами.</p></div><div class="card prod"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="4" width="112" height="12" fill="#E0E4EB"/><rect x="40" y="16" width="40" height="22" fill="#C9CED8"/><path d="M30,18 L30,52 L90,52 L90,18" fill="none" stroke="#202531" stroke-width="7" stroke-linejoin="miter"/><path d="M30,18 L30,52 L90,52 L90,18" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg><h3>Фальшбалка и балка</h3><p class="small">Короб на потолочную балку или декоративная балка из того же сэндвича.</p></div></div>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>6</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>06 · Подоконники</b><span>Бесшовные термокороба</span></div>
+  <h2>Подоконник из сэндвича делают двумя способами</h2>
+  <p class="lead" style="margin-bottom:5mm">Сэндвич — финишная поверхность. Жёсткость и форму даёт основа: плита или пеноплекс. Схемы — в разрезе.</p>
+  <div class="grid g2">
+    <div class="card col"><div class="k">Вариант 1</div><h3>На плите ЛДСП или МДФ</h3><svg viewBox="0 0 260 170" class="bigsec"><defs><pattern id="ht" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" stroke="#B9C0CC" stroke-width="1.4"/></pattern></defs><rect x="40" y="10" width="24" height="62" fill="#C9CED8"/><text x="52" y="44" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="middle">окно</text><rect x="40" y="86" width="150" height="78" fill="url(#ht)"/><rect x="64" y="72" width="126" height="14" fill="#E7D3B5"/><text x="127" y="82" font-size="9" font-family="Onest" fill="#202531" text-anchor="middle">ЛДСП / МДФ</text><path d="M64,68 L196,68 L196,90 L64,90" fill="none" stroke="#202531" stroke-width="9" stroke-linejoin="miter"/><path d="M64,68 L196,68 L196,90 L64,90" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="miter"/><text x="206" y="82" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="start">50 мм</text><text x="150" y="150" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="middle">стена</text></svg><p class="small muted">Плиту кладут на стену под окном. Сэндвич П‑профилем надевают на плиту: сверху, по торцу и снизу. Толщина по фронту — 50 мм.</p></div>
+    <div class="card col"><div class="k">Вариант 2</div><h3>На пеноплексе</h3><svg viewBox="0 0 260 170" class="bigsec"><defs><pattern id="ht" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" stroke="#B9C0CC" stroke-width="1.4"/></pattern></defs><rect x="40" y="10" width="24" height="62" fill="#C9CED8"/><text x="52" y="44" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="middle">окно</text><rect x="40" y="86" width="150" height="78" fill="url(#ht)"/><rect x="64" y="72" width="126" height="14" fill="#F2C9A8"/><text x="127" y="82" font-size="9" font-family="Onest" fill="#202531" text-anchor="middle">пеноплекс</text><path d="M64,68 L200,68 L200,118 L190,118" fill="none" stroke="#202531" stroke-width="9" stroke-linejoin="miter"/><path d="M64,68 L200,68 L200,118 L190,118" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="miter"/><text x="210" y="96" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="start">50–⁠150 мм</text><text x="120" y="150" font-size="9" font-family="Onest" fill="#4E5766" text-anchor="middle">стена</text></svg><p class="small muted">На стену кладут пеноплекс — он утепляет и держит форму. Сверху сэндвич с загибом вниз: свес за стену 50–⁠150 мм, торец закрыт загибом к стене.</p></div>
+  </div>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>7</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>07 · Отделка</b><span>Бесшовные термокороба</span></div>
+  <h2>Любое изделие делают в одном из трёх вариантов отделки</h2>
+  <p class="lead" style="margin-bottom:5mm">Цвет подбирают под интерьер: короб, откос и подоконник можно сделать в тон стенам, полу или мебели.</p>
+  <div class="grid g3">
+    <div class="card col"><div class="k">01</div><h3>Белый</h3><p class="small muted">Базовый цвет сэндвича, как у пластикового окна. Без дополнительной отделки, самый быстрый вариант.</p>
+      <div class="sws"><div class="sw"><div class="chip" style="background:#FFFFFF;border:1px solid #E0E4EB;"></div><span>белый матовый</span></div></div></div>
+    <div class="card col"><div class="k">02</div><h3>Покраска по RAL</h3><p class="small muted">800+ вариантов цвета по шкале RAL. Красят в покрасочной камере партнёра. Добавляет несколько дней к сроку.</p>
+      <div class="sws"><div class="sw"><div class="chip" style="background:#383E42;"></div><span>графит RAL 7016</span></div><div class="sw"><div class="chip" style="background:#16181B;"></div><span>чёрный матовый</span></div><div class="sw"><div class="chip" style="background:#59473A;"></div><span>коричневый</span></div><div class="sw"><div class="chip" style="background:#9DA3A6;"></div><span>серый</span></div></div></div>
+    <div class="card col"><div class="k">03</div><h3>Ламинация плёнкой</h3><p class="small muted">200+ вариантов плёнки: под дерево, однотонные, детские с рисунком.</p>
+      <div class="sws"><div class="sw"><div class="chip" style="background:repeating-linear-gradient(92deg,#D9C3A0 0 3px,#CDB48D 3px 7px,#D9C3A0 7px 9px,#E3D0B1 9px 14px);"></div><span>светлый дуб</span></div><div class="sw"><div class="chip" style="background:repeating-linear-gradient(92deg,#C08A4E 0 3px,#B37C42 3px 7px,#C08A4E 7px 9px,#CC9960 9px 14px);"></div><span>золотой дуб</span></div><div class="sw"><div class="chip" style="background:repeating-linear-gradient(92deg,#6E4B33 0 3px,#5F402B 3px 7px,#6E4B33 7px 9px,#7B563C 9px 14px);"></div><span>орех</span></div><div class="sw"><div class="chip" style="background:repeating-linear-gradient(92deg,#B9B2A3 0 3px,#ACA493 3px 7px,#B9B2A3 7px 9px,#C6C0B3 9px 14px);"></div><span>ясень</span></div></div></div>
+  </div>
+  <div class="cta band">
+    <div><h3 style="font-size:14pt">Комплект в одной плёнке</h3><p class="muted">короба, откосы, подоконник и плинтус в одном цвете</p></div>
+    <div class="ph">200+ плёнок</div>
+    <p class="muted small">Примеры готовых изделий в разной отделке — в галерее на следующих страницах.</p>
+  </div>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>8</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>08 · Галерея</b><span>Бесшовные термокороба</span></div>
+  <h2>Что можно сделать</h2>
+  <div class="galgrid"><figure class="gal"><img src="{{g01}}"><figcaption>Подоконник-столешница вдоль панорамного окна</figcaption></figure><figure class="gal"><img src="{{g02}}"><figcaption>Портал балконного блока и 3D‑откосы под светлый дуб</figcaption></figure><figure class="gal"><img src="{{g03}}"><figcaption>Подоконник под дуб на ригеле, белые короба на стойках и парапете</figcaption></figure><figure class="gal"><img src="{{g04}}"><figcaption>Лоджия: белые короба на стойках и ригелях</figcaption></figure><figure class="gal"><img src="{{g05}}"><figcaption>Эркер: белые короба на стойках граней</figcaption></figure><figure class="gal"><img src="{{g06}}"><figcaption>Откосы входной двери под светлый дуб</figcaption></figure><figure class="gal"><img src="{{g07}}"><figcaption>Угол остекления: короб на угловой стойке и парапете</figcaption></figure><figure class="gal"><img src="{{g08}}"><figcaption>Белые короба на стойках и нижнем ригеле у пола</figcaption></figure></div>
+  <p class="small muted" style="margin-top:auto;margin-bottom:6mm">Иллюстрации. Показывают, как выглядят изделия из сэндвича 10 мм в интерьере.</p>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>9</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>08 · Галерея</b><span>Бесшовные термокороба</span></div>
+  <h2>Что можно сделать — продолжение</h2>
+  <div class="galgrid"><figure class="gal"><img src="{{g09}}"><figcaption>Лоджия: белые короба на стойках и ригеле</figcaption></figure><figure class="gal"><img src="{{g10}}"><figcaption>Белые 3D‑откосы входной двери</figcaption></figure><figure class="gal"><img src="{{g11}}"><figcaption>Подоконник с боковинами вокруг радиатора, под дуб</figcaption></figure><figure class="gal"><img src="{{g12}}"><figcaption>Обрамление ниши под телевизор под орех</figcaption></figure><figure class="gal"><img src="{{g13}}"><figcaption>Откосы, порог и плинтус балконной двери под дуб</figcaption></figure><figure class="gal"><img src="{{g14}}"><figcaption>Графитовые короба на стойках и ригелях</figcaption></figure><figure class="gal"><img src="{{g15}}"><figcaption>Обшивка квадратной колонны, белый</figcaption></figure><figure class="gal"><img src="{{g16}}"><figcaption>Круглая колонна, обшитая гранями, графит</figcaption></figure></div>
+  <p class="small muted" style="margin-top:auto;margin-bottom:6mm">Иллюстрации. Показывают, как выглядят изделия из сэндвича 10 мм в интерьере.</p>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>10</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>08 · Галерея</b><span>Бесшовные термокороба</span></div>
+  <h2>Что можно сделать — продолжение</h2>
+  <div class="galgrid"><figure class="gal"><img src="{{g17}}"><figcaption>Портал проёма без двери под светлый дуб</figcaption></figure><figure class="gal"><img src="{{g18}}"><figcaption>Реечная стена из П‑профилей под дуб</figcaption></figure><figure class="gal"><img src="{{g19}}"><figcaption>Портал выхода на лоджию под дуб</figcaption></figure><figure class="gal"><img src="{{g20}}"><figcaption>Короб на стояки в санузле с лючком</figcaption></figure><figure class="gal"><img src="{{g21}}"><figcaption>Фитнес-зал: колонны под дерево, белые короба на стойках</figcaption></figure><figure class="gal"><img src="{{g22}}"><figcaption>Рама для карты под светлый дуб</figcaption></figure><figure class="gal"><img src="{{g23}}"><figcaption>Рама для большого зеркала под дуб</figcaption></figure><figure class="gal"><img src="{{g24}}"><figcaption>Фальшбалки под светлый дуб</figcaption></figure></div>
+  <p class="small muted" style="margin-top:auto;margin-bottom:6mm">Иллюстрации. Показывают, как выглядят изделия из сэндвича 10 мм в интерьере.</p>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>11</span></div>
+</section>
+
+<section class="page">
+  <div class="top"><b>09 · Как проходит заказ</b><span>Бесшовные термокороба</span></div>
+  <h2>От бесплатного замера до установки — понятные шаги и сроки</h2>
+  <p class="lead" style="margin-bottom:5mm">Стоимость считают на месте: она зависит от размеров остекления, количества стоек и отделки.</p>
+  <div class="grid g4" style="gap:4mm">
+    <div class="card col"><div class="k">01</div><h3>Бесплатный замер</h3><p class="small muted">Меряют каждую стойку, смотрят профильную систему и примыкания, называют стоимость и срок.</p></div>
+    <div class="card col"><div class="k">02</div><h3>Выбор отделки</h3><p class="small muted">Белый, 800+ цветов RAL или 200+ плёнок. Цвет подбирают под проект: в тон стенам, полу или мебели.</p></div>
+    <div class="card col"><div class="k">03</div><h3>Изготовление</h3><p class="small muted">Короба и откосы делают по замеру, каждую деталь — из цельной полосы. Покраска по RAL добавляет несколько дней.</p></div>
+    <div class="card col"><div class="k">04</div><h3>Установка за 1–⁠3 дня</h3><p class="small muted">Стойку изолируют и утепляют, короб сажают на клей. Без сверления профиля, без шума и пыли.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:5mm">
+    <div class="card fill"><h3>Что важно дизайнеру</h3><ul class="tight"><li>Окна в пол перестают быть техникой застройщика и становятся частью интерьера</li><li>Короба, откосы, подоконник и плинтус — в одной отделке</li><li>Световой проём и вид из окна не меняются</li></ul></div>
+    <div class="card fill"><h3>Что важно прорабу</h3><ul class="tight"><li>Монтаж на клей поверх утеплённой стойки, профиль не сверлят</li><li>Этап монтажа согласуют под график объекта</li><li>Стоимость и сроки фиксируют в договоре</li></ul></div>
+  </div>
+  <div class="cta band">
+    <div><h3 style="font-size:14pt">Расчёт — после бесплатного замера</h3><p class="muted">стоимость зависит от размеров остекления и выбранной отделки</p></div>
+    <div class="ph">1–⁠3 дня</div>
+    <p class="muted small">установка на объекте</p>
+  </div>
+  <div class="foot"><span>Бесшовные термокороба · технология и изделия</span><span>12</span></div>
+</section>
+
+
+</body></html>
