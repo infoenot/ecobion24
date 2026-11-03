@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Станок «Оконщик 3000» — оборудование и технология бесшовных термокоробов</title>
+<title>Оконщик 3000 — бизнес на утеплении панорамных окон, балконов и лоджий</title>
 <meta name="description" content="Станок для бесшовных термокоробов и 3D-откосов из ПВХ-сэндвича 10 мм. Комплект, обучение и год поддержки. Без роялти и паушального взноса.">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -223,7 +223,7 @@ h2{font-size:40px;line-height:1.08;letter-spacing:-.02em;max-width:880px;margin-
 
 /* ===== Утеплит DS 3.0 ===== */
 :root{--u-bg:#F2F2F2;--u-card:#FFFFFF;--u-peach:#E3E3E3;--u-forest:#161616;--u-forest-2:#2E2E2E;--u-ink:#0E0E0E;--u-muted:#555555;--u-on-forest:#FFFFFF;--u-on-forest-muted:#BDBDBD;--u-action:#1A9BFC;--u-action-hover:#0B84E0;--u-sun:#1A9BFC;--u-line:#E3E3E3;--u-line-dark:#2E2E2E;--u-focus:#8F8F8F;
---u-fs-display:clamp(36px,5vw,60px);--u-fs-h2:clamp(30px,4vw,46px);--u-r-field:14px;--u-r-card:20px;--u-r-big:28px;--u-shadow-soft:0 1px 2px rgba(14,14,14,.04),0 10px 30px rgba(14,14,14,.06);--u-shadow-float:0 8px 24px rgba(14,14,14,.12);--u-gutter:16px;--u-section:64px;--u-inset:20px;
+--u-fs-display:clamp(34px,4.2vw,52px);--u-fs-h2:clamp(30px,4vw,46px);--u-r-field:14px;--u-r-card:20px;--u-r-big:28px;--u-shadow-soft:0 1px 2px rgba(14,14,14,.04),0 10px 30px rgba(14,14,14,.06);--u-shadow-float:0 8px 24px rgba(14,14,14,.12);--u-gutter:16px;--u-section:64px;--u-inset:20px;
 --or:var(--u-action);--dark:var(--u-forest);--accent:var(--u-forest);--ink:var(--u-ink);--muted:var(--u-muted);--line:var(--u-line)}
 @media(min-width:768px){:root{--u-gutter:32px;--u-inset:24px}}@media(min-width:1024px){:root{--u-section:96px}}
 body{background:var(--u-bg);color:var(--u-ink);font-size:15px}
@@ -265,9 +265,10 @@ header.bar .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-s
 header.bar .tel{color:var(--u-ink)}
 /* hero */
 .u-hero{background:var(--u-bg);padding:40px 0 var(--u-section)}
-.u-hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.u-hgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
 .u-chip{display:inline-block;background:#fff;border:1px solid var(--u-line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:500;margin-bottom:20px}
-.u-hero h1{font-size:var(--u-fs-display);font-weight:600;line-height:1.02;letter-spacing:-.035em;color:var(--u-ink);max-width:20ch}
+.u-hero h1{font-size:var(--u-fs-display);font-weight:600;line-height:1.02;letter-spacing:-.035em;color:var(--u-ink);max-width:none;text-wrap:balance}
+@media(min-width:1200px){.u-hero h1 .ln{display:block;white-space:nowrap}}
 .u-lead{font-size:17px;line-height:1.6;color:var(--u-muted);max-width:52ch;margin-top:20px}
 .u-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .u-hpic{position:relative;border-radius:var(--u-r-big);aspect-ratio:4/5;max-height:680px}
@@ -299,6 +300,8 @@ header.bar .tel{color:var(--u-ink)}
 footer{background:var(--u-bg);color:var(--u-muted);border-top:1px solid var(--u-line)}footer b{color:var(--u-ink)}
 .fab .u-btn{flex:1;box-shadow:var(--u-shadow-float)}
 .fab{transition:opacity .15s}.fab.off{opacity:0;pointer-events:none}
+.grid>*,.paygrid>*,.mk>*{min-width:0}
+@media(max-width:1180px){.mk{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}.paygrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:959px){.u-hgrid,.u-final{grid-template-columns:1fr}.u-hpic{aspect-ratio:4/5;max-height:none}.u-final{padding:28px 20px;gap:28px}}
 @media(max-width:860px){
   .u-panel .fields{grid-template-columns:1fr}.u-panel .btn{width:100%}
@@ -315,8 +318,8 @@ footer{background:var(--u-bg);color:var(--u-muted);border-top:1px solid var(--u-
   <div class="u-wrap u-hgrid">
     <div class="u-htxt">
       <span class="u-chip">Без роялти и паушального взноса</span>
-      <h1>Станок «Оконщик 3000»: оборудование и технология бесшовных термокоробов</h1>
-      <p class="u-lead">Делайте короба и 3D‑откосы, которые закрывают холодные алюминиевые стойки окон в пол изнутри квартиры. Комплект, обучение и год поддержки.</p>
+      <h1><span class="ln">Высокодоходный бизнес</span> <span class="ln">на утеплении панорамных</span> <span class="ln">окон, балконов</span> <span class="ln">и лоджий изнутри</span></h1>
+      <p class="u-lead">Для мастеров, оконщиков, ремонтников и тех, кто устал работать на рынке с высокой конкуренцией и низкой доходностью.</p>
       <div class="u-btns"><a class="u-btn" href="#form-top">Получить консультацию</a><a class="u-btn u-out" href="tel:+79219503860">+7 921 950-38-60</a></div>
     </div>
     <div class="u-hpic"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления">
