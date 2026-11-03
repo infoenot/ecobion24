@@ -59,7 +59,7 @@ def ty(t):
 st=html.index('</style>')
 body=re.sub(r'>([^<]+)<',lambda m:'>'+ty(m.group(1))+'<',html[st:])
 full=html[:st]+body
-PAL={'#F26B1D':'#1A9BFC','#202531':'#262626','#0A0E15':'#111111','#4E5766':'#555555','#E0E4EB':'#E3E3E3','#F0F1F5':'#F2F2F2','#C9CED8':'#CCCCCC','#B9C0CC':'#BDBDBD','#C3C9D3':'#C8C8C8','#5B6576':'#5E5E5E','#8A93A3':'#8F8F8F','rgba(32,37,49':'rgba(38,38,38'}
+PAL={'#F26B1D':'#1A9BFC','#202531':'#161616','#0A0E15':'#111111','#4E5766':'#555555','#E0E4EB':'#E3E3E3','#F0F1F5':'#F2F2F2','#C9CED8':'#CCCCCC','#B9C0CC':'#BDBDBD','#C3C9D3':'#C8C8C8','#5B6576':'#5E5E5E','#8A93A3':'#8F8F8F','rgba(32,37,49':'rgba(38,38,38'}
 for a,b in PAL.items(): full=full.replace(a,b).replace(a.lower(),b)
 open('partner.tpl.html','w').write(full)
 low=body.lower(); print(len(pages),'станок' in low,'окупаем' in low,'цен' in low)

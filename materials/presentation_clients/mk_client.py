@@ -6,10 +6,11 @@ def R(x,a,b):
     assert a in x,(a[:70]); return x.replace(a,b,1)
 BR='Тёплые окна в пол'
 CSS='''<style>
-.cvr{display:grid;grid-template-columns:1.05fr 1fr;gap:0;padding:0!important}
+.cvr{display:grid;grid-template-columns:157mm 140mm;gap:0;padding:0!important}
 .cvr .l{padding:16mm 14mm 14mm 18mm;display:flex;flex-direction:column}
 .cvr{grid-template-rows:210mm}.cvr .r{position:relative;overflow:hidden;height:210mm}.cvr .r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.cvr h1{font-size:30pt;margin-top:22mm;line-height:1.1}
+.cvr h1 .ln{display:block;white-space:nowrap}
+.cvr h1{font-size:25pt;margin-top:24mm;line-height:1.12}
 .cvr .sub{color:#BDBDBD;font-size:13pt;margin-top:4mm}
 .cvr .chips{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:3mm}
 .cvr .chips div{border:1px solid rgba(255,255,255,.18);border-radius:2.5mm;padding:3mm 4mm;font-size:10.5pt}
@@ -28,7 +29,7 @@ head=head.replace('</head>',CSS+'</head>')
 cover='''<section class="page cover cvr">
   <div class="l">
     <div class="top"><b>Тёплые окна в пол</b><span>для собственников квартир</span></div>
-    <h1><span style="display:block;white-space:nowrap">Утеплим холодные</span><span class="or" style="display:block;white-space:nowrap">панорамные окна,</span><span class="or" style="display:block;white-space:nowrap">балконы и лоджии</span><span style="display:block;white-space:nowrap">изнутри</span></h1>
+    <h1><span class="ln">Утеплим холодные</span><span class="ln or">панорамные окна, балконы</span><span class="ln"><span class="or">и лоджии</span> изнутри</span></h1>
     <div class="sub">в вашем жилом комплексе</div>
     <div class="chips"><div><b>Бесплатно</b>замер и расчёт</div><div><b>1–3 дня</b>установка</div><div><b>Без сверления</b>профиль окна целый</div><div><b>800+ RAL</b>и 200+ плёнок</div></div>
   </div>
@@ -136,7 +137,7 @@ def ty(t):
     return t
 st=html.rindex('</style>')
 full=html[:st]+re.sub(r'>([^<]+)<',lambda m:'>'+ty(m.group(1))+'<',html[st:])
-PAL={'#F26B1D':'#1A9BFC','#202531':'#262626','#0A0E15':'#111111','#4E5766':'#555555','#E0E4EB':'#E3E3E3','#F0F1F5':'#F2F2F2','#C9CED8':'#CCCCCC','#B9C0CC':'#BDBDBD','#C3C9D3':'#C8C8C8','#5B6576':'#5E5E5E','#8A93A3':'#8F8F8F','rgba(32,37,49':'rgba(38,38,38'}
+PAL={'#F26B1D':'#1A9BFC','#202531':'#161616','#0A0E15':'#111111','#4E5766':'#555555','#E0E4EB':'#E3E3E3','#F0F1F5':'#F2F2F2','#C9CED8':'#CCCCCC','#B9C0CC':'#BDBDBD','#C3C9D3':'#C8C8C8','#5B6576':'#5E5E5E','#8A93A3':'#8F8F8F','rgba(32,37,49':'rgba(38,38,38'}
 for a,b in PAL.items(): full=full.replace(a,b).replace(a.lower(),b)
 open('pres/client.tpl.html','w').write(full)
 low=full.lower(); print(len(pages),'станок' in low,'окупаем' in low,'10…+16' in full)

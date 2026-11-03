@@ -4,7 +4,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 @page{size:297mm 210mm;margin:0}
-:root{--or:#1A9BFC;--ink:#111111;--muted:#555555;--line:#E3E3E3;--soft:#F2F2F2;--accent:#262626;--dark:#262626}
+:root{--or:#1A9BFC;--ink:#111111;--muted:#555555;--line:#E3E3E3;--soft:#F2F2F2;--accent:#161616;--dark:#161616}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Onest,Arial,sans-serif;color:var(--ink);background:#fff;font-size:11.5pt;line-height:1.45}
 .page{width:297mm;height:210mm;padding:16mm 18mm 14mm;position:relative;page-break-after:always;overflow:hidden;display:flex;flex-direction:column}
@@ -115,10 +115,11 @@ ol.steps>li{margin-top:3.6mm}
 ul.tight li{margin-top:1.2mm;font-size:10pt;line-height:1.35}ul.tight li:before{top:1.5mm;width:1.7mm;height:1.7mm}
 h1,h2,h3,.fv,.fv2,.lead,p,li,.cap,.fl,figcaption,td,.kv div,.k{text-wrap:balance}
 </style><style>
-.cvr{display:grid;grid-template-columns:1.05fr 1fr;gap:0;padding:0!important}
+.cvr{display:grid;grid-template-columns:157mm 140mm;gap:0;padding:0!important}
 .cvr .l{padding:16mm 14mm 14mm 18mm;display:flex;flex-direction:column}
 .cvr{grid-template-rows:210mm}.cvr .r{position:relative;overflow:hidden;height:210mm}.cvr .r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.cvr h1{font-size:30pt;margin-top:22mm;line-height:1.1}
+.cvr h1 .ln{display:block;white-space:nowrap}
+.cvr h1{font-size:25pt;margin-top:24mm;line-height:1.12}
 .cvr .sub{color:#BDBDBD;font-size:13pt;margin-top:4mm}
 .cvr .chips{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:3mm}
 .cvr .chips div{border:1px solid rgba(255,255,255,.18);border-radius:2.5mm;padding:3mm 4mm;font-size:10.5pt}
@@ -138,7 +139,7 @@ h1,h2,h3,.fv,.fv2,.lead,p,li,.cap,.fl,figcaption,td,.kv div,.k{text-wrap:balance
 <section class="page cover cvr">
   <div class="l">
     <div class="top"><b>Тёплые окна в пол</b><span>для собственников квартир</span></div>
-    <h1><span style="display:block;white-space:nowrap">Утеплим холодные</span><span class="or" style="display:block;white-space:nowrap">панорамные окна,</span><span class="or" style="display:block;white-space:nowrap">балконы и лоджии</span><span style="display:block;white-space:nowrap">изнутри</span></h1>
+    <h1><span class="ln">Утеплим холодные</span><span class="ln or">панорамные окна, балконы</span><span class="ln"><span class="or">и лоджии</span> изнутри</span></h1>
     <div class="sub">в вашем жилом комплексе</div>
     <div class="chips"><div><b>Бесплатно</b>замер и расчёт</div><div><b>1–⁠3 дня</b>установка</div><div><b>Без сверления</b>профиль окна целый</div><div><b>800+ RAL</b>и 200+ плёнок</div></div>
   </div>
