@@ -7,8 +7,8 @@ secs = re.findall(r'<section class="page[^"]*".*?</section>', s, re.S)
 PHONE = '+7 921 950-38-60'
 TEL = 'tel:+79219503860'
 
-def form(fid, place, title, sub, extra=''):
-    return f'''<form class="lform" id="{fid}" data-place="{place}">
+def form(fid, place, title, sub, extra='', panel=False):
+    return f'''<form class="lform{' u-panel' if panel else ''}" id="{fid}" data-place="{place}">
   <div class="fields">
     <h3>{title}</h3><p>{sub}</p>
     <input name="name" placeholder="Имя" autocomplete="name" required>
@@ -36,18 +36,26 @@ h1 = re.search(r'<h1>.*?</h1>', cov, re.S).group(0)
 lead = re.search(r'<p class="lead">.*?</p>', cov, re.S).group(0)
 toc = re.findall(r'<div><span>(\d\d)</span>(.*?)</div>', cov)
 links = ''.join(f'<a href="#s{n}"><span>{n}</span>{t}</a>' for n, t in toc)
-out[0] = f'''<section class="page cover hero1">
-  <div class="h1grid">
-    <div class="ht">
-      {h1}
-      {lead}
+out[0] = f'''<section class="u-hero">
+  <div class="u-wrap u-hgrid">
+    <div class="u-htxt">
+      <span class="u-chip">Без роялти и паушального взноса</span>
+      <h1>Станок «Оконщик 3000»: оборудование и технология бесшовных термокоробов</h1>
+      <p class="u-lead">Делайте короба и 3D-откосы, которые закрывают холодные алюминиевые стойки окон в пол изнутри квартиры. Комплект, обучение и год поддержки.</p>
+      <div class="u-btns"><a class="u-btn" href="#form-top">Получить консультацию</a><a class="u-btn u-out" href="{TEL}">{PHONE}</a></div>
     </div>
-    {form('form-top', 'первый экран', 'Получите консультацию', 'Перезвоним, разберём ваш город и ответим на вопросы по станку.', '<input name="city" placeholder="Город">')}
-    <div class="hpic"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления"></div>
+    <div class="u-hpic"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления">
+      <div class="u-fl u-fl1"><b>450 000 ₽</b>комплект без НДС</div>
+      <div class="u-fl u-fl2"><b>20 рабочих дней</b>изготовление по договору</div>
+      <div class="u-fl u-fl3"><b>24 месяца</b>гарантия на станок</div>
+      <span class="u-ill">иллюстрация</span>
+    </div>
   </div>
-</section>'''
+  <div class="u-wrap">{form('form-top', 'первый экран', 'Обсудить запуск в вашем городе', 'Перезвоним, разберём город и ответим на вопросы по станку.', '<input name="city" placeholder="Город">', panel=True)}</div>
+</section>
+<div class="u-trust"><div class="u-wrap"><span>450 000 ₽ без НДС</span><i>+</i><span>без роялти</span><i>+</i><span>обучение в Москве или удалённо</span><i>+</i><span>12 месяцев поддержки</span><i>+</i><span>гарантия 24 месяца</span></div></div>'''
 
-mid = f'''<section class="page cover midform" id="form-mid-sec">
+mid = f'''<section data-t="u-tdark" class="page cover midform" id="form-mid-sec">
   <div class="hgrid">
     <div>
       <div class="top"><b>Посмотреть вживую</b></div>
@@ -57,24 +65,28 @@ mid = f'''<section class="page cover midform" id="form-mid-sec">
     {form('form-mid', 'середина', 'Запросить консультацию', 'Перезвоним и договоримся о встрече или видеозвонке.', '<select name="topic"><option>Хочу посмотреть станок вживую</option><option>Видеозвонок</option><option>Вопрос по комплекту и цене</option></select>')}
   </div>
 </section>'''
-end = f'''<section class="page cover midform" id="form-end-sec">
-  <div class="hgrid">
+end = f'''<section class="u-finalsec" id="form-end-sec"><div class="u-wrap">
+  <div class="u-final">
     <div>
-      <div class="top"><b>Заявка</b></div>
-      <h2>Получите консультацию по станку и запуску в вашем городе</h2>
-      <p class="lead">Вячеслав, продажи и запуск — звонок или MAX: <a href="{TEL}" class="ph">{PHONE}</a></p>
-      <p class="lead small">Технические вопросы разбирает Сергей Попов — инженер-технолог, разработчик станка, в оконной отрасли с 1994 года.</p>
+      <h2>Обсудим запуск в вашем городе</h2>
+      <p class="u-lead">Вячеслав, продажи и запуск — звонок или MAX. Технические вопросы разбирает Сергей Попов — инженер-технолог, разработчик станка, в оконной отрасли с 1994 года.</p>
+      <div class="u-btns"><a class="u-btn u-white" href="{TEL}">{PHONE}</a></div>
     </div>
-    {form('form-bottom', 'низ', 'Получите консультацию', 'Оставьте телефон — перезвоним и ответим на вопросы.', '<input name="city" placeholder="Город"><textarea name="comment" rows="2" placeholder="Вопрос (необязательно)"></textarea>')}
+    {form('form-bottom', 'низ', 'Получить консультацию', 'Оставьте телефон — перезвоним и ответим на вопросы.', '<input name="city" placeholder="Город"><textarea name="comment" rows="2" placeholder="Вопрос (необязательно)"></textarea>')}
   </div>
-</section>'''
+</div></section>'''
 
 # middle form after section "10 · Монтаж" (index of section with id s10)
 pos = next(i for i, x in enumerate(out) if 'id="s10"' in x) + 1
+for i in range(1, len(out)):
+    tone = 'u-tbg' if i % 2 else 'u-twh'
+    if 'id="s16"' in out[i]: tone = 'u-tdark'
+    out[i] = out[i].replace('<section ', f'<section data-t="{tone}" ', 1)
 out.insert(pos, mid)
 out.append(end)
 
 body = '\n\n'.join(out)
+body = re.sub(r'<div class="top"><b>(?:\d\d · )?([^<]*)</b><span>[^<]*</span></div>', lambda m: '<span class="u-eye">'+m.group(1)+'</span>', body)
 body = re.sub(r'\{\{(\w+)\}\}', lambda m: f'img/{m.group(1)}.jpg', body)
 
 def ty(t):
@@ -192,6 +204,94 @@ h2{font-size:40px;line-height:1.08;letter-spacing:-.02em;max-width:880px;margin-
   h2{font-size:27px}
   .page{padding-top:56px;padding-bottom:56px}
 }
+
+/* ===== Утеплит DS 3.0 ===== */
+:root{--u-bg:#F2F2F2;--u-card:#FFFFFF;--u-peach:#E3E3E3;--u-forest:#161616;--u-forest-2:#2E2E2E;--u-ink:#0E0E0E;--u-muted:#555555;--u-on-forest:#FFFFFF;--u-on-forest-muted:#BDBDBD;--u-action:#1A9BFC;--u-action-hover:#0B84E0;--u-sun:#1A9BFC;--u-line:#E3E3E3;--u-line-dark:#2E2E2E;--u-focus:#8F8F8F;
+--u-fs-display:clamp(36px,5vw,60px);--u-fs-h2:clamp(30px,4vw,46px);--u-r-field:14px;--u-r-card:20px;--u-r-big:28px;--u-shadow-soft:0 1px 2px rgba(14,14,14,.04),0 10px 30px rgba(14,14,14,.06);--u-shadow-float:0 8px 24px rgba(14,14,14,.12);--u-gutter:16px;--u-section:64px;--u-inset:20px;
+--or:var(--u-action);--dark:var(--u-forest);--accent:var(--u-forest);--ink:var(--u-ink);--muted:var(--u-muted);--line:var(--u-line)}
+@media(min-width:768px){:root{--u-gutter:32px;--u-inset:24px}}@media(min-width:1024px){:root{--u-section:96px}}
+body{background:var(--u-bg);color:var(--u-ink);font-size:15px}
+.u-wrap{max-width:1200px;margin:0 auto;padding:0 var(--u-gutter)}
+.page{padding:var(--u-section) max(var(--u-gutter),calc((100% - 1200px)/2 + var(--u-gutter)))!important;background:var(--u-bg)}
+.page[data-t=u-twh]{background:#fff}
+.page:nth-of-type(even):not(.cover){background:inherit}
+.page[data-t=u-twh]{background:#fff!important}.page[data-t=u-tbg]{background:var(--u-bg)!important}
+.page[data-t=u-tdark]{background:var(--u-forest)!important;color:#fff}
+.page[data-t=u-tdark] h2,.page[data-t=u-tdark] h3{color:#fff}.page[data-t=u-tdark] .lead,.page[data-t=u-tdark] .muted{color:var(--u-on-forest-muted)}
+.page[data-t=u-tdark] .card{background:transparent!important;border:1px solid var(--u-line-dark);color:#fff}.page[data-t=u-tdark] .card .k{color:var(--u-sun);font-size:28px;font-weight:600}
+.u-eye{display:inline-block;align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--u-peach);color:var(--u-ink);border-radius:999px;padding:6px 12px;margin-bottom:16px}
+.page[data-t=u-tdark] .u-eye{background:var(--u-forest-2);color:#fff}
+h2{font-size:var(--u-fs-h2);font-weight:600;line-height:1.08;letter-spacing:-.03em;max-width:24ch;margin-bottom:16px}
+.lead{font-size:17px;line-height:1.6;max-width:56ch;margin-bottom:40px}
+h3{font-weight:600;letter-spacing:-.01em}
+/* cards: white on gray with soft shadow; on white — line, no shadow */
+.card{border-radius:var(--u-r-card);padding:var(--u-inset)}
+.page[data-t=u-tbg] .card:not(.fill){background:#fff;border-color:transparent;box-shadow:var(--u-shadow-soft)}
+.page[data-t=u-twh] .card:not(.fill){background:#fff;border:1px solid var(--u-line);box-shadow:none}
+.card.fill,.facts,.cta,.days div{background:var(--u-forest)!important;border-radius:var(--u-r-card)}
+.facts .fv,.cta.band .ph,.days b,.card.fill .num{color:var(--u-sun)}
+img.ph,.hero img,.ba img{border-radius:var(--u-r-big)}.gal img{border-radius:var(--u-r-card)}
+li:before{background:var(--u-forest)}
+.k{color:var(--u-action)}
+/* buttons */
+.u-btn,.lform .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 24px;border-radius:999px;background:var(--u-action);color:#fff;font:600 15px Onest,system-ui,sans-serif;text-decoration:none;border:0;cursor:pointer;transition:background .15s,transform .12s;white-space:nowrap}
+.u-btn:hover,.lform .btn:hover{background:var(--u-action-hover);filter:none}.u-btn:active,.lform .btn:active{transform:scale(.98)}
+.u-btn.u-out{background:transparent;color:var(--u-ink);box-shadow:inset 0 0 0 1.5px var(--u-ink)}.u-btn.u-out:hover{background:var(--u-ink);color:#fff}
+.u-btn.u-white{background:#fff;color:var(--u-ink)}.u-btn.u-white:hover{background:#E3E3E3}
+.u-btn.u-sm{height:44px;padding:0 18px;font-size:14px}
+:focus-visible{outline:3px solid var(--u-focus);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* header */
+header.bar{background:rgba(242,242,242,.92);color:var(--u-ink);backdrop-filter:blur(8px);border-bottom:1px solid var(--u-line)}
+header.bar .in{height:60px;max-width:1200px;margin:0 auto;padding:0 var(--u-gutter)}
+@media(min-width:768px){header.bar .in{height:72px}}
+header.bar .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}header.bar .logo i{width:28px;height:28px;border-radius:8px;background:var(--u-forest);display:block}
+header.bar .tel{color:var(--u-ink)}
+/* hero */
+.u-hero{background:var(--u-bg);padding:40px 0 var(--u-section)}
+.u-hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.u-chip{display:inline-block;background:#fff;border:1px solid var(--u-line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:500;margin-bottom:20px}
+.u-hero h1{font-size:var(--u-fs-display);font-weight:600;line-height:1.02;letter-spacing:-.035em;color:var(--u-ink);max-width:20ch}
+.u-lead{font-size:17px;line-height:1.6;color:var(--u-muted);max-width:52ch;margin-top:20px}
+.u-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.u-hpic{position:relative;border-radius:var(--u-r-big);aspect-ratio:4/5;max-height:680px}
+.u-hpic img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;border-radius:var(--u-r-big);display:block}
+.u-fl{position:absolute;background:#fff;border-radius:var(--u-r-field);padding:12px 16px;box-shadow:var(--u-shadow-float);font-size:13px;color:var(--u-muted);line-height:1.3}
+.u-fl b{display:block;color:var(--u-ink);font-size:17px;font-weight:600}
+.u-fl1{left:-12px;top:12%;background:var(--u-action);color:#E3F2FF}.u-fl1 b{color:#fff;font-size:20px}
+.u-fl2{right:-12px;top:46%}
+.u-fl3{left:-12px;bottom:10%;background:var(--u-forest);color:var(--u-on-forest-muted)}.u-fl3 b{color:#fff}
+.u-ill{position:absolute;right:14px;bottom:12px;font-size:11px;color:#fff;background:rgba(14,14,14,.45);padding:2px 8px;border-radius:999px}
+/* form panel (DS «панель проверки города») */
+.lform{border-radius:var(--u-r-big);box-shadow:var(--u-shadow-soft)!important;padding:24px}
+.lform input,.lform select,.lform textarea{height:48px;border-radius:var(--u-r-field);border:1px solid var(--u-line);background:var(--u-bg);font-size:16px}
+.lform textarea{height:auto}
+.u-panel{margin-top:40px}
+.u-panel .fields{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr auto;gap:12px;align-items:center}
+.u-panel h3{grid-column:1/-1;margin:0}.u-panel p{grid-column:1/-1;margin:-6px 0 4px}
+.u-panel input{margin:0}.u-panel .btn{width:auto;margin:0}.u-panel .agree{grid-column:1/-1;margin-top:0}
+.u-panel .fields>h3+p+input{grid-column:1}
+/* trust ribbon */
+.u-trust{background:var(--u-forest);color:#fff;font-weight:600;font-size:14px}
+.u-trust .u-wrap{display:flex;gap:14px;align-items:center;padding-top:18px;padding-bottom:18px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.u-trust i{color:var(--u-sun);font-style:normal}
+/* mid form & final */
+.midform .lform{box-shadow:none!important}
+.u-finalsec{background:var(--u-bg);padding:var(--u-section) 0}
+.u-final{background:var(--u-forest);color:#fff;border-radius:var(--u-r-big);padding:48px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.u-final h2{color:#fff}.u-final .u-lead{color:var(--u-on-forest-muted)}
+footer{background:var(--u-bg);color:var(--u-muted);border-top:1px solid var(--u-line)}footer b{color:var(--u-ink)}
+.fab .u-btn{flex:1;box-shadow:var(--u-shadow-float)}
+.fab{transition:opacity .15s}.fab.off{opacity:0;pointer-events:none}
+@media(max-width:959px){.u-hgrid,.u-final{grid-template-columns:1fr}.u-hpic{aspect-ratio:4/5;max-height:none}.u-final{padding:28px 20px;gap:28px}}
+@media(max-width:860px){
+  .u-panel .fields{grid-template-columns:1fr}.u-panel .btn{width:100%}
+  .u-btns .u-btn{width:100%}
+  .u-fl1,.u-fl3{left:8px}.u-fl2{right:8px}
+  .page{padding:var(--u-section) var(--u-gutter)!important}
+  .lead{margin-bottom:32px}
+  table.cmp td,table.cmp th{font-size:12.5px;padding:6px 4px;word-break:break-word;hyphens:auto}
+}
 '''
 JS = '''<script>
 // Адрес для заявок: веб-приложение Google Apps Script (см. README) — заявки попадут в таблицу «Заявки».
@@ -204,8 +304,10 @@ document.querySelectorAll('form.lform').forEach(f=>f.addEventListener('submit',a
  try{if(FORM_ENDPOINT)await fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)})}catch(err){}
  f.classList.add('sent');}));
 const fab=document.querySelector('.fab'),vis=new Set();
-const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target));fab.style.visibility=vis.size?'hidden':'visible'},{threshold:.1});
+const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target));upd()},{threshold:.1});
 document.querySelectorAll('form.lform').forEach(f=>io.observe(f));
+const hero=document.querySelector('.u-hero');function upd(){fab.classList.toggle('off',vis.size>0||hero.getBoundingClientRect().bottom>0)}
+addEventListener('scroll',upd,{passive:true});upd();
 </script>'''
 css = css.replace('@page{size:297mm 210mm;margin:0}', '')
 html = f'''<!doctype html>
@@ -215,10 +317,10 @@ html = f'''<!doctype html>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>{css}{WEB}</style></head>
 <body>
-<header class="bar"><div class="in"><div class="logo">Оконщик <span>3000</span></div><div style="display:flex;align-items:center;gap:14px"><a class="tel" href="{TEL}">{PHONE}</a><a class="btn" href="#form-top">Консультация</a></div></div></header>
+<header class="bar"><div class="in"><div class="logo"><i></i>Оконщик 3000</div><div style="display:flex;align-items:center;gap:14px"><a class="tel" href="{TEL}">{PHONE}</a><a class="u-btn u-sm" href="#form-top">Консультация</a></div></div></header>
 {body}
 <footer><b>Оконщик 3000</b> · оборудование и технология бесшовных термокоробов<br>Исполнитель по договору — ООО «Меркурий-групп», ИНН 5916035699 · {PHONE}</footer>
-<div class="fab"><a class="btn t" href="{TEL}">Позвонить</a><a class="btn" href="#form-bottom">Получить консультацию</a></div>
+<div class="fab"><a class="u-btn" href="#form-bottom">Получить консультацию</a></div>
 {JS}
 </body></html>'''
 open(D + '/landing/index.html', 'w').write(html)
