@@ -8,7 +8,7 @@ def R(x,a,b):
 BR='Бесшовные термокороба'
 cover='''<section class="page cover">
   <div class="top"><b>Бесшовные термокороба</b><span>Технология и изделия · для дизайнеров и прорабов</span></div>
-  <h1>Тёплые окна в пол: как утеплить холодное остекление изнутри квартиры</h1>
+  <h1><span style="display:block;white-space:nowrap">Утеплим холодные</span><span class="or" style="display:block;white-space:nowrap">панорамные окна, балконы</span><span style="display:block;white-space:nowrap"><span class="or">и лоджии</span> изнутри</span></h1>
   <p class="lead">Что предложить заказчику, у которого холодные алюминиевые стойки: как устроено решение, какие изделия и отделки есть, как это выглядит в интерьере и как проходит заказ.</p>
   <div class="toc">
     <div><span>01</span>Проблема заказчика</div>
