@@ -278,15 +278,21 @@ header.bar .tel{color:var(--u-ink)}
 .u-fl1{left:-12px;top:12%;background:var(--u-action);color:#E3F2FF}.u-fl1 b{color:#fff;font-size:20px}
 .u-fl2{right:-12px;top:46%}
 .u-fl3{left:-12px;bottom:10%;background:var(--u-forest);color:var(--u-on-forest-muted)}.u-fl3 b{color:#fff}
-.u-city{position:relative;margin-top:24px;border-radius:var(--u-r-big);overflow:hidden;aspect-ratio:21/8}.u-city img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
-.u-cityt{position:absolute;left:0;right:0;bottom:0;padding:48px 28px 22px;color:#fff;font-size:22px;font-weight:600;letter-spacing:-.01em;line-height:1.2;background:linear-gradient(transparent,rgba(14,14,14,.65));text-wrap:balance}
-@media(max-width:860px){.u-city{aspect-ratio:4/3}.u-cityt{font-size:17px;padding:36px 16px 14px}}
+.u-city{position:relative;margin-top:40px;border-radius:var(--u-r-big);overflow:hidden;min-height:520px;display:flex;flex-direction:column;justify-content:space-between}
+.u-city>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
+.u-city::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(14,14,14,.55),rgba(14,14,14,0) 38%,rgba(14,14,14,0) 55%,rgba(14,14,14,.35))}
+.u-cityt{position:relative;z-index:1;padding:26px 28px 0;color:#fff;font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.2;max-width:36ch;text-wrap:balance}
+.u-city .u-panel p{display:none}.u-city .u-panel{padding:20px 22px}.u-city .u-panel h3{font-size:18px}
+.u-city .u-panel{position:relative;z-index:1;margin:0 20px 20px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px)}
+.u-city .u-ill{z-index:1;top:16px;bottom:auto}
+@media(max-width:860px){.u-city{min-height:0;display:block}.u-city>img{position:relative;aspect-ratio:4/3;height:auto}.u-city::after{bottom:auto;height:0}
+.u-cityt{position:absolute;top:0;left:0;padding:16px 110px 16px 16px;font-size:17px}.u-city .u-panel{margin:-28px 10px 10px;border-radius:22px}.u-city{background:var(--u-forest)}}
 .u-ill{position:absolute;right:14px;bottom:12px;font-size:11px;color:#fff;background:rgba(14,14,14,.45);padding:2px 8px;border-radius:999px}
 /* form panel (DS «панель проверки города») */
 .lform{border-radius:var(--u-r-big);box-shadow:var(--u-shadow-soft)!important;padding:24px}
 .lform input,.lform select,.lform textarea{height:48px;border-radius:var(--u-r-field);border:1px solid var(--u-line);background:var(--u-bg);font-size:16px}
 .lform textarea{height:auto}
-.u-panel{margin-top:40px}
+.u-panel{margin-top:0}
 .u-panel .fields{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr auto;gap:12px;align-items:center}
 .u-panel h3{grid-column:1/-1;margin:0}.u-panel p{grid-column:1/-1;margin:-6px 0 4px}
 .u-panel input{margin:0}.u-panel .btn{width:auto;margin:0}.u-panel .agree{grid-column:1/-1;margin-top:0}
@@ -332,7 +338,8 @@ footer{background:var(--u-bg);color:var(--u-muted);border-top:1px solid var(--u-
       <span class="u-ill">иллюстрация</span>
     </div>
   </div>
-  <div class="u-wrap"><form class="lform u-panel" id="form-top" data-place="первый экран">
+  <div class="u-wrap"><div class="u-city"><img src="img/city_wide.jpg" alt="Новостройки с панорамным остеклением"><div class="u-cityt">Новостройки с холодным панорамным остеклением — в каждом крупном городе</div><span class="u-ill">иллюстрация</span>
+    <form class="lform u-panel" id="form-top" data-place="первый экран">
   <div class="fields">
     <h3>Обсудить запуск в вашем городе</h3><p>Перезвоним, разберём город и ответим на вопросы по станку.</p>
     <input name="name" placeholder="Имя" autocomplete="name" required>
@@ -342,8 +349,8 @@ footer{background:var(--u-bg);color:var(--u-muted);border-top:1px solid var(--u-
     <div class="agree">Нажимая кнопку, вы соглашаетесь на обработку персональных данных для обратной связи.</div>
   </div>
   <div class="ok"><b>Заявка отправлена</b>Перезвоним в ближайшее время. Или сразу: <a href="tel:+79219503860">+7 921 950-38-60</a>, звонок или MAX.</div>
-</form></div>
-  <div class="u-wrap"><div class="u-city"><img src="img/city_wide.jpg" alt="Новостройки с панорамным остеклением"><div class="u-cityt">Новостройки с холодным панорамным остеклением — в каждом крупном городе</div><span class="u-ill">иллюстрация</span></div></div>
+</form>
+  </div></div>
 </section>
 <div class="u-trust"><div class="u-wrap"><span>оборудование в собственность</span><i>+</i><span>без роялти</span><i>+</i><span>обучение в Москве или удалённо</span><i>+</i><span>12 месяцев поддержки</span><i>+</i><span>гарантия 24 месяца</span></div></div>
 
