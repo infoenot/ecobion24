@@ -44,7 +44,6 @@ out[0] = f'''<section class="page cover hero1">
       {lead}
     </div>
     {form('form-top', 'первый экран', 'Получите консультацию', 'Перезвоним, разберём ваш город и ответим на вопросы по станку.', '<input name="city" placeholder="Город">')}
-    <nav class="toc">{links}</nav>
   </div>
 </section>'''
 
@@ -112,7 +111,7 @@ img.ph{border-radius:14px}
 .paygrid{grid-auto-rows:auto;margin-bottom:0}.ba div{aspect-ratio:3/4}
 .galgrid{grid-auto-rows:auto;gap:18px 14px}.gal img{flex:none;aspect-ratio:4/3;border-radius:12px}
 .strows{grid-auto-rows:auto;flex:none;gap:10px}.strow{padding:12px 16px;grid-template-columns:36px 1fr}
-.facts{margin:26px 0 0;padding:26px;gap:22px;border-radius:14px}.facts .fv{font-size:26px}.facts.f4 .fv{font-size:22px}.facts .fl{font-size:14px}
+.facts,.facts.f4{margin:24px 0 0!important;padding:26px;gap:22px;border-radius:14px}.facts .fv{font-size:26px}.facts.f4 .fv{font-size:22px}.facts .fl{font-size:14px}
 .cta{border-radius:14px}.cta.band{margin:26px 0 0;padding:24px}.cta.band .ph{font-size:26px}
 .eq2{grid-auto-rows:auto}.eq .card{padding-bottom:20px}
 svg.sec{height:110px}.bigsec{height:260px}
@@ -122,8 +121,8 @@ svg.sec{height:110px}.bigsec{height:260px}
 table.cmp td,table.cmp th{font-size:14px;padding:8px}
 .cover h1{font-size:50px;margin-top:10px}.cover .lead{font-size:19px}
 .hgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-.hero1{padding-top:56px}
-.h1grid{grid-template-areas:'t f' 'n f';align-items:start}.h1grid .ht{grid-area:t}.h1grid .lform{grid-area:f;align-self:center}.h1grid .toc{grid-area:n;margin-top:0}
+.hero1{padding-top:80px;padding-bottom:80px}
+.h1grid{grid-template-areas:'t f';align-items:center}.h1grid .ht{grid-area:t}.h1grid .lform{grid-area:f;align-self:center}.h1grid .toc{grid-area:n;margin-top:0}
 .toc{columns:2;column-gap:28px;margin-top:28px;font-size:15px}
 .toc a{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.14);color:#fff;text-decoration:none;break-inside:avoid}
 .toc a:hover{color:var(--or)}.toc a span{color:#9E9E9E;width:24px}
@@ -149,7 +148,7 @@ footer{background:#0E0E0E;color:#9A9A9A;font-size:13px;padding:28px max(20px,cal
   h1{font-size:32px}.cover h1{font-size:34px}h2{font-size:25px}.lead{font-size:16px;margin-bottom:20px}
   .hgrid,.g2,.g3,.g-img,.g-img2,.mk,.flow,.kv,.cta.band,.days{grid-template-columns:1fr!important}
   .hgrid{gap:28px}
-  .h1grid{grid-template-areas:'t' 'f' 'n'}
+  .h1grid{grid-template-areas:'t' 'f'}
   .grid[style*="grid-template-columns"]{grid-template-columns:1fr!important}
   .grid>*,.paygrid>*,.galgrid>*,.facts>*{min-width:0}
   td.r,th.r{white-space:normal}
