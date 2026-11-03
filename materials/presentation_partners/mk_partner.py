@@ -22,11 +22,9 @@ cover='''<section class="page cover">
     <div><span>09</span>Как проходит заказ</div>
   </div>
 </section>'''
-S[2]=S[2].replace('Стойки остывают до +10…+16 °C, у окна некомфортно','Зимой алюминиевые стойки холодные, у окна некомфортно')
 p2=R(S[2],'<b>01 · Рынок</b>','<b>01 · Проблема заказчика</b>')
 a=p2.index('<div class="facts f4">'); b=p2.index('<div class="foot">',a)
-p2=p2[:a]+'<div class="facts f4"><div><div class="fv">800+ RAL</div><div class="fl">и 200+ плёнок под интерьер</div></div><div><div class="fv">0 мм</div><div class="fl">световой проём не уменьшается</div></div><div><div class="fv">1–3 дня</div><div class="fl">установка на объекте</div></div><div><div class="fv">без сверления</div><div class="fl">профиль окна не повреждают</div></div></div>\n  '+p2[b:]
-S[4]=R(S[4],'Зимой стойки остывают до +10…+16 °C. Утеплитель','Зимой алюминиевые стойки холодные. Утеплитель')
+p2=p2[:a]+'<div class="facts f4"><div><div class="fv">800+ RAL</div><div class="fl">и 200+ плёнок под интерьер</div></div><div><div class="fv">до 10 мм</div><div class="fl">на столько максимум уменьшается проём</div></div><div><div class="fv">1–3 дня</div><div class="fl">установка на объекте</div></div><div><div class="fv">без сверления</div><div class="fl">профиль окна не повреждают</div></div></div>\n  '+p2[b:]
 p4=R(S[4],'<b>03 · За что платит клиент</b>','<b>02 · Что получает заказчик</b>')
 p4=R(p4,'<h2>Клиент платит не за пластик, а за решение семи задач</h2>','<h2>Один заказ решает для заказчика семь задач</h2>')
 p4,n=re.subn(r'<div class="ph">3–7 дней</div>\s*<p class="muted small">от замера до монтажа[^<]*</p>','<div class="ph">1–3 дня</div>\n    <p class="muted small">установка на объекте после бесплатного замера</p>',p4); assert n==1
