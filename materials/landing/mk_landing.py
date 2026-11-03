@@ -92,6 +92,20 @@ end = f'''<section class="u-finalsec" id="form-end-sec"><div class="u-wrap">
   </div>
 </div></section>'''
 
+# gallery: merge 3 pages into one, show 2 rows, rest by button
+gi = [i for i, x in enumerate(out) if 'class="galgrid"' in x]
+if gi:
+    figs = []
+    for i in gi:
+        figs += re.findall(r'<figure class="gal">.*?</figure>', out[i], re.S)
+    first = out[gi[0]]
+    first = re.sub(r'<h2>Что можно сделать[^<]*</h2>', '<h2>Что можно сделать на оборудовании</h2>', first)
+    figs2 = [f if k < 8 else f.replace(' src="', ' loading="lazy" data-src="', 1).replace('data-src="{{', 'data-src="{{') for k, f in enumerate(figs)]
+    grid = '<div class="galgrid" id="gal">' + ''.join(figs2) + '</div><div class="galmore"><button type="button" class="u-btn u-out" id="galbtn">Показать ещё ' + str(len(figs) - 8) + ' фото</button></div>'
+    first = re.sub(r'<div class="galgrid">.*?</div>(?=\s*<p)', grid, first, count=1, flags=re.S)
+    out[gi[0]] = first
+    for i in reversed(gi[1:]):
+        del out[i]
 # middle form after section "10 · Монтаж" (index of section with id s10)
 pos = next(i for i, x in enumerate(out) if 'id="s10"' in x) + 1
 for i in range(1, len(out)):
@@ -321,6 +335,10 @@ footer{background:var(--u-bg);color:var(--u-muted);border-top:1px solid var(--u-
   table.cmp td,table.cmp th{font-size:12.5px;padding:6px 4px;word-break:break-word;hyphens:auto}
   body table td,body table th{overflow-wrap:anywhere;hyphens:auto}
 }
+
+.galmore{display:flex;justify-content:center;margin-top:24px}
+#gal figure:nth-child(n+9){display:none}#gal.open figure{display:flex}
+@media(max-width:860px){#gal figure:nth-child(n+5){display:none}#gal.open figure{display:flex}}
 '''
 JS = '''<script>
 // Адрес для заявок: веб-приложение Google Apps Script (см. README) — заявки попадут в таблицу «Заявки».
@@ -337,6 +355,8 @@ const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?vis.add(e.
 document.querySelectorAll('form.lform').forEach(f=>io.observe(f));
 const hero=document.querySelector('.u-hero');function upd(){fab.classList.toggle('off',vis.size>0||hero.getBoundingClientRect().bottom>0)}
 addEventListener('scroll',upd,{passive:true});upd();
+const gb=document.getElementById('galbtn');if(gb){const g=document.getElementById('gal');const sh=()=>[...g.children].filter(f=>getComputedStyle(f).display==='none').length;const lab=()=>{const n=sh();gb.textContent=n?'Показать ещё '+n+' фото':'Свернуть'};lab();addEventListener('resize',()=>{if(!g.classList.contains('open'))lab()});
+gb.addEventListener('click',()=>{if(g.classList.toggle('open')){g.querySelectorAll('img[data-src]').forEach(i=>{i.src=i.dataset.src;i.removeAttribute('data-src')});gb.textContent='Свернуть'}else{lab();g.scrollIntoView({behavior:'smooth',block:'start'})}})}
 </script>'''
 css = css.replace('@page{size:297mm 210mm;margin:0}', '')
 html = f'''<!doctype html>
