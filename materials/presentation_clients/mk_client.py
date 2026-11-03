@@ -35,7 +35,7 @@ cover='''<section class="page cover cvr">
   <div class="r"><img src="{{cover}}"></div>
 </section>'''
 p2=R(S[2],'<b>01 · Рынок</b>','<b>01 · Знакомая ситуация</b>')
-p2=R(p2,'<h2>Владелец квартиры с панорамными окнами хочет, чтобы у окна было','<h2>Окна в пол — это красиво. Но у окна должно быть')
+p2=R(p2,'<h2>Владелец квартиры с панорамными окнами хочет, чтобы у окна было <span class="or">тепло, тихо, сухо и красиво</span></h2>','<h2>Окна в пол — это свет и вид из окна. Но у окна должно быть <span class="or">тепло, тихо и сухо</span></h2>')
 a=p2.index('<div class="facts f4">'); b=p2.index('<div class="foot">',a)
 p2=p2[:a]+'<div class="facts f4"><div><div class="fv">бесплатно</div><div class="fl">замер и расчёт стоимости</div></div><div><div class="fv">1–3 дня</div><div class="fl">установка в квартире</div></div><div><div class="fv">без сверления</div><div class="fl">профиль окна не повреждаем</div></div><div><div class="fv">до 10 мм</div><div class="fl">максимум меньше становится проём</div></div></div>\n  '+p2[b:]
 p2=p2.replace('<div class="k">Почему обычный ремонт не помогает</div>','<div class="k">Почему обычный ремонт не помогает</div>')
@@ -136,7 +136,7 @@ def ty(t):
     return t
 st=html.index('</style>')
 full=html[:st]+re.sub(r'>([^<]+)<',lambda m:'>'+ty(m.group(1))+'<',html[st:])
-PAL={'#F26B1D':'#D2622B','#202531':'#2B2725','#0A0E15':'#1C1917','#4E5766':'#6B635C','#E0E4EB':'#E6DDD2','#F0F1F5':'#F6F0E7','#C9CED8':'#D8CFC4','#B9C0CC':'#C9BFB3','#C3C9D3':'#D1C7BB','#5B6576':'#6B635C','#8A93A3':'#9A8F80','rgba(32,37,49':'rgba(43,39,37'}
+PAL={'#F26B1D':'#1A9BFC','#202531':'#262626','#0A0E15':'#111111','#4E5766':'#555555','#E0E4EB':'#E3E3E3','#F0F1F5':'#F2F2F2','#C9CED8':'#CCCCCC','#B9C0CC':'#BDBDBD','#C3C9D3':'#C8C8C8','#5B6576':'#5E5E5E','#8A93A3':'#8F8F8F','rgba(32,37,49':'rgba(38,38,38'}
 for a,b in PAL.items(): full=full.replace(a,b).replace(a.lower(),b)
 open('pres/client.tpl.html','w').write(full)
 low=full.lower(); print(len(pages),'станок' in low,'окупаем' in low,'10…+16' in full)

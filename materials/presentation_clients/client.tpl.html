@@ -4,7 +4,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 @page{size:297mm 210mm;margin:0}
-:root{--or:#D2622B;--ink:#1C1917;--muted:#6B635C;--line:#E6DDD2;--soft:#F6F0E7;--accent:#2B2725;--dark:#2B2725}
+:root{--or:#1A9BFC;--ink:#111111;--muted:#555555;--line:#E3E3E3;--soft:#F2F2F2;--accent:#262626;--dark:#262626}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Onest,Arial,sans-serif;color:var(--ink);background:#fff;font-size:11.5pt;line-height:1.45}
 .page{width:297mm;height:210mm;padding:16mm 18mm 14mm;position:relative;page-break-after:always;overflow:hidden;display:flex;flex-direction:column}
@@ -23,9 +23,9 @@ p+p{margin-top:2mm}
 .g-img{grid-template-columns:1fr 62mm}.g-img2{grid-template-columns:1fr 46mm 46mm}
 .card{border:1px solid var(--line);border-radius:3mm;padding:5mm}
 .card.fill{background:var(--dark);border-color:var(--dark);color:#fff}
-.card.fill .muted,.card.fill p.muted{color:#D1C7BB}
+.card.fill .muted,.card.fill p.muted{color:#C8C8C8}
 .card.fill td,.card.fill th{border-bottom-color:rgba(255,255,255,.14);color:#fff}
-.card.fill th{color:#D1C7BB}
+.card.fill th{color:#C8C8C8}
 .num{font-size:24pt;font-weight:700;line-height:1;margin-bottom:2mm}
 .num small{font-size:11pt;font-weight:600}
 ul{list-style:none}
@@ -44,7 +44,7 @@ img.ph{width:100%;height:100%;object-fit:cover;border-radius:3mm;display:block}
 .note{border-left:1.2mm solid var(--accent);padding:2mm 0 2mm 4mm;font-size:10pt;color:var(--muted);margin-top:auto}
 .foot{position:absolute;bottom:7mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-size:8pt;color:var(--muted)}
 .cover{background:var(--dark);color:#fff}
-.cover .lead,.cover .top,.cover .toc span{color:#C9BFB3}
+.cover .lead,.cover .top,.cover .toc span{color:#BDBDBD}
 .cover .top b{color:var(--or)}
 .cover .toc div{border-bottom-color:rgba(255,255,255,.14)}
 .cover h1{font-size:38pt;margin-top:18mm;max-width:220mm}
@@ -59,7 +59,7 @@ img.ph{width:100%;height:100%;object-fit:cover;border-radius:3mm;display:block}
 .flow .card{position:relative}
 .flow .step{font-size:9pt;color:var(--muted);margin-bottom:2mm}
 .cta{background:var(--dark);color:#fff;border-radius:3mm;padding:7mm}
-.cta .muted{color:#C9BFB3}
+.cta .muted{color:#BDBDBD}
 .pb{position:relative;padding-top:7mm}
 .pb-axis{display:flex;justify-content:space-between;margin-left:48mm;font-size:8pt;color:var(--muted);position:absolute;top:0;left:0;right:0}
 .pb-row{display:grid;grid-template-columns:48mm 1fr;align-items:center;margin-top:2.5mm}
@@ -67,8 +67,8 @@ img.ph{width:100%;height:100%;object-fit:cover;border-radius:3mm;display:block}
 .pb-track{display:flex;height:10mm;background:var(--soft);border-radius:2mm;overflow:hidden}
 .pb-bar{height:100%;display:flex;align-items:center;padding-left:3mm;font-size:10pt;font-weight:600}
 .pb-bar.dark{background:var(--dark);color:#fff}
-.pb-seg{height:100%;background:#6B635C;color:#fff;border-right:1.2mm solid #fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11pt}
-.pb-seg.part{background:repeating-linear-gradient(45deg,#6B635C 0 3mm,#9A8F80 3mm 6mm)}
+.pb-seg{height:100%;background:#5E5E5E;color:#fff;border-right:1.2mm solid #fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11pt}
+.pb-seg.part{background:repeating-linear-gradient(45deg,#5E5E5E 0 3mm,#8F8F8F 3mm 6mm)}
 .pb-line{position:absolute;top:5mm;bottom:-3mm;border-left:.6mm dashed var(--ink)}
 .pb-line span{position:absolute;bottom:-4.5mm;left:-9mm;font-size:8pt;font-weight:600;white-space:nowrap}
 table.cmp td,table.cmp th{font-size:9.5pt;padding:1.6mm 2mm}
@@ -88,18 +88,18 @@ svg.mir{width:100%;display:block}
 .txtcol{display:flex;flex-direction:column;min-height:0}
 .imgcol{display:flex;flex-direction:column}.imgcol .phwrap{flex:1;height:auto!important;min-height:0}
 .facts{margin-top:auto;margin-bottom:6mm;background:var(--dark);color:#fff;border-radius:3mm;padding:6mm 8mm;display:grid;grid-template-columns:repeat(3,1fr);gap:8mm}
-.facts .fv{font-size:19pt;font-weight:700;color:var(--or);line-height:1.1}.facts .fl{color:#C9BFB3;font-size:10pt;margin-top:1.5mm}
+.facts .fv{font-size:19pt;font-weight:700;color:var(--or);line-height:1.1}.facts .fl{color:#BDBDBD;font-size:10pt;margin-top:1.5mm}
 .days{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin-top:2mm}
-.days div{background:var(--dark);color:#fff;border-radius:3mm;padding:4mm 5mm}.days b{display:block;color:var(--or);font-size:12pt}.days span{color:#C9BFB3;font-size:10pt}
+.days div{background:var(--dark);color:#fff;border-radius:3mm;padding:4mm 5mm}.days b{display:block;color:var(--or);font-size:12pt}.days span{color:#BDBDBD;font-size:10pt}
 ol.steps>li{margin-top:3.6mm}
 .g-img2 .note,.g-img .note{margin-bottom:0}
 .fv2{font-size:17pt;font-weight:700;line-height:1.1;margin-bottom:1.5mm}
 .hero{position:relative;margin-top:5mm;margin-bottom:6mm;flex:1;min-height:0}.hero img{width:100%;height:100%;object-fit:cover;border-radius:3mm;display:block}
-.hero span{position:absolute;left:4mm;bottom:3mm;font-size:8pt;color:#fff;background:rgba(43,39,37,.7);padding:1mm 2.5mm;border-radius:2mm}
+.hero span{position:absolute;left:4mm;bottom:3mm;font-size:8pt;color:#fff;background:rgba(38,38,38,.7);padding:1mm 2.5mm;border-radius:2mm}
 .paygrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:51mm;gap:4mm;margin-bottom:5mm}
 .pay{padding:5mm;display:flex;flex-direction:column}.pay .k{font-size:8.5pt;margin-bottom:3mm}.pay h3{font-size:15pt;margin-bottom:1.5mm}.pay p{font-size:10.5pt;line-height:1.4;color:var(--muted)}
 .ba{display:grid;grid-template-columns:1fr 1fr;gap:2mm}.ba div{position:relative;min-height:0}.ba img{width:100%;height:100%;object-fit:cover;border-radius:3mm;display:block}
-.ba span{position:absolute;left:2mm;bottom:2mm;font-size:8pt;color:#fff;background:rgba(43,39,37,.75);padding:.8mm 2mm;border-radius:2mm}
+.ba span{position:absolute;left:2mm;bottom:2mm;font-size:8pt;color:#fff;background:rgba(38,38,38,.75);padding:.8mm 2mm;border-radius:2mm}
 .bigsec{width:100%;height:62mm;display:block;background:#FAFAFB;border-radius:2mm;margin:3mm 0 4mm}
 .galgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:66mm;gap:5mm 4mm;margin-top:2mm}
 .gal{margin:0;display:flex;flex-direction:column;min-height:0}.gal img{width:100%;flex:1;min-height:0;object-fit:cover;border-radius:2.5mm;display:block}
@@ -147,7 +147,7 @@ h1,h2,h3,.fv,.fv2,.lead,p,li,.cap,.fl,figcaption,td,.kv div,.k{text-wrap:balance
 
 <section class="page">
   <div class="top"><b>01 · Знакомая ситуация</b><span>Тёплые окна в пол</span></div>
-  <h2>Окна в пол — это красиво. Но у окна должно быть <span class="or">тепло, тихо, сухо и красиво</span></h2>
+  <h2>Окна в пол — это свет и вид из окна. Но у окна должно быть <span class="or">тепло, тихо и сухо</span></h2>
   <div class="grid mk" style="flex:1;min-height:0">
     <div class="mkcol">
       <div class="card col"><div class="k">Что не так</div>
@@ -208,7 +208,7 @@ h1,h2,h3,.fv,.fv2,.lead,p,li,.cap,.fl,figcaption,td,.kv div,.k{text-wrap:balance
   <p class="lead" style="margin-bottom:5mm">Цвет подбирают под интерьер: короб, откос и подоконник можно сделать в тон стенам, полу или мебели.</p>
   <div class="grid g3">
     <div class="card col"><div class="k">01</div><h3>Белый</h3><p class="small muted">Базовый цвет сэндвича, как у пластикового окна. Без дополнительной отделки, самый быстрый вариант.</p>
-      <div class="sws"><div class="sw"><div class="chip" style="background:#FFFFFF;border:1px solid #E6DDD2;"></div><span>белый матовый</span></div></div></div>
+      <div class="sws"><div class="sw"><div class="chip" style="background:#FFFFFF;border:1px solid #E3E3E3;"></div><span>белый матовый</span></div></div></div>
     <div class="card col"><div class="k">02</div><h3>Покраска по RAL</h3><p class="small muted">800+ вариантов цвета по шкале RAL. Красят в покрасочной камере партнёра. Добавляет несколько дней к сроку.</p>
       <div class="sws"><div class="sw"><div class="chip" style="background:#383E42;"></div><span>графит RAL 7016</span></div><div class="sw"><div class="chip" style="background:#16181B;"></div><span>чёрный матовый</span></div><div class="sw"><div class="chip" style="background:#59473A;"></div><span>коричневый</span></div><div class="sw"><div class="chip" style="background:#9DA3A6;"></div><span>серый</span></div></div></div>
     <div class="card col"><div class="k">03</div><h3>Ламинация плёнкой</h3><p class="small muted">200+ вариантов плёнки: под дерево, однотонные, детские с рисунком.</p>
