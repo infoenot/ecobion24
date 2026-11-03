@@ -60,7 +60,7 @@ out[0] = f'''<section class="u-hero">
     </div>
     <div class="u-hstats"><!-- сюда — главные цифры (доходность, 2–3 дня на объект и др.), пришлёт Вячеслав --></div>
   </div>
-  <div class="u-wrap"><div class="u-city"><img src="img/city_wide.jpg" alt="Новостройки с панорамным остеклением"><div class="u-cityt">В новостройках с холодным панорамным остеклением живут ваши клиенты</div>
+  <div class="u-wrap"><div class="u-city"><img src="img/city_wide.jpg" alt="Новостройки с панорамным остеклением">
     {form('form-top', 'первый экран', 'Обсудить запуск в вашем городе', 'Перезвоним, разберём город и ответим на вопросы по оборудованию.', '<input name="city" placeholder="Город">', panel=True)}
   </div></div>
 </section>
