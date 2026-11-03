@@ -37,13 +37,13 @@ lead = re.search(r'<p class="lead">.*?</p>', cov, re.S).group(0)
 toc = re.findall(r'<div><span>(\d\d)</span>(.*?)</div>', cov)
 links = ''.join(f'<a href="#s{n}"><span>{n}</span>{t}</a>' for n, t in toc)
 out[0] = f'''<section class="page cover hero1">
-  <div class="hgrid h1grid">
+  <div class="h1grid">
     <div class="ht">
-      <div class="top"><b>Оконщик 3000</b></div>
       {h1}
       {lead}
     </div>
     {form('form-top', 'первый экран', 'Получите консультацию', 'Перезвоним, разберём ваш город и ответим на вопросы по станку.', '<input name="city" placeholder="Город">')}
+    <div class="hpic"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления"></div>
   </div>
 </section>'''
 
@@ -164,6 +164,33 @@ footer{background:#0E0E0E;color:#9A9A9A;font-size:13px;padding:28px max(20px,cal
   .fab .btn{flex:1;box-shadow:0 8px 20px rgba(0,0,0,.25)}.fab .btn.t{flex:0 0 auto;background:#fff;color:var(--ink)}
   footer{padding-bottom:90px}
   .ba{grid-column:1/-1}
+}
+
+/* frontend-design pass */
+.page .top{display:none}
+.hero1{padding:0!important;min-height:calc(100vh - 58px)}
+.h1grid{display:grid;align-items:stretch;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:'t p' 'f p';min-height:calc(100vh - 58px)}
+.h1grid .ht{grid-area:t;padding:72px 48px 28px max(20px,calc((100vw - 1160px)/2));align-self:end}
+.h1grid .lform{grid-area:f;margin:0 48px 72px max(20px,calc((100vw - 1160px)/2));align-self:start;max-width:460px}
+.hpic{grid-area:p;position:relative;min-height:520px;align-self:stretch;height:100%}.hpic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.cover h1{font-size:54px;line-height:1.04;letter-spacing:-.025em;margin-top:0;max-width:640px}
+.cover .lead{font-size:19px;max-width:560px;margin:20px 0 0}
+h2{font-size:40px;line-height:1.08;letter-spacing:-.02em;max-width:880px;margin-bottom:16px}
+.lead{max-width:680px}
+.page{padding-top:96px;padding-bottom:96px}
+.midform{padding-top:80px;padding-bottom:80px}
+.lform{box-shadow:none;border-radius:18px}
+.cover .lform{box-shadow:0 20px 60px rgba(0,0,0,.35)}
+
+@media(max-width:860px){
+  .hero1{min-height:0}
+  .h1grid{grid-template-columns:1fr;grid-template-areas:'t' 'f' 'p';min-height:0}
+  .h1grid .ht{padding:40px 16px 22px}
+  .h1grid .lform{margin:0 16px 28px;max-width:none}
+  .hpic{min-height:0;aspect-ratio:4/5}
+  .cover h1{font-size:36px}.cover .lead{font-size:16px}
+  h2{font-size:27px}
+  .page{padding-top:56px;padding-bottom:56px}
 }
 '''
 JS = '''<script>
