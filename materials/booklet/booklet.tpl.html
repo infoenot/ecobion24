@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 @page{size:303mm 216mm;margin:0}
-:root{--ink:#2B2725;--or:#D2622B;--mut:#6B635C;--cream:#F6F0E7;--sand:#ECE2D4;--line:#E2D7C8;--dark:#262321}
+:root{--ink:#161616;--or:#1A9BFC;--mut:#555555;--cream:#F4F4F4;--sand:#E9E9E9;--line:#E0E0E0;--dark:#161616}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#fff}
 body{font-family:Onest,sans-serif;color:var(--ink);font-size:7.7pt;line-height:1.38;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -54,24 +54,24 @@ h3{font-size:8.8pt;font-weight:600;margin-bottom:.5mm}
 .facts span{font-size:6pt;color:var(--mut);line-height:1.25;display:block}
 .cta{background:var(--or);color:#fff;border-radius:3mm;padding:4mm 4.5mm}
 .cta .big{white-space:nowrap;font-size:12pt;font-weight:700;line-height:1.12}
-.cta p{color:#FBE3D6;margin-top:1.2mm}
+.cta p{color:#E3F2FF;margin-top:1.2mm}
 .note{font-size:6pt;color:var(--mut);margin-top:2mm}
 /* outer */
 .ideas{display:flex;flex-direction:column;gap:2.5mm;flex:1;min-height:0}
 .idea{position:relative;flex:1;min-height:0;border-radius:3mm;overflow:hidden}
 .idea img{width:100%;height:100%;object-fit:cover}
-.idea figcaption{position:absolute;left:0;right:0;bottom:0;padding:6mm 3mm 2.2mm;color:#fff;font-size:7.6pt;font-weight:500;background:linear-gradient(transparent,rgba(30,22,16,.6))}
+.idea figcaption{position:absolute;left:0;right:0;bottom:0;padding:6mm 3mm 2.2mm;color:#fff;font-size:7.6pt;font-weight:500;background:linear-gradient(transparent,rgba(10,10,10,.6))}
 .fin{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8mm;margin-top:3mm}
 .fin div{text-align:center;font-size:6.2pt;color:var(--mut)}
 .fin i{display:block;height:8mm;border-radius:2mm;margin-bottom:1mm;border:.4pt solid var(--line)}
 .back{background:var(--cream)}
 .qr{background:#fff}
 .phone{font-size:17pt;font-weight:700;letter-spacing:.01em;margin:1mm 0 1mm}
-.qr{width:30mm;height:30mm;border:.6pt dashed #B9AE9F;border-radius:2mm;display:flex;align-items:center;justify-content:center;text-align:center;color:#9A8F80;font-size:6.5pt}
+.qr{width:30mm;height:30mm;border:.6pt dashed #BDBDBD;border-radius:2mm;display:flex;align-items:center;justify-content:center;text-align:center;color:#8F8F8F;font-size:6.5pt}
 .contact{display:grid;grid-template-columns:30mm 1fr;gap:4mm;align-items:center;margin:3mm 0 4mm}
 .ch div{margin-bottom:1.4mm}
 .ch b{display:block;font-size:6pt;font-weight:500;color:var(--mut);letter-spacing:.12em;text-transform:uppercase}
-.ph{color:#9A8F80}
+.ph{color:#8F8F8F}
 .cover{padding:0}
 .cover .photo{position:absolute;inset:0}
 .cover .top{position:absolute;left:0;right:0;top:0;padding:13mm 10mm 0 9mm;z-index:3}
@@ -125,8 +125,8 @@ h3{font-size:8.8pt;font-weight:600;margin-bottom:.5mm}
   <!-- обложка 100 (макет: картинку заменим на выбранную) -->
   <div class="p cover">
     <div class="photo" style="top:30mm;bottom:14mm"><img src="{{cover}}" style="object-position:50% 100%"></div>
-    <svg class="wave" style="top:0;height:84mm" viewBox="0 0 103 84" preserveAspectRatio="none"><path d="M0,0 H103 V62 C80,52 62,66 40,72 C22,77 8,74 0,70 Z" fill="#F6F0E7"/></svg>
-    <svg class="wave" style="bottom:0;height:47mm" viewBox="0 0 103 47" preserveAspectRatio="none"><path d="M0,9 C20,3 38,6 56,13 C74,20 88,18 103,10 V47 H0 Z" fill="#D2622B"/></svg>
+    <svg class="wave" style="top:0;height:84mm" viewBox="0 0 103 84" preserveAspectRatio="none"><path d="M0,0 H103 V62 C80,52 62,66 40,72 C22,77 8,74 0,70 Z" fill="#F4F4F4"/></svg>
+    <svg class="wave" style="bottom:0;height:47mm" viewBox="0 0 103 47" preserveAspectRatio="none"><path d="M0,9 C20,3 38,6 56,13 C74,20 88,18 103,10 V47 H0 Z" fill="#1A9BFC"/></svg>
     <div class="top">
       <h1><span class="ln">Утеплим холодные</span><span class="ln or">панорамные окна, балконы</span><span class="ln"><span class="or">и&nbsp;лоджии</span> изнутри</span></h1>
       <div class="sub">в&nbsp;вашем жилом комплексе</div>
@@ -146,7 +146,7 @@ h3{font-size:8.8pt;font-weight:600;margin-bottom:.5mm}
   <span class="fold b" style="left:103mm"></span><span class="fold b" style="left:203mm"></span>
 
   <div class="p" style="padding-left:10mm">
-    <div class="photo hero"><img src="{{g04}}" style="object-position:60% 55%"><svg class="wave" style="bottom:-.5mm;height:16mm" viewBox="0 0 103 16" preserveAspectRatio="none"><path d="M0,16 V9 C22,1 46,0 66,6 C82,11 94,10 103,5 V16 Z" fill="#F6F0E7"/></svg></div>
+    <div class="photo hero"><img src="{{g04}}" style="object-position:60% 55%"><svg class="wave" style="bottom:-.5mm;height:16mm" viewBox="0 0 103 16" preserveAspectRatio="none"><path d="M0,16 V9 C22,1 46,0 66,6 C82,11 94,10 103,5 V16 Z" fill="#F4F4F4"/></svg></div>
     <div class="k">Лоджии · балконы · окна в&nbsp;пол</div>
     <h1>У&nbsp;окна в&nbsp;пол будет <span class="or">тепло, тихо, сухо и&nbsp;красиво</span></h1>
     <p style="margin-bottom:2mm">Застройщик ставит холодные алюминиевые системы. Отсюда проблемы, которые ремонт не&nbsp;решает:</p>

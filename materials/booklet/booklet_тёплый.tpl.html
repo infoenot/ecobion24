@@ -1,0 +1,200 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:303mm 216mm;margin:0}
+:root{--ink:#2B2725;--or:#D2622B;--mut:#6B635C;--cream:#F6F0E7;--sand:#ECE2D4;--line:#E2D7C8;--dark:#262321}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{font-family:Onest,sans-serif;color:var(--ink);font-size:7.7pt;line-height:1.38;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3,p,li,.t,figcaption{text-wrap:balance}
+.sheet{position:relative;width:303mm;height:216mm;overflow:hidden;display:grid;background:var(--cream);page-break-after:always}
+.in{grid-template-columns:103mm 100mm 100mm}.out{grid-template-columns:100mm 100mm 103mm}
+.fold{position:absolute;top:0;width:0;height:3mm;border-left:.25pt solid #999;z-index:9}.fold.b{top:auto;bottom:0}
+.p{position:relative;padding:10mm 7mm 9mm;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.k{font-size:6.4pt;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);margin-bottom:2.5mm}
+h1{font-size:17pt;line-height:1.1;font-weight:700;margin-bottom:3mm}
+h2{font-size:13.5pt;line-height:1.14;font-weight:700;margin-bottom:3.5mm}
+h3{font-size:8.8pt;font-weight:600;margin-bottom:.5mm}
+.or{color:var(--or)}.mut{color:var(--mut)}
+.rule{width:9mm;height:.7mm;background:var(--or);margin:2.5mm 0 3mm}
+.photo{position:relative;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;right:2.5mm;bottom:2mm;font-size:5pt;color:#fff;opacity:.85;z-index:3}
+.wave{position:absolute;left:0;width:100%;z-index:2;display:block}
+.round{border-radius:3mm}
+/* inner p1 */
+.hero{margin:-10mm -7mm 0 -10mm;height:78mm}
+.pr{list-style:none;margin:0 0 3mm}
+.pr li{position:relative;padding-left:3.4mm;margin-bottom:.9mm}
+.pr li:before{content:"";position:absolute;left:0;top:1.45mm;width:1.5mm;height:1.5mm;border-radius:50%;background:var(--or)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:2mm;flex:1;min-height:0;margin-top:3mm}
+.ba div{position:relative;border-radius:3mm;overflow:hidden}
+.ba img{width:100%;height:118%;object-fit:cover;object-position:50% 0}
+.ba span{position:absolute;left:1.8mm;top:1.8mm;background:var(--ink);color:#fff;font-size:6pt;font-weight:600;padding:.6mm 2mm;border-radius:5mm}
+.ba span.a{background:var(--or)}
+/* tasks */
+.tasks{display:flex;flex-direction:column;gap:2.2mm;margin-bottom:3.5mm}
+.task{display:grid;grid-template-columns:8mm 1fr;gap:3mm;align-items:start;padding-bottom:2.2mm;border-bottom:.4pt solid var(--line)}
+.task:last-child{border-bottom:0;padding-bottom:0}
+.ic{width:8mm;height:8mm;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.ic svg{width:4.6mm;height:4.6mm}
+.task p{color:var(--mut);font-size:7.6pt}
+/* p3 */
+.scheme{background:#fff;border-radius:3mm;padding:3mm;margin-bottom:3.5mm;display:grid;grid-template-columns:28mm 1fr;gap:3mm;align-items:center}
+.scheme svg{width:28mm;height:28mm}
+.lg div{display:flex;gap:1.6mm;align-items:center;margin-bottom:1.1mm;font-size:6.7pt}
+.lg i{width:3mm;height:3mm;border-radius:.6mm;flex:none}
+.steps{display:flex;flex-direction:column;gap:2.2mm;margin-bottom:3.5mm}
+.st{display:grid;grid-template-columns:5.5mm 1fr;gap:2.2mm}
+.n{width:5.5mm;height:5.5mm;border-radius:50%;border:.6pt solid var(--or);color:var(--or);display:flex;align-items:center;justify-content:center;font-size:7pt;font-weight:600}
+.st p{color:var(--mut)}
+.facts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5mm;margin-bottom:3.5mm}
+.facts div{background:#fff;border-radius:2.5mm;padding:2.2mm}
+.facts b{display:block;font-size:10pt}
+.facts span{font-size:6pt;color:var(--mut);line-height:1.25;display:block}
+.cta{background:var(--or);color:#fff;border-radius:3mm;padding:4mm 4.5mm}
+.cta .big{white-space:nowrap;font-size:12pt;font-weight:700;line-height:1.12}
+.cta p{color:#FBE3D6;margin-top:1.2mm}
+.note{font-size:6pt;color:var(--mut);margin-top:2mm}
+/* outer */
+.ideas{display:flex;flex-direction:column;gap:2.5mm;flex:1;min-height:0}
+.idea{position:relative;flex:1;min-height:0;border-radius:3mm;overflow:hidden}
+.idea img{width:100%;height:100%;object-fit:cover}
+.idea figcaption{position:absolute;left:0;right:0;bottom:0;padding:6mm 3mm 2.2mm;color:#fff;font-size:7.6pt;font-weight:500;background:linear-gradient(transparent,rgba(30,22,16,.6))}
+.fin{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8mm;margin-top:3mm}
+.fin div{text-align:center;font-size:6.2pt;color:var(--mut)}
+.fin i{display:block;height:8mm;border-radius:2mm;margin-bottom:1mm;border:.4pt solid var(--line)}
+.back{background:var(--cream)}
+.qr{background:#fff}
+.phone{font-size:17pt;font-weight:700;letter-spacing:.01em;margin:1mm 0 1mm}
+.qr{width:30mm;height:30mm;border:.6pt dashed #B9AE9F;border-radius:2mm;display:flex;align-items:center;justify-content:center;text-align:center;color:#9A8F80;font-size:6.5pt}
+.contact{display:grid;grid-template-columns:30mm 1fr;gap:4mm;align-items:center;margin:3mm 0 4mm}
+.ch div{margin-bottom:1.4mm}
+.ch b{display:block;font-size:6pt;font-weight:500;color:var(--mut);letter-spacing:.12em;text-transform:uppercase}
+.ph{color:#9A8F80}
+.cover{padding:0}
+.cover .photo{position:absolute;inset:0}
+.cover .top{position:absolute;left:0;right:0;top:0;padding:13mm 10mm 0 9mm;z-index:3}
+.cover h1{font-size:17pt;line-height:1.12}.cover h1 .ln{display:block;white-space:nowrap}
+.cover .sub{font-size:9.5pt;line-height:1.2;font-weight:400;color:var(--mut)}
+.cover .bot{position:absolute;left:0;right:0;bottom:0;padding:0 10mm 10mm 9mm;z-index:3;color:#fff}
+.cover .bot .t{font-size:15pt;line-height:1.15;font-weight:500}
+.cover .bot .rule{background:#fff;opacity:.8}
+</style></head><body>
+
+<!-- ===== НАРУЖНАЯ СТОРОНА: клапан | задник | обложка ===== -->
+<div class="sheet out">
+  <span class="fold" style="left:100mm"></span><span class="fold" style="left:200mm"></span>
+  <span class="fold b" style="left:100mm"></span><span class="fold b" style="left:200mm"></span>
+
+  <!-- клапан 97 -->
+  <div class="p" style="padding-left:10mm">
+    <div class="k">Не только лоджии</div>
+    <h2>Окна, двери и&nbsp;проёмы — в&nbsp;одном стиле</h2>
+    <div class="ideas">
+      <figure class="idea"><img src="{{n_bedroom}}"><figcaption>Окна в&nbsp;пол: белые короба на&nbsp;стойках</figcaption></figure>
+      <figure class="idea"><img src="{{g17}}"><figcaption>Портал проёма без двери под дуб</figcaption></figure>
+      <figure class="idea"><img src="{{g06}}"><figcaption>Откосы входной двери под дуб</figcaption></figure>
+    </div>
+    <div class="fin">
+      <div><i style="background:#fff"></i>белый</div>
+      <div><i style="background:#3E4246"></i>800+ цветов RAL</div>
+      <div><i style="background:linear-gradient(135deg,#C9A06B,#A87B47)"></i>200+ плёнок</div>
+    </div>
+  </div>
+
+  <!-- задник 100 -->
+  <div class="p back">
+    <div class="k">Как заказать</div>
+    <h2>Замерщик приедет бесплатно</h2>
+    <div class="steps">
+      <div class="st"><b class="n">1</b><div><h3>Позвоните или напишите</h3><p>Расскажите, что хотите сделать: лоджия, балкон или окна в&nbsp;пол.</p></div></div>
+      <div class="st"><b class="n">2</b><div><h3>Замер в&nbsp;удобное время</h3><p>Меряем каждую стойку, отвечаем на&nbsp;вопросы, называем стоимость и&nbsp;срок.</p></div></div>
+      <div class="st"><b class="n">3</b><div><h3>Договор и&nbsp;монтаж</h3><p>Фиксируем стоимость и&nbsp;сроки в&nbsp;договоре. Установка за&nbsp;1–3&nbsp;дня.</p></div></div>
+    </div>
+    <div class="rule"></div>
+    <div class="k" style="margin-bottom:0">Телефон и&nbsp;MAX</div>
+    <div class="phone">+7&nbsp;921&nbsp;950‑38‑60</div>
+    <div class="contact">
+      <div class="qr" style="border:0;background:#fff;padding:3mm"><svg viewBox="0 0 25 25" style="width:24mm;height:24mm" class="segno"><path class="qrline" stroke="#2b2725" d="M0 0.5h7m1 0h1m1 0h5m1 0h1m1 0h7m-25 1h1m5 0h1m1 0h5m1 0h2m2 0h1m5 0h1m-25 1h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m1 0h1m4 0h3m2 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-25 1h1m5 0h1m5 0h2m1 0h1m2 0h1m5 0h1m-25 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-17 1h8m-15 1h2m1 0h1m1 0h2m1 0h2m3 0h1m3 0h1m1 0h5m-21 1h2m2 0h2m2 0h1m1 0h1m3 0h2m2 0h3m-25 1h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h2m2 0h1m2 0h2m1 0h3m-25 1h1m1 0h4m2 0h3m1 0h1m3 0h1m2 0h1m1 0h1m-22 1h1m5 0h1m1 0h1m1 0h1m1 0h1m5 0h2m1 0h1m1 0h2m-22 1h2m3 0h1m2 0h2m5 0h2m1 0h4m-25 1h1m5 0h5m1 0h1m3 0h3m4 0h2m-24 1h4m3 0h1m1 0h2m2 0h2m3 0h1m1 0h1m1 0h1m-24 1h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h10m2 0h2m-17 1h1m1 0h1m5 0h1m3 0h3m1 0h1m-25 1h7m1 0h1m1 0h1m3 0h3m1 0h1m1 0h2m1 0h2m-25 1h1m5 0h1m2 0h2m2 0h1m1 0h2m3 0h2m1 0h1m-24 1h1m1 0h3m1 0h1m1 0h2m6 0h6m2 0h1m-25 1h1m1 0h3m1 0h1m2 0h1m1 0h2m3 0h2m2 0h1m-21 1h1m1 0h3m1 0h1m1 0h1m5 0h1m1 0h2m2 0h2m2 0h1m-25 1h1m5 0h1m1 0h4m4 0h2m3 0h1m1 0h1m-24 1h7m3 0h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h2"/></svg></div>
+      <div class="ch"><div>Звоните или пишите в&nbsp;MAX на&nbsp;этот&nbsp;номер.</div><div class="mut">Наведите камеру на&nbsp;QR‑код, чтобы сразу позвонить.</div></div>
+    </div>
+    <div style="flex:1;min-height:0" class="photo round"><img src="{{n_portal}}"></div>
+  </div>
+
+  <!-- обложка 100 (макет: картинку заменим на выбранную) -->
+  <div class="p cover">
+    <div class="photo" style="top:30mm;bottom:14mm"><img src="{{cover}}" style="object-position:50% 100%"></div>
+    <svg class="wave" style="top:0;height:84mm" viewBox="0 0 103 84" preserveAspectRatio="none"><path d="M0,0 H103 V62 C80,52 62,66 40,72 C22,77 8,74 0,70 Z" fill="#F6F0E7"/></svg>
+    <svg class="wave" style="bottom:0;height:47mm" viewBox="0 0 103 47" preserveAspectRatio="none"><path d="M0,9 C20,3 38,6 56,13 C74,20 88,18 103,10 V47 H0 Z" fill="#D2622B"/></svg>
+    <div class="top">
+      <h1><span class="ln">Утеплим холодные</span><span class="ln or">панорамные окна, балконы</span><span class="ln"><span class="or">и&nbsp;лоджии</span> изнутри</span></h1>
+      <div class="sub">в&nbsp;вашем жилом комплексе</div>
+    </div>
+    <div class="bot">
+      <div class="t">Теплее. Тише. Уютнее.</div>
+      <div class="rule"></div>
+      <div>Бесплатный замер и&nbsp;консультация</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ===== ВНУТРЕННИЙ РАЗВОРОТ ===== -->
+<div class="sheet in">
+  <span class="fold" style="left:103mm"></span><span class="fold" style="left:203mm"></span>
+  <span class="fold b" style="left:103mm"></span><span class="fold b" style="left:203mm"></span>
+
+  <div class="p" style="padding-left:10mm">
+    <div class="photo hero"><img src="{{g04}}" style="object-position:60% 55%"><svg class="wave" style="bottom:-.5mm;height:16mm" viewBox="0 0 103 16" preserveAspectRatio="none"><path d="M0,16 V9 C22,1 46,0 66,6 C82,11 94,10 103,5 V16 Z" fill="#F6F0E7"/></svg></div>
+    <div class="k">Лоджии · балконы · окна в&nbsp;пол</div>
+    <h1>У&nbsp;окна в&nbsp;пол будет <span class="or">тепло, тихо, сухо и&nbsp;красиво</span></h1>
+    <p style="margin-bottom:2mm">Застройщик ставит холодные алюминиевые системы. Отсюда проблемы, которые ремонт не&nbsp;решает:</p>
+    <ul class="pr">
+      <li>зимой алюминиевые стойки холодные;</li>
+      <li>на металле собирается конденсат;</li>
+      <li>через полые стойки слышно соседей;</li>
+      <li>тёмный профиль выбивается из&nbsp;интерьера.</li>
+    </ul>
+    <p><b>Решение:</b> утепляем стойки изнутри квартиры и&nbsp;закрываем бесшовными коробами по&nbsp;размеру. Остекление не&nbsp;меняем.</p>
+    <div class="ba"><div><img src="{{before}}"><span>До</span></div><div><img src="{{after}}"><span class="a">После</span></div></div>
+  </div>
+
+  <div class="p">
+    <div class="k">Что меняется</div>
+    <h2>Один заказ решает семь задач</h2>
+    <div class="tasks">
+      <div class="task"><div class="ic">{{i_q}}</div><div><h3>Тихо</h3><p>Полые стойки проходят через этажи и&nbsp;передают звук. Пустоты заполняем, стойку закрываем.</p></div></div>
+      <div class="task"><div class="ic">{{i_c}}</div><div><h3>Красиво</h3><p>Короба белые, в&nbsp;цвет по&nbsp;RAL или под дерево. Царапины и&nbsp;следы стройки скрыты.</p></div></div>
+      <div class="task"><div class="ic">{{i_h}}</div><div><h3>Уютно</h3><p>Ровные поверхности без щелей и&nbsp;самодельных стыков. Лоджия становится частью квартиры.</p></div></div>
+      <div class="task"><div class="ic">{{i_t}}</div><div><h3>Тепло</h3><p>Утеплитель и&nbsp;короб закрывают холодный металл. У&nbsp;окна можно поставить стол или кресло.</p></div></div>
+      <div class="task"><div class="ic">{{i_d}}</div><div><h3>Сухо</h3><p>Металл закрываем бутиловой лентой или жидкой резиной. На&nbsp;этом слое конденсат не&nbsp;образуется.</p></div></div>
+      <div class="task"><div class="ic">{{i_s}}</div><div><h3>Больше площадь</h3><p>Вместе с&nbsp;утеплением пола и&nbsp;потолка лоджия становится кабинетом или детским уголком.</p></div></div>
+      <div class="task"><div class="ic">{{i_r}}</div><div><h3>Дороже аренда</h3><p>Аккуратные окна хорошо смотрятся на&nbsp;фото в&nbsp;объявлении.</p></div></div>
+    </div>
+    <div class="photo round" style="flex:1;min-height:0"><img src="{{n_erker}}"></div>
+  </div>
+
+  <div class="p" style="padding-right:10mm">
+    <div class="k">Как мы работаем</div>
+    <h2>Короб делаем по&nbsp;замеру каждой стойки</h2>
+    <p style="margin-bottom:3.5mm">Стойку закрываем от&nbsp;влаги, утепляем и&nbsp;надеваем короб из&nbsp;ПВХ‑панели 10&nbsp;мм с&nbsp;утеплителем внутри.</p>
+    <div class="steps">
+      <div class="st"><b class="n">1</b><div><h3>Бесплатный замер</h3><p>Приезжаем, меряем каждую стойку, называем стоимость и&nbsp;срок.</p></div></div>
+      <div class="st"><b class="n">2</b><div><h3>Изготовление</h3><p>Гнём короба из&nbsp;цельной полосы: без стыка на&nbsp;внешнем ребре.</p></div></div>
+      <div class="st"><b class="n">3</b><div><h3>Установка за&nbsp;1–3&nbsp;дня</h3><p>Утепляем стойку и&nbsp;сажаем короб на&nbsp;клей. Без сверления, световой проём меньше максимум на&nbsp;10&nbsp;мм.</p></div></div>
+    </div>
+    <div class="facts">
+      <div><b>1–3 дня</b><span>установка</span></div>
+      <div><b>800+</b><span>цветов RAL</span></div>
+      <div><b>200+</b><span>плёнок под дерево</span></div>
+    </div>
+    <div class="photo round" style="flex:1;min-height:0;margin-bottom:3.5mm"><img src="{{n_oak}}"></div>
+    <div class="cta">
+      <div class="big">Выезд замерщика — бесплатно</div>
+      <p>Посмотрим окна, ответим на&nbsp;вопросы и&nbsp;рассчитаем стоимость. Контакты — на&nbsp;обороте.</p>
+    </div>
+    <p class="note">Нужна ли замена стеклопакетов, специалист скажет на&nbsp;замере.</p>
+  </div>
+</div>
+</body></html>
