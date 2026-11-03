@@ -112,8 +112,8 @@ out.append(end)
 
 body = '\n\n'.join(out)
 body = body.replace('<span>Иллюстрация</span>', '')
-body = re.sub(r'<div class="hero" style="margin:0"><img src="\{\{city\}\}">\s*</div>', '<div class="u-hpic u-mkpic"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления"><div class="u-fl u-fl1"><b>0 ₽</b>роялти и паушальный взнос</div><div class="u-fl u-fl2"><b>20 рабочих дней</b>изготовление по договору</div><div class="u-fl u-fl3"><b>24 месяца</b>гарантия на оборудование</div></div>', body, count=1)
-assert 'u-mkpic' in body
+body = re.sub(r'<section[^>]*id="s01".*?</section>', lambda m: '<section id="s01" data-t="u-twh" class="page u-mk2">\n  <div class="mk2grid">\n    <div class="mk2l">\n      <h2>Владелец квартиры с панорамными окнами хочет, чтобы у окна было <span class="or">тепло, тихо, сухо и красиво</span></h2>\n      <div class="mk2c"><h3>Что не так</h3><ul class="sq"><li>Зимой алюминиевые стойки холодные, у окна некомфортно</li><li>На металле собирается конденсат</li><li>По полым профилям передаётся шум</li><li>Металл застройщика выбивается из интерьера</li></ul></div>\n      <div class="mk2c"><h3>Почему обычный ремонт не помогает</h3><ul class="sq"><li>Заменить фасад — дорого, часто нельзя без согласования</li><li>Второй ряд окон съедает площадь и вид</li><li>Подручные материалы — громоздко, видны стыки</li></ul></div>\n      <div class="mk2sol"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.5l4 4 8-9"/></svg></i><p><b>Решение:</b> утеплить стойки и закрыть бесшовными коробами по размеру, не меняя фасад.</p></div>\n    </div>\n    <div class="mk2pic"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления"><div class="mk2t">Тёплое и комфортное остекление без замены фасада</div></div>\n  </div>\n  <div class="mk2band">\n    <div><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v5c0 1.7 3.6 3 8 3s8-1.3 8-3V7"/><path d="M4 12v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5"/></svg></span><p><b>150–500 тыс. ₽</b>чек за один заказ</p></div>\n    <div><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><p><b>2–4 дня</b>работа на объекте</p></div>\n    <div><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M7 16v-4M12 16V8M17 16v-7"/></svg></span><p><b>100–200 тыс. ₽</b>остаток после прямых расходов</p></div>\n    <div><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 16l8 4 8-4"/></svg></span><p><b>3–4 заказа</b>вместо 20 по 10–15 тыс. ₽</p></div>\n  </div>\n</section>', body, count=1, flags=re.S)
+assert 'mk2grid' in body
 body = re.sub(r'\s*<p[^>]*>Иллюстрации[^<]*</p>', '', body)
 body = re.sub(r'<div class="top"><b>(?:\d\d · )?([^<]*)</b><span>[^<]*</span></div>', lambda m: '<span class="u-eye">'+m.group(1)+'</span>', body)
 body = re.sub(r'\{\{(\w+)\}\}', lambda m: f'img/{m.group(1)}.jpg', body)
@@ -353,6 +353,28 @@ svg.sec,.bigsec{background:#fff!important;border:1px solid var(--u-line)}
 .pb-track{background:#fff;border:1px solid var(--u-line)}
 .lform{box-shadow:none!important;border:1px solid var(--u-line)}.u-city .u-panel,.cover .lform,.midform .lform,.u-final .lform{border:0}
 .u-btn.u-white:hover{background:#fff;color:var(--u-action)}
+
+/* Рынок — новая раскладка */
+.u-mk2 h2{max-width:14ch;font-size:clamp(32px,3.6vw,48px);margin-bottom:28px}
+.mk2grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:stretch}
+.mk2l{display:flex;flex-direction:column;gap:16px}
+.mk2c{border:1px solid var(--u-line);border-radius:var(--u-r-card);padding:22px 24px;background:#fff}
+.mk2c h3{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+ul.sq li{padding-left:20px;margin-top:6px;font-size:16px;line-height:1.45}
+ul.sq li:before{border-radius:2px;width:8px;height:8px;top:8px;background:var(--u-action)}
+.mk2sol{display:flex;gap:16px;align-items:center;background:#FFF1ED;border-radius:var(--u-r-card);padding:20px 24px}
+.mk2sol i{flex:none;width:44px;height:44px;border-radius:50%;background:var(--u-action);display:flex;align-items:center;justify-content:center}.mk2sol i svg{width:24px;height:24px}
+.mk2sol p{font-size:17px;line-height:1.45;margin:0}.mk2sol b{color:var(--u-action)}
+.mk2pic{position:relative;border-radius:var(--u-r-big);overflow:hidden;min-height:560px}
+.mk2pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.mk2pic::before{content:"";position:absolute;inset:0 0 45% 0;background:linear-gradient(rgba(14,14,14,.55),rgba(14,14,14,0));z-index:1}
+.mk2t{position:absolute;z-index:2;left:36px;right:36px;top:36px;color:#fff;font-size:clamp(30px,3.4vw,46px);font-weight:700;line-height:1.05;letter-spacing:-.03em;max-width:12ch}
+.mk2band{margin-top:24px;background:var(--u-forest);border-radius:var(--u-r-card);display:grid;grid-template-columns:repeat(4,1fr);padding:24px 8px}
+.mk2band>div{display:flex;gap:14px;align-items:center;padding:0 20px;border-left:1px solid var(--u-line-dark)}.mk2band>div:first-child{border-left:0}
+.mk2band span{flex:none;width:52px;height:52px;border-radius:14px;background:var(--u-forest-2);color:#fff;display:flex;align-items:center;justify-content:center}.mk2band span svg{width:26px;height:26px}
+.mk2band p{margin:0;color:var(--u-on-forest-muted);font-size:14px;line-height:1.35}.mk2band b{display:block;color:#fff;font-size:22px;font-weight:700;letter-spacing:-.01em;margin-bottom:4px}
+@media(max-width:960px){.mk2grid{grid-template-columns:1fr}.mk2pic{min-height:0;aspect-ratio:4/5}.mk2band{grid-template-columns:1fr 1fr;row-gap:20px}.mk2band>div:nth-child(3){border-left:0}}
+@media(max-width:560px){.mk2band{grid-template-columns:1fr;padding:12px 4px}.mk2band>div{border-left:0;border-top:1px solid var(--u-line-dark);padding:14px 16px}.mk2band>div:first-child{border-top:0}.mk2t{left:20px;top:20px;right:20px}.mk2c{padding:18px}}
 '''
 JS = '''<script>
 // Адрес для заявок: веб-приложение Google Apps Script (см. README) — заявки попадут в таблицу «Заявки».
