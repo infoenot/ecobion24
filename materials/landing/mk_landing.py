@@ -61,12 +61,12 @@ out[0] = f'''<section class="u-hero">
     <div class="u-hpic"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления">
       <div class="u-fl u-fl1"><b>0 ₽</b>роялти и паушальный взнос</div>
       <div class="u-fl u-fl2"><b>20 рабочих дней</b>изготовление по договору</div>
-      <div class="u-fl u-fl3"><b>24 месяца</b>гарантия на станок</div>
+      <div class="u-fl u-fl3"><b>24 месяца</b>гарантия на оборудование</div>
       <span class="u-ill">иллюстрация</span>
     </div>
   </div>
   <div class="u-wrap"><div class="u-city"><img src="img/city_wide.jpg" alt="Новостройки с панорамным остеклением"><div class="u-cityt">Новостройки с холодным панорамным остеклением — в каждом крупном городе</div><span class="u-ill">иллюстрация</span>
-    {form('form-top', 'первый экран', 'Обсудить запуск в вашем городе', 'Перезвоним, разберём город и ответим на вопросы по станку.', '<input name="city" placeholder="Город">', panel=True)}
+    {form('form-top', 'первый экран', 'Обсудить запуск в вашем городе', 'Перезвоним, разберём город и ответим на вопросы по оборудованию.', '<input name="city" placeholder="Город">', panel=True)}
   </div></div>
 </section>
 <div class="u-trust"><div class="u-wrap"><span>оборудование в собственность</span><i>+</i><span>без роялти</span><i>+</i><span>обучение в Москве или удалённо</span><i>+</i><span>12 месяцев поддержки</span><i>+</i><span>гарантия 24 месяца</span></div></div>'''
@@ -75,17 +75,17 @@ mid = f'''<section data-t="u-tdark" class="page cover midform" id="form-mid-sec"
   <div class="hgrid">
     <div>
       <div class="top"><b>Посмотреть вживую</b></div>
-      <h2>Приезжайте на объект в Москве — покажем станок и монтаж</h2>
+      <h2>Приезжайте на объект в Москве — покажем оборудование и монтаж</h2>
       <p class="lead">Или созвонимся по видео: покажем, как гнётся короб, ответим про ваш город, сроки и комплект.</p>
     </div>
-    {form('form-mid', 'середина', 'Запросить консультацию', 'Перезвоним и договоримся о встрече или видеозвонке.', '<select name="topic"><option>Узнать цену комплекта</option><option>Хочу посмотреть станок вживую</option><option>Видеозвонок</option></select>')}
+    {form('form-mid', 'середина', 'Запросить консультацию', 'Перезвоним и договоримся о встрече или видеозвонке.', '<select name="topic"><option>Узнать цену комплекта</option><option>Хочу посмотреть оборудование вживую</option><option>Видеозвонок</option></select>')}
   </div>
 </section>'''
 end = f'''<section class="u-finalsec" id="form-end-sec"><div class="u-wrap">
   <div class="u-final">
     <div>
       <h2>Обсудим запуск в вашем городе</h2>
-      <p class="u-lead">Вячеслав, продажи и запуск — звонок или MAX. Технические вопросы разбирает Сергей Попов — инженер-технолог, разработчик станка, в оконной отрасли с 1994 года.</p>
+      <p class="u-lead">Вячеслав, продажи и запуск — звонок или MAX. Технические вопросы разбирает Сергей Попов — инженер-технолог, разработчик оборудования, в оконной отрасли с 1994 года.</p>
       <div class="u-btns"><a class="u-btn u-white" href="{TEL}">{PHONE}</a></div>
     </div>
     {form('form-bottom', 'низ', 'Получить консультацию', 'Оставьте телефон — перезвоним и ответим на вопросы.', '<input name="city" placeholder="Город"><textarea name="comment" rows="2" placeholder="Вопрос (необязательно)"></textarea>')}
@@ -319,6 +319,7 @@ footer{background:var(--u-bg);color:var(--u-muted);border-top:1px solid var(--u-
   .page{padding:var(--u-section) var(--u-gutter)!important}
   .lead{margin-bottom:32px}
   table.cmp td,table.cmp th{font-size:12.5px;padding:6px 4px;word-break:break-word;hyphens:auto}
+  body table td,body table th{overflow-wrap:anywhere;hyphens:auto}
 }
 '''
 JS = '''<script>
@@ -341,7 +342,7 @@ css = css.replace('@page{size:297mm 210mm;margin:0}', '')
 html = f'''<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Оконщик 3000 — свой бизнес на утеплении холодного панорамного остекления</title>
-<meta name="description" content="Станок для бесшовных термокоробов и 3D-откосов из ПВХ-сэндвича 10 мм. Комплект, обучение и год поддержки. Без роялти и паушального взноса.">
+<meta name="description" content="Оборудование для бесшовных термокоробов и 3D-откосов из ПВХ-сэндвича 10 мм. Комплект, обучение и год поддержки. Без роялти и паушального взноса.">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>{css}{WEB}</style></head>
 <body>
