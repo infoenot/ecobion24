@@ -54,7 +54,7 @@ out[0] = f'''<section class="u-hero">
   <div class="u-wrap u-hgrid">
     <div class="u-htxt">
       <span class="u-chip">Без роялти и паушального взноса</span>
-      <h1><span class="ln">Высокодоходный бизнес</span> <span class="ln">на утеплении панорамных</span> <span class="ln">окон, балконов</span> <span class="ln">и лоджий изнутри</span></h1>
+      <h1><span class="ln">Начни свой бизнес</span> <span class="ln">на утеплении панорамных</span> <span class="ln">окон, балконов</span> <span class="ln">и лоджий изнутри</span></h1>
       <p class="u-lead">Для мастеров, оконщиков, ремонтников и тех, кто устал работать на рынке с высокой конкуренцией и низкой доходностью.</p>
       <div class="u-btns"><a class="u-btn" href="#form-top">Получить консультацию</a><a class="u-btn u-out" href="{TEL}">{PHONE}</a></div>
     </div>
@@ -329,7 +329,7 @@ addEventListener('scroll',upd,{passive:true});upd();
 css = css.replace('@page{size:297mm 210mm;margin:0}', '')
 html = f'''<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Оконщик 3000 — бизнес на утеплении панорамных окон, балконов и лоджий</title>
+<title>Оконщик 3000 — свой бизнес на утеплении панорамных окон, балконов и лоджий</title>
 <meta name="description" content="Станок для бесшовных термокоробов и 3D-откосов из ПВХ-сэндвича 10 мм. Комплект, обучение и год поддержки. Без роялти и паушального взноса.">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>{css}{WEB}</style></head>
