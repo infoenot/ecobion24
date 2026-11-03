@@ -62,10 +62,10 @@ out[0] = f'''<section class="u-hero">
       <div class="u-fl u-fl1"><b>0 ₽</b>роялти и паушальный взнос</div>
       <div class="u-fl u-fl2"><b>20 рабочих дней</b>изготовление по договору</div>
       <div class="u-fl u-fl3"><b>24 месяца</b>гарантия на оборудование</div>
-      <span class="u-ill">иллюстрация</span>
+      
     </div>
   </div>
-  <div class="u-wrap"><div class="u-city"><img src="img/city_wide.jpg" alt="Новостройки с панорамным остеклением"><div class="u-cityt">Новостройки с холодным панорамным остеклением — в каждом крупном городе</div><span class="u-ill">иллюстрация</span>
+  <div class="u-wrap"><div class="u-city"><img src="img/city_wide.jpg" alt="Новостройки с панорамным остеклением"><div class="u-cityt">В новостройках с холодным панорамным остеклением живут ваши клиенты</div>
     {form('form-top', 'первый экран', 'Обсудить запуск в вашем городе', 'Перезвоним, разберём город и ответим на вопросы по оборудованию.', '<input name="city" placeholder="Город">', panel=True)}
   </div></div>
 </section>
@@ -116,6 +116,8 @@ out.insert(pos, mid)
 out.append(end)
 
 body = '\n\n'.join(out)
+body = body.replace('<span>Иллюстрация</span>', '')
+body = re.sub(r'\s*<p[^>]*>Иллюстрации[^<]*</p>', '', body)
 body = re.sub(r'<div class="top"><b>(?:\d\d · )?([^<]*)</b><span>[^<]*</span></div>', lambda m: '<span class="u-eye">'+m.group(1)+'</span>', body)
 body = re.sub(r'\{\{(\w+)\}\}', lambda m: f'img/{m.group(1)}.jpg', body)
 
@@ -237,7 +239,7 @@ h2{font-size:40px;line-height:1.08;letter-spacing:-.02em;max-width:880px;margin-
 
 /* ===== Утеплит DS 3.0 ===== */
 :root{--u-bg:#FFFFFF;--u-card:#FFFFFF;--u-peach:#FFFFFF;--u-forest:#161616;--u-forest-2:#2E2E2E;--u-ink:#0E0E0E;--u-muted:#555555;--u-on-forest:#FFFFFF;--u-on-forest-muted:#BDBDBD;--u-action:#FE4F31;--u-action-hover:#E23C1F;--u-sun:#FE4F31;--u-line:#E3E3E3;--u-line-dark:#2E2E2E;--u-focus:#8F8F8F;
---u-fs-display:clamp(32px,3.5vw,45px);--u-fs-h2:clamp(30px,4vw,46px);--u-r-field:14px;--u-r-card:20px;--u-r-big:28px;--u-shadow-soft:0 1px 2px rgba(14,14,14,.04),0 10px 30px rgba(14,14,14,.06);--u-shadow-float:0 8px 24px rgba(14,14,14,.12);--u-gutter:16px;--u-section:64px;--u-inset:20px;
+--u-fs-display:clamp(32px,3.5vw,45px);--u-fs-h2:clamp(30px,4vw,46px);--u-r-field:14px;--u-r-card:20px;--u-r-big:28px;--u-shadow-soft:0 1px 2px rgba(14,14,14,.04),0 10px 30px rgba(14,14,14,.06);--u-shadow-float:none;--u-gutter:16px;--u-section:64px;--u-inset:20px;
 --or:var(--u-action);--dark:var(--u-forest);--accent:var(--u-forest);--ink:var(--u-ink);--muted:var(--u-muted);--line:var(--u-line)}
 @media(min-width:768px){:root{--u-gutter:32px;--u-inset:24px}}@media(min-width:1024px){:root{--u-section:96px}}
 body{background:var(--u-bg);color:var(--u-ink);font-size:15px}
@@ -286,7 +288,7 @@ header.bar .tel{color:var(--u-ink)}
 .u-lead{font-size:17px;line-height:1.6;color:var(--u-muted);max-width:52ch;margin-top:20px}
 .u-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .u-hpic{position:relative;border-radius:var(--u-r-big);aspect-ratio:4/5;max-height:680px}
-.u-hpic img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;border-radius:var(--u-r-big);display:block}
+.u-hpic img{box-shadow:none;width:100%;height:100%;object-fit:cover;object-position:50% 60%;border-radius:var(--u-r-big);display:block}
 .u-fl{position:absolute;background:#fff;border-radius:var(--u-r-field);padding:12px 16px;box-shadow:var(--u-shadow-float);font-size:13px;color:var(--u-muted);line-height:1.3}
 .u-fl b{display:block;color:var(--u-ink);font-size:17px;font-weight:600}
 .u-fl1{left:-12px;top:12%;background:var(--u-action);color:#FFE3DD}.u-fl1 b{color:#fff;font-size:20px}
@@ -294,13 +296,13 @@ header.bar .tel{color:var(--u-ink)}
 .u-fl3{left:-12px;bottom:10%;background:var(--u-forest);color:var(--u-on-forest-muted)}.u-fl3 b{color:#fff}
 .u-city{position:relative;margin-top:40px;border-radius:var(--u-r-big);overflow:hidden;min-height:520px;display:flex;flex-direction:column;justify-content:space-between}
 .u-city>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
-.u-city::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(14,14,14,.55),rgba(14,14,14,0) 38%,rgba(14,14,14,0) 55%,rgba(14,14,14,.35))}
-.u-cityt{position:relative;z-index:1;padding:26px 28px 0;color:#fff;font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.2;max-width:36ch;text-wrap:balance}
+.u-city::after{display:none;content:"";position:absolute;inset:0;background:linear-gradient(rgba(14,14,14,.55),rgba(14,14,14,0) 38%,rgba(14,14,14,0) 55%,rgba(14,14,14,.35))}
+.u-cityt{position:relative;z-index:1;padding:26px 28px 0;color:var(--u-ink);font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.2;max-width:36ch;text-wrap:balance}
 .u-city .u-panel p{display:none}.u-city .u-panel{padding:20px 22px}.u-city .u-panel h3{font-size:18px}
 .u-city .u-panel{position:relative;z-index:1;margin:0 20px 20px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px)}
 .u-city .u-ill{z-index:1;top:16px;bottom:auto}
 @media(max-width:860px){.u-city{min-height:0;display:block}.u-city>img{position:relative;aspect-ratio:4/3;height:auto}.u-city::after{bottom:auto;height:0}
-.u-cityt{position:absolute;top:0;left:0;padding:16px 110px 16px 16px;font-size:17px}.u-city .u-panel{margin:-28px 10px 10px;border-radius:22px}.u-city{background:var(--u-forest)}}
+.u-cityt{position:static;padding:0 0 12px;font-size:20px;order:-1}.u-city .u-panel{margin:-28px 10px 10px;border-radius:22px}.u-city{background:#fff;border-radius:0;overflow:visible;display:flex!important;flex-direction:column}.u-city>img{border-radius:var(--u-r-big)}.u-city .u-panel{margin:12px 0 0;border:1px solid var(--u-line)}}
 .u-ill{position:absolute;right:14px;bottom:12px;font-size:11px;color:#fff;background:rgba(14,14,14,.45);padding:2px 8px;border-radius:999px}
 /* form panel (DS «панель проверки города») */
 .lform{border-radius:var(--u-r-big);box-shadow:var(--u-shadow-soft)!important;padding:24px}
