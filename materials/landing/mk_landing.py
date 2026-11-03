@@ -4,6 +4,20 @@ s = open(D + '/pres/deck.norm.html').read()
 css = s[s.index('<style>') + 7:s.index('</style>')]
 secs = re.findall(r'<section class="page[^"]*".*?</section>', s, re.S)
 
+# ---- цена станка только по запросу (03.11) ----
+def NP(a, b, cnt=1):
+    global s
+    assert s.count(a) >= 1, a[:60]; s = s.replace(a, b)
+NP('<div class="card fill"><div class="num">450 000 <small>₽</small></div><p class="muted">Цена комплекта, без НДС. Доставка транспортной компанией оплачивается отдельно.</p></div>',
+   '<div class="card fill"><div class="num">Цена <small>по запросу</small></div><p class="muted">Назовём на консультации. Доставка транспортной компанией оплачивается отдельно.</p></div>')
+NP('<div class="fv">450 000 ₽</div><div class="fl">цена комплекта без НДС</div>','<div class="fv">по запросу</div><div class="fl">цена комплекта — на консультации</div>')
+NP('<div>Цена</div><div>450 000 ₽ без НДС</div>','<div>Цена</div><div>по запросу, фиксируется в договоре</div>')
+NP('Платите один раз — <b class="or">450 000 ₽</b>.','Платите один раз — без роялти и ежемесячных платежей.')
+s = re.sub(r'<div class="pb">.*?<span>окупились</span></div>\s*</div>', '', s, count=1, flags=re.S)
+s = re.sub(r'\s*<tr><td><b>Объектов до окупаемости</b></td>.*?</tr>', '', s, count=1, flags=re.S)
+assert '<div class="pb-axis"' not in s and 'Объектов до окупаемости' not in s
+secs = re.findall(r'<section class="page[^"]*".*?</section>', s, re.S)
+
 PHONE = '+7 921 950-38-60'
 TEL = 'tel:+79219503860'
 
@@ -45,7 +59,7 @@ out[0] = f'''<section class="u-hero">
       <div class="u-btns"><a class="u-btn" href="#form-top">Получить консультацию</a><a class="u-btn u-out" href="{TEL}">{PHONE}</a></div>
     </div>
     <div class="u-hpic"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления">
-      <div class="u-fl u-fl1"><b>450 000 ₽</b>комплект без НДС</div>
+      <div class="u-fl u-fl1"><b>0 ₽</b>роялти и паушальный взнос</div>
       <div class="u-fl u-fl2"><b>20 рабочих дней</b>изготовление по договору</div>
       <div class="u-fl u-fl3"><b>24 месяца</b>гарантия на станок</div>
       <span class="u-ill">иллюстрация</span>
@@ -53,7 +67,7 @@ out[0] = f'''<section class="u-hero">
   </div>
   <div class="u-wrap">{form('form-top', 'первый экран', 'Обсудить запуск в вашем городе', 'Перезвоним, разберём город и ответим на вопросы по станку.', '<input name="city" placeholder="Город">', panel=True)}</div>
 </section>
-<div class="u-trust"><div class="u-wrap"><span>450 000 ₽ без НДС</span><i>+</i><span>без роялти</span><i>+</i><span>обучение в Москве или удалённо</span><i>+</i><span>12 месяцев поддержки</span><i>+</i><span>гарантия 24 месяца</span></div></div>'''
+<div class="u-trust"><div class="u-wrap"><span>оборудование в собственность</span><i>+</i><span>без роялти</span><i>+</i><span>обучение в Москве или удалённо</span><i>+</i><span>12 месяцев поддержки</span><i>+</i><span>гарантия 24 месяца</span></div></div>'''
 
 mid = f'''<section data-t="u-tdark" class="page cover midform" id="form-mid-sec">
   <div class="hgrid">
@@ -62,7 +76,7 @@ mid = f'''<section data-t="u-tdark" class="page cover midform" id="form-mid-sec"
       <h2>Приезжайте на объект в Москве — покажем станок и монтаж</h2>
       <p class="lead">Или созвонимся по видео: покажем, как гнётся короб, ответим про ваш город, сроки и комплект.</p>
     </div>
-    {form('form-mid', 'середина', 'Запросить консультацию', 'Перезвоним и договоримся о встрече или видеозвонке.', '<select name="topic"><option>Хочу посмотреть станок вживую</option><option>Видеозвонок</option><option>Вопрос по комплекту и цене</option></select>')}
+    {form('form-mid', 'середина', 'Запросить консультацию', 'Перезвоним и договоримся о встрече или видеозвонке.', '<select name="topic"><option>Узнать цену комплекта</option><option>Хочу посмотреть станок вживую</option><option>Видеозвонок</option></select>')}
   </div>
 </section>'''
 end = f'''<section class="u-finalsec" id="form-end-sec"><div class="u-wrap">
@@ -313,7 +327,7 @@ css = css.replace('@page{size:297mm 210mm;margin:0}', '')
 html = f'''<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Станок «Оконщик 3000» — оборудование и технология бесшовных термокоробов</title>
-<meta name="description" content="Станок для бесшовных термокоробов и 3D-откосов из ПВХ-сэндвича 10 мм. Комплект 450 000 ₽ без НДС, обучение и год поддержки. Без роялти и паушального взноса.">
+<meta name="description" content="Станок для бесшовных термокоробов и 3D-откосов из ПВХ-сэндвича 10 мм. Комплект, обучение и год поддержки. Без роялти и паушального взноса.">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>{css}{WEB}</style></head>
 <body>

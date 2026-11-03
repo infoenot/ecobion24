@@ -23,3 +23,4 @@ function doPost(e){
   return ContentService.createTextOutput('ok');
 }
 ```
+- **Цена станка на лендинге не показывается (03.11)** — «по запросу». mk_landing.py убирает 450 000 ₽ и график окупаемости при сборке.
