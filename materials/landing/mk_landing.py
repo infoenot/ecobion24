@@ -58,12 +58,7 @@ out[0] = f'''<section class="u-hero">
       <p class="u-lead">Для мастеров, оконщиков, ремонтников и тех, кто устал работать на рынке с высокой конкуренцией и низкой доходностью.</p>
       <div class="u-btns"><a class="u-btn" href="#form-top">Получить консультацию</a><a class="u-btn u-out" href="{TEL}">{PHONE}</a></div>
     </div>
-    <div class="u-hpic"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления">
-      <div class="u-fl u-fl1"><b>0 ₽</b>роялти и паушальный взнос</div>
-      <div class="u-fl u-fl2"><b>20 рабочих дней</b>изготовление по договору</div>
-      <div class="u-fl u-fl3"><b>24 месяца</b>гарантия на оборудование</div>
-      
-    </div>
+    <div class="u-hstats"><!-- сюда — главные цифры (доходность, 2–3 дня на объект и др.), пришлёт Вячеслав --></div>
   </div>
   <div class="u-wrap"><div class="u-city"><img src="img/city_wide.jpg" alt="Новостройки с панорамным остеклением"><div class="u-cityt">В новостройках с холодным панорамным остеклением живут ваши клиенты</div>
     {form('form-top', 'первый экран', 'Обсудить запуск в вашем городе', 'Перезвоним, разберём город и ответим на вопросы по оборудованию.', '<input name="city" placeholder="Город">', panel=True)}
@@ -117,6 +112,8 @@ out.append(end)
 
 body = '\n\n'.join(out)
 body = body.replace('<span>Иллюстрация</span>', '')
+body = re.sub(r'<div class="hero" style="margin:0"><img src="\{\{city\}\}">\s*</div>', '<div class="u-hpic u-mkpic"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления"><div class="u-fl u-fl1"><b>0 ₽</b>роялти и паушальный взнос</div><div class="u-fl u-fl2"><b>20 рабочих дней</b>изготовление по договору</div><div class="u-fl u-fl3"><b>24 месяца</b>гарантия на оборудование</div></div>', body, count=1)
+assert 'u-mkpic' in body
 body = re.sub(r'\s*<p[^>]*>Иллюстрации[^<]*</p>', '', body)
 body = re.sub(r'<div class="top"><b>(?:\d\d · )?([^<]*)</b><span>[^<]*</span></div>', lambda m: '<span class="u-eye">'+m.group(1)+'</span>', body)
 body = re.sub(r'\{\{(\w+)\}\}', lambda m: f'img/{m.group(1)}.jpg', body)
@@ -287,6 +284,9 @@ header.bar .tel{color:var(--u-ink)}
 @media(min-width:1200px){.u-hero h1 .ln{display:block;white-space:nowrap}}
 .u-lead{font-size:17px;line-height:1.6;color:var(--u-muted);max-width:52ch;margin-top:20px}
 .u-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.u-hstats{min-height:420px}
+.u-mkpic{aspect-ratio:auto!important;max-height:none!important;height:100%;min-height:460px}
+.u-mkpic img{position:absolute;inset:0}.u-mkpic .u-fl1,.u-mkpic .u-fl3{left:14px}.u-mkpic .u-fl2{right:14px}
 .u-hpic{position:relative;border-radius:var(--u-r-big);aspect-ratio:4/5;max-height:680px}
 .u-hpic img{box-shadow:none;width:100%;height:100%;object-fit:cover;object-position:50% 60%;border-radius:var(--u-r-big);display:block}
 .u-fl{position:absolute;background:#fff;border-radius:var(--u-r-field);padding:12px 16px;box-shadow:var(--u-shadow-float);font-size:13px;color:var(--u-muted);line-height:1.3}
@@ -326,8 +326,8 @@ footer{background:var(--u-bg);color:var(--u-muted);border-top:1px solid var(--u-
 .fab .u-btn{flex:1;box-shadow:var(--u-shadow-float)}
 .fab{transition:opacity .15s}.fab.off{opacity:0;pointer-events:none}
 .grid>*,.paygrid>*,.mk>*{min-width:0}
-@media(max-width:1180px){.mk{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}.paygrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:959px){.u-hgrid,.u-final{grid-template-columns:1fr}.u-hpic{aspect-ratio:4/5;max-height:none}.u-final{padding:28px 20px;gap:28px}}
+@media(min-width:861px) and (max-width:1180px){.mk{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}.paygrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:959px){.u-hstats{min-height:0}.u-mkpic{aspect-ratio:4/5!important;height:auto;min-height:0;width:100%}.u-mkpic img{position:absolute}.u-hgrid,.u-final{grid-template-columns:1fr}.u-hpic{aspect-ratio:4/5;max-height:none}.u-final{padding:28px 20px;gap:28px}}
 @media(max-width:860px){
   .u-panel .fields{grid-template-columns:1fr}.u-panel .btn{width:100%}
   .u-btns .u-btn{width:100%}
