@@ -403,3 +403,22 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 @media(max-width:1100px){.nums4>div:nth-child(3){border-left:0}}
 @media(max-width:860px){.fstrip .fhead{grid-row:auto}}
 @media(max-width:600px){.nums4>div+div{border-left:0}}
+/* заголовок + цифры 2×2 сверху, форма в одну строку снизу */
+.lb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:calc(2*var(--pad))}
+.lb-h{padding:clamp(40px,5vw,72px) 0 clamp(32px,4vw,56px) var(--pad)}
+.lb-h h3{font-size:clamp(30px,3.6vw,56px);line-height:1;letter-spacing:-.03em}
+.lb-h p{color:var(--muted-d);font-size:clamp(16px,1.4vw,20px);margin-top:16px;max-width:40ch}
+.nums4.n2{grid-template-columns:1fr 1fr;padding:clamp(40px,5vw,72px) var(--pad) clamp(32px,4vw,56px) 0}
+.nums4.n2>div{padding:18px 0 18px 28px;border-left:1px solid #3A3A3A!important;border-top:0!important}
+.nums4.n2>div:nth-child(n+3){border-top:1px solid #3A3A3A!important}
+.nums4.n2 .num{font-size:clamp(36px,3.6vw,60px)}
+.lb>.fstrip{grid-column:1/-1;background:none}
+.fstrip.hz .lform{display:block;padding:0 var(--pad) clamp(40px,5vw,64px)}
+.fstrip.hz .fhead{display:none}
+.fstrip.hz .frow{grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,auto)}
+.fstrip.hz .btn{padding-left:28px;gap:28px}
+.fstrip.hz .agree{margin-top:12px}
+@media(max-width:860px){.lb{grid-template-columns:1fr}.lb-h{padding-right:var(--pad);padding-bottom:8px}.nums4.n2{padding:24px var(--pad) 32px}
+ .fstrip.hz .frow{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.nums4.n2>div{padding-left:16px}.fstrip.hz .frow{grid-template-columns:1fr}.nums4.n2 .num{font-size:34px}}
+@media(max-width:360px){.nums4.n2 .num{font-size:28px}.nums4.n2>div{padding-left:12px}}

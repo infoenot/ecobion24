@@ -89,12 +89,15 @@ S.append(f'''<header class="hero" id="top">
     </div>
   </div>
 </header>
-<section class="fstrip">{form('form-top', 'первый экран', 'Обсудить запуск в вашем городе', 'Перезвоним, разберём город и ответим на вопросы по оборудованию.', '<input name="city" placeholder="Город">')}</section>
-<section class="dark nums4" id="nums">
+<section class="dark lb" id="nums">
+  <div class="lb-h"><h3 class="up">Обсудить запуск в вашем городе</h3><p>Перезвоним, разберём город и ответим на вопросы по оборудованию.</p></div>
+  <div class="nums4 n2">
   <div><div class="num">150–500 <small>тыс. ₽</small></div><p>чек за один заказ</p></div>
   <div><div class="num">2–4 <small>дня</small></div><p>работа на объекте</p></div>
   <div><div class="num">100–200 <small>тыс. ₽</small></div><p>остаток после прямых расходов</p></div>
   <div><div class="num">3–4 <small>заказа</small></div><p>вместо 20 по 10–15 тыс. ₽</p></div>
+  </div>
+  <div class="fstrip hz">{form('form-top', 'первый экран', 'Обсудить запуск в вашем городе', 'Перезвоним, разберём город и ответим на вопросы по оборудованию.', '<input name="city" placeholder="Город">')}</div>
 </section>''')
 
 # ---------- 01 Рынок ----------
