@@ -371,22 +371,24 @@ S.append(f'''<section class="sec" id="s15">
     <div class="pb-row pb-foot"><div class="pb-l"></div><div class="pb-t"><span class="pb-ok" style="left:85.714%">Окупились на 3-м объекте</span></div></div>
   </div>
   <div class="split">
-    <div class="tbl three">
-      <div class="th"><span>Один объект</span><span>Сами</span><span>С мастером</span></div>
+    <div class="tbl three t15">
+      <div class="cap15"><h3 class="up">Один объект</h3></div>
+      <div class="th"><span></span><span>Сами</span><span>С мастером</span></div>
       <div><b>Смета клиенту</b><span>200 000 ₽</span><span>200 000 ₽</span></div>
       <div><b>Материалы, клей, покраска (~12%)</b><span>−25 000 ₽</span><span>−25 000 ₽</span></div>
       <div><b>Зарплата изготовления и монтажа (~10%)</b><span>—</span><span>−20 000 ₽</span></div>
-      <div class="tot"><b>Остаток с объекта</b><span>175 000 ₽</span><span>155 000 ₽</span></div>
+      <div class="sum"><b>Остаток с объекта</b><span>175 000 ₽</span><span>155 000 ₽</span></div>
     </div>
-    <div class="tbl three fr">
-      <div class="th"><span>Чем покупка отличается от франшизы</span><span>Франшиза</span><span>Оконщик 3000</span></div>
-      <div><b>Паушальный взнос</b><span>есть</span><span class="ac">нет</span></div>
-      <div><b>Роялти</b><span>% с выручки каждый месяц</span><span class="ac">нет</span></div>
-      <div><b>Ежемесячные платежи</b><span>есть</span><span class="ac">нет</span></div>
-      <div><b>Что остаётся у вас</b><span>право работать под чужим брендом по договору</span><span class="ac">оборудование в собственности и технология</span></div>
+    <div class="tbl three fr t15">
+      <div class="cap15"><h3 class="up">Чем покупка отличается от франшизы</h3></div>
+      <div class="th"><span></span><span>Франшиза</span><span>Оконщик 3000</span></div>
+      <div><b>Паушальный взнос</b><span>есть</span><span class="yes">нет</span></div>
+      <div><b>Роялти</b><span>% с выручки каждый месяц</span><span class="yes">нет</span></div>
+      <div><b>Ежемесячные платежи</b><span>есть</span><span class="yes">нет</span></div>
+      <div><b>Что остаётся у вас</b><span>право работать под чужим брендом по договору</span><span class="yes">оборудование в собственности и технология</span></div>
     </div>
   </div>
-  <div class="band ac"><div><h3 class="up">Вы покупаете технологию и оборудование к ней</h3><p>Платите один раз — без роялти и ежемесячных платежей.</p></div></div>
+  <div class="band"><div><h3 class="up">Вы покупаете технологию и оборудование к ней</h3><p>Платите один раз — без роялти и ежемесячных платежей.</p></div></div>
   <p class="note">Расчёт — пример на средней смете. Остаток — до налогов и прочих расходов. Ваши сметы, цены материалов и число заказов зависят от города и продаж. Доход не гарантируем.</p>
 </section>''')
 

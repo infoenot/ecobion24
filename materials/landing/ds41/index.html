@@ -319,6 +319,21 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 .pb-o.x{justify-content:flex-start;padding-left:18px}
 #s15 .split>.tbl.three{display:flex;flex-direction:column}#s15 .split>.tbl.three>div:not(.th){flex:1;align-items:center}
 @media(max-width:860px){#s15 .split>.tbl.three>div:not(.th){align-items:baseline}}
+/* материал: оба блока выровнены по верху */
+.blk.g2 .cb{justify-content:flex-start}
+/* окупаемость: таблицы */
+#s15 .split>.t15>div:not(.th):not(.cap15){flex:1}
+.cap15{display:block!important;padding:24px var(--pad) 18px!important;border-bottom:1px solid var(--line)}
+.cap15 h3{font-size:clamp(18px,1.5vw,22px)}
+.t15 .th{min-height:52px;align-items:center!important}
+.t15>div{align-items:center}
+.t15 .sum{border-top:2px solid var(--ink);border-bottom:0}
+.t15 .sum b{font-size:17px}.t15 .sum span{font-size:clamp(20px,1.9vw,28px);font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.t15 span.yes{font-weight:700;color:var(--ink);position:relative;padding-left:16px}
+.t15 span.yes::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;background:var(--ac)}
+.fr.t15 .th span:last-child{color:var(--ink)}
+@media(max-width:860px){.fr.t15 .cap15{border-top:1px solid var(--line)}}
+@media(max-width:860px){.t15>div{align-items:baseline}.t15 .th span:first-child{display:none}}
 </style></head>
 <body>
 <header class="hero" id="top">
@@ -639,22 +654,24 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
     <div class="pb-row pb-foot"><div class="pb-l"></div><div class="pb-t"><span class="pb-ok" style="left:85.714%">Окупились на 3-м объекте</span></div></div>
   </div>
   <div class="split">
-    <div class="tbl three">
-      <div class="th"><span>Один объект</span><span>Сами</span><span>С мастером</span></div>
+    <div class="tbl three t15">
+      <div class="cap15"><h3 class="up">Один объект</h3></div>
+      <div class="th"><span></span><span>Сами</span><span>С мастером</span></div>
       <div><b>Смета клиенту</b><span>200 000 ₽</span><span>200 000 ₽</span></div>
       <div><b>Материалы, клей, покраска (~12%)</b><span>−25 000 ₽</span><span>−25 000 ₽</span></div>
       <div><b>Зарплата изготовления и монтажа (~10%)</b><span>—</span><span>−20 000 ₽</span></div>
-      <div class="tot"><b>Остаток с объекта</b><span>175 000 ₽</span><span>155 000 ₽</span></div>
+      <div class="sum"><b>Остаток с объекта</b><span>175 000 ₽</span><span>155 000 ₽</span></div>
     </div>
-    <div class="tbl three fr">
-      <div class="th"><span>Чем покупка отличается от франшизы</span><span>Франшиза</span><span>Оконщик 3000</span></div>
-      <div><b>Паушальный взнос</b><span>есть</span><span class="ac">нет</span></div>
-      <div><b>Роялти</b><span>% с выручки каждый месяц</span><span class="ac">нет</span></div>
-      <div><b>Ежемесячные платежи</b><span>есть</span><span class="ac">нет</span></div>
-      <div><b>Что остаётся у вас</b><span>право работать под чужим брендом по договору</span><span class="ac">оборудование в собственности и технология</span></div>
+    <div class="tbl three fr t15">
+      <div class="cap15"><h3 class="up">Чем покупка отличается от франшизы</h3></div>
+      <div class="th"><span></span><span>Франшиза</span><span>Оконщик 3000</span></div>
+      <div><b>Паушальный взнос</b><span>есть</span><span class="yes">нет</span></div>
+      <div><b>Роялти</b><span>% с выручки каждый месяц</span><span class="yes">нет</span></div>
+      <div><b>Ежемесячные платежи</b><span>есть</span><span class="yes">нет</span></div>
+      <div><b>Что остаётся у вас</b><span>право работать под чужим брендом по договору</span><span class="yes">оборудование в собственности и технология</span></div>
     </div>
   </div>
-  <div class="band ac"><div><h3 class="up">Вы покупаете технологию и оборудование к ней</h3><p>Платите один раз — без роялти и ежемесячных платежей.</p></div></div>
+  <div class="band"><div><h3 class="up">Вы покупаете технологию и оборудование к ней</h3><p>Платите один раз — без роялти и ежемесячных платежей.</p></div></div>
   <p class="note">Расчёт — пример на средней смете. Остаток — до налогов и прочих расходов. Ваши сметы, цены материалов и число заказов зависят от города и продаж. Доход не гарантируем.</p>
 </section>
 <section class="sec dark" id="s16">
