@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Оконщик 3000 — свой бизнес на утеплении холодного панорамного остекления</title>
+<meta name="description" content="Оборудование для бесшовных термокоробов и 3D-откосов из ПВХ-сэндвича 10 мм. Комплект, обучение и год поддержки. Без роялти и паушального взноса.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>:root{--ac:#FE4F31;--ac-h:#E23C1F;--ink:#161616;--g:#161616;--g2:#2A2A2A;--muted:#5E5E5E;--muted-d:#A8A8A8;--line:#E6E6E6;--line-d:#2E2E2E;--tile:#F3F3F3;
+--pad:clamp(16px,3vw,40px);--sec:clamp(64px,8vw,120px);--h1:clamp(34px,5.6vw,84px);--h2:clamp(28px,3.9vw,58px);--num:clamp(44px,5.6vw,88px)}
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0!important;box-shadow:none}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Onest,system-ui,sans-serif;color:var(--ink);background:#fff;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
+.up{text-transform:uppercase;font-weight:800;letter-spacing:-.02em;line-height:1.02}
+em{font-style:normal;color:var(--ac)}
+.lbl{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--tile);padding:7px 12px}
+.dark .lbl{background:var(--g2);color:#fff}
+.k{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ac)}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;height:58px;padding:0 9px 0 24px;background:var(--ac);color:#fff;font:600 16px/1 Onest,sans-serif;border:0;cursor:pointer;white-space:nowrap;transition:background .15s}
+.btn:hover{background:var(--ac-h)}
+.btn i{width:40px;height:40px;background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:18px;flex:none}
+/* nav + hero */
+.hero{position:relative;height:100vh;height:100svh;min-height:620px;max-height:1000px;overflow:hidden;color:#fff;background:var(--g)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 38%,rgba(0,0,0,.72));z-index:1}
+.nav{position:absolute;z-index:3;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px var(--pad)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-size:17px}.logo b{width:14px;height:14px;background:var(--ac)}
+.nav .links{display:flex;gap:28px;font-size:14px;font-weight:500}.nav .links a{opacity:.85}.nav .links a:hover{opacity:1}
+.nav .ct{background:#fff;color:var(--ink);padding:10px 16px;font-size:14px;font-weight:600;white-space:nowrap}
+.hero-t{position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:clamp(28px,5vw,64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:48px;align-items:end}
+.hero h1{font-size:var(--h1);line-height:.95;letter-spacing:-.035em;font-weight:800}
+.hero h1 span{display:block}
+.hero-r p{font-size:18px;line-height:1.45;margin-bottom:24px;opacity:.95}
+/* form strip */
+.lform{position:relative}
+.fstrip{border-bottom:1px solid var(--line)}
+.fstrip .lform{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);column-gap:40px;padding:32px var(--pad);align-items:center}
+.fhead h3{font-size:20px;text-transform:uppercase;font-weight:800;letter-spacing:-.01em;line-height:1.1;margin-bottom:6px}.fhead p{color:var(--muted);font-size:14px;line-height:1.4}
+.frow{display:flex;gap:0}
+.lform input,.lform select,.lform textarea{height:58px;border:1px solid var(--line);border-right:0;background:#fff;font:400 16px Onest,sans-serif;padding:0 18px;min-width:0;flex:1;color:var(--ink);outline:none;-webkit-appearance:none;appearance:none}
+.lform textarea{padding:16px 18px;resize:vertical;height:auto}
+.lform select{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23161616' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 16px center;padding-right:40px}
+.lform input:focus,.lform select:focus,.lform textarea:focus{border-color:var(--ink)}
+.agree{grid-column:2;font-size:12px;color:var(--muted);margin-top:10px}
+.ok{display:none}
+.lform.sent .frow,.lform.sent .agree,.lform.sent .fhead p{display:none}
+.lform.sent .ok{display:block;grid-column:2;font-size:16px}.ok b{display:block;font-size:20px;text-transform:uppercase;font-weight:800;color:var(--ac);margin-bottom:4px}.ok a{text-decoration:underline}
+/* vertical form */
+.lform.v{display:flex;flex-direction:column;gap:0;padding:clamp(24px,3vw,48px) var(--pad);background:#fff;color:var(--ink)}
+.lform.v .fhead{margin-bottom:22px}.lform.v .frow{flex-direction:column}
+.lform.v input,.lform.v select,.lform.v textarea{border-right:1px solid var(--line);border-bottom:0;flex:none;width:100%}
+.lform.v .btn{width:100%}
+.lform.v .agree{margin-top:12px}
+.lform.v.ac{background:var(--ac);color:#fff}.lform.v.ac .fhead p,.lform.v.ac .agree{color:rgba(255,255,255,.85)}
+.lform.v.ac input,.lform.v.ac select,.lform.v.ac textarea{border-color:#FFC2B6}
+.lform.v.ac .btn{background:var(--g)}.lform.v.ac .btn:hover{background:#000}.lform.v.ac .ok b{color:#fff}
+/* sections */
+.sec{padding-top:var(--sec)}
+.dark{background:var(--g);color:#fff}
+.sec.dark{padding-bottom:0}
+.shead{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:48px;align-items:end;padding:0 var(--pad) clamp(32px,4vw,56px)}
+.h2{font-size:var(--h2);line-height:1;letter-spacing:-.03em;text-transform:uppercase;font-weight:800;margin-top:18px;max-width:20ch}
+.lead{font-size:18px;line-height:1.5;color:var(--muted);max-width:52ch}
+.dark .lead,.dark p{color:var(--muted-d)}
+.note{padding:20px var(--pad);font-size:14px;color:var(--muted);border-bottom:1px solid var(--line);max-width:none}
+.note.in{border:0;padding:20px var(--pad) 0}
+.num{font-size:var(--num);font-weight:700;line-height:.95;letter-spacing:-.04em;white-space:nowrap}
+.num small{font-size:.36em;color:var(--ac);margin-left:6px;letter-spacing:-.01em;font-weight:700}
+.num.sm{font-size:calc(var(--num)*.55);white-space:normal;line-height:1}
+/* numbers band */
+.nums4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.nums4>div{padding:44px var(--pad) 48px;border-left:1px solid var(--line-d);display:flex;flex-direction:column;gap:14px}.nums4>div:first-child{border-left:0}
+.nums4 .num{font-size:clamp(36px,4.2vw,68px)}.nums4 p{color:var(--muted-d);font-size:16px}
+/* split */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--line)}
+.dark .split{border-color:var(--line-d)}
+.ph{position:relative;overflow:hidden;min-height:440px;background:var(--g)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph .c{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:clamp(20px,2.5vw,36px) var(--pad);color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.ph .cap{font-size:clamp(20px,2vw,30px);display:block;max-width:18ch}
+.ph.tall{min-height:640px}
+.stack{display:flex;flex-direction:column}
+.blk-t{padding:clamp(28px,3vw,44px) var(--pad);border-bottom:1px solid var(--line)}
+.split>.blk-t+.blk-t{border-left:1px solid var(--line)}
+.blk-t h3{font-size:22px;margin:8px 0 16px}.blk-t.big h3{font-size:clamp(22px,2.2vw,32px)}
+ul.ln{list-style:none}ul.ln li{padding:12px 0 12px 26px;border-top:1px solid var(--line);position:relative;font-size:16px;line-height:1.45}
+ul.ln li::before{content:"";position:absolute;left:0;top:20px;width:10px;height:10px;background:var(--ac)}
+.dark ul.ln li{border-color:var(--line-d);color:#ddd}
+.cb{background:var(--ac);color:#fff;padding:clamp(28px,3vw,44px) var(--pad);display:flex;flex-direction:column;justify-content:flex-end;gap:12px;flex:1;min-height:200px}
+.cb>span{font-size:clamp(22px,2.2vw,32px)}.cb p{font-size:17px;line-height:1.45;color:#fff!important;max-width:46ch}
+.cb.g{background:var(--g)}.cb.w{background:#fff;color:var(--ink);border-bottom:1px solid var(--line)}.cb.w p{color:var(--muted)!important}
+.cb.g2c{background:var(--g2)}
+.blk.g2{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto}.blk.g2 .cb.w{grid-column:1/-1}
+/* kv rows */
+.kv{border-right:1px solid var(--line)}
+.kv>div{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:24px;padding:18px var(--pad);border-bottom:1px solid var(--line);align-items:baseline}
+.kv span{color:var(--muted);font-size:14px}.kv b{font-weight:600;font-size:17px}
+/* cards */
+.cards{display:grid;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cards.c4{grid-template-columns:repeat(4,minmax(0,1fr))}.cards.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards>div{padding:clamp(28px,2.6vw,40px) var(--pad);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px;min-height:260px}
+.cards.c4>div:nth-child(4n),.cards.c3>div:nth-child(3n){border-right:0}
+.cards.c4>div:nth-child(n+5),.cards.c3>div:nth-child(n+4){border-top:1px solid var(--line)}
+.cards h3{font-size:clamp(20px,1.7vw,24px)}.cards p{color:var(--muted);font-size:15px}
+.cards .dk{background:var(--g);color:#fff}.cards .dk p{color:var(--muted-d)}
+.cards .acc-b{background:var(--ac);color:#fff;justify-content:flex-end}.cards .acc-b .k{color:#fff}.cards .acc-b p{color:#fff}.cards .acc-b .num small{color:#fff}
+.tasks>div:not(.acc-b) h3{font-size:clamp(26px,2.4vw,36px);margin-top:auto}
+/* tiles */
+.tiles{display:grid}.tiles.t3{grid-template-columns:repeat(3,minmax(0,1fr))}.tiles.t4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.tile{background:var(--tile);padding:clamp(28px,3vw,44px) var(--pad);display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:280px;border-right:1px solid #fff}
+.tile:last-child{border-right:0}.tile p{color:var(--muted);font-size:15px;max-width:34ch}
+/* before/after */
+.ba{display:grid;grid-template-columns:1fr 1fr}.ba .ph{min-height:0;aspect-ratio:4/3}
+.tag{position:absolute;z-index:2;top:20px;left:var(--pad);background:#fff;color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px}.tag.ac{background:var(--ac);color:#fff}
+/* steps */
+.steps{display:grid;border-top:1px solid var(--line-d)}
+.steps.s4{grid-template-columns:repeat(4,minmax(0,1fr))}.steps.s3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.steps>div{padding:clamp(28px,3vw,44px) var(--pad) clamp(36px,4vw,56px);border-right:1px solid var(--line-d);display:flex;flex-direction:column;gap:12px}
+.steps.s4>div:nth-child(4n),.steps.s3>div:nth-child(3n){border-right:0}.steps.s3>div:nth-child(n+4){border-top:1px solid var(--line-d)}
+.steps .num{color:var(--ac);margin-bottom:28px}.steps h3{font-size:clamp(20px,1.8vw,26px)}.steps p{font-size:15px}
+/* tables */
+.tbl{border-top:1px solid var(--line)}
+.tbl>div{display:grid;gap:24px;padding:18px var(--pad);border-bottom:1px solid var(--line);align-items:baseline}
+.tbl .th{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:14px;padding-bottom:14px}
+.tbl.spec>div{grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) minmax(0,120px)}
+.tbl.two>div{grid-template-columns:minmax(0,1fr) minmax(0,auto)}.tbl.two>div>span:last-child{text-align:right}
+.tbl.three>div{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr)}
+.tbl b{font-weight:600}.tbl span{font-size:16px}
+.tbl .big{font-size:clamp(20px,2vw,28px);font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.tbl .tot{background:var(--ac);color:#fff;border-color:var(--ac)}.tbl .tot span{font-weight:700}
+.tbl span.ac{color:var(--ac);font-weight:600}
+.split>.tbl{border-top:0}.split>.tbl:first-child{border-right:1px solid var(--line)}
+.tbl.two.pr{border-right:1px solid var(--line)}
+/* days */
+.days{padding:clamp(28px,3vw,48px) var(--pad);display:flex;flex-direction:column}
+.days h3{font-size:clamp(22px,2.2vw,32px);margin-bottom:28px;color:#fff}
+.days>div{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:22px 0;border-top:1px solid var(--line-d)}
+.days .num{font-size:clamp(34px,3.6vw,56px);color:#fff}.days b{font-size:18px;font-weight:600;color:var(--ac);text-align:right}
+.days>p{margin-top:auto;padding-top:24px;border-top:1px solid var(--line-d);font-size:15px}
+/* accordion */
+.acc{display:flex;flex-direction:column;padding-bottom:24px}
+.acc details{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none;display:grid;grid-template-columns:56px minmax(0,1fr) 28px;align-items:center;gap:12px;padding:26px var(--pad);cursor:pointer;font-size:clamp(18px,1.7vw,24px);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1}
+.acc summary::-webkit-details-marker{display:none}
+.acc .n{font-size:14px;color:var(--ac);font-weight:700}
+.acc .pm{width:28px;height:28px;position:relative}.acc .pm::before,.acc .pm::after{content:"";position:absolute;left:6px;right:6px;top:13px;height:2px;background:currentColor}
+.acc .pm::after{transform:rotate(90deg);transition:transform .2s}
+.acc details[open]{background:var(--ac);color:#fff;border-color:var(--ac)}.acc details[open] .n{color:#fff}.acc details[open] .pm::after{transform:rotate(0)}
+.acc details p{padding:0 var(--pad) 28px calc(var(--pad) + 68px);font-size:17px;line-height:1.5;max-width:60ch}
+/* mid form */
+.midf{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);margin-top:var(--sec)}
+.midf-t{padding:clamp(40px,5vw,80px) var(--pad);display:flex;flex-direction:column;justify-content:center}
+.midf .h2{color:#fff;margin-bottom:20px}.midf-t .lbl,.final-t .lbl{align-self:flex-start}
+.lform.v.dk{background:var(--g2);color:#fff}.lform.v.dk .fhead p,.lform.v.dk .agree{color:var(--muted-d)}.lform.v.dk input,.lform.v.dk select{border-color:#3A3A3A}.lform.v.dk .ok b{color:var(--ac)}
+/* products */
+.prods>div{min-height:0}
+.svgw{background:var(--tile);aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;padding:18px;margin:0 0 8px}
+.svgw svg{width:86%;height:auto;max-height:240px}
+.sills>div{padding:clamp(28px,3vw,44px) var(--pad);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.sills>div+div{border-left:1px solid var(--line)}.sills h3{font-size:clamp(20px,2vw,28px)}.sills p{color:var(--muted)}
+.sills .svgw{aspect-ratio:auto;padding:28px}.sills .svgw svg{max-height:300px}
+/* finishes */
+.fin .sws{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:auto;padding-top:16px}
+.sw{display:flex;align-items:center;gap:10px;font-size:13px;padding:8px 0;border-top:1px solid var(--line)}.sw i{width:36px;height:36px;flex:none}
+.band{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:clamp(28px,3vw,44px) var(--pad);background:var(--g);color:#fff}
+.band h3{font-size:clamp(22px,2.2vw,32px);margin-bottom:6px}.band p{color:var(--muted-d)}
+.band.ac{background:var(--ac)}.band.ac p{color:#fff}.band.ac .num small{color:#fff}
+/* gallery */
+.galgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.gal{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--tile)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.gal:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 20px 18px;color:#fff;font-size:14px;font-weight:600;line-height:1.3;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.galgrid:not(.open) .gal:nth-child(n+9){display:none}
+.more-btn{display:block;width:100%;height:72px;border:0;border-bottom:1px solid var(--line);background:#fff;font:800 16px Onest,sans-serif;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;color:var(--ink)}
+.more-btn:hover{background:var(--ac);color:#fff}
+/* guarantee, object */
+.gar,.obj{padding:clamp(28px,3vw,48px) var(--pad);display:flex;flex-direction:column;gap:14px}
+.gar h3{font-size:clamp(22px,2.2vw,32px);margin-bottom:6px}
+.obj h3{font-size:clamp(20px,2vw,28px);margin:6px 0 18px}
+.ol{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid var(--line-d);align-items:baseline}
+.ol span{color:var(--muted-d)}.ol b{font-size:clamp(20px,2vw,28px);font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.ol.tot{background:var(--ac);margin:0 calc(-1*var(--pad));padding:18px var(--pad);border:0}.ol.tot span{color:#fff}
+/* final */
+.final{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+.final-t{padding:clamp(40px,5vw,80px) var(--pad);display:flex;flex-direction:column;gap:14px}
+.final .h2{margin-bottom:10px}
+.bigtel{font-size:clamp(32px,4.4vw,64px);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ac);white-space:nowrap}
+.final p{font-size:17px}.final p.muted{color:var(--muted);font-size:15px;max-width:54ch}
+footer a,.bigtel,.nav .ct{white-space:nowrap}
+footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;font-size:14px;line-height:1.6}footer b{color:#fff}
+.fab{display:none}
+/* --- responsive --- */
+@media(max-width:1100px){
+ .cards.c4,.tiles.t4,.steps.s4,.nums4{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .cards.c4>div:nth-child(2n){border-right:0}.cards.c4>div:nth-child(4n+1),.cards.c4>div:nth-child(4n+3){border-right:1px solid var(--line)}.cards.c4>div:nth-child(n+3){border-top:1px solid var(--line)}
+ .steps.s4>div:nth-child(2n){border-right:0}.steps.s4>div:nth-child(n+3){border-top:1px solid var(--line-d)}
+ .nums4>div:nth-child(3){border-left:0}.nums4>div:nth-child(n+3){border-top:1px solid var(--line-d)}
+ .tile:nth-child(2n){border-right:0}.tiles.t4 .tile:nth-child(n+3){border-top:1px solid #fff}
+ .galgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.galgrid:not(.open) .gal:nth-child(n+7){display:none}
+ .nav .links{display:none}
+ .fstrip .lform{grid-template-columns:minmax(0,1fr);row-gap:18px}.agree,.lform.sent .ok{grid-column:1}
+}
+@media(max-width:860px){
+ .hero{min-height:640px}.hero-t{grid-template-columns:1fr;gap:22px}.hero-r p{font-size:16px;margin-bottom:18px}
+ .shead{grid-template-columns:1fr;gap:18px}
+ .split,.midf,.final,.ba{grid-template-columns:1fr}
+ .split>.blk-t+.blk-t,.sills>div+div{border-left:0}
+ .kv,.split>.tbl:first-child,.tbl.two.pr{border-right:0}
+ .ph.tall{min-height:0;aspect-ratio:4/5}.ph{min-height:340px}
+ .cards.c3,.tiles.t3,.steps.s3{grid-template-columns:1fr}
+ .cards.c3>div{border-right:0}.cards.c3>div+div{border-top:1px solid var(--line)}
+ .tiles.t3 .tile{border-right:0;border-top:1px solid #fff}.tiles.t3 .tile:first-child{border-top:0}
+ .steps.s3>div{border-right:0}.steps.s3>div+div{border-top:1px solid var(--line-d)}
+ .tile{min-height:220px}
+ .galgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.galgrid:not(.open) .gal:nth-child(n+5){display:none}
+ .midf-t,.final-t{padding-bottom:32px}
+ .fab{display:block;position:fixed;z-index:50;left:0;right:0;bottom:0;transition:transform .25s}.fab .btn{width:100%;height:60px}.fab.off{transform:translateY(110%)}
+ footer{padding-bottom:84px}
+}
+@media(max-width:600px){
+ .nav .ct{display:none}
+ .frow{flex-direction:column}.lform input,.lform select,.lform textarea{border-right:1px solid var(--line);border-bottom:0;flex:none;width:100%}.lform .btn{width:100%}
+ .cards.c4,.tiles.t4,.steps.s4,.nums4{grid-template-columns:1fr}
+ .cards.c4>div{border-right:0!important;border-top:1px solid var(--line)}.cards.c4>div:first-child{border-top:0}
+ .steps.s4>div{border-right:0}.steps.s4>div+div{border-top:1px solid var(--line-d)}
+ .nums4>div{border-left:0;border-top:1px solid var(--line-d);padding:28px var(--pad)}.nums4>div:first-child{border-top:0}
+ .tiles.t4 .tile{border-right:0;border-top:1px solid #fff}.tiles.t4 .tile:first-child{border-top:0}
+ .cards>div{min-height:0}.tasks>div:not(.acc-b) h3{margin-top:4px}
+ .kv>div{grid-template-columns:1fr;gap:4px}
+ .tbl.spec>div{grid-template-columns:1fr;gap:4px}.tbl.spec .th span:nth-child(n+2){display:none}
+ .tbl.three>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 16px}.tbl.three>div>b{grid-column:1/-1;margin-bottom:4px}.tbl.three .th>span:first-child{grid-column:1/-1;margin-bottom:6px}.tbl.three span{font-size:15px}
+ .tbl.two>div{gap:12px}.tbl.two .th{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .blk.g2{grid-template-columns:1fr}
+ .band{flex-direction:column;align-items:flex-start;gap:18px}
+ .acc summary{grid-template-columns:36px minmax(0,1fr) 28px;padding:22px var(--pad)}.acc details p{padding-left:calc(var(--pad) + 48px)}
+ .days b{font-size:16px}
+ .fin .sws{grid-template-columns:1fr 1fr}
+ .ol{flex-direction:column;gap:2px}
+}
+@media(max-width:360px){.hero h1{font-size:30px}.num{font-size:40px}.bigtel{font-size:28px}.btn{padding-left:16px;font-size:15px}}
+</style></head>
+<body>
+<header class="hero" id="top">
+  <img src="../img/city_wide.jpg" alt="Новостройки с панорамным остеклением">
+  <nav class="nav"><a class="logo" href="#top"><b></b>Оконщик 3000</a>
+    <div class="links"><a href="#s02">Комплект</a><a href="#s06">Оборудование</a><a href="#s11">Изделия</a><a href="#s14">Экономика</a><a href="#s16">Как начать</a></div>
+    <a class="ct" href="tel:+79219503860">+7 921 950-38-60</a></nav>
+  <div class="hero-t">
+    <h1 class="up"><span>Начни свой бизнес на</span> <span><em>утеплении</em> холодного панорамного</span> <span>остекления изнутри</span></h1>
+    <div class="hero-r">
+      <p>Для мастеров, оконщиков, ремонтников и тех, кто устал работать на рынке с высокой конкуренцией и низкой доходностью.</p>
+      <a class="btn" href="#form-top"><span>Получить консультацию</span><i aria-hidden="true">→</i></a>
+    </div>
+  </div>
+</header>
+<section class="fstrip"><form class="lform " id="form-top" data-place="первый экран">
+  <div class="fhead"><h3>Обсудить запуск в вашем городе</h3><p>Перезвоним, разберём город и ответим на вопросы по оборудованию.</p></div>
+  <div class="frow">
+    <input name="name" placeholder="Имя" autocomplete="name" required>
+    <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+    <input name="city" placeholder="Город">
+    <button class="btn" type="submit"><span>Получить консультацию</span><i aria-hidden="true">→</i></button>
+  </div>
+  <div class="agree">Нажимая кнопку, вы соглашаетесь на обработку персональных данных для обратной связи.</div>
+  <div class="ok"><b>Заявка отправлена</b>Перезвоним в ближайшее время. Или сразу: <a href="tel:+79219503860">+7 921 950-38-60</a>, звонок или MAX.</div>
+</form></section>
+<section class="dark nums4" id="nums">
+  <div><div class="num">150–⁠500 <small>тыс. ₽</small></div><p>чек за один заказ</p></div>
+  <div><div class="num">2–⁠4 <small>дня</small></div><p>работа на объекте</p></div>
+  <div><div class="num">100–⁠200 <small>тыс. ₽</small></div><p>остаток после прямых расходов</p></div>
+  <div><div class="num">3–⁠4 <small>заказа</small></div><p>вместо 20 по 10–⁠15 тыс. ₽</p></div>
+</section>
+<section class="sec" id="s01">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">01 · Рынок</span><h2 class="h2 ">Владелец квартиры с панорамными окнами хочет, чтобы у окна было <em>тепло, тихо, сухо и красиво</em></h2></div>
+  
+</div>
+  <div class="split">
+    <div class="ph tall"><img src="../img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления" loading="lazy"><div class="c"><span class="cap up">Тёплое остекление без замены фасада</span></div></div>
+    <div class="stack">
+      <div class="blk-t"><h3 class="up">Что не так</h3><ul class="ln"><li>Зимой алюминиевые стойки холодные, у окна некомфортно</li><li>На металле собирается конденсат</li><li>По полым профилям передаётся шум</li><li>Металл застройщика выбивается из интерьера</li></ul></div>
+      <div class="blk-t"><h3 class="up">Почему обычный ремонт не помогает</h3><ul class="ln"><li>Заменить фасад — дорого, часто нельзя без согласования</li><li>Второй ряд окон съедает площадь и вид</li><li>Подручные материалы — громоздко, видны стыки</li></ul></div>
+      <div class="cb"><span class="up">Решение</span><p>Утеплить стойки и закрыть бесшовными коробами по размеру, не меняя фасад.</p></div>
+    </div>
+  </div>
+</section>
+<section class="sec" id="s02">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">02 · Что вы покупаете</span><h2 class="h2 ">Вы покупаете <em>оборудование, технологию</em> и год поддержки</h2></div>
+  <p class="lead">Это не франшиза: нет роялти и ежемесячных платежей. Комплект после оплаты — ваш.</p>
+</div>
+  <div class="cards c4">
+    <div><span class="k">01</span><h3 class="up">Оборудование</h3><p>Оборудование «Оконщик 3000», настольная пила, расходные материалы из расчёта на 5–⁠6 месяцев работы.</p></div>
+    <div><span class="k">02</span><h3 class="up">Технология</h3><p>Как делать изделия на оборудовании, как утеплять стойку перед установкой короба, как монтировать, красить и ламинировать.</p></div>
+    <div><span class="k">03</span><h3 class="up">Обучение</h3><p>В Москве на нашей базе или удалённо: по видео и на консультациях с разработчиком.</p></div>
+    <div class="dk"><span class="k">04</span><h3 class="up">Поддержка год</h3><p>Консультации по производству и продажам 12 месяцев с даты договора. Разбор вопросов по фото и видео с объекта.</p></div>
+  </div>
+  <div class="tiles t3">
+    <div class="tile"><div class="num">Цена <small>по запросу</small></div><p>Назовём на консультации. Доставка транспортной компанией оплачивается отдельно.</p></div>
+    <div class="tile"><div class="num">20 <small>рабочих дней</small></div><p>Срок изготовления и отгрузки комплекта по договору.</p></div>
+    <div class="tile"><div class="num">24 <small>месяца</small></div><p>Гарантия на оборудование с момента получения и запуска.</p></div>
+  </div>
+</section>
+<section class="sec" id="s03">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">03 · За что платит клиент</span><h2 class="h2 ">Клиент платит не за пластик, а за <em>решение семи задач</em></h2></div>
+  <p class="lead">Холодная, шумная и некрасивая лоджия становится тёплой, тихой и красивой частью квартиры. Стойки несущие — их не меняют, а утепляют и закрывают коробом.</p>
+</div>
+  <div class="ba">
+    <div class="ph"><img src="../img/before.jpg" alt="Лоджия до работ" loading="lazy"><span class="tag">До</span></div>
+    <div class="ph"><img src="../img/after.jpg" alt="Лоджия после работ" loading="lazy"><span class="tag ac">После</span></div>
+  </div>
+  <div class="cards c4 tasks"><div><span class="k">Проблема: холодные стойки</span><h3 class="up">Тепло</h3><p>Зимой алюминиевые стойки холодные. Утеплитель и короб закрывают холодный металл.</p></div><div><span class="k">Проблема: лоджия как склад</span><h3 class="up">Уют</h3><p>Ровные бесшовные поверхности без щелей и самодельных стыков. Лоджия становится частью квартиры.</p></div><div><span class="k">Проблема: слышно соседей</span><h3 class="up">Тишина</h3><p>Пустотелые стойки проходят через этажи и передают звук. Пустоты заполняют, стойку закрывают коробом.</p></div><div><span class="k">Проблема: конденсат</span><h3 class="up">Сухость</h3><p>Металл закрывают бутиловой лентой или жидкой резиной. На этом слое конденсат не образуется.</p></div><div><span class="k">Проблема: профиль застройщика</span><h3 class="up">Дизайн</h3><p>Короба красят по RAL или клеят плёнку. Царапины и следы стройки скрыты.</p></div><div><span class="k">Проблема: метры пустуют</span><h3 class="up">Площадь</h3><p>С утеплением пола и потолка лоджия становится кабинетом или детским уголком. Без второго ряда остекления.</p></div><div><span class="k">Проблема: квартира под сдачу</span><h3 class="up">Аренда</h3><p>Аккуратные окна видны на фото объявления. Аргумент для владельцев квартир под сдачу.</p></div>
+    <div class="acc-b"><span class="k">Все семь задач закрывает один заказ</span><div class="num">1–⁠3 <small>дня</small></div><p>Утепление узла и бесшовный короб по замеру. Установка на объекте после замера; покраска по RAL добавляет несколько дней.</p></div>
+  </div>
+</section>
+<section class="sec" id="s04">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">04 · Решение</span><h2 class="h2 ">Термокороб — <em>цельногнутый короб</em> из ПВХ‑сэндвича с утеплителем внутри</h2></div>
+  <p class="lead">Короб делают по замеру конкретной стойки и клеят поверх утеплённого профиля. Стыка на внешнем ребре нет: изделие согнуто из одной полосы.</p>
+</div>
+  <div class="split">
+    <div class="blk-t big"><span class="k">01</span><h3 class="up">Термокороб на стойки и ригели</h3><ul class="ln"><li>П‑образный — на вертикальную стойку, Г‑образный — на ригель и примыкания.</li><li>От пола до потолка одной деталью, без набора планок.</li><li>Монтаж на клей, без сверления профиля.</li><li>Световой проём уменьшается максимум на 10 мм: короб закрывает только стойку.</li></ul></div>
+    <div class="blk-t big"><span class="k">02</span><h3 class="up">3D‑термооткос на окна и двери</h3><ul class="ln"><li>Откос загнут до стены. Ширина полок любая, например 90 мм спереди и 30 мм сбоку.</li><li>Обычный F‑профиль даёт фиксированные 50–⁠60 мм.</li><li>Детали режут под 90°, без стыков на 45°.</li><li>Подходит для ПВХ, алюминиевых и деревянных окон, входных и межкомнатных дверей.</li></ul></div>
+  </div>
+  <div class="tiles t3">
+    <div class="tile"><div class="num">10 <small>мм</small></div><p>сэндвич‑панель с утеплителем внутри</p></div>
+    <div class="tile"><div class="num sm">без сверления</div><p>короб сажают на клей поверх утеплённой стойки</p></div>
+    <div class="tile"><div class="num">до 10 <small>мм</small></div><p>на столько максимум уменьшается световой проём</p></div>
+  </div>
+  <p class="note">Утепление стоек не превращает любое холодное остекление в тёплое. Нужна ли замена стёкол или стеклопакетов, решает инженер на объекте.</p>
+</section>
+<section class="sec" id="s05">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">05 · Материал</span><h2 class="h2 ">Сырьё одно — <em>ПВХ‑сэндвич 10 мм</em>, его продают в каждом областном городе</h2></div>
+  <p class="lead">Сэндвич — два листа пластика, между ними экструдированный пенополистирол (XPS). Из этого же материала делают заполнение балконных дверей ПВХ.</p>
+</div>
+  <div class="split">
+    <div class="kv"><div><span>Толщина панели</span><b>10 мм</b></div><div><span>Лицевой пластик</span><b>не тоньше 0,7 мм, лучше 0,8–⁠1 мм</b></div><div><span>Утеплитель внутри</span><b>XPS, около 10 мм</b></div><div><span>Формат листа</span><b>1500×3000 или 2000×3000 мм</b></div><div><span>Цвет</span><b>белый, как у пластикового окна</b></div><div><span>Цена листа</span><b>2 650–⁠3 000 ₽ (1500×3000, 2026 г.)</b></div><div><span>Поставщик</span><b>Т.Б.М. — филиалы по всей России</b></div></div>
+    <div class="blk g2">
+      <div class="cb g"><span class="up">Сколько выходит с листа</span><p>При развёртке 300 мм — 15 погонных метров откоса. Материал на 1 метр изделия — 150–⁠300 ₽ в зависимости от развёртки.</p></div>
+      <div class="cb"><span class="up">Продажная цена изделий</span><p>От 1 250 ₽ за погонный метр без монтажа. С монтажом — от 2 000 ₽.</p></div>
+      <div class="cb w"><span class="up">Что не подходит</span><p>Сэндвич с пластиком 0,4 мм. Он не держит прямую линию и плохо ведёт себя при нагреве на сгибе.</p></div>
+    </div>
+  </div>
+</section>
+<section class="sec dark" id="s06">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">06 · Как работает оборудование</span><h2 class="h2 ">Оборудование делает изделие за 4 операции: <em>раскрой, паз, нагрев, сгиб</em></h2></div>
+  <p class="lead">Оборудование нагревает лист по линии сгиба и сгибает его под 90°. Получается цельное П‑ или Г‑образное изделие.</p>
+</div>
+  <div class="steps s4">
+    <div><div class="num">01</div><h3 class="up">Раскрой</h3><p>Нарезка заготовки с точностью до 0,5 мм.</p></div>
+    <div><div class="num">02</div><h3 class="up">Выборка паза</h3><p>Выборка паза под будущий сгиб.</p></div>
+    <div><div class="num">03</div><h3 class="up">Нагрев</h3><p>Оборудование прогревает пластик по линии паза.</p></div>
+    <div><div class="num">04</div><h3 class="up">Сгиб</h3><p>Заготовку сгибают под 90°. Для П‑короба — два сгиба, для Г‑короба — один.</p></div>
+  </div>
+  <div class="split">
+    <div class="cb"><span class="up">Точность</span><p>Изделие делают по замеру, нарезка с точностью до 0,5 мм.</p></div>
+    <div class="cb g2c"><span class="up">Чего оборудование не делает</span><p>Оконные рамы и стекло, не гнёт алюминиевые стойки. Гнёт листовой пластик и сэндвич толщиной до 10 мм. Сэндвич 24, 32, 40 и 50 мм не гнёт.</p></div>
+  </div>
+</section>
+<section class="sec" id="s07">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">07 · Комплект</span><h2 class="h2 ">Что входит в комплект — <em>по спецификации договора</em></h2></div>
+  <p class="lead">Состав комплекта, цену и сроки фиксируем в договоре до оплаты.</p>
+</div>
+  <div class="tbl spec">
+    <div class="th"><span>Позиция</span><span>Что это</span><span>Кол‑во</span></div>
+    <div><b>Оборудование «Оконщик 3000»</b><span>стол 600 × 900 × 3200 мм на стальных регулируемых опорах с рабочими модулями: раскрой, паз, нагрев, сгиб</span><span>1 шт.</span></div>
+    <div><b>Настольная пила</b><span>«Декстер», 210 мм</span><span>1 шт.</span></div>
+    <div><b>Расходные материалы</b><span>из расчёта на 5–⁠6 месяцев работы</span><span>1 набор</span></div>
+  </div>
+</section>
+<section class="sec" id="s08">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">08 · Характеристики</span><h2 class="h2 ">Оборудование весит 53 кг, работает от розетки и перевозится <em>на багажнике легковой машины</em></h2></div>
+  
+</div>
+  <div class="tiles t4">
+    <div class="tile"><div class="num">53 <small>кг</small></div><p>Длина 3,2 м, опоры снимаются. Двое грузят его на багажник легковой машины.</p></div>
+    <div class="tile"><div class="num">220 <small>В</small></div><p>Работает от обычной сети.</p></div>
+    <div class="tile"><div class="num">3×4 <small>м</small></div><p>Ориентир рабочей зоны с учётом листа и проходов.</p></div>
+    <div class="tile"><div class="num">100 <small>м за смену</small></div><p>Выработка одного мастера за смену 6–⁠7 часов.</p></div>
+  </div>
+  <div class="tbl two">
+    <div class="th"><span>Режим работы</span><span>Погонных метров за смену</span></div>
+    <div><b>Один мастер, белые изделия</b><span class="big">100–⁠120</span></div>
+    <div><b>Мастер и помощник</b><span class="big">150 и больше</span></div>
+  </div>
+  <p class="note">Оборудование работает без шума и пыли. Расходные части меняются по износу.</p>
+</section>
+<section class="sec" id="s09">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">09 · Где делать короба</span><h2 class="h2 ">Короба делают в цехе или гараже, <em>реже — прямо на объекте</em></h2></div>
+  <p class="lead">Обычно оборудование стоит в цехе или гараже, на объект везут готовые короба. Реже оборудование привозят на объект и делают короба на месте.</p>
+</div>
+  <div class="cards c3">
+    <div><span class="k">01</span><h3 class="up">В цехе</h3><p>Тёплое помещение от 12–⁠14 м². Делаете изделия для своих заказов и на продажу другим мастерам.</p></div>
+    <div><span class="k">02</span><h3 class="up">В гараже</h3><p>Тёплый гараж подходит для старта: оборудование работает от 220 В, без шума и пыли.</p></div>
+    <div><span class="k">03 · реже</span><h3 class="up">На объекте</h3><p>Оборудование привозят на объект: замер, изготовление и монтаж в одном месте.</p></div>
+  </div>
+  <div class="split">
+    <div class="ph tall"><img src="../img/work.jpg" alt="Установка короба на утеплённую стойку" loading="lazy"><div class="c"><span class="cap up">Установка короба на утеплённую стойку</span></div></div>
+    <div class="days dark">
+      <h3 class="up">Сколько занимает заказ на белых коробах</h3>
+      <div><span class="num">День 1</span><b>замер и заказ</b></div>
+      <div><span class="num">День 2</span><b>изготовление</b></div>
+      <div><span class="num">День 3</span><b>монтаж</b></div>
+      <p>Покраска по RAL у партнёра добавляет несколько дней.</p>
+    </div>
+  </div>
+</section>
+<section class="sec" id="s10">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">10 · Монтаж</span><h2 class="h2 ">Перед установкой короба стойку <em>изолируют и утепляют</em></h2></div>
+  <p class="lead">Короб — финишный слой. Тепло даёт весь узел: изоляция металла, утеплитель и герметичные примыкания.</p>
+</div>
+  <div class="split">
+    <div class="ph tall"><img src="../img/tape.jpg" alt="Стойки и ригели в изоляции перед установкой коробов" loading="lazy"><div class="c"><span class="cap up">Стойки и ригели в изоляции перед установкой коробов</span></div></div>
+    <div class="acc"><details open><summary><span class="n">01</span><span class="t">Гидроизоляция</span><span class="pm"></span></summary><p>Металл стойки закрывают бутиловой лентой или жидкой резиной. На этом слое конденсат не образуется.</p></details><details><summary><span class="n">02</span><span class="t">Утепление</span><span class="pm"></span></summary><p>На вертикальные и горизонтальные профили клеят пеноплекс.</p></details><details><summary><span class="n">03</span><span class="t">Заполнение и герметизация</span><span class="pm"></span></summary><p>Пустоты заполняют пеной, примыкания проходят герметиком. Между стеклопакетом и коробом прокладывают резину.</p></details><details><summary><span class="n">04</span><span class="t">Замер</span><span class="pm"></span></summary><p>Снимают точный размер стойки.</p></details><details><summary><span class="n">05</span><span class="t">Установка</span><span class="pm"></span></summary><p>Чистовой короб сажают на клей или герметик, который не растворяет пенополистирол. Крепёж в профиль не нужен.</p></details><p class="note in">Для каждой профильной системы — своя последовательность. Ей учим на объектах и разбираем сложные узлы по фото.</p></div>
+  </div>
+</section>
+<section class="midf dark" id="form-mid-sec">
+  <div class="midf-t"><span class="lbl">Посмотреть вживую</span><h2 class="h2 ">Приезжайте на объект в Москве — <em>покажем оборудование</em> и монтаж</h2><p class="lead">Или созвонимся по видео: покажем, как гнётся короб, ответим про ваш город, сроки и комплект.</p></div>
+  <form class="lform v dk" id="form-mid" data-place="середина">
+  <div class="fhead"><h3>Запросить консультацию</h3><p>Перезвоним и договоримся о встрече или видеозвонке.</p></div>
+  <div class="frow">
+    <input name="name" placeholder="Имя" autocomplete="name" required>
+    <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+    <select name="topic"><option>Узнать цену комплекта</option><option>Хочу посмотреть оборудование вживую</option><option>Видеозвонок</option></select>
+    <button class="btn" type="submit"><span>Получить консультацию</span><i aria-hidden="true">→</i></button>
+  </div>
+  <div class="agree">Нажимая кнопку, вы соглашаетесь на обработку персональных данных для обратной связи.</div>
+  <div class="ok"><b>Заявка отправлена</b>Перезвоним в ближайшее время. Или сразу: <a href="tel:+79219503860">+7 921 950-38-60</a>, звонок или MAX.</div>
+</form>
+</section>
+<section class="sec" id="s11">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">11 · Изделия</span><h2 class="h2 ">Кроме утепления, на оборудовании делают <em>профили для окон, дверей</em> и интерьера</h2></div>
+  <p class="lead">Всё — из того же листа сэндвича 10 мм и теми же 4 операциями: раскрой, паз, нагрев, сгиб. Ниже — схемы сечений.</p>
+</div>
+  <div class="cards c4 prods"><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="6" width="14" height="32" fill="#CCCCCC"/><rect x="4" y="46" width="96" height="30" fill="#E3E3E3"/><rect x="18" y="40" width="82" height="6" fill="#F2C9A8"/><path d="M18,37 L106,37 L106,60 L100,60" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M18,37 L106,37 L106,60 L100,60" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Подоконник</h3><p>На пеноплексе: сэндвич с загибом вниз, свес за стену 50–⁠150 мм. Второй вариант — на плите ЛДСП/МДФ, см. ниже.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="8" y="8" width="22" height="64" fill="#CCCCCC"/><rect x="30" y="40" width="58" height="36" fill="#E3E3E3"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Дверной 3D‑откос</h3><p>Откос и наличник одной деталью: загиб на стену, торец закрыт загибом. Входные и межкомнатные двери.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="8" y="8" width="22" height="64" fill="#CCCCCC"/><rect x="30" y="40" width="58" height="36" fill="#E3E3E3"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Оконный 3D‑откос</h3><p>Откос загнут до стены. Ширина полок любая. Для ПВХ, алюминиевых и деревянных окон.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="4" width="22" height="72" fill="#E3E3E3"/><rect x="4" y="66" width="112" height="10" fill="#E3E3E3"/><path d="M26,26 L48,26 L48,64" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M26,26 L48,26 L48,64" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Плинтус</h3><p>Короб у пола: внутри можно спрятать кабель. Цвет — в тон коробам и откосам.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="10" y="30" width="60" height="46" fill="#E3E3E3"/><path d="M10,26 L74,26 L74,76" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M10,26 L74,26 L74,76" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Уголок</h3><p>Закрывает и защищает внешний угол стены, колонны или откоса.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="64" width="112" height="12" fill="#E3E3E3"/><circle cx="46" cy="44" r="12" fill="#CCCCCC"/><circle cx="76" cy="50" r="7" fill="#CCCCCC"/><path d="M22,62 L22,24 L96,24 L96,62" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M22,62 L22,24 L96,24 L96,62" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Короб на трубы и кабели</h3><p>П‑короб вдоль стены. К круглой трубе крепят через каркас из профиля или бруска.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="40" y="18" width="40" height="44" fill="#CCCCCC"/><path d="M36,14 L84,14 L84,66 L36,66 Z" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M36,14 L84,14 L84,66 L36,66 Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Колонна и столб</h3><p>Обшивка квадратного столба — четыре сгиба. Круглые колонны закрывают секторами.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="4" width="112" height="12" fill="#E3E3E3"/><rect x="40" y="16" width="40" height="22" fill="#CCCCCC"/><path d="M30,18 L30,52 L90,52 L90,18" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M30,18 L30,52 L90,52 L90,18" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Фальшбалка и балка</h3><p>Короб на потолочную балку или декоративная балка из того же сэндвича.</p></div></div>
+</section>
+<section class="sec" id="s11b">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">11 · Подоконник</span><h2 class="h2 ">Подоконник из сэндвича делают <em>двумя способами</em></h2></div>
+  <p class="lead">Сэндвич — финишная поверхность. Жёсткость и форму даёт основа: плита или пеноплекс. Схемы — в разрезе.</p>
+</div>
+  <div class="split sills">
+    <div><span class="k">Вариант 1</span><h3 class="up">На плите ЛДСП или МДФ</h3><div class="svgw"><svg viewBox="0 0 260 170" class="bigsec"><defs><pattern id="ht" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" stroke="#BDBDBD" stroke-width="1.4"/></pattern></defs><rect x="40" y="10" width="24" height="62" fill="#CCCCCC"/><text x="52" y="44" font-size="9" font-family="Onest" fill="#555555" text-anchor="middle">окно</text><rect x="40" y="86" width="150" height="78" fill="url(#ht)"/><rect x="64" y="72" width="126" height="14" fill="#E7D3B5"/><text x="127" y="82" font-size="9" font-family="Onest" fill="#161616" text-anchor="middle">ЛДСП / МДФ</text><path d="M64,68 L196,68 L196,90 L64,90" fill="none" stroke="#161616" stroke-width="9" stroke-linejoin="miter"/><path d="M64,68 L196,68 L196,90 L64,90" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="miter"/><text x="206" y="82" font-size="9" font-family="Onest" fill="#555555" text-anchor="start">50 мм</text><text x="150" y="150" font-size="9" font-family="Onest" fill="#555555" text-anchor="middle">стена</text></svg></div><p>Плиту кладут на стену под окном. Сэндвич П‑профилем надевают на плиту: сверху, по торцу и снизу. Толщина по фронту — 50 мм.</p></div>
+    <div><span class="k">Вариант 2</span><h3 class="up">На пеноплексе</h3><div class="svgw"><svg viewBox="0 0 260 170" class="bigsec"><defs><pattern id="ht2" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" stroke="#BDBDBD" stroke-width="1.4"/></pattern></defs><rect x="40" y="10" width="24" height="62" fill="#CCCCCC"/><text x="52" y="44" font-size="9" font-family="Onest" fill="#555555" text-anchor="middle">окно</text><rect x="40" y="86" width="150" height="78" fill="url(#ht2)"/><rect x="64" y="72" width="126" height="14" fill="#F2C9A8"/><text x="127" y="82" font-size="9" font-family="Onest" fill="#161616" text-anchor="middle">пеноплекс</text><path d="M64,68 L200,68 L200,118 L190,118" fill="none" stroke="#161616" stroke-width="9" stroke-linejoin="miter"/><path d="M64,68 L200,68 L200,118 L190,118" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="miter"/><text x="210" y="96" font-size="9" font-family="Onest" fill="#555555" text-anchor="start">50–⁠150 мм</text><text x="120" y="150" font-size="9" font-family="Onest" fill="#555555" text-anchor="middle">стена</text></svg></div><p>На стену кладут пеноплекс — он утепляет и держит форму. Сверху сэндвич с загибом вниз: свес за стену 50–⁠150 мм, торец закрыт загибом к стене.</p></div>
+  </div>
+</section>
+<section class="sec" id="s11c">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">11 · Отделка</span><h2 class="h2 ">Любое изделие делают в одном из <em>трёх вариантов отделки</em></h2></div>
+  <p class="lead">Цвет подбирают под интерьер: короб, откос и подоконник можно сделать в тон стенам, полу или мебели.</p>
+</div>
+  <div class="cards c3 fin">
+    <div><span class="k">01</span><h3 class="up">Белый</h3><p>Базовый цвет сэндвича, как у пластикового окна. Без дополнительной отделки, самый быстрый вариант.</p><div class="sws"><div class="sw"><i style="background:#FFFFFF;box-shadow:inset 0 0 0 1px #E3E3E3;"></i><span>белый матовый</span></div></div></div>
+    <div><span class="k">02</span><h3 class="up">Покраска по RAL</h3><p>800+ вариантов цвета по шкале RAL. Красят в покрасочной камере партнёра. Добавляет несколько дней к сроку.</p><div class="sws"><div class="sw"><i style="background:#383E42;"></i><span>графит RAL 7016</span></div><div class="sw"><i style="background:#16181B;"></i><span>чёрный матовый</span></div><div class="sw"><i style="background:#59473A;"></i><span>коричневый</span></div><div class="sw"><i style="background:#9DA3A6;"></i><span>серый</span></div></div></div>
+    <div><span class="k">03</span><h3 class="up">Ламинация плёнкой</h3><p>200+ вариантов плёнки: под дерево, однотонные, детские с рисунком.</p><div class="sws"><div class="sw"><i style="background:repeating-linear-gradient(92deg,#D9C3A0 0 3px,#CDB48D 3px 7px,#D9C3A0 7px 9px,#E3D0B1 9px 14px);"></i><span>светлый дуб</span></div><div class="sw"><i style="background:repeating-linear-gradient(92deg,#C08A4E 0 3px,#B37C42 3px 7px,#C08A4E 7px 9px,#CC9960 9px 14px);"></i><span>золотой дуб</span></div><div class="sw"><i style="background:repeating-linear-gradient(92deg,#6E4B33 0 3px,#5F402B 3px 7px,#6E4B33 7px 9px,#7B563C 9px 14px);"></i><span>орех</span></div><div class="sw"><i style="background:repeating-linear-gradient(92deg,#B9B2A3 0 3px,#ACA493 3px 7px,#B9B2A3 7px 9px,#C6C0B3 9px 14px);"></i><span>ясень</span></div></div></div>
+  </div>
+  <div class="band">
+    <div><h3 class="up">Комплект в одной плёнке</h3><p>короба, откосы, подоконник и плинтус в одном цвете</p></div>
+    <div class="num">200+ <small>плёнок</small></div>
+  </div>
+</section>
+<section class="sec" id="s11d">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">11 · Галерея</span><h2 class="h2 ">Что можно сделать <em>на оборудовании</em></h2></div>
+  
+</div>
+  <div class="galgrid" id="gal"><figure class="gal"><img src="../img/g01.jpg" loading="lazy" alt="Подоконник-столешница вдоль панорамного окна"><figcaption>Подоконник‑столешница вдоль панорамного окна</figcaption></figure><figure class="gal"><img src="../img/g02.jpg" loading="lazy" alt="Портал балконного блока и 3D-откосы под светлый дуб"><figcaption>Портал балконного блока и 3D‑откосы под светлый дуб</figcaption></figure><figure class="gal"><img src="../img/g03.jpg" loading="lazy" alt="Подоконник под дуб на ригеле, белые короба на стойках и парапете"><figcaption>Подоконник под дуб на ригеле, белые короба на стойках и парапете</figcaption></figure><figure class="gal"><img src="../img/g04.jpg" loading="lazy" alt="Лоджия: белые короба на стойках и ригелях"><figcaption>Лоджия: белые короба на стойках и ригелях</figcaption></figure><figure class="gal"><img src="../img/g05.jpg" loading="lazy" alt="Эркер: белые короба на стойках граней"><figcaption>Эркер: белые короба на стойках граней</figcaption></figure><figure class="gal"><img src="../img/g06.jpg" loading="lazy" alt="Откосы входной двери под светлый дуб"><figcaption>Откосы входной двери под светлый дуб</figcaption></figure><figure class="gal"><img src="../img/g07.jpg" loading="lazy" alt="Угол остекления: короб на угловой стойке и парапете"><figcaption>Угол остекления: короб на угловой стойке и парапете</figcaption></figure><figure class="gal"><img src="../img/g08.jpg" loading="lazy" alt="Белые короба на стойках и нижнем ригеле у пола"><figcaption>Белые короба на стойках и нижнем ригеле у пола</figcaption></figure><figure class="gal"><img data-src="../img/g09.jpg" alt="Лоджия: белые короба на стойках и ригеле"><figcaption>Лоджия: белые короба на стойках и ригеле</figcaption></figure><figure class="gal"><img data-src="../img/g10.jpg" alt="Белые 3D-откосы входной двери"><figcaption>Белые 3D‑откосы входной двери</figcaption></figure><figure class="gal"><img data-src="../img/g11.jpg" alt="Подоконник с боковинами вокруг радиатора, под дуб"><figcaption>Подоконник с боковинами вокруг радиатора, под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g12.jpg" alt="Обрамление ниши под телевизор под орех"><figcaption>Обрамление ниши под телевизор под орех</figcaption></figure><figure class="gal"><img data-src="../img/g13.jpg" alt="Откосы, порог и плинтус балконной двери под дуб"><figcaption>Откосы, порог и плинтус балконной двери под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g14.jpg" alt="Графитовые короба на стойках и ригелях"><figcaption>Графитовые короба на стойках и ригелях</figcaption></figure><figure class="gal"><img data-src="../img/g15.jpg" alt="Обшивка квадратной колонны, белый"><figcaption>Обшивка квадратной колонны, белый</figcaption></figure><figure class="gal"><img data-src="../img/g16.jpg" alt="Круглая колонна, обшитая гранями, графит"><figcaption>Круглая колонна, обшитая гранями, графит</figcaption></figure><figure class="gal"><img data-src="../img/g17.jpg" alt="Портал проёма без двери под светлый дуб"><figcaption>Портал проёма без двери под светлый дуб</figcaption></figure><figure class="gal"><img data-src="../img/g18.jpg" alt="Реечная стена из П-профилей под дуб"><figcaption>Реечная стена из П‑профилей под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g19.jpg" alt="Портал выхода на лоджию под дуб"><figcaption>Портал выхода на лоджию под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g20.jpg" alt="Короб на стояки в санузле с лючком"><figcaption>Короб на стояки в санузле с лючком</figcaption></figure><figure class="gal"><img data-src="../img/g21.jpg" alt="Фитнес-зал: колонны под дерево, белые короба на стойках"><figcaption>Фитнес‑зал: колонны под дерево, белые короба на стойках</figcaption></figure><figure class="gal"><img data-src="../img/g22.jpg" alt="Рама для карты под светлый дуб"><figcaption>Рама для карты под светлый дуб</figcaption></figure><figure class="gal"><img data-src="../img/g23.jpg" alt="Рама для большого зеркала под дуб"><figcaption>Рама для большого зеркала под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g24.jpg" alt="Фальшбалки под светлый дуб"><figcaption>Фальшбалки под светлый дуб</figcaption></figure></div>
+  <button type="button" class="more-btn" id="galbtn">Показать ещё 16 фото</button>
+</section>
+<section class="sec" id="s12">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">12 · Обучение и поддержка</span><h2 class="h2 ">Учим работе на оборудовании, монтажу и расчёту заказа, затем <em>год отвечаем на вопросы</em></h2></div>
+  
+</div>
+  <div class="cards c3">
+    <div><span class="k">01</span><h3 class="up">Чему учим</h3><ul class="ln"><li>Раскрой, выборка паза, нагрев и сгиб сэндвича</li><li>Замер, утепление узла, монтаж короба</li><li>Покраска и ламинация изделий</li><li>Расчёт заказа, расхода материала и цены для клиента</li></ul></div>
+    <div><span class="k">02</span><h3 class="up">Как учим</h3><ul class="ln"><li>На нашей базе в Москве или удалённо</li><li>Учебные видео — пока изготавливается комплект</li><li>По желанию — стажировка на действующих объектах в Москве</li><li>Выезд специалиста к вам в цену не входит</li></ul></div>
+    <div><span class="k">03</span><h3 class="up">После обучения</h3><ul class="ln"><li>12 месяцев консультаций по производству и продажам</li><li>Разбор сложных узлов по фото и видео с объекта</li><li>Ведём до сдачи первых 1–⁠2 квартир</li><li>Контакты поставщиков сэндвича и плёнки</li></ul></div>
+  </div>
+  <div class="band ac">
+    <div><h3 class="up">Поддержка по договору</h3><p>консультации по производству и продажам с даты подписания</p></div>
+    <div class="num">12 <small>месяцев</small></div>
+  </div>
+  <p class="note">Отдельная тема обучения — как увеличить толщину стеклопакета без альпинистов.</p>
+</section>
+<section class="sec" id="s13">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">13 · Гарантия и договор</span><h2 class="h2 ">Договор с ООО «Меркурий‑групп»: <em>срок, гарантия и ответственность</em> прописаны</h2></div>
+  
+</div>
+  <div class="split">
+    <div class="kv"><div><span>Исполнитель</span><b>ООО «Меркурий‑групп», ИНН 5916035699, Москва</b></div><div><span>Покупатель</span><b>физлицо, ИП или ООО</b></div><div><span>Цена</span><b>по запросу, фиксируется в договоре</b></div><div><span>Способы оплаты</span><b>по счёту, QR‑код онлайн‑кассы, банковская карта, наличные с кассовым чеком</b></div><div><span>Порядок оплаты</span><b>часть при заказе, остаток до 100% — перед отправкой; рассрочки нет</b></div><div><span>Изготовление</span><b>20 рабочих дней</b></div><div><span>Доставка</span><b>ТК «Деловые линии» в ваш город, оплачивается отдельно</b></div><div><span>Просрочка отгрузки</span><b>пени 0,5% в день</b></div></div>
+    <div class="gar dark">
+      <div class="num">24 <small>месяца</small></div><h3 class="up">Гарантия</h3>
+      <ul class="ln"><li>Срок — с момента получения и запуска оборудования.</li><li>Дефект по вине производителя устраняем за 14 календарных дней своими силами и за свой счёт.</li><li>Гарантия не распространяется на расходные части.</li><li>Механические повреждения и комплектацию проверяйте при получении.</li></ul>
+    </div>
+  </div>
+</section>
+<section class="sec" id="s14">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">14 · Экономика</span><h2 class="h2 ">Цены на изделия и <em>пример одного объекта</em> в Москве</h2></div>
+  <p class="lead">Цены по Москве. В вашем городе цены и спрос другие — считаем на созвоне.</p>
+</div>
+  <div class="split">
+    <div class="tbl two pr">
+      <div class="th"><span>Изделие</span><span>Цена за пог. м</span></div>
+      <div><b>Опт оконщикам: по их размерам, без замера и монтажа</b><span class="big">1 250 ₽</span></div>
+      <div><b>3D‑термооткос с монтажом</b><span class="big">от 2 000 ₽</span></div>
+      <div><b>Термокороб под ключ, белый</b><span class="big">2 000–⁠2 500 ₽</span></div>
+      <div><b>Термокороб с покраской или ламинацией</b><span class="big">до 5 000 ₽</span></div>
+      <div><b>Материал на 1 пог. м</b><span class="big">150–⁠300 ₽</span></div>
+    </div>
+    <div class="obj dark">
+      <span class="k">Объект в Москве, июль 2026</span>
+      <h3 class="up">120 пог. м коробов в цвете RAL 9016 и ламинация 6 створок по месту</h3>
+      <div class="ol"><span>Договор с клиентом</span><b>593 000 ₽</b></div>
+      <div class="ol"><span>Материалы и покраска</span><b>69 000 ₽</b></div>
+      <div class="ol"><span>Зарплата изготовления и монтажа</span><b>60 000 ₽</b></div>
+      <div class="ol tot"><span>Остаток до налогов</span><b>464 000 ₽</b></div>
+      <div class="ol"><span>Срок</span><b>7 рабочих дней</b></div>
+    </div>
+  </div>
+  <p class="note">Это крупный объект, не средний заказ. Остаток 464 000 ₽ — до налогов и прочих расходов. Сколько заказов вы возьмёте, зависит от ваших продаж. Поток заявок и доход не гарантируем.</p>
+</section>
+<section class="sec" id="s15">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">15 · Окупаемость</span><h2 class="h2 ">При средней смете 200 тыс. ₽ комплект окупается <em>за 2–⁠3 объекта</em></h2></div>
+  <p class="lead">Расчёт по структуре затрат реального объекта в Москве: материалы — около 12% сметы, зарплата изготовления и монтажа — около 10%.</p>
+</div>
+  <div class="split">
+    <div class="tbl three">
+      <div class="th"><span>Один объект</span><span>Сами</span><span>С мастером</span></div>
+      <div><b>Смета клиенту</b><span>200 000 ₽</span><span>200 000 ₽</span></div>
+      <div><b>Материалы, клей, покраска (~12%)</b><span>−25 000 ₽</span><span>−25 000 ₽</span></div>
+      <div><b>Зарплата изготовления и монтажа (~10%)</b><span>—</span><span>−20 000 ₽</span></div>
+      <div class="tot"><b>Остаток с объекта</b><span>175 000 ₽</span><span>155 000 ₽</span></div>
+    </div>
+    <div class="tbl three fr">
+      <div class="th"><span>Чем покупка отличается от франшизы</span><span>Франшиза</span><span>Оконщик 3000</span></div>
+      <div><b>Паушальный взнос</b><span>есть</span><span class="ac">нет</span></div>
+      <div><b>Роялти</b><span>% с выручки каждый месяц</span><span class="ac">нет</span></div>
+      <div><b>Ежемесячные платежи</b><span>есть</span><span class="ac">нет</span></div>
+      <div><b>Что остаётся у вас</b><span>право работать под чужим брендом по договору</span><span class="ac">оборудование в собственности и технология</span></div>
+    </div>
+  </div>
+  <div class="band ac"><div><h3 class="up">Вы покупаете технологию и оборудование к ней</h3><p>Платите один раз — без роялти и ежемесячных платежей.</p></div></div>
+  <p class="note">Расчёт — пример на средней смете. Остаток — до налогов и прочих расходов. Ваши сметы, цены материалов и число заказов зависят от города и продаж. Доход не гарантируем.</p>
+</section>
+<section class="sec dark" id="s16">
+  <div class="shead">
+  <div class="shead-l"><span class="lbl">16 · Как начать</span><h2 class="h2 ">От созвона до первого объекта — <em>6 шагов</em></h2></div>
+  
+</div>
+  <div class="steps s3"><div><div class="num">01</div><h3 class="up">Созвон</h3><p>Разбираем ваш город, опыт и формат: опт, монтаж под ключ или оба.</p></div><div><div class="num">02</div><h3 class="up">Договор и оплата</h3><p>Отправляем договор и счёт, фиксируем состав комплекта и сроки.</p></div><div><div class="num">03</div><h3 class="up">Изготовление</h3><p>20 рабочих дней. В это время вы смотрите учебные видео.</p></div><div><div class="num">04</div><h3 class="up">Обучение</h3><p>В Москве на нашей базе или удалённо.</p></div><div><div class="num">05</div><h3 class="up">Доставка</h3><p>«Деловые линии» привозят комплект, вы запускаете оборудование.</p></div><div><div class="num">06</div><h3 class="up">Первый объект</h3><p>Вместе подбираем дом в вашем городе и ведём до сдачи первых квартир.</p></div></div>
+</section>
+<section class="final" id="form-end-sec">
+  <div class="final-t">
+    <span class="lbl">Вопросы по комплекту и запуску</span>
+    <h2 class="h2 ">Обсудим запуск <em>в вашем городе</em></h2>
+    <a class="bigtel" href="tel:+79219503860">+7 921 950-38-60</a>
+    <p>Вячеслав, продажи и запуск · звонок или MAX</p>
+    <p class="muted">Технические вопросы разбирает Сергей Попов — инженер‑технолог, разработчик оборудования, в оконной отрасли с 1994 года.</p>
+  </div>
+  <form class="lform v ac" id="form-bottom" data-place="низ">
+  <div class="fhead"><h3>Получить консультацию</h3><p>Оставьте телефон — перезвоним и ответим на вопросы.</p></div>
+  <div class="frow">
+    <input name="name" placeholder="Имя" autocomplete="name" required>
+    <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+    <input name="city" placeholder="Город"><textarea name="comment" rows="2" placeholder="Вопрос (необязательно)"></textarea>
+    <button class="btn" type="submit"><span>Получить консультацию</span><i aria-hidden="true">→</i></button>
+  </div>
+  <div class="agree">Нажимая кнопку, вы соглашаетесь на обработку персональных данных для обратной связи.</div>
+  <div class="ok"><b>Заявка отправлена</b>Перезвоним в ближайшее время. Или сразу: <a href="tel:+79219503860">+7 921 950-38-60</a>, звонок или MAX.</div>
+</form>
+</section>
+<footer><b>Оконщик 3000</b> · оборудование и технология бесшовных термокоробов<br>Исполнитель по договору — ООО «Меркурий‑групп», ИНН 5916035699 · <a href="tel:+79219503860">+7 921 950-38-60</a></footer>
+<div class="fab"><a class="btn" href="#form-bottom"><span>Получить консультацию</span><i aria-hidden="true">→</i></a></div>
+<script>
+// Адрес для заявок: веб-приложение Google Apps Script (см. README) — заявки попадут в таблицу «Заявки».
+const FORM_ENDPOINT='';
+document.querySelectorAll('input[type=tel]').forEach(i=>i.addEventListener('input',()=>{let d=i.value.replace(/\D/g,'');if(d.startsWith('8'))d='7'+d.slice(1);if(!d.startsWith('7'))d='7'+d;d=d.slice(0,11);let s='+7';if(d.length>1)s+=' ('+d.slice(1,4);if(d.length>=4)s+=') '+d.slice(4,7);if(d.length>=7)s+='-'+d.slice(7,9);if(d.length>=9)s+='-'+d.slice(9,11);i.value=s;}));
+document.querySelectorAll('form.lform').forEach(f=>f.addEventListener('submit',async e=>{e.preventDefault();
+ const data=Object.fromEntries(new FormData(f));data.place=f.dataset.place;data.page=location.href;data.ts=new Date().toISOString();
+ if((data.phone||'').replace(/\D/g,'').length<11){f.querySelector('input[type=tel]').focus();return}
+ const b=f.querySelector('button');b.disabled=true;b.querySelector('span').textContent='Отправляем…';
+ try{if(FORM_ENDPOINT)await fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)})}catch(err){}
+ f.classList.add('sent');}));
+const fab=document.querySelector('.fab'),vis=new Set();
+const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target));upd()},{threshold:.1});
+document.querySelectorAll('form.lform').forEach(f=>io.observe(f));
+const hero=document.querySelector('.hero');function upd(){fab.classList.toggle('off',vis.size>0||hero.getBoundingClientRect().bottom>0)}
+addEventListener('scroll',upd,{passive:true});upd();
+const gb=document.getElementById('galbtn'),g=document.getElementById('gal');
+const hid=()=>[...g.children].filter(f=>getComputedStyle(f).display==='none').length;
+const lab=()=>{const n=hid();gb.textContent=n?'Показать ещё '+n+' фото':'Свернуть'};lab();addEventListener('resize',()=>{if(!g.classList.contains('open'))lab()});
+gb.addEventListener('click',()=>{if(g.classList.toggle('open')){g.querySelectorAll('img[data-src]').forEach(i=>{i.src=i.dataset.src;i.removeAttribute('data-src')});gb.textContent='Свернуть'}else{lab();g.scrollIntoView({behavior:'smooth',block:'start'})}});
+document.querySelectorAll('.acc details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)document.querySelectorAll('.acc details').forEach(o=>{if(o!==d)o.open=false})}));
+</script>
+</body></html>
