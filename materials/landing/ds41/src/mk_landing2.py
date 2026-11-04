@@ -81,7 +81,7 @@ S.append(f'''<header class="hero" id="top">
     <div class="links"><a href="#s02">Комплект</a><a href="#s06">Оборудование</a><a href="#s11">Изделия</a><a href="#s14">Экономика</a><a href="#s16">Как начать</a></div>
     <a class="ct" href="{TEL}">{PHONE}</a></nav>
   <div class="hero-t">
-    <h1 class="up"><span>Начни свой бизнес на</span> <span><em>утеплении</em> холодного панорамного</span> <span>остекления изнутри</span></h1>
+    <h1 class="up"><span>Бизнес на</span> <span><em>утеплении</em> холодного панорамного</span> <span>остекления изнутри</span></h1>
     <div class="hero-r">
       <p>Для мастеров, оконщиков, ремонтников и тех, кто устал работать на рынке с высокой конкуренцией и низкой доходностью.</p>
       <a class="btn" href="#form-top"><span>Получить консультацию</span>{ARR}</a>
