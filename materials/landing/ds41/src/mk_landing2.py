@@ -364,20 +364,13 @@ S.append(f'''<section class="sec" id="s14">
 # ---------- 15 Окупаемость ----------
 S.append(f'''<section class="sec" id="s15">
   {head('15', 'Окупаемость', 'При средней смете 200 тыс. ₽ комплект окупается [за 2–3 объекта]', 'Расчёт по структуре затрат реального объекта в Москве: материалы — около 12% сметы, зарплата изготовления и монтажа — около 10%.')}
-  <div class="pb">
-    <div class="pb-row"><div class="pb-l"><b>Цена комплекта</b><span>платите один раз</span></div><div class="pb-t"><div class="pb-k" style="width:85.714%"><span>Комплект</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
-    <div class="pb-row"><div class="pb-l"><b>Монтируете сами</b><span>175 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:33.333%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:33.333%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:33.333%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
-    <div class="pb-row"><div class="pb-l"><b>С наёмным мастером</b><span>155 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:29.524%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:29.524%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:29.524%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
-    <div class="pb-row pb-foot"><div class="pb-l"></div><div class="pb-t"><span class="pb-ok" style="left:85.714%">Окупились на 3-м объекте</span></div></div>
-  </div>
-  <div class="split">
-    <div class="tbl three t15">
-      <div class="cap15"><h3 class="up">Один объект</h3></div>
-      <div class="th"><span></span><span>Сами</span><span>С мастером</span></div>
-      <div><b>Смета клиенту</b><span>200 000 ₽</span><span>200 000 ₽</span></div>
-      <div><b>Материалы, клей, покраска (~12%)</b><span>−25 000 ₽</span><span>−25 000 ₽</span></div>
-      <div><b>Зарплата изготовления и монтажа (~10%)</b><span>—</span><span>−20 000 ₽</span></div>
-      <div class="sum"><b>Остаток с объекта</b><span>175 000 ₽</span><span>155 000 ₽</span></div>
+  <div class="split s15">
+    <div class="pb">
+      <div class="cap15"><h3 class="up">При средней смете 200 тыс. ₽</h3></div>
+      <div class="pb-row"><div class="pb-l"><b>Цена комплекта</b><span>платите один раз</span></div><div class="pb-t"><div class="pb-k" style="width:85.714%"><span>Комплект</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
+      <div class="pb-row"><div class="pb-l"><b>Монтируете сами</b><span>175 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:33.333%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:33.333%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:33.333%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
+      <div class="pb-row"><div class="pb-l"><b>С наёмным мастером</b><span>155 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:29.524%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:29.524%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:29.524%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
+      <div class="pb-row pb-foot"><div class="pb-l"></div><div class="pb-t"><span class="pb-ok" style="left:85.714%">Окупились на 3-м объекте</span></div></div>
     </div>
     <div class="tbl three fr t15">
       <div class="cap15"><h3 class="up">Чем покупка отличается от франшизы</h3></div>
@@ -388,8 +381,6 @@ S.append(f'''<section class="sec" id="s15">
       <div><b>Что остаётся у вас</b><span>право работать под чужим брендом по договору</span><span class="yes">оборудование в собственности и технология</span></div>
     </div>
   </div>
-  <div class="band"><div><h3 class="up">Вы покупаете технологию и оборудование к ней</h3><p>Платите один раз — без роялти и ежемесячных платежей.</p></div></div>
-  <p class="note">Расчёт — пример на средней смете. Остаток — до налогов и прочих расходов. Ваши сметы, цены материалов и число заказов зависят от города и продаж. Доход не гарантируем.</p>
 </section>''')
 
 # ---------- 16 Как начать ----------

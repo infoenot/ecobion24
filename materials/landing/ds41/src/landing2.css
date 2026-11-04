@@ -329,3 +329,16 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 .fr.t15 .th span:last-child{color:var(--ink)}
 @media(max-width:860px){.fr.t15 .cap15{border-top:1px solid var(--line)}}
 @media(max-width:860px){.t15>div{align-items:baseline}.t15 .th span:first-child{display:none}}
+/* окупаемость: график слева, франшиза справа */
+.s15{margin-top:0}
+.s15>.pb{border-top:0;border-right:1px solid var(--line);padding:0 0 28px;display:flex;flex-direction:column}
+.s15 .pb .cap15{margin-bottom:12px}
+.s15 .pb-row{grid-template-columns:1fr;row-gap:10px;padding:14px var(--pad)}
+.s15 .pb-l{display:flex;justify-content:space-between;align-items:baseline;gap:16px}.s15 .pb-l span{margin:0}
+.s15 .pb-foot{padding-top:0}.s15 .pb-foot .pb-l{display:none}
+.s15>.tbl{border-top:0}
+.s15>.t15>div:not(.th):not(.cap15){flex:1}
+@media(max-width:860px){.s15>.pb{border-right:0;border-bottom:1px solid var(--line)}}
+#s15 .split>.tbl.three>.cap15,#s15 .s15>.tbl>.cap15{flex:none!important}
+.s15 .cap15{min-height:66px;display:flex!important;align-items:center}
+.s15 .pb-ok{transform:translateX(calc(-100% + 1px))}
