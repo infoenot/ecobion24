@@ -300,6 +300,25 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 @media(max-width:600px){.fstrip .frow{grid-template-columns:1fr}.acc summary{grid-template-columns:32px minmax(0,1fr) 28px}.acc details p{padding-left:calc(var(--pad) + 44px)}}
 @media(max-width:860px){.midf,.final,.hero-t{grid-template-columns:1fr}.hero-t{row-gap:22px}}
 @media(max-width:600px){.obj .ol{align-items:flex-start;justify-content:center}}
+
+/* окупаемость */
+.pb{border-top:1px solid var(--line);padding:clamp(32px,3.5vw,56px) var(--pad) 0}
+.pb-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);column-gap:calc(2*var(--pad));align-items:center;padding:10px 0}
+.pb-l b{display:block;font-size:clamp(17px,1.4vw,20px);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:1.15}
+.pb-l span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.pb-t{position:relative;height:clamp(56px,5vw,72px);display:flex;background:#fff;box-shadow:inset 0 0 0 1px var(--line)!important}
+.pb-k{background:var(--g);color:#fff;display:flex;align-items:center;padding:0 22px;font-weight:700;text-transform:uppercase;font-size:14px;letter-spacing:.04em}
+.pb-o{background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;border-right:3px solid #fff;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;overflow:hidden}
+.pb-o.x{background:repeating-linear-gradient(135deg,var(--ac) 0 12px,#FF8A73 12px 24px)}
+.pb-line{position:absolute;top:-10px;bottom:-10px;width:0;border-left:2px dashed var(--ink);z-index:2}
+.pb-foot{padding-top:0}.pb-foot .pb-t{height:40px;background:none;box-shadow:none!important}
+.pb-ok{position:absolute;top:8px;transform:translateX(-50%);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;background:var(--ink);color:#fff;padding:6px 12px}
+#s15 .pb + .split{margin-top:clamp(32px,3.5vw,56px)}
+@media(max-width:860px){.pb-row{grid-template-columns:1fr;row-gap:10px;padding:12px 0}.pb-foot .pb-l{display:none}.pb-o span{font-size:0}.pb-o span::after{content:attr(data-n)}}
+@media(max-width:600px){.pb-k{padding:0 12px;font-size:12px}.pb-ok{font-size:11px;transform:translateX(-80%)}}
+.pb-o.x{justify-content:flex-start;padding-left:18px}
+#s15 .split>.tbl.three{display:flex;flex-direction:column}#s15 .split>.tbl.three>div:not(.th){flex:1;align-items:center}
+@media(max-width:860px){#s15 .split>.tbl.three>div:not(.th){align-items:baseline}}
 </style></head>
 <body>
 <header class="hero" id="top">
@@ -613,6 +632,12 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
   <div class="shead-l"><h2 class="h2 "><em>Окупаемость</em></h2></div>
   <div class="shead-r"><p class="sfull">При средней смете 200 тыс. ₽ комплект окупается за 2–⁠3 объекта</p><p class="lead">Расчёт по структуре затрат реального объекта в Москве: материалы — около 12% сметы, зарплата изготовления и монтажа — около 10%.</p></div>
 </div>
+  <div class="pb">
+    <div class="pb-row"><div class="pb-l"><b>Цена комплекта</b><span>платите один раз</span></div><div class="pb-t"><div class="pb-k" style="width:85.714%"><span>Комплект</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
+    <div class="pb-row"><div class="pb-l"><b>Монтируете сами</b><span>175 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:33.333%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:33.333%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:33.333%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
+    <div class="pb-row"><div class="pb-l"><b>С наёмным мастером</b><span>155 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:29.524%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:29.524%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:29.524%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
+    <div class="pb-row pb-foot"><div class="pb-l"></div><div class="pb-t"><span class="pb-ok" style="left:85.714%">Окупились на 3-м объекте</span></div></div>
+  </div>
   <div class="split">
     <div class="tbl three">
       <div class="th"><span>Один объект</span><span>Сами</span><span>С мастером</span></div>

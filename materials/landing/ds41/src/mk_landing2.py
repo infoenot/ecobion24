@@ -364,6 +364,12 @@ S.append(f'''<section class="sec" id="s14">
 # ---------- 15 Окупаемость ----------
 S.append(f'''<section class="sec" id="s15">
   {head('15', 'Окупаемость', 'При средней смете 200 тыс. ₽ комплект окупается [за 2–3 объекта]', 'Расчёт по структуре затрат реального объекта в Москве: материалы — около 12% сметы, зарплата изготовления и монтажа — около 10%.')}
+  <div class="pb">
+    <div class="pb-row"><div class="pb-l"><b>Цена комплекта</b><span>платите один раз</span></div><div class="pb-t"><div class="pb-k" style="width:85.714%"><span>Комплект</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
+    <div class="pb-row"><div class="pb-l"><b>Монтируете сами</b><span>175 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:33.333%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:33.333%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:33.333%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
+    <div class="pb-row"><div class="pb-l"><b>С наёмным мастером</b><span>155 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:29.524%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:29.524%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:29.524%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
+    <div class="pb-row pb-foot"><div class="pb-l"></div><div class="pb-t"><span class="pb-ok" style="left:85.714%">Окупились на 3-м объекте</span></div></div>
+  </div>
   <div class="split">
     <div class="tbl three">
       <div class="th"><span>Один объект</span><span>Сами</span><span>С мастером</span></div>
