@@ -70,6 +70,25 @@ em{font-style:normal;color:var(--ac)}
 .nums4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
 .nums4>div{padding:44px var(--pad) 48px;border-left:1px solid var(--line-d);display:flex;flex-direction:column;gap:14px}.nums4>div:first-child{border-left:0}
 .nums4 .num{font-size:clamp(36px,4.2vw,68px)}.nums4 p{color:var(--muted-d);font-size:16px}
+/* 01 market */
+.mk{padding-top:var(--sec)}
+.mk-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--line)}
+.mk-h{padding:clamp(32px,4vw,64px) var(--pad);display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:clamp(420px,42vw,620px)}
+.mk-h .lbl{align-self:flex-start}.mk-h .h2{margin:0;max-width:16ch}
+.mk-top .ph{min-height:0}
+.mk-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.mk-c{padding:clamp(24px,2.4vw,36px) var(--pad);border-right:1px solid var(--line);border-top:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:clamp(200px,16vw,240px)}
+.mk-c:nth-child(5n){border-right:0}
+.mk-n{font-size:clamp(28px,2.6vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--ac)}
+.mk-c p{font-size:clamp(16px,1.25vw,18px);line-height:1.4;font-weight:500}
+.mk-c.hd{background:var(--g);color:#fff;border-color:var(--g);justify-content:flex-end}.mk-c.hd.g2{background:var(--g2);border-color:var(--g2)}
+.mk-c h3{font-size:clamp(20px,1.8vw,26px)}
+.mk-c.sol{justify-content:flex-end;background:var(--ac);color:#fff;border-color:var(--ac)}.mk-c.sol p{color:#fff}
+@media(max-width:1100px){.mk-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.mk-c{border-right:1px solid var(--line)!important}.mk-c:nth-child(5n),.mk-c.sol{border-right:0!important}
+ .mk-c.hd{grid-column:1/-1;min-height:0;padding-top:28px;padding-bottom:28px}}
+@media(max-width:860px){.mk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mk-c{border-right:0!important}.mk-c:nth-child(5n+2),.mk-c:nth-child(5n+4){border-right:1px solid var(--line)!important}.mk-c.sol{grid-column:auto}}
+@media(max-width:860px){.mk-top{grid-template-columns:1fr}.mk-h{min-height:0}.mk-top .ph{aspect-ratio:4/5}}
+@media(max-width:600px){.mk-grid{grid-template-columns:1fr}.mk-c{border-right:0!important;min-height:0;flex-direction:row;align-items:baseline;justify-content:flex-start;gap:18px}.mk-c.hd,.mk-c.sol{flex-direction:column;gap:10px}.mk-n{font-size:24px;flex:none;width:36px}}
 /* split */
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--line)}
 .dark .split{border-color:var(--line-d)}
@@ -269,18 +288,17 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
   <div><div class="num">100–⁠200 <small>тыс. ₽</small></div><p>остаток после прямых расходов</p></div>
   <div><div class="num">3–⁠4 <small>заказа</small></div><p>вместо 20 по 10–⁠15 тыс. ₽</p></div>
 </section>
-<section class="sec" id="s01">
-  <div class="shead">
-  <div class="shead-l"><span class="lbl">01 · Рынок</span><h2 class="h2 ">Владелец квартиры с панорамными окнами хочет, чтобы у окна было <em>тепло, тихо, сухо и красиво</em></h2></div>
-  
-</div>
-  <div class="split">
-    <div class="ph tall"><img src="../img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления" loading="lazy"><div class="c"><span class="cap up">Тёплое остекление без замены фасада</span></div></div>
-    <div class="stack">
-      <div class="blk-t"><h3 class="up">Что не так</h3><ul class="ln"><li>Зимой алюминиевые стойки холодные, у окна некомфортно</li><li>На металле собирается конденсат</li><li>По полым профилям передаётся шум</li><li>Металл застройщика выбивается из интерьера</li></ul></div>
-      <div class="blk-t"><h3 class="up">Почему обычный ремонт не помогает</h3><ul class="ln"><li>Заменить фасад — дорого, часто нельзя без согласования</li><li>Второй ряд окон съедает площадь и вид</li><li>Подручные материалы — громоздко, видны стыки</li></ul></div>
-      <div class="cb"><span class="up">Решение</span><p>Утеплить стойки и закрыть бесшовными коробами по размеру, не меняя фасад.</p></div>
-    </div>
+<section class="mk" id="s01">
+  <div class="mk-top">
+    <div class="mk-h"><span class="lbl">01 · Рынок</span><h2 class="h2 ">Владелец квартиры с панорамными окнами хочет, чтобы у окна было <em>тепло, тихо, сухо и красиво</em></h2></div>
+    <div class="ph"><img src="../img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления" loading="lazy"><div class="c"><span class="cap up">Тёплое остекление без замены фасада</span></div></div>
+  </div>
+  <div class="mk-grid">
+    <div class="mk-c hd"><h3 class="up">Что не так</h3></div>
+    <div class="mk-c"><span class="mk-n">01</span><p>Зимой алюминиевые стойки холодные, у окна некомфортно</p></div><div class="mk-c"><span class="mk-n">02</span><p>На металле собирается конденсат</p></div><div class="mk-c"><span class="mk-n">03</span><p>По полым профилям передаётся шум</p></div><div class="mk-c"><span class="mk-n">04</span><p>Металл застройщика выбивается из интерьера</p></div>
+    <div class="mk-c hd g2"><h3 class="up">Почему обычный ремонт не помогает</h3></div>
+    <div class="mk-c"><span class="mk-n">01</span><p>Заменить фасад — дорого, часто нельзя без согласования</p></div><div class="mk-c"><span class="mk-n">02</span><p>Второй ряд окон съедает площадь и вид</p></div><div class="mk-c"><span class="mk-n">03</span><p>Подручные материалы — громоздко, видны стыки</p></div>
+    <div class="mk-c sol"><h3 class="up">Решение</h3><p>Утеплить стойки и закрыть бесшовными коробами по размеру, не меняя фасад.</p></div>
   </div>
 </section>
 <section class="sec" id="s02">
