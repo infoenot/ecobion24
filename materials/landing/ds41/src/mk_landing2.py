@@ -76,7 +76,7 @@ S = []
 
 # ---------- HERO ----------
 S.append(f'''<header class="hero" id="top">
-  <img src="img/city_wide.jpg" alt="Новостройки с панорамным остеклением">
+  <img src="img/hero_room.jpg" alt="Квартира в новостройке с холодным панорамным остеклением">
   <nav class="nav"><a class="logo" href="#top"><b></b>Оконщик 3000</a>
     <div class="links"><a href="#s02">Комплект</a><a href="#s06">Оборудование</a><a href="#s11">Изделия</a><a href="#s14">Экономика</a><a href="#s16">Как начать</a></div>
     <a class="ct" href="{TEL}">{PHONE}</a></nav>

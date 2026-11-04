@@ -384,3 +384,4 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 .red ul.ln li::before{background:#fff}
 .red .band{background:var(--g)}.red .band .num small{color:var(--ac)}
 .red .note{border-color:rgba(255,255,255,.35)}
+.hero>img{object-position:58% 50%}
