@@ -364,15 +364,14 @@ S.append(f'''<section class="sec" id="s14">
 # ---------- 15 Окупаемость ----------
 S.append(f'''<section class="sec" id="s15">
   {head('15', 'Окупаемость', 'При средней смете 200 тыс. ₽ комплект окупается [за 2–3 объекта]', 'Расчёт по структуре затрат реального объекта в Москве: материалы — около 12% сметы, зарплата изготовления и монтажа — около 10%.')}
-  <div class="split s15">
-    <div class="pb">
-      <div class="cap15"><h3 class="up">При средней смете 200 тыс. ₽</h3></div>
-      <div class="pb-row"><div class="pb-l"><b>Цена комплекта</b><span>платите один раз</span></div><div class="pb-t"><div class="pb-k" style="width:85.714%"><span>Комплект</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
-      <div class="pb-row"><div class="pb-l"><b>Монтируете сами</b><span>175 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:33.333%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:33.333%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:33.333%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
-      <div class="pb-row"><div class="pb-l"><b>С наёмным мастером</b><span>155 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:29.524%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:29.524%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:29.524%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
-      <div class="pb-row pb-foot"><div class="pb-l"></div><div class="pb-t"><span class="pb-ok" style="left:85.714%">Окупились на 3-м объекте</span></div></div>
-    </div>
-    <div class="tbl three fr t15">
+  <div class="pay">
+    <div class="pay-big"><span class="pay-n">3</span><div><h3 class="up">объекта — и комплект окупился</h3><p>При средней смете 200 тыс. ₽</p></div></div>
+    <div class="pay-s"><h3 class="up">Монтируете сами</h3><div><div class="num">175 <small>тыс. ₽</small></div><p>с объекта</p></div></div>
+    <div class="pay-s"><h3 class="up">С наёмным мастером</h3><div><div class="num">155 <small>тыс. ₽</small></div><p>с объекта</p></div></div>
+  </div>
+  <div class="cap15 ftcap"><h3 class="up">Чем покупка отличается от франшизы</h3></div>
+  <div class="ft"><div class="ft-h"><span></span><span>Паушальный взнос</span><span>Роялти</span><span>Ежемесячные платежи</span><span>Что остаётся у вас</span></div><div class="ft-r"><span class="ft-l">Франшиза</span><span>есть</span><span>% с выручки каждый месяц</span><span>есть</span><span>право работать под чужим брендом по договору</span></div><div class="ft-r own"><span class="ft-l">Оконщик 3000</span><span><span class="yes">нет</span></span><span><span class="yes">нет</span></span><span><span class="yes">нет</span></span><span><b>оборудование в собственности и технология</b></span></div></div>
+    <div class="tbl three fr t15 mob">
       <div class="cap15"><h3 class="up">Чем покупка отличается от франшизы</h3></div>
       <div class="th"><span></span><span>Франшиза</span><span>Оконщик 3000</span></div>
       <div><b>Паушальный взнос</b><span>есть</span><span class="yes">нет</span></div>
@@ -380,7 +379,7 @@ S.append(f'''<section class="sec" id="s15">
       <div><b>Ежемесячные платежи</b><span>есть</span><span class="yes">нет</span></div>
       <div><b>Что остаётся у вас</b><span>право работать под чужим брендом по договору</span><span class="yes">оборудование в собственности и технология</span></div>
     </div>
-  </div>
+  <p class="note">За комплект платите один раз.</p>
 </section>''')
 
 # ---------- 16 Как начать ----------

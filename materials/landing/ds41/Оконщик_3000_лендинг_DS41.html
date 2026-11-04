@@ -347,6 +347,32 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 #s15 .split>.tbl.three>.cap15,#s15 .s15>.tbl>.cap15{flex:none!important}
 .s15 .cap15{min-height:66px;display:flex!important;align-items:center}
 .s15 .pb-ok{transform:translateX(calc(-100% + 1px))}
+/* окупаемость v3: большая цифра + франшиза */
+.pay{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pay>div{padding:clamp(28px,3vw,48px) var(--pad)}
+.pay-big{display:flex;align-items:center;gap:clamp(16px,2vw,32px)}
+.pay-n{font-size:clamp(150px,16vw,250px);font-weight:800;line-height:.78;letter-spacing:-.06em;color:var(--ac)}
+.pay-big h3{font-size:clamp(28px,3.2vw,48px);line-height:.98;max-width:11ch}
+.pay-big p{margin-top:14px;font-size:17px;font-weight:600}
+.pay-s{border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.pay-s h3{font-size:clamp(16px,1.4vw,20px)}.pay-s p{color:var(--muted);font-size:16px;margin-top:6px}
+.pay-s .num{font-size:clamp(48px,5vw,80px)}.pay-s .num small{color:var(--ink)}
+.ftcap{border-bottom:1px solid var(--line);padding-top:clamp(28px,3vw,44px)!important}
+.ft-h,.ft-r{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(0,1fr)) minmax(0,1.6fr)}
+.ft-h>span,.ft-r>span{padding:20px var(--pad);border-left:1px solid var(--line);display:flex;align-items:center;font-size:16px;line-height:1.35}
+.ft-h>span:first-child,.ft-r>span:first-child{border-left:0}
+.ft-h{border-bottom:1px solid var(--line)}.ft-h>span{font-weight:700;font-size:15px}
+.ft-r{border-bottom:1px solid var(--line)}
+.ft-l{font-size:14px!important;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ft-r.own{background:var(--g);color:#fff;border-color:var(--g)}.ft-r.own>span{border-color:var(--line-d)}.ft-r.own .ft-l{color:#fff}
+.ft-r.own b{font-weight:700}
+.ft .yes{font-weight:700;position:relative;padding-left:18px}.ft .yes::before{content:"";position:absolute;left:0;top:.45em;width:9px;height:9px;background:var(--ac)}
+#s15 .note{border-bottom:0}
+.t15.mob{display:none!important}
+@media(max-width:1100px){.pay{grid-template-columns:1fr 1fr}.pay-big{grid-column:1/-1;border-bottom:1px solid var(--line)}.pay-s:nth-child(2){border-left:0}}
+@media(max-width:860px){.ft,.ftcap{display:none!important}.t15.mob{display:flex!important;flex-direction:column}.t15.mob .cap15{display:flex!important}}
+@media(max-width:600px){.pay{grid-template-columns:1fr}.pay-s{border-left:0;border-top:1px solid var(--line)}.pay-s:nth-child(2){border-top:0}.pay-n{font-size:120px}}
+@media(min-width:1101px){.ft-h,.ft-r{grid-template-columns:repeat(3,minmax(0,1fr)) repeat(2,minmax(0,1.5fr))}}
 </style></head>
 <body>
 <header class="hero" id="top">
@@ -660,15 +686,14 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
   <div class="shead-l"><h2 class="h2 "><em>Окупаемость</em></h2></div>
   <div class="shead-r"><p class="sfull">При средней смете 200 тыс. ₽ комплект окупается за 2–⁠3 объекта</p><p class="lead">Расчёт по структуре затрат реального объекта в Москве: материалы — около 12% сметы, зарплата изготовления и монтажа — около 10%.</p></div>
 </div>
-  <div class="split s15">
-    <div class="pb">
-      <div class="cap15"><h3 class="up">При средней смете 200 тыс. ₽</h3></div>
-      <div class="pb-row"><div class="pb-l"><b>Цена комплекта</b><span>платите один раз</span></div><div class="pb-t"><div class="pb-k" style="width:85.714%"><span>Комплект</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
-      <div class="pb-row"><div class="pb-l"><b>Монтируете сами</b><span>175 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:33.333%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:33.333%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:33.333%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
-      <div class="pb-row"><div class="pb-l"><b>С наёмным мастером</b><span>155 тыс. ₽ с объекта</span></div><div class="pb-t"><div class="pb-o" style="width:29.524%"><span data-n="1">Объект 1</span></div><div class="pb-o" style="width:29.524%"><span data-n="2">Объект 2</span></div><div class="pb-o x" style="width:29.524%"><span data-n="3">Объект 3</span></div><i class="pb-line" style="left:85.714%"></i></div></div>
-      <div class="pb-row pb-foot"><div class="pb-l"></div><div class="pb-t"><span class="pb-ok" style="left:85.714%">Окупились на 3-м объекте</span></div></div>
-    </div>
-    <div class="tbl three fr t15">
+  <div class="pay">
+    <div class="pay-big"><span class="pay-n">3</span><div><h3 class="up">объекта — и комплект окупился</h3><p>При средней смете 200 тыс. ₽</p></div></div>
+    <div class="pay-s"><h3 class="up">Монтируете сами</h3><div><div class="num">175 <small>тыс. ₽</small></div><p>с объекта</p></div></div>
+    <div class="pay-s"><h3 class="up">С наёмным мастером</h3><div><div class="num">155 <small>тыс. ₽</small></div><p>с объекта</p></div></div>
+  </div>
+  <div class="cap15 ftcap"><h3 class="up">Чем покупка отличается от франшизы</h3></div>
+  <div class="ft"><div class="ft-h"><span></span><span>Паушальный взнос</span><span>Роялти</span><span>Ежемесячные платежи</span><span>Что остаётся у вас</span></div><div class="ft-r"><span class="ft-l">Франшиза</span><span>есть</span><span>% с выручки каждый месяц</span><span>есть</span><span>право работать под чужим брендом по договору</span></div><div class="ft-r own"><span class="ft-l">Оконщик 3000</span><span><span class="yes">нет</span></span><span><span class="yes">нет</span></span><span><span class="yes">нет</span></span><span><b>оборудование в собственности и технология</b></span></div></div>
+    <div class="tbl three fr t15 mob">
       <div class="cap15"><h3 class="up">Чем покупка отличается от франшизы</h3></div>
       <div class="th"><span></span><span>Франшиза</span><span>Оконщик 3000</span></div>
       <div><b>Паушальный взнос</b><span>есть</span><span class="yes">нет</span></div>
@@ -676,7 +701,7 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
       <div><b>Ежемесячные платежи</b><span>есть</span><span class="yes">нет</span></div>
       <div><b>Что остаётся у вас</b><span>право работать под чужим брендом по договору</span><span class="yes">оборудование в собственности и технология</span></div>
     </div>
-  </div>
+  <p class="note">За комплект платите один раз.</p>
 </section>
 <section class="sec dark" id="s16">
   <div class="shead">
