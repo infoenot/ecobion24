@@ -373,6 +373,22 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 @media(max-width:860px){.ft,.ftcap{display:none!important}.t15.mob{display:flex!important;flex-direction:column}.t15.mob .cap15{display:flex!important}}
 @media(max-width:600px){.pay{grid-template-columns:1fr}.pay-s{border-left:0;border-top:1px solid var(--line)}.pay-s:nth-child(2){border-top:0}.pay-n{font-size:120px}}
 @media(min-width:1101px){.ft-h,.ft-r{grid-template-columns:repeat(3,minmax(0,1fr)) repeat(2,minmax(0,1.5fr))}}
+/* полоса цифр: единица под числом, прилегает к «Рынку» */
+.nums4 .num{font-size:clamp(40px,4.4vw,72px)}
+.nums4 .num small{display:block;margin:10px 0 0;font-size:clamp(15px,1.2vw,18px);letter-spacing:.02em;text-transform:uppercase}
+.mk{padding-top:0}.mk-top{border-top:0}
+/* секция 12 на красном */
+.sec.red{background:var(--ac);color:#fff}
+.red .lbl{background:#fff;color:var(--ink)}
+.red .h2 em{color:var(--ink)}
+.red .sfull,.red .lead,.red p,.red .note{color:#fff!important}
+.red .cards{border-color:rgba(255,255,255,.35)}
+.red .cards>div{border-color:rgba(255,255,255,.35)!important}
+.red .k{color:#fff;opacity:.85}
+.red ul.ln li{border-color:rgba(255,255,255,.35);color:#fff}
+.red ul.ln li::before{background:#fff}
+.red .band{background:var(--g)}.red .band .num small{color:var(--ac)}
+.red .note{border-color:rgba(255,255,255,.35)}
 </style></head>
 <body>
 <header class="hero" id="top">
@@ -524,11 +540,6 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
     <div class="tile"><div class="num">3×4 <small>м</small></div><p>Ориентир рабочей зоны с учётом листа и проходов.</p></div>
     <div class="tile"><div class="num">100 <small>м за смену</small></div><p>Выработка одного мастера за смену 6–⁠7 часов.</p></div>
   </div>
-  <div class="tbl two">
-    <div class="th"><span>Режим работы</span><span>Погонных метров за смену</span></div>
-    <div><b>Один мастер, белые изделия</b><span class="big">100–⁠120</span></div>
-    <div><b>Мастер и помощник</b><span class="big">150 и больше</span></div>
-  </div>
   <p class="note">Оборудование работает без шума и пыли. Расходные части меняются по износу.</p>
 </section>
 <section class="sec" id="s09">
@@ -608,10 +619,6 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
     <div><span class="k">02</span><h3 class="up">Покраска по RAL</h3><p>800+ вариантов цвета по шкале RAL. Красят в покрасочной камере партнёра. Добавляет несколько дней к сроку.</p><div class="sws"><div class="sw"><i style="background:#383E42;"></i><span>графит RAL 7016</span></div><div class="sw"><i style="background:#16181B;"></i><span>чёрный матовый</span></div><div class="sw"><i style="background:#59473A;"></i><span>коричневый</span></div><div class="sw"><i style="background:#9DA3A6;"></i><span>серый</span></div></div></div>
     <div><span class="k">03</span><h3 class="up">Ламинация плёнкой</h3><p>200+ вариантов плёнки: под дерево, однотонные, детские с рисунком.</p><div class="sws"><div class="sw"><i style="background:repeating-linear-gradient(92deg,#D9C3A0 0 3px,#CDB48D 3px 7px,#D9C3A0 7px 9px,#E3D0B1 9px 14px);"></i><span>светлый дуб</span></div><div class="sw"><i style="background:repeating-linear-gradient(92deg,#C08A4E 0 3px,#B37C42 3px 7px,#C08A4E 7px 9px,#CC9960 9px 14px);"></i><span>золотой дуб</span></div><div class="sw"><i style="background:repeating-linear-gradient(92deg,#6E4B33 0 3px,#5F402B 3px 7px,#6E4B33 7px 9px,#7B563C 9px 14px);"></i><span>орех</span></div><div class="sw"><i style="background:repeating-linear-gradient(92deg,#B9B2A3 0 3px,#ACA493 3px 7px,#B9B2A3 7px 9px,#C6C0B3 9px 14px);"></i><span>ясень</span></div></div></div>
   </div>
-  <div class="band">
-    <div><h3 class="up">Комплект в одной плёнке</h3><p>короба, откосы, подоконник и плинтус в одном цвете</p></div>
-    <div class="num">200+ <small>плёнок</small></div>
-  </div>
 </section>
 <section class="sec" id="s11d">
   <div class="shead">
@@ -622,7 +629,7 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
   <div class="galgrid" id="gal"><figure class="gal"><img src="../img/g01.jpg" loading="lazy" alt="Подоконник-столешница вдоль панорамного окна"><figcaption>Подоконник‑столешница вдоль панорамного окна</figcaption></figure><figure class="gal"><img src="../img/g02.jpg" loading="lazy" alt="Портал балконного блока и 3D-откосы под светлый дуб"><figcaption>Портал балконного блока и 3D‑откосы под светлый дуб</figcaption></figure><figure class="gal"><img src="../img/g03.jpg" loading="lazy" alt="Подоконник под дуб на ригеле, белые короба на стойках и парапете"><figcaption>Подоконник под дуб на ригеле, белые короба на стойках и парапете</figcaption></figure><figure class="gal"><img src="../img/g04.jpg" loading="lazy" alt="Лоджия: белые короба на стойках и ригелях"><figcaption>Лоджия: белые короба на стойках и ригелях</figcaption></figure><figure class="gal"><img src="../img/g05.jpg" loading="lazy" alt="Эркер: белые короба на стойках граней"><figcaption>Эркер: белые короба на стойках граней</figcaption></figure><figure class="gal"><img src="../img/g06.jpg" loading="lazy" alt="Откосы входной двери под светлый дуб"><figcaption>Откосы входной двери под светлый дуб</figcaption></figure><figure class="gal"><img src="../img/g07.jpg" loading="lazy" alt="Угол остекления: короб на угловой стойке и парапете"><figcaption>Угол остекления: короб на угловой стойке и парапете</figcaption></figure><figure class="gal"><img src="../img/g08.jpg" loading="lazy" alt="Белые короба на стойках и нижнем ригеле у пола"><figcaption>Белые короба на стойках и нижнем ригеле у пола</figcaption></figure><figure class="gal"><img data-src="../img/g09.jpg" alt="Лоджия: белые короба на стойках и ригеле"><figcaption>Лоджия: белые короба на стойках и ригеле</figcaption></figure><figure class="gal"><img data-src="../img/g10.jpg" alt="Белые 3D-откосы входной двери"><figcaption>Белые 3D‑откосы входной двери</figcaption></figure><figure class="gal"><img data-src="../img/g11.jpg" alt="Подоконник с боковинами вокруг радиатора, под дуб"><figcaption>Подоконник с боковинами вокруг радиатора, под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g12.jpg" alt="Обрамление ниши под телевизор под орех"><figcaption>Обрамление ниши под телевизор под орех</figcaption></figure><figure class="gal"><img data-src="../img/g13.jpg" alt="Откосы, порог и плинтус балконной двери под дуб"><figcaption>Откосы, порог и плинтус балконной двери под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g14.jpg" alt="Графитовые короба на стойках и ригелях"><figcaption>Графитовые короба на стойках и ригелях</figcaption></figure><figure class="gal"><img data-src="../img/g15.jpg" alt="Обшивка квадратной колонны, белый"><figcaption>Обшивка квадратной колонны, белый</figcaption></figure><figure class="gal"><img data-src="../img/g16.jpg" alt="Круглая колонна, обшитая гранями, графит"><figcaption>Круглая колонна, обшитая гранями, графит</figcaption></figure><figure class="gal"><img data-src="../img/g17.jpg" alt="Портал проёма без двери под светлый дуб"><figcaption>Портал проёма без двери под светлый дуб</figcaption></figure><figure class="gal"><img data-src="../img/g18.jpg" alt="Реечная стена из П-профилей под дуб"><figcaption>Реечная стена из П‑профилей под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g19.jpg" alt="Портал выхода на лоджию под дуб"><figcaption>Портал выхода на лоджию под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g20.jpg" alt="Короб на стояки в санузле с лючком"><figcaption>Короб на стояки в санузле с лючком</figcaption></figure><figure class="gal"><img data-src="../img/g21.jpg" alt="Фитнес-зал: колонны под дерево, белые короба на стойках"><figcaption>Фитнес‑зал: колонны под дерево, белые короба на стойках</figcaption></figure><figure class="gal"><img data-src="../img/g22.jpg" alt="Рама для карты под светлый дуб"><figcaption>Рама для карты под светлый дуб</figcaption></figure><figure class="gal"><img data-src="../img/g23.jpg" alt="Рама для большого зеркала под дуб"><figcaption>Рама для большого зеркала под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g24.jpg" alt="Фальшбалки под светлый дуб"><figcaption>Фальшбалки под светлый дуб</figcaption></figure></div>
   <button type="button" class="more-btn" id="galbtn">Показать ещё 16 фото</button>
 </section>
-<section class="sec" id="s12">
+<section class="sec red" id="s12">
   <div class="shead">
   <div class="shead-lbl"><span class="lbl">12 · Обучение и поддержка</span></div>
   <div class="shead-l"><h2 class="h2 "><em>Обучение</em> и поддержка</h2></div>
@@ -633,7 +640,7 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
     <div><span class="k">02</span><h3 class="up">Как учим</h3><ul class="ln"><li>На нашей базе в Москве или удалённо</li><li>Учебные видео — пока изготавливается комплект</li><li>По желанию — стажировка на действующих объектах в Москве</li><li>Выезд специалиста к вам в цену не входит</li></ul></div>
     <div><span class="k">03</span><h3 class="up">После обучения</h3><ul class="ln"><li>12 месяцев консультаций по производству и продажам</li><li>Разбор сложных узлов по фото и видео с объекта</li><li>Ведём до сдачи первых 1–⁠2 квартир</li><li>Контакты поставщиков сэндвича и плёнки</li></ul></div>
   </div>
-  <div class="band ac">
+  <div class="band">
     <div><h3 class="up">Поддержка по договору</h3><p>консультации по производству и продажам с даты подписания</p></div>
     <div class="num">12 <small>месяцев</small></div>
   </div>

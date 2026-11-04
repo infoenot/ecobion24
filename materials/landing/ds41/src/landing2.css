@@ -368,3 +368,19 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 @media(max-width:860px){.ft,.ftcap{display:none!important}.t15.mob{display:flex!important;flex-direction:column}.t15.mob .cap15{display:flex!important}}
 @media(max-width:600px){.pay{grid-template-columns:1fr}.pay-s{border-left:0;border-top:1px solid var(--line)}.pay-s:nth-child(2){border-top:0}.pay-n{font-size:120px}}
 @media(min-width:1101px){.ft-h,.ft-r{grid-template-columns:repeat(3,minmax(0,1fr)) repeat(2,minmax(0,1.5fr))}}
+/* полоса цифр: единица под числом, прилегает к «Рынку» */
+.nums4 .num{font-size:clamp(40px,4.4vw,72px)}
+.nums4 .num small{display:block;margin:10px 0 0;font-size:clamp(15px,1.2vw,18px);letter-spacing:.02em;text-transform:uppercase}
+.mk{padding-top:0}.mk-top{border-top:0}
+/* секция 12 на красном */
+.sec.red{background:var(--ac);color:#fff}
+.red .lbl{background:#fff;color:var(--ink)}
+.red .h2 em{color:var(--ink)}
+.red .sfull,.red .lead,.red p,.red .note{color:#fff!important}
+.red .cards{border-color:rgba(255,255,255,.35)}
+.red .cards>div{border-color:rgba(255,255,255,.35)!important}
+.red .k{color:#fff;opacity:.85}
+.red ul.ln li{border-color:rgba(255,255,255,.35);color:#fff}
+.red ul.ln li::before{background:#fff}
+.red .band{background:var(--g)}.red .band .num small{color:var(--ac)}
+.red .note{border-color:rgba(255,255,255,.35)}
