@@ -83,6 +83,7 @@ S.append(f'''<header class="hero" id="top">
   <div class="hero-t">
     <h1 class="up"><span>Бизнес на</span> <span><em>утеплении</em> холодного панорамного</span> <span>остекления изнутри</span></h1>
     <div class="hero-r">
+      <div class="hero-kpi"><b>65–68%</b><span>Доходность</span></div>
       <p>Для мастеров, оконщиков, ремонтников и тех, кто устал работать на рынке с высокой конкуренцией и низкой доходностью.</p>
       <a class="btn" href="#form-top"><span>Получить консультацию</span>{ARR}</a>
     </div>
