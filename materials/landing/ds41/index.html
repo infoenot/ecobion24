@@ -260,6 +260,46 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
  .ol{flex-direction:column;gap:2px}
 }
 @media(max-width:360px){.hero h1{font-size:30px}.num{font-size:40px}.bigtel{font-size:28px}.btn{padding-left:16px;font-size:15px}}
+
+/* ===== единая сетка 50/50: правая колонка везде начинается с W/2 + pad ===== */
+.hero-t{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:calc(2*var(--pad))}
+.hero-r{max-width:520px}
+.fstrip .lform{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:calc(2*var(--pad));align-items:start;padding:40px var(--pad)}
+.fstrip .fhead h3{font-size:clamp(22px,2vw,30px)}.fstrip .fhead p{font-size:16px;margin-top:8px;max-width:40ch}
+.fstrip .frow{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.fstrip .frow input{border:0;height:60px}.fstrip .frow .btn{height:60px;width:100%}
+.fstrip .agree{grid-column:2}
+.shead{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:calc(2*var(--pad));row-gap:22px;align-items:start}
+.shead-lbl{grid-column:1/-1}.shead .h2{margin-top:0}
+.sfull{padding-top:.12em}
+.midf,.final{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+/* дни */
+.days>div{flex:1;align-items:center;padding:0;min-height:88px}
+.days b{font-size:clamp(17px,1.5vw,22px);color:#fff;font-weight:500}
+.days .num{color:var(--ac)}
+.days>p{margin-top:0}
+/* монтаж */
+.msplit .ph.tall{min-height:0}
+.msplit .acc{padding-bottom:0}
+.acc summary{grid-template-columns:44px minmax(0,1fr) 28px;padding:28px var(--pad)}
+.acc details p{padding:0 var(--pad) 30px calc(var(--pad) + 56px)}
+.acc .n{font-size:16px}
+.msplit .note.in{margin-top:auto;padding:24px var(--pad);border-top:0}
+/* договор */
+.gar ul.ln{margin-top:auto}
+.gar .num{font-size:clamp(72px,8vw,128px)}
+/* цены */
+.tbl.two.pr{display:flex;flex-direction:column}
+.tbl.two.pr>div:not(.th){flex:1;align-items:center}
+.tbl.two.pr .th{align-items:center}
+.obj .ol{flex:1;align-items:center}
+
+@media(max-width:1100px){.fstrip .lform{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.fstrip .agree{grid-column:2}}
+@media(max-width:860px){.fstrip .lform{grid-template-columns:1fr;row-gap:20px}.fstrip .agree,.fstrip .lform.sent .ok{grid-column:1}
+ .shead{grid-template-columns:1fr;row-gap:16px}.days>div{min-height:72px}.msplit .ph.tall{aspect-ratio:4/5}}
+@media(max-width:600px){.fstrip .frow{grid-template-columns:1fr}.acc summary{grid-template-columns:32px minmax(0,1fr) 28px}.acc details p{padding-left:calc(var(--pad) + 44px)}}
+@media(max-width:860px){.midf,.final,.hero-t{grid-template-columns:1fr}.hero-t{row-gap:22px}}
+@media(max-width:600px){.obj .ol{align-items:flex-start;justify-content:center}}
 </style></head>
 <body>
 <header class="hero" id="top">
@@ -307,7 +347,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s02">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">02 · Что вы покупаете</span><h2 class="h2 ">Что вы <em>покупаете</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">02 · Что вы покупаете</span></div>
+  <div class="shead-l"><h2 class="h2 ">Что вы <em>покупаете</em></h2></div>
   <div class="shead-r"><p class="sfull">Вы покупаете оборудование, технологию и год поддержки</p><p class="lead">Это не франшиза: нет роялти и ежемесячных платежей. Комплект после оплаты — ваш.</p></div>
 </div>
   <div class="cards c4">
@@ -324,7 +365,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s03">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">03 · За что платит клиент</span><h2 class="h2 ">За что <em>платит клиент</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">03 · За что платит клиент</span></div>
+  <div class="shead-l"><h2 class="h2 ">За что <em>платит клиент</em></h2></div>
   <div class="shead-r"><p class="sfull">Клиент платит не за пластик, а за решение семи задач</p><p class="lead">Холодная, шумная и некрасивая лоджия становится тёплой, тихой и красивой частью квартиры. Стойки несущие — их не меняют, а утепляют и закрывают коробом.</p></div>
 </div>
   <div class="ba">
@@ -337,7 +379,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s04">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">04 · Решение</span><h2 class="h2 "><em>Термокороб</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">04 · Решение</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>Термокороб</em></h2></div>
   <div class="shead-r"><p class="sfull">Термокороб — цельногнутый короб из ПВХ‑сэндвича с утеплителем внутри</p><p class="lead">Короб делают по замеру конкретной стойки и клеят поверх утеплённого профиля. Стыка на внешнем ребре нет: изделие согнуто из одной полосы.</p></div>
 </div>
   <div class="split">
@@ -353,7 +396,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s05">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">05 · Материал</span><h2 class="h2 ">Материал — <em>ПВХ‑сэндвич 10 мм</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">05 · Материал</span></div>
+  <div class="shead-l"><h2 class="h2 ">Материал — <em>ПВХ‑сэндвич 10 мм</em></h2></div>
   <div class="shead-r"><p class="sfull">Сырьё одно — ПВХ‑сэндвич 10 мм, его продают в каждом областном городе</p><p class="lead">Сэндвич — два листа пластика, между ними экструдированный пенополистирол (XPS). Из этого же материала делают заполнение балконных дверей ПВХ.</p></div>
 </div>
   <div class="split">
@@ -367,7 +411,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec dark" id="s06">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">06 · Как работает оборудование</span><h2 class="h2 "><em>4 операции</em> оборудования</h2></div>
+  <div class="shead-lbl"><span class="lbl">06 · Как работает оборудование</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>4 операции</em> оборудования</h2></div>
   <div class="shead-r"><p class="sfull">Оборудование делает изделие за 4 операции: раскрой, паз, нагрев, сгиб</p><p class="lead">Оборудование нагревает лист по линии сгиба и сгибает его под 90°. Получается цельное П‑ или Г‑образное изделие.</p></div>
 </div>
   <div class="steps s4">
@@ -383,7 +428,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s07">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">07 · Комплект</span><h2 class="h2 ">Что входит <em>в комплект</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">07 · Комплект</span></div>
+  <div class="shead-l"><h2 class="h2 ">Что входит <em>в комплект</em></h2></div>
   <div class="shead-r"><p class="sfull">Что входит в комплект — по спецификации договора</p><p class="lead">Состав комплекта, цену и сроки фиксируем в договоре до оплаты.</p></div>
 </div>
   <div class="tbl spec">
@@ -395,7 +441,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s08">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">08 · Характеристики</span><h2 class="h2 "><em>Вес</em> оборудования</h2></div>
+  <div class="shead-lbl"><span class="lbl">08 · Характеристики</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>Вес</em> оборудования</h2></div>
   <div class="shead-r"><p class="sfull">Оборудование весит 53 кг, работает от розетки и перевозится на багажнике легковой машины</p></div>
 </div>
   <div class="tiles t4">
@@ -413,7 +460,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s09">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">09 · Где делать короба</span><h2 class="h2 ">Где <em>делать короба</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">09 · Где делать короба</span></div>
+  <div class="shead-l"><h2 class="h2 ">Где <em>делать короба</em></h2></div>
   <div class="shead-r"><p class="sfull">Короба делают в цехе или гараже, реже — прямо на объекте</p><p class="lead">Обычно оборудование стоит в цехе или гараже, на объект везут готовые короба. Реже оборудование привозят на объект и делают короба на месте.</p></div>
 </div>
   <div class="cards c3">
@@ -434,10 +482,11 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s10">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">10 · Монтаж</span><h2 class="h2 "><em>Монтаж</em> короба</h2></div>
+  <div class="shead-lbl"><span class="lbl">10 · Монтаж</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>Монтаж</em> короба</h2></div>
   <div class="shead-r"><p class="sfull">Перед установкой короба стойку изолируют и утепляют</p><p class="lead">Короб — финишный слой. Тепло даёт весь узел: изоляция металла, утеплитель и герметичные примыкания.</p></div>
 </div>
-  <div class="split">
+  <div class="split msplit">
     <div class="ph tall"><img src="../img/tape.jpg" alt="Стойки и ригели в изоляции перед установкой коробов" loading="lazy"><div class="c"><span class="cap up">Стойки и ригели в изоляции перед установкой коробов</span></div></div>
     <div class="acc"><details open><summary><span class="n">01</span><span class="t">Гидроизоляция</span><span class="pm"></span></summary><p>Металл стойки закрывают бутиловой лентой или жидкой резиной. На этом слое конденсат не образуется.</p></details><details><summary><span class="n">02</span><span class="t">Утепление</span><span class="pm"></span></summary><p>На вертикальные и горизонтальные профили клеят пеноплекс.</p></details><details><summary><span class="n">03</span><span class="t">Заполнение и герметизация</span><span class="pm"></span></summary><p>Пустоты заполняют пеной, примыкания проходят герметиком. Между стеклопакетом и коробом прокладывают резину.</p></details><details><summary><span class="n">04</span><span class="t">Замер</span><span class="pm"></span></summary><p>Снимают точный размер стойки.</p></details><details><summary><span class="n">05</span><span class="t">Установка</span><span class="pm"></span></summary><p>Чистовой короб сажают на клей или герметик, который не растворяет пенополистирол. Крепёж в профиль не нужен.</p></details><p class="note in">Для каждой профильной системы — своя последовательность. Ей учим на объектах и разбираем сложные узлы по фото.</p></div>
   </div>
@@ -458,14 +507,16 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s11">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">11 · Изделия</span><h2 class="h2 ">Что ещё <em>делают</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">11 · Изделия</span></div>
+  <div class="shead-l"><h2 class="h2 ">Что ещё <em>делают</em></h2></div>
   <div class="shead-r"><p class="sfull">Кроме утепления, на оборудовании делают профили для окон, дверей и интерьера</p><p class="lead">Всё — из того же листа сэндвича 10 мм и теми же 4 операциями: раскрой, паз, нагрев, сгиб. Ниже — схемы сечений.</p></div>
 </div>
   <div class="cards c4 prods"><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="6" width="14" height="32" fill="#CCCCCC"/><rect x="4" y="46" width="96" height="30" fill="#E3E3E3"/><rect x="18" y="40" width="82" height="6" fill="#F2C9A8"/><path d="M18,37 L106,37 L106,60 L100,60" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M18,37 L106,37 L106,60 L100,60" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Подоконник</h3><p>На пеноплексе: сэндвич с загибом вниз, свес за стену 50–⁠150 мм. Второй вариант — на плите ЛДСП/МДФ, см. ниже.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="8" y="8" width="22" height="64" fill="#CCCCCC"/><rect x="30" y="40" width="58" height="36" fill="#E3E3E3"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Дверной 3D‑откос</h3><p>Откос и наличник одной деталью: загиб на стену, торец закрыт загибом. Входные и межкомнатные двери.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="8" y="8" width="22" height="64" fill="#CCCCCC"/><rect x="30" y="40" width="58" height="36" fill="#E3E3E3"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M30,36 L92,36 L92,66 L86,66" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Оконный 3D‑откос</h3><p>Откос загнут до стены. Ширина полок любая. Для ПВХ, алюминиевых и деревянных окон.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="4" width="22" height="72" fill="#E3E3E3"/><rect x="4" y="66" width="112" height="10" fill="#E3E3E3"/><path d="M26,26 L48,26 L48,64" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M26,26 L48,26 L48,64" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Плинтус</h3><p>Короб у пола: внутри можно спрятать кабель. Цвет — в тон коробам и откосам.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="10" y="30" width="60" height="46" fill="#E3E3E3"/><path d="M10,26 L74,26 L74,76" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M10,26 L74,26 L74,76" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Уголок</h3><p>Закрывает и защищает внешний угол стены, колонны или откоса.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="64" width="112" height="12" fill="#E3E3E3"/><circle cx="46" cy="44" r="12" fill="#CCCCCC"/><circle cx="76" cy="50" r="7" fill="#CCCCCC"/><path d="M22,62 L22,24 L96,24 L96,62" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M22,62 L22,24 L96,24 L96,62" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Короб на трубы и кабели</h3><p>П‑короб вдоль стены. К круглой трубе крепят через каркас из профиля или бруска.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="40" y="18" width="40" height="44" fill="#CCCCCC"/><path d="M36,14 L84,14 L84,66 L36,66 Z" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M36,14 L84,14 L84,66 L36,66 Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Колонна и столб</h3><p>Обшивка квадратного столба — четыре сгиба. Круглые колонны закрывают секторами.</p></div><div><div class="svgw"><svg viewBox="0 0 120 80" class="sec"><rect x="4" y="4" width="112" height="12" fill="#E3E3E3"/><rect x="40" y="16" width="40" height="22" fill="#CCCCCC"/><path d="M30,18 L30,52 L90,52 L90,18" fill="none" stroke="#161616" stroke-width="7" stroke-linejoin="miter"/><path d="M30,18 L30,52 L90,52 L90,18" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/></svg></div><h3 class="up">Фальшбалка и балка</h3><p>Короб на потолочную балку или декоративная балка из того же сэндвича.</p></div></div>
 </section>
 <section class="sec" id="s11b">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">11 · Подоконник</span><h2 class="h2 "><em>Подоконник</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">11 · Подоконник</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>Подоконник</em></h2></div>
   <div class="shead-r"><p class="sfull">Подоконник из сэндвича делают двумя способами</p><p class="lead">Сэндвич — финишная поверхность. Жёсткость и форму даёт основа: плита или пеноплекс. Схемы — в разрезе.</p></div>
 </div>
   <div class="split sills">
@@ -475,7 +526,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s11c">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">11 · Отделка</span><h2 class="h2 "><em>Отделка</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">11 · Отделка</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>Отделка</em></h2></div>
   <div class="shead-r"><p class="sfull">Любое изделие делают в одном из трёх вариантов отделки</p><p class="lead">Цвет подбирают под интерьер: короб, откос и подоконник можно сделать в тон стенам, полу или мебели.</p></div>
 </div>
   <div class="cards c3 fin">
@@ -490,7 +542,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s11d">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">11 · Галерея</span><h2 class="h2 "><em>Галерея</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">11 · Галерея</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>Галерея</em></h2></div>
   <div class="shead-r"><p class="sfull">Что можно сделать на оборудовании</p></div>
 </div>
   <div class="galgrid" id="gal"><figure class="gal"><img src="../img/g01.jpg" loading="lazy" alt="Подоконник-столешница вдоль панорамного окна"><figcaption>Подоконник‑столешница вдоль панорамного окна</figcaption></figure><figure class="gal"><img src="../img/g02.jpg" loading="lazy" alt="Портал балконного блока и 3D-откосы под светлый дуб"><figcaption>Портал балконного блока и 3D‑откосы под светлый дуб</figcaption></figure><figure class="gal"><img src="../img/g03.jpg" loading="lazy" alt="Подоконник под дуб на ригеле, белые короба на стойках и парапете"><figcaption>Подоконник под дуб на ригеле, белые короба на стойках и парапете</figcaption></figure><figure class="gal"><img src="../img/g04.jpg" loading="lazy" alt="Лоджия: белые короба на стойках и ригелях"><figcaption>Лоджия: белые короба на стойках и ригелях</figcaption></figure><figure class="gal"><img src="../img/g05.jpg" loading="lazy" alt="Эркер: белые короба на стойках граней"><figcaption>Эркер: белые короба на стойках граней</figcaption></figure><figure class="gal"><img src="../img/g06.jpg" loading="lazy" alt="Откосы входной двери под светлый дуб"><figcaption>Откосы входной двери под светлый дуб</figcaption></figure><figure class="gal"><img src="../img/g07.jpg" loading="lazy" alt="Угол остекления: короб на угловой стойке и парапете"><figcaption>Угол остекления: короб на угловой стойке и парапете</figcaption></figure><figure class="gal"><img src="../img/g08.jpg" loading="lazy" alt="Белые короба на стойках и нижнем ригеле у пола"><figcaption>Белые короба на стойках и нижнем ригеле у пола</figcaption></figure><figure class="gal"><img data-src="../img/g09.jpg" alt="Лоджия: белые короба на стойках и ригеле"><figcaption>Лоджия: белые короба на стойках и ригеле</figcaption></figure><figure class="gal"><img data-src="../img/g10.jpg" alt="Белые 3D-откосы входной двери"><figcaption>Белые 3D‑откосы входной двери</figcaption></figure><figure class="gal"><img data-src="../img/g11.jpg" alt="Подоконник с боковинами вокруг радиатора, под дуб"><figcaption>Подоконник с боковинами вокруг радиатора, под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g12.jpg" alt="Обрамление ниши под телевизор под орех"><figcaption>Обрамление ниши под телевизор под орех</figcaption></figure><figure class="gal"><img data-src="../img/g13.jpg" alt="Откосы, порог и плинтус балконной двери под дуб"><figcaption>Откосы, порог и плинтус балконной двери под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g14.jpg" alt="Графитовые короба на стойках и ригелях"><figcaption>Графитовые короба на стойках и ригелях</figcaption></figure><figure class="gal"><img data-src="../img/g15.jpg" alt="Обшивка квадратной колонны, белый"><figcaption>Обшивка квадратной колонны, белый</figcaption></figure><figure class="gal"><img data-src="../img/g16.jpg" alt="Круглая колонна, обшитая гранями, графит"><figcaption>Круглая колонна, обшитая гранями, графит</figcaption></figure><figure class="gal"><img data-src="../img/g17.jpg" alt="Портал проёма без двери под светлый дуб"><figcaption>Портал проёма без двери под светлый дуб</figcaption></figure><figure class="gal"><img data-src="../img/g18.jpg" alt="Реечная стена из П-профилей под дуб"><figcaption>Реечная стена из П‑профилей под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g19.jpg" alt="Портал выхода на лоджию под дуб"><figcaption>Портал выхода на лоджию под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g20.jpg" alt="Короб на стояки в санузле с лючком"><figcaption>Короб на стояки в санузле с лючком</figcaption></figure><figure class="gal"><img data-src="../img/g21.jpg" alt="Фитнес-зал: колонны под дерево, белые короба на стойках"><figcaption>Фитнес‑зал: колонны под дерево, белые короба на стойках</figcaption></figure><figure class="gal"><img data-src="../img/g22.jpg" alt="Рама для карты под светлый дуб"><figcaption>Рама для карты под светлый дуб</figcaption></figure><figure class="gal"><img data-src="../img/g23.jpg" alt="Рама для большого зеркала под дуб"><figcaption>Рама для большого зеркала под дуб</figcaption></figure><figure class="gal"><img data-src="../img/g24.jpg" alt="Фальшбалки под светлый дуб"><figcaption>Фальшбалки под светлый дуб</figcaption></figure></div>
@@ -498,7 +551,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s12">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">12 · Обучение и поддержка</span><h2 class="h2 "><em>Обучение</em> и поддержка</h2></div>
+  <div class="shead-lbl"><span class="lbl">12 · Обучение и поддержка</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>Обучение</em> и поддержка</h2></div>
   <div class="shead-r"><p class="sfull">Учим работе на оборудовании, монтажу и расчёту заказа, затем год отвечаем на вопросы</p></div>
 </div>
   <div class="cards c3">
@@ -514,7 +568,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s13">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">13 · Гарантия и договор</span><h2 class="h2 "><em>Договор</em> и гарантия</h2></div>
+  <div class="shead-lbl"><span class="lbl">13 · Гарантия и договор</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>Договор</em> и гарантия</h2></div>
   <div class="shead-r"><p class="sfull">Договор с ООО «Меркурий‑групп»: срок, гарантия и ответственность прописаны</p></div>
 </div>
   <div class="split">
@@ -527,7 +582,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s14">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">14 · Экономика</span><h2 class="h2 "><em>Цены</em> и пример объекта</h2></div>
+  <div class="shead-lbl"><span class="lbl">14 · Экономика</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>Цены</em> и пример объекта</h2></div>
   <div class="shead-r"><p class="sfull">Цены на изделия и пример одного объекта в Москве</p><p class="lead">Цены по Москве. В вашем городе цены и спрос другие — считаем на созвоне.</p></div>
 </div>
   <div class="split">
@@ -553,7 +609,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec" id="s15">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">15 · Окупаемость</span><h2 class="h2 "><em>Окупаемость</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">15 · Окупаемость</span></div>
+  <div class="shead-l"><h2 class="h2 "><em>Окупаемость</em></h2></div>
   <div class="shead-r"><p class="sfull">При средней смете 200 тыс. ₽ комплект окупается за 2–⁠3 объекта</p><p class="lead">Расчёт по структуре затрат реального объекта в Москве: материалы — около 12% сметы, зарплата изготовления и монтажа — около 10%.</p></div>
 </div>
   <div class="split">
@@ -577,7 +634,8 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 </section>
 <section class="sec dark" id="s16">
   <div class="shead">
-  <div class="shead-l"><span class="lbl">16 · Как начать</span><h2 class="h2 ">Как <em>начать</em></h2></div>
+  <div class="shead-lbl"><span class="lbl">16 · Как начать</span></div>
+  <div class="shead-l"><h2 class="h2 ">Как <em>начать</em></h2></div>
   <div class="shead-r"><p class="sfull">От созвона до первого объекта — 6 шагов</p></div>
 </div>
   <div class="steps s3"><div><div class="num">01</div><h3 class="up">Созвон</h3><p>Разбираем ваш город, опыт и формат: опт, монтаж под ключ или оба.</p></div><div><div class="num">02</div><h3 class="up">Договор и оплата</h3><p>Отправляем договор и счёт, фиксируем состав комплекта и сроки.</p></div><div><div class="num">03</div><h3 class="up">Изготовление</h3><p>20 рабочих дней. В это время вы смотрите учебные видео.</p></div><div><div class="num">04</div><h3 class="up">Обучение</h3><p>В Москве на нашей базе или удалённо.</p></div><div><div class="num">05</div><h3 class="up">Доставка</h3><p>«Деловые линии» привозят комплект, вы запускаете оборудование.</p></div><div><div class="num">06</div><h3 class="up">Первый объект</h3><p>Вместе подбираем дом в вашем городе и ведём до сдачи первых квартир.</p></div></div>

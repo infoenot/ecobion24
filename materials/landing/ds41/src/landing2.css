@@ -255,3 +255,43 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
  .ol{flex-direction:column;gap:2px}
 }
 @media(max-width:360px){.hero h1{font-size:30px}.num{font-size:40px}.bigtel{font-size:28px}.btn{padding-left:16px;font-size:15px}}
+
+/* ===== единая сетка 50/50: правая колонка везде начинается с W/2 + pad ===== */
+.hero-t{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:calc(2*var(--pad))}
+.hero-r{max-width:520px}
+.fstrip .lform{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:calc(2*var(--pad));align-items:start;padding:40px var(--pad)}
+.fstrip .fhead h3{font-size:clamp(22px,2vw,30px)}.fstrip .fhead p{font-size:16px;margin-top:8px;max-width:40ch}
+.fstrip .frow{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.fstrip .frow input{border:0;height:60px}.fstrip .frow .btn{height:60px;width:100%}
+.fstrip .agree{grid-column:2}
+.shead{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:calc(2*var(--pad));row-gap:22px;align-items:start}
+.shead-lbl{grid-column:1/-1}.shead .h2{margin-top:0}
+.sfull{padding-top:.12em}
+.midf,.final{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+/* дни */
+.days>div{flex:1;align-items:center;padding:0;min-height:88px}
+.days b{font-size:clamp(17px,1.5vw,22px);color:#fff;font-weight:500}
+.days .num{color:var(--ac)}
+.days>p{margin-top:0}
+/* монтаж */
+.msplit .ph.tall{min-height:0}
+.msplit .acc{padding-bottom:0}
+.acc summary{grid-template-columns:44px minmax(0,1fr) 28px;padding:28px var(--pad)}
+.acc details p{padding:0 var(--pad) 30px calc(var(--pad) + 56px)}
+.acc .n{font-size:16px}
+.msplit .note.in{margin-top:auto;padding:24px var(--pad);border-top:0}
+/* договор */
+.gar ul.ln{margin-top:auto}
+.gar .num{font-size:clamp(72px,8vw,128px)}
+/* цены */
+.tbl.two.pr{display:flex;flex-direction:column}
+.tbl.two.pr>div:not(.th){flex:1;align-items:center}
+.tbl.two.pr .th{align-items:center}
+.obj .ol{flex:1;align-items:center}
+
+@media(max-width:1100px){.fstrip .lform{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.fstrip .agree{grid-column:2}}
+@media(max-width:860px){.fstrip .lform{grid-template-columns:1fr;row-gap:20px}.fstrip .agree,.fstrip .lform.sent .ok{grid-column:1}
+ .shead{grid-template-columns:1fr;row-gap:16px}.days>div{min-height:72px}.msplit .ph.tall{aspect-ratio:4/5}}
+@media(max-width:600px){.fstrip .frow{grid-template-columns:1fr}.acc summary{grid-template-columns:32px minmax(0,1fr) 28px}.acc details p{padding-left:calc(var(--pad) + 44px)}}
+@media(max-width:860px){.midf,.final,.hero-t{grid-template-columns:1fr}.hero-t{row-gap:22px}}
+@media(max-width:600px){.obj .ol{align-items:flex-start;justify-content:center}}

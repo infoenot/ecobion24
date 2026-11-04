@@ -44,7 +44,8 @@ SHORT = {
 def head(n, t, h, lead='', dark=False):
     full = re.sub(r'[\[\]]', '', h)
     return f'''<div class="shead">
-  <div class="shead-l">{lbl(n, t)}{H2(SHORT.get(t, h))}</div>
+  <div class="shead-lbl">{lbl(n, t)}</div>
+  <div class="shead-l">{H2(SHORT.get(t, h))}</div>
   <div class="shead-r"><p class="sfull">{full}</p>{f'<p class="lead">{lead}</p>' if lead else ''}</div>
 </div>'''
 
@@ -247,7 +248,7 @@ mnt = [('Гидроизоляция', 'Металл стойки закрыва�
 acc = ''.join(f'<details{" open" if i == 0 else ""}><summary><span class="n">0{i+1}</span><span class="t">{t}</span><span class="pm"></span></summary><p>{x}</p></details>' for i, (t, x) in enumerate(mnt))
 S.append(f'''<section class="sec" id="s10">
   {head('10', 'Монтаж', 'Перед установкой короба стойку [изолируют и утепляют]', 'Короб — финишный слой. Тепло даёт весь узел: изоляция металла, утеплитель и герметичные примыкания.')}
-  <div class="split">
+  <div class="split msplit">
     <div class="ph tall"><img src="img/tape.jpg" alt="Стойки и ригели в изоляции перед установкой коробов" loading="lazy"><div class="c"><span class="cap up">Стойки и ригели в изоляции перед установкой коробов</span></div></div>
     <div class="acc">{acc}<p class="note in">Для каждой профильной системы — своя последовательность. Ей учим на объектах и разбираем сложные узлы по фото.</p></div>
   </div>
