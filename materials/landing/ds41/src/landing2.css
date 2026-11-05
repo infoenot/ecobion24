@@ -501,3 +501,4 @@ p,li,.lead{text-wrap:pretty}
 p,li{max-width:60ch}
 .note{max-width:none}.note{text-wrap:balance}
 .cards p,.mk-c p,.steps p,.tile p,.cb p{text-wrap:balance}
+.T{padding-bottom:0!important}.T>.note:last-child{border-bottom:0!important}
