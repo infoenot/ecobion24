@@ -488,3 +488,16 @@ p,li,.lead,.kv b,.kv span,.tbl span,.tbl b,.ol span,.ft-r>span,.ft-l,.mk-c p,.ca
 .acc summary{align-items:start}
 .steps .num{margin-bottom:12px}
 .tbl.two.pr>div:not(.th){flex:none!important}.T .tbl .big{color:var(--fg)!important}.tbl.two>div{grid-template-columns:minmax(0,1fr) minmax(0,160px)!important}
+
+/* ===== цвет: основной текст — цвет секции, серый только вспомогательный ===== */
+.T p,.T .lead,.T ul.ln li,.T .tbl span,.T .tbl b,.T .kv b,.T .sfull,.T .cards p,.T .mk-c p,.T .cb p,.T .steps p,.T .tile p,.T .sills p,.T .acc details p,.T .days>p,.T .fhead p{color:var(--fg)!important}
+.T .note,.T .kv span,.T .tbl .th span,.T .ol span,.T .ft-l,.T .pay-s p,.T .agree,.T .pay-big p,.lb-h p{color:var(--mu)!important}
+.lb-h p{color:rgba(255,255,255,.62)!important}
+/* ===== переносы ===== */
+h1,h2,h3,.sfull,.cb>span,summary,.k,.cap,figcaption{text-wrap:balance}
+p,li,.lead{text-wrap:pretty}
+.sfull{max-width:36ch!important}
+.lead,.shead-r .lead{max-width:52ch!important}
+p,li{max-width:60ch}
+.note{max-width:none}.note{text-wrap:balance}
+.cards p,.mk-c p,.steps p,.tile p,.cb p{text-wrap:balance}
