@@ -422,3 +422,34 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
  .fstrip.hz .frow{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.nums4.n2>div{padding-left:16px}.fstrip.hz .frow{grid-template-columns:1fr}.nums4.n2 .num{font-size:34px}}
 @media(max-width:360px){.nums4.n2 .num{font-size:28px}.nums4.n2>div{padding-left:12px}}
+
+/* ===== ТЕМЫ СЕКЦИЙ: один фон на секцию, внутри без заливок ===== */
+.t-w{--bg:#fff;--fg:#161616;--mu:#5E5E5E;--ln:#E6E6E6;--a2:#FE4F31;--lb:#F3F3F3;--lbf:#161616}
+.t-g{--bg:#F3F3F3;--fg:#161616;--mu:#5E5E5E;--ln:#DCDCDC;--a2:#FE4F31;--lb:#fff;--lbf:#161616}
+.t-d{--bg:#161616;--fg:#fff;--mu:#A8A8A8;--ln:#333;--a2:#FE4F31;--lb:#2A2A2A;--lbf:#fff}
+.t-r{--bg:#FE4F31;--fg:#fff;--mu:rgba(255,255,255,.88);--ln:rgba(255,255,255,.4);--a2:#161616;--lb:#fff;--lbf:#161616}
+.T{background:var(--bg)!important;color:var(--fg);padding-bottom:var(--sec)}
+.T.mk,.T.midf,.T.final{padding-bottom:0}
+.T.midf{margin-top:0}
+.T *{border-color:var(--ln)!important}
+/* снять внутренние заливки */
+.T .cb,.T .cards>div,.T .tile,.T .band,.T .days,.T .gar,.T .obj,.T .mk-c,.T .acc details,.T .acc details[open],.T .ft-r,.T .svgw,.T .lform.v,.T .dark,.T .ol.tot{background:transparent!important;color:inherit!important}
+.T .svgw{border:1px solid var(--ln)}
+/* текст */
+.T h2,.T h3,.T b,.T .num,.T .sfull,.T .cap,.T summary,.T .days h3,.T .days b,.T .ol b,.T .kv b,.T .tbl b{color:var(--fg)}
+.T p,.T .lead,.T .note,.T .kv span,.T .ol span,.T .tbl span,.T ul.ln li,.T .fhead p,.T .agree,.T .pay-s p,.T .ft-l{color:var(--mu)!important}
+.T .ph .cap,.T .gal figcaption{color:#fff!important}
+/* акценты */
+.T em,.T .k,.T .num small,.T .mk-n,.T .steps .num,.T .acc .n,.T .days .num,.T .pay-n,.T .cb>span,.T .mk-c.hd h3,.T .mk-c.sol h3,.T .acc details[open] summary .t{color:var(--a2)!important}
+.T .mk-c.sol p,.T .acc details[open] p{color:var(--fg)!important}
+.T ul.ln li::before,.T .yes::before{background:var(--a2)}
+.T .lbl{background:var(--lb);color:var(--lbf)}
+.T .ol.tot{border-top:2px solid var(--fg)!important;margin:0;padding:16px 0}.T .ol.tot b{color:var(--a2)}
+.T .ft-r.own{border-top:2px solid var(--fg)!important}.T .ft-r.own .ft-l,.T .ft-r.own b,.T .ft-r.own span{color:var(--fg)!important}
+.T .tile{border-right:1px solid var(--ln)}
+/* кнопки и формы в красных секциях */
+.t-r .btn{background:#161616}.t-r .btn:hover{background:#000}
+.t-r .lform.v .ok b{color:#fff}
+.T .lform input,.T .lform select,.T .lform textarea{background:#fff;color:#161616}
+.T .lform.v.ac{background:transparent!important}
+.T .more-btn{background:transparent;color:var(--fg)}.T .more-btn:hover{background:var(--a2);color:#fff}
