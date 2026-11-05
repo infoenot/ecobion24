@@ -458,6 +458,41 @@ footer{background:var(--g);color:var(--muted-d);padding:28px var(--pad) 32px;fon
 .T .lform input,.T .lform select,.T .lform textarea{background:#fff;color:#161616}
 .T .lform.v.ac{background:transparent!important}
 .T .more-btn{background:transparent;color:var(--fg)}.T .more-btn:hover{background:var(--a2);color:#fff}
+
+/* ===== ТИПОГРАФИКА: 4 уровня ===== */
+:root{--t2:clamp(30px,3.6vw,56px);--ts:18px;--tb:18px}
+@media(max-width:860px){:root{--ts:17px;--tb:16px}}
+/* 1. H1 — как есть. 2. Заголовок секции — как «Обсудить запуск» */
+.h2,.lb-h h3,.T .h2{font-size:var(--t2);line-height:1;letter-spacing:-.03em;text-transform:uppercase;font-weight:800}
+/* 3. Подзаголовок — как «Доходность»: жирный, без капса */
+.sfull,.cards h3,.blk-t h3,.blk-t.big h3,.cb>span,.mk-c h3,.steps h3,.days h3,.gar h3,.obj h3,.band h3,.cap15 h3,.pay-s h3,.sills h3,.fhead h3,.fstrip .fhead h3,.acc summary,.ft-h>span,.pay-big p,.mk-h+.ph .cap,.T .cb>span,.ph .cap
+{font-size:var(--ts)!important;font-weight:700!important;text-transform:none!important;letter-spacing:0!important;line-height:1.3!important;max-width:none}
+.ph .cap{font-size:clamp(18px,1.6vw,22px)!important}
+/* 4. Обычный текст — как «Для мастеров…»; второстепенный — серым */
+p,li,.lead,.kv b,.kv span,.tbl span,.tbl b,.ol span,.ft-r>span,.ft-l,.mk-c p,.cards p,.tile p,.steps p,.sills p,.cb p,.acc details p,.pay-s p,.note,.shead-r .lead,.days b,.days>p
+{font-size:var(--tb)!important;line-height:1.5!important;font-weight:400!important;text-transform:none!important;letter-spacing:0!important}
+.kv b,.tbl b,.ft-r.own b,.ft-r.own span,.ft .yes{font-weight:400!important}
+.T p,.T .lead,.T .note,.T .kv span,.T .ol span,.T ul.ln li,.T .tbl span,.T .ft-l{color:var(--mu)!important}
+.T .kv b,.T .tbl b,.T .mk-c p,.T .ft-r.own span,.T .ft-r.own b,.T .days b,.T .ol b{color:var(--fg)!important}
+.t-w,.t-g{--mu:rgba(22,22,22,.62)}
+.t-d{--mu:rgba(255,255,255,.62)}
+.t-r{--mu:rgba(255,255,255,.85)}
+/* метки (01 · Рынок, номера) — мелкие, как были */
+/* ===== выравнивание: всё сверху слева ===== */
+.cb,.tile,.mk-c,.mk-c.hd,.mk-c.sol,.cards>div,.cards .acc-b,.pay-s,.steps>div,.mk-h,.days,.gar,.obj{justify-content:flex-start!important;text-align:left}
+.tile{gap:24px}.mk-c{gap:16px}.mk-h{gap:28px}.pay-s{gap:16px}
+.tasks>div:not(.acc-b) h3{margin-top:0!important}
+.gar ul.ln{margin-top:16px!important}
+.shead,.split,.mk-top,.pay,.ba{align-items:start}
+.split>*,.mk-top>*{align-self:stretch}
+.tbl>div,.ft-h>span,.ft-r>span,.tbl.two.pr>div:not(.th),.obj .ol,.t15>div,.days>div{align-items:flex-start!important;text-align:left!important}
+.tbl.two>div>span:last-child{text-align:left!important}
+.days>div{flex:none!important;min-height:0!important;padding:18px 0!important;flex-direction:column;gap:4px}
+.ol{flex-direction:column;gap:4px}.ol b{white-space:normal}
+.band{align-items:flex-start;flex-direction:column;gap:16px}
+.acc summary{align-items:start}
+.steps .num{margin-bottom:12px}
+.tbl.two.pr>div:not(.th){flex:none!important}.T .tbl .big{color:var(--fg)!important}.tbl.two>div{grid-template-columns:minmax(0,1fr) minmax(0,160px)!important}
 </style></head>
 <body>
 <header class="hero" id="top">
