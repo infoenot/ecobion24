@@ -515,3 +515,35 @@ p,li{max-width:60ch}
 .mk-ph{aspect-ratio:2/3;min-height:0!important;height:auto}
 .mk-ph img{object-fit:cover}
 @media(max-width:860px){.mk2{grid-template-columns:1fr}.mk-l{border-right:0}.mk-ph{aspect-ratio:2/3}}
+
+/* ===== мобильная: 2 колонки там, где пункты короткие ===== */
+@media(max-width:600px){
+ .steps.s4,.steps.s3,.tiles.t3,.tiles.t4,.cards.c4,#s09 .cards.c3{grid-template-columns:1fr 1fr!important}
+ .steps>div,.tiles .tile,.cards.c4>div,#s09 .cards.c3>div{border-right:0!important;border-top:1px solid var(--ln)!important;padding:22px 16px 24px!important;min-height:0!important;gap:8px!important}
+ .steps>div:nth-child(odd),.tiles .tile:nth-child(odd),.cards.c4>div:nth-child(odd),#s09 .cards.c3>div:nth-child(odd){border-right:1px solid var(--ln)!important}
+ .steps>div:nth-child(-n+2),.tiles .tile:nth-child(-n+2),.cards.c4>div:nth-child(-n+2){border-top:0!important}
+ /* 3 элемента: первый на всю ширину */
+ .tiles.t3 .tile:first-child,#s09 .cards.c3>div:first-child{grid-column:1/-1;border-right:0!important}
+ .tiles.t3 .tile:nth-child(2){border-right:1px solid var(--ln)!important;border-top:1px solid var(--ln)!important}
+ .tiles.t3 .tile:nth-child(3){border-right:0!important;border-top:1px solid var(--ln)!important}
+ #s09 .cards.c3>div:nth-child(2){border-right:1px solid var(--ln)!important}#s09 .cards.c3>div:nth-child(3){border-right:0!important}
+ .steps .num{font-size:36px!important;margin-bottom:4px!important}
+ .tile .num,.cards .num{font-size:36px!important}.tile .num.sm{font-size:24px!important}
+ .steps h3,.tiles h3,.cards.c4 h3,#s09 .cards h3{font-size:16px!important}
+ .steps p,.tile p,.cards.c4 p,#s09 .cards p{font-size:15px!important;line-height:1.4!important}
+ .tasks .k{font-size:10px}
+ /* изделия: схемы 2×2 */
+ .prods>div{padding:18px 16px!important}.prods .svgw{padding:10px}
+ /* таблицы подпись | значение в строку */
+ .kv>div{grid-template-columns:38% minmax(0,1fr)!important;gap:12px!important;padding:14px var(--pad)!important}
+ .kv span,.kv b{font-size:15px!important}
+ /* пример объекта: 2×2 + итог */
+ .obj{display:grid!important;grid-template-columns:1fr 1fr;column-gap:16px;row-gap:0}
+ .obj>.k,.obj>h3{grid-column:1/-1}
+ .obj .ol{padding:14px 0!important}.obj .ol b{font-size:20px!important}.obj .ol span{font-size:14px!important}
+ .obj .ol.tot{grid-column:1/-1;order:10}
+}
+@media(max-width:600px){.steps>div,.tiles .tile,.cards.c4>div,.prods>div,#s09 .cards.c3>div{min-width:0;hyphens:auto;-webkit-hyphens:auto}}
+@media(max-width:380px){.steps>div,.tiles .tile,.cards.c4>div,.prods>div,#s09 .cards.c3>div{padding:18px 12px 20px!important}
+ .steps p,.tile p,.cards.c4 p,#s09 .cards p,.prods p{font-size:14px!important}.tasks .k{font-size:9px;letter-spacing:.04em}.tile .num small{font-size:12px}}
+@media(max-width:600px){.pay{grid-template-columns:1fr 1fr!important}.pay-big{grid-column:1/-1}.pay-s{border-top:1px solid var(--ln)!important;padding:20px 16px!important}.pay-s:nth-child(2){border-left:0!important;border-right:1px solid var(--ln)!important}.pay-s .num{font-size:40px!important}.pay-s h3{font-size:15px!important}}
