@@ -108,16 +108,14 @@ bad = ['Зимой алюминиевые стойки холодные, у ок
 why = ['Заменить фасад — дорого, часто нельзя без согласования', 'Второй ряд окон съедает площадь и вид', 'Подручные материалы — громоздко, видны стыки']
 cell = lambda n, t: f'<div class="mk-c"><span class="mk-n">{n:02d}</span><p>{t}</p></div>'
 S.append(f'''<section class="mk T t-w" id="s01">
-  <div class="mk-top">
-    <div class="mk-h">{lbl('01', 'Рынок')}{H2('Владелец квартиры с панорамными окнами хочет, чтобы у окна было [тепло, тихо, сухо и красиво]')}</div>
-    <div class="ph"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления" loading="lazy"><div class="c"><span class="cap up">Тёплое остекление без замены фасада</span></div></div>
-  </div>
-  <div class="mk-grid">
-    <div class="mk-c hd"><h3 class="up">Что не так</h3></div>
-    {''.join(cell(i + 1, t) for i, t in enumerate(bad))}
-    <div class="mk-c hd g2"><h3 class="up">Почему обычный ремонт не помогает</h3></div>
-    {''.join(cell(i + 1, t) for i, t in enumerate(why))}
-    <div class="mk-c sol"><h3 class="up">Решение</h3><p>Утеплить стойки и закрыть бесшовными коробами по размеру, не меняя фасад.</p></div>
+  <div class="mk2">
+    <div class="mk-l">
+      <div class="mk-h">{lbl('01', 'Рынок')}{H2('Собственник хочет, чтобы у окна было [тепло, тихо, сухо и красиво]')}</div>
+      <div class="mk-g"><h3>Что не так</h3>{''.join(cell(i + 1, t) for i, t in enumerate(bad))}</div>
+      <div class="mk-g"><h3>Почему обычный ремонт не помогает</h3>{''.join(cell(i + 1, t) for i, t in enumerate(why))}</div>
+      <div class="mk-g sol"><h3>Решение</h3><p>Утеплить стойки и закрыть бесшовными коробами по размеру, не меняя фасад.</p></div>
+    </div>
+    <div class="ph mk-ph"><img src="img/hero.jpg" alt="Лоджия: белые короба на стойках панорамного остекления" loading="lazy"><div class="c"><span class="cap">Тёплое остекление без замены фасада</span></div></div>
   </div>
 </section>''')
 

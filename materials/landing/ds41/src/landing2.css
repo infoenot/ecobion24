@@ -502,3 +502,16 @@ p,li{max-width:60ch}
 .note{max-width:none}.note{text-wrap:balance}
 .cards p,.mk-c p,.steps p,.tile p,.cb p{text-wrap:balance}
 .T{padding-bottom:0!important}.T>.note:last-child{border-bottom:0!important}
+/* 01 рынок: слева контент, справа вертикальное фото целиком */
+.mk2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--ln)}
+.mk-l{display:flex;flex-direction:column;border-right:1px solid var(--ln)}
+.mk2 .mk-h{min-height:0;padding:clamp(40px,4vw,64px) var(--pad) clamp(28px,3vw,44px);justify-content:flex-start}
+.mk2 .mk-h .h2{max-width:18ch}
+.mk-g{border-top:1px solid var(--ln);padding:clamp(20px,2vw,28px) var(--pad);display:flex;flex-direction:column;flex:1}
+.mk-g h3{font-size:var(--ts);font-weight:700;margin-bottom:6px}
+.mk-g .mk-c{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:baseline;padding:10px 0;border:0!important;min-height:0;background:none}
+.mk-g .mk-n{font-size:16px;font-weight:700}
+.mk-g.sol h3{color:var(--a2)}
+.mk-ph{aspect-ratio:2/3;min-height:0!important;height:auto}
+.mk-ph img{object-fit:cover}
+@media(max-width:860px){.mk2{grid-template-columns:1fr}.mk-l{border-right:0}.mk-ph{aspect-ratio:2/3}}
